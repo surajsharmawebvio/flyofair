@@ -1,0 +1,329 @@
+/* <<<<<< ************* ABOUT TEXT SECTION CSS START **************** >>>>>> */
+.abouttext-section {
+  background-color: rgba(var(--black-color), 0.03);
+}
+/* Main container */
+.adventure-experience {
+  display: flex;
+  gap: 20px;
+}
+
+/* Left column */
+.adventure-left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Info box */
+.adventure-info-box {
+  background-color: rgba(var(--second-color), 1);
+  color: rgba(var(--black-color), 1);
+  padding: 40px 20px;
+  border-top-left-radius: 50px;
+  font-size: 18px;
+  font-weight: 700;
+  text-align: center;
+}
+.adventure-info-box p {
+  margin-bottom: 0;
+}
+/* Sailing image */
+.adventure-sailing-img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-bottom-left-radius: 50px;
+}
+
+/* Right column */
+.adventure-right {
+  flex: 1;
+}
+
+/* Kayaking image */
+.adventure-kayaking-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-top-right-radius: 50px;
+  border-bottom-right-radius: 50px;
+}
+
+.about-list1 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+}
+.about-list1 li {
+  position: relative;
+  padding-left: 25px;
+  margin-bottom: 5px;
+  margin-right: 15px;
+  font-size: 14px;
+  color: rgba(var(--black-color), 1);
+  font-weight: 500;
+}
+.about-list1 li::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  background-color: rgba(var(--second-color), 1);
+  position: absolute;
+  left: 5px;
+  top: 10px;
+  outline: 5px solid rgba(var(--second-color), 0.4);
+  border-radius: 50%;
+}
+/* <<<<<< ************* ABOUT TEXT SECTION CSS END  **************** >>>>>> */
+
+/* <<<<<< ************* COUNTER SECTION CSS START **************** >>>>>> */
+.custom-counter-section {
+  background-color: #002744;
+}
+.custom-counter-text .custom-counter-subtitle {
+  text-transform: uppercase;
+  font-size: 14px;
+  color: #aaa;
+}
+
+.custom-counter-title h2 {
+  color: rgba(var(--white-color), 1);
+  margin-bottom: 20px;
+}
+
+.custom-counter-desc {
+  color: #ccc;
+  font-size: 15px;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+.custom-counter-buttons .btn {
+  padding: 10px 20px;
+  font-weight: 500;
+  margin-right: 10px;
+  border-radius: 25px;
+}
+
+.custom-btn-primary {
+  background-color: #ff5c2a;
+  color: white;
+  border: none;
+}
+
+.custom-btn-secondary {
+  border: 1px solid #aaa;
+  color: #fff;
+  background-color: transparent;
+}
+
+.custom-counter-box {
+  border-radius: 20px;
+  padding: 30px 20px;
+  color: #000;
+  text-align: center;
+  min-height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.custom-counter-number {
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.gradient-orange {
+  background: linear-gradient(
+    135deg,
+    rgba(var(--second-color), 1),
+    rgba(var(--white-color), 1)
+  );
+}
+
+.gradient-red {
+  background: linear-gradient(
+    135deg,
+    rgba(var(--main-color), 1),
+    rgba(var(--white-color), 1)
+  );
+}
+/* <<<<<< ************* COUNTER SECTION CSS END  **************** >>>>>> */
+
+/* <<<<<< ************* WHY CHOOSE US SECTION CSS START  **************** >>>>>> */
+.trevana-benefits {
+  background-color: rgba(var(--white-color), 1);
+  color: #1b1b1b;
+  overflow: hidden;
+}
+.textureimage02 {
+  position: absolute;
+  right: -193px;
+  bottom: -26px;
+  height: auto;
+  width: 60%;
+}
+.textureimage02 img {
+  width: 82%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.1;
+}
+.benefit-item {
+  padding: 20px 20px;
+  border: 1px solid #dfe0e4;
+  border-radius: 12px;
+  transition: all 0.8s ease-in-out 0.4s;
+  height: 100%;
+}
+.benefit-icon {
+  width: 50px;
+  height: auto;
+}
+.benefit-title {
+  font-size: 18px;
+  color: #000000;
+}
+.benefit-text {
+  font-size: 14px;
+  color: #4a4a4a;
+}
+/* <<<<<< ************* WHY CHOOSE US SECTION CSS END   **************** >>>>>> */
+/* <<<<<< ************* FAQ SECTION CSS START   **************** >>>>>> */
+.faq-section {
+  background-color: rgba(var(--black-color), 0.03);
+}
+.custom-accordion .accordion-button {
+  font-weight: 600;
+  font-size: 16px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  color: #000;
+  width: 100%;
+  padding: 1rem 1rem;
+  border: 0;
+  margin-bottom: 0;
+}
+.custom-accordion .accordion-button::after {
+  display: none;
+}
+.custom-accordion .accordion-button:focus {
+  box-shadow: none;
+  border-color: rgba(var(--second-color), 1);
+}
+.custom-accordion .accordion-item {
+  border: 1px solid rgba(var(--second-color), 0.5) !important;
+  margin-bottom: 10px;
+  overflow: hidden;
+  border-radius: 8px;
+}
+.custom-accordion .accordion-header {
+  margin-bottom: 0;
+}
+.custom-accordion .accordion-button .icon {
+  font-size: 14px;
+  transition: transform 0.3s ease;
+  color: rgba(var(--main-color), 1);
+}
+
+.custom-accordion .accordion-body {
+  background-color: #fafafa;
+  padding: 10px 20px;
+}
+
+@media (max-width: 576px) {
+  .custom-accordion .accordion-button {
+    font-size: 13px;
+    padding: 10px;
+    text-align: left;
+  }
+
+  .custom-accordion .accordion-body {
+    padding: 10px 10px;
+    font-size: 12px;
+  }
+}
+/* /* <<<<<< ************* FAQ SECTION CSS END   **************** >>>>>> * */
+
+@media (max-width: 1366px) {
+  .custom-counter-box {
+    min-height: 186px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .benefit-title {
+    font-size: 16px;
+  }
+  .benefit-text {
+    font-size: 13px;
+  }
+}
+@media (max-width: 991px) {
+  .adventure-sailing-img {
+    height: 150px;
+  }
+  .adventure-info-box {
+    padding: 20px;
+  }
+  .adventure-experience {
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+  .section-header {
+    margin-bottom: 20px;
+  }
+}
+@media (max-width: 767px) {
+  .custom-counter-number {
+    font-size: 30px;
+  }
+  .custom-counter-box {
+    min-height: 100%;
+  }
+  .custom-accordion .accordion-button {
+    font-size: 14px;
+  }
+}
+@media (max-width: 580px) {
+  .about-list1 li {
+    font-size: 12px;
+    line-height: normal;
+  }
+  .common-section {
+    padding: 30px 0px;
+  }
+  .adventure-info-box {
+    font-size: 14px;
+  }
+  .custom-counter-desc {
+    font-size: 13px;
+  }
+  .custom-counter-box p {
+    font-size: 13px;
+  }
+  .custom-counter-number {
+    font-size: 24px;
+  }
+  .custom-counter-box {
+    padding: 10px;
+  }
+  .adventure-left {
+    gap: 10px;
+  }
+}
+@media (max-width: 380px) {
+  .custom-accordion .accordion-button {
+    font-size: 13px;
+  }
+}
