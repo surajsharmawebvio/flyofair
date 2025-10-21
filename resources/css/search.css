@@ -1,0 +1,21 @@
+@media (max-width: 992px) {
+  .bannersection {
+    min-height: 33vh;
+  }
+}
+
+@media (max-width: 580px) {
+  .bannersection {
+    min-height: 22vh;
+  }
+}
+@media (max-width: 390px) {
+  .flight-booking-wrapper {
+    margin-top: -70px;
+  }
+}
+@media (max-width: 370px) {
+  .flight-booking-wrapper {
+    margin-top: -50px;
+  }
+}

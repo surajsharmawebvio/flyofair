@@ -1,0 +1,193 @@
+@import './common.css';
+.thankyou-fullpage-wrapper {
+  min-height: 100vh;
+  width: 100%;
+  background-image: url("../images/banner/thank-you.jpg");
+  background-size: cover;
+  background-position: 0% 48%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  position: relative;
+}
+
+.thankyou-fullpage-wrapper::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgb(0 0 0 / 53%);
+  z-index: 1;
+}
+
+.thankyou-text-container {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 800px;
+  width: 100%;
+  animation: fadeInContent 1s ease-out;
+}
+
+@keyframes fadeInContent {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.thankyou-primary-heading {
+  font-size: 4.5rem;
+  font-weight: 800;
+  color: rgba(var(--third-color), 1);
+  margin-bottom: 30px;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.301);
+}
+
+.thankyou-message-paragraph {
+  font-size: 1.4rem;
+  color: rgba(var(--white-color), 1);
+  line-height: 1.8;
+  margin-bottom: 45px;
+  font-weight: 400;
+  text-shadow: 1px 1px 2px rgba(245, 0, 0, 0.8);
+}
+
+.backhome-action-link {
+  display: inline-block;
+  padding: 18px 50px;
+  background: rgba(var(--second-color), 1);
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: 600;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 20px rgba(158, 158, 158, 0.4);
+  letter-spacing: 0.5px;
+}
+
+.backhome-action-link:hover {
+  background: rgba(var(--second-color), 1);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(179, 179, 179, 0.5);
+  color: #ffffff;
+}
+
+.backhome-action-link:active {
+  transform: translateY(-1px);
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  .thankyou-primary-heading {
+    font-size: 3.8rem;
+  }
+
+  .thankyou-message-paragraph {
+    font-size: 1.3rem;
+  }
+
+  .backhome-action-link {
+    font-size: 1.15rem;
+    padding: 16px 45px;
+  }
+}
+
+@media (max-width: 768px) {
+  .thankyou-fullpage-wrapper {
+    background-attachment: scroll;
+    padding: 30px 20px;
+  }
+
+  .thankyou-primary-heading {
+    font-size: 3rem;
+    margin-bottom: 25px;
+  }
+
+  .thankyou-message-paragraph {
+    font-size: 1.15rem;
+    margin-bottom: 40px;
+  }
+
+  .backhome-action-link {
+    font-size: 1.1rem;
+    padding: 15px 40px;
+  }
+}
+
+@media (max-width: 576px) {
+  .thankyou-fullpage-wrapper {
+    padding: 25px 15px;
+  }
+
+  .thankyou-primary-heading {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+  }
+
+  .thankyou-message-paragraph {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin-bottom: 35px;
+  }
+
+  .backhome-action-link {
+    font-size: 1.05rem;
+    padding: 14px 38px;
+  }
+}
+
+@media (max-width: 400px) {
+  .thankyou-primary-heading {
+    font-size: 2rem;
+  }
+
+  .thankyou-message-paragraph {
+    font-size: 1rem;
+  }
+
+  .backhome-action-link {
+    font-size: 1rem;
+    padding: 12px 35px;
+  }
+}
+
+@media (max-height: 600px) and (orientation: landscape) {
+  .thankyou-fullpage-wrapper {
+    min-height: auto;
+    padding: 25px 20px;
+  }
+
+  .thankyou-primary-heading {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+  }
+
+  .thankyou-message-paragraph {
+    font-size: 1.05rem;
+    margin-bottom: 25px;
+  }
+
+  .backhome-action-link {
+    padding: 12px 35px;
+    font-size: 1rem;
+  }
+}
+@media (max-width: 580px) {
+  .thankyou-fullpage-wrapper {
+    background-size: cover;
+    background-position: 71% 87%;
+  }
+}

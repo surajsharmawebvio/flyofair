@@ -1,0 +1,222 @@
+.policy-title {
+  color: #0a3a62;
+  font-weight: 500;
+  font-size: 1.8rem;
+  margin-bottom: 0.3rem;
+}
+.policy-subtitle {
+  font-size: 0.75rem;
+  color: rgba(var(--black-color), 1);
+  margin-bottom: 2rem;
+}
+.policy-card img {
+  border-radius: 25px;
+  max-width: 100%;
+  height: 180px;
+  width: 100%;
+  object-fit: cover;
+}
+.policy-card {
+  margin-bottom: 2rem;
+}
+.policy-card .policy-heading {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: rgba(var(--fourth-color), 1);
+  margin-top: 0.75rem;
+  margin-bottom: 0.3rem;
+}
+.policy-card .policy-description {
+  font-size: 0.85rem;
+  color: rgba(var(--black-color), 1);
+  margin-bottom: 0.4rem;
+  line-height: 1.3;
+}
+.policy-card .policy-link {
+  font-size: 0.85rem;
+  color: rgba(var(--main-color), 1);
+  font-weight: 600;
+  text-decoration: none;
+}
+.policy-card .policy-link:hover {
+  text-decoration: underline;
+}
+@media (max-width: 580px) {
+  .policy-card {
+    margin-bottom: 0;
+  }
+}
+
+
+.service-section-block {
+  margin-bottom: 20px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid #d8d8d8;
+}
+
+.service-section-block:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.main-heading-text {
+  font-size: 2.25rem;
+  font-weight: 600;
+  color: rgba(var(--fourth-color), 1);
+  margin-bottom: 16px;
+  letter-spacing: -0.02em;
+}
+
+.sub-heading-text {
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: rgba(var(--black-color), 0.8);
+  margin-bottom: 20px;
+}
+
+.description-paragraph-text {
+  font-size: 1.125rem;
+  color: rgba(var(--black-color), 1);
+  line-height: 1.8;
+  margin-bottom: 24px;
+  max-width: 900px;
+}
+
+.service-link-anchor {
+  display: inline-block;
+  color: rgba(var(--main-color), 1);
+  text-decoration: none;
+  font-size: 1.125rem;
+  font-weight: 500;
+  position: relative;
+  padding-bottom: 3px;
+  transition: color 0.3s ease;
+}
+
+.service-link-anchor::after {
+  content: " »";
+  margin-left: 4px;
+  transition: margin-left 0.3s ease;
+}
+
+.service-link-anchor:hover {
+  color: rgba(var(--fourth-color), 1);
+}
+
+.service-link-anchor::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: rgba(var(--main-color), 1);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+}
+
+.service-link-anchor:hover::before {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.service-link-anchor:hover::after {
+  margin-left: 8px;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  .airline-services-wrapper {
+    padding: 50px 25px;
+  }
+
+  .main-heading-text {
+    font-size: 2rem;
+  }
+
+  .sub-heading-text {
+    font-size: 1.35rem;
+  }
+
+  .description-paragraph-text {
+    font-size: 1.075rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .airline-services-wrapper {
+    padding: 40px 20px;
+  }
+
+  .service-section-block {
+    margin-bottom: 20px;
+    padding-bottom: 25px;
+  }
+
+  .main-heading-text {
+    font-size: 1.75rem;
+  }
+
+  .sub-heading-text {
+    font-size: 1.25rem;
+  }
+
+  .description-paragraph-text {
+    font-size: 1.05rem;
+  }
+
+  .service-link-anchor {
+    font-size: 1.05rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .airline-services-wrapper {
+    padding: 30px 16px;
+  }
+
+  .service-section-block {
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+  }
+
+  .main-heading-text {
+    font-size: 1.5rem;
+    margin-bottom: 12px;
+  }
+
+  .sub-heading-text {
+    font-size: 1.15rem;
+    margin-bottom: 16px;
+  }
+
+  .description-paragraph-text {
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+
+  .service-link-anchor {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .airline-services-wrapper {
+    padding: 25px 14px;
+  }
+
+  .main-heading-text {
+    font-size: 1.35rem;
+  }
+
+  .sub-heading-text {
+    font-size: 1.05rem;
+  }
+
+  .description-paragraph-text {
+    font-size: 0.95rem;
+  }
+}
