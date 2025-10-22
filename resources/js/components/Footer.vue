@@ -7,32 +7,35 @@ import { Link } from '@inertiajs/vue3'
         <div class="container">
             <div class="inner-footer">
                 <div class="row">
-                    <div class="col-xxl-3 col-xl-3 col-lg-2 col-sm-12 col-12">
+                    <!-- <div class="col-xxl-3 col-xl-3 col-lg-2 col-sm-12 col-12">
                         <div class="footer-box">
+                            <div class="footer-logo">
+                                <img src="images/logo.webp" alt="" class="img-fluid">
+                            </div>
                             <div class="common-para">
                                 <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Animi, suscipit non. Porro,
                                     quae! Sint, cupiditate. Doloremque hic corrupti vitae optio.</p>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-xxl-3 col-xl-3 col-lg-2 col-sm-6 col-12">
+                    </div> -->
+                    <div class="col-xxl-2 col-xl-2 col-lg-2 col-sm-6 col-12">
                         <div class="footer-box">
                             <h5 class="foot-title">Quick Link</h5>
                             <ul class="foot-list">
                                 <li>
-                                    <Link href="/" aria-current="page">Home</Link>
+                                    <a href="index.html" aria-current="page">Home</a>
                                 </li>
                                 <li>
-                                    <Link href="/about" aria-current="page">About Us</Link>
+                                    <a href="about.html" aria-current="page">About Us</a>
                                 </li>
                                 <li>
-                                    <Link href="/contact">Contact Us</Link>
+                                    <a href="contact.html">Contact Us</a>
                                 </li>
                                 <li>
-                                    <Link href="/author">Author</Link>
+                                    <a href="author.html">Author</a>
                                 </li>
                                 <li>
-                                    <Link href="/blog">Blog</Link>
+                                    <a href="blog.html">Blog</a>
                                 </li>
                             </ul>
                         </div>
@@ -78,7 +81,7 @@ import { Link } from '@inertiajs/vue3'
                                             <i class="bi bi-envelope-at"></i>
                                         </span>
                                     </div>
-                                    <a href="javascript:void(0)">connect@flyofair.com</a>
+                                    <a href="javascript:void(0)">connect@infinitytravelmate.com</a>
                                 </li>
                                 <li>
                                     <div class="">
@@ -91,17 +94,79 @@ import { Link } from '@inertiajs/vue3'
                             </ul>
                         </div>
                     </div>
+                    <div class="col-xxl-4 col-xl-4 col-lg-3 col-sm-6 col-12">
+                        <div class="footer-box">
+                            <h5 class="foot-title">Subscribe to Our Newsletter</h5>
+                            <small class="smalltextsec">Just sign up and we'll send you a notification by email.</small>
+                            <form action="" class="NewsLettert-form">
+                                <div class="input-group">
+                                    <input type="email" class="form-control" placeholder="Your email here">
+                                    <button type="button" class="btn common-bgBtn"><span>get started</span></button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        
+        <div class="memberbox">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-8 col-md-6 col-12">
+                        <ul class="memberlist">
+                            <li>
+                                <a href="javascript:void(0)">
+                                    <img src="images/iataabta1.png" alt="">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)">
+                                    <img src="images/american_society.png" alt="">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)">
+                                    <img src="images/Cruise-Lines-International.png" alt="">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)">
+                                    <img src="images/pci-compliance.png" alt="">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)">
+                                    <img src="images/cloudflare-logo.webp" alt="">
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col12">
+                        <ul class="paymentacceplist">
+                            <li>
+                                <img src="images/Discover.png" alt="">
+                            </li>
+                            <li>
+                                <img src="images/VISA.png" alt="">
+                            </li>
+                            <li>
+                                <img src="images/mastercard.png" alt="">
+                            </li>
+                            <li>
+                                <img src="images/american.png" alt="">
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="newcopypara">
             <div class="container">
                 <div class="row align-items-center justify-content-center">
-                    <div class="col-lg-6 col-12">
+                    <div class="col-lg-12 col-12">
                         <div class="textparafooter">
                             <p>
-                                flyofair.com (Flyofair Travels), operated by Flyofair Web Solutions LLC
+                                infinitytravelmate.com (Infinity Travels), operated by Infinity Web Solutions LLC
                                 (EIN:
                                 82-160816), is a
                                 premier travel brand. We are an IATA certified company (Number: 05-7 1127 4)
@@ -117,8 +182,8 @@ import { Link } from '@inertiajs/vue3'
                                 etc.
                             </p>
                             <p>
-                                By using our services, you agree to our <a href="">flyofair.com</a>
-                                (Flyofair
+                                By using our services, you agree to our <a href="">infinitytravelmate.com</a>
+                                (Infinity
                                 Travels)'s <a href="">Terms & Conditions</a> and <a href="">Privacy Policy</a>
                             </p>
                             <p>
@@ -130,84 +195,6 @@ import { Link } from '@inertiajs/vue3'
                             </p>
                         </div>
                     </div>
-                    <div class="col-lg-6 col-12 row">
-                        <!-- Newsletter Signup -->
-                         <div class="row align-items-center">
-                        <!-- Left side: Text -->
-                        <div class="col-lg-12 col-md-12 newslettertext">
-                        <div class="common-box NewsLettert-TitleBox">
-                            <span class="common-SubTitle">stay in the loop</span>
-                            <div class="section-header">
-                            <h2 class="">
-                                sign up to receive our
-                                <span class="text-primary text-primarysec text-decoration-underline">
-                                emails and enjoy 15% off
-                                </span>
-                                your first order.
-                            </h2>
-                            </div>
-                        </div>
-                        </div>
-
-                        <!-- Right side: Form -->
-                        <div class="col-lg-12 col-md-12">
-                            <form action="" class="NewsLettert-form">
-                                <div class="input-group">
-                                <input type="email" class="form-control" placeholder="Your email here">
-                                <button type="button" class="btn common-bgBtn">
-                                    <span>get started</span>
-                                </button>
-                                </div>
-                            </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="memberbox">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-8 col-md-6 col-12">
-                        <ul class="memberlist">
-                            <li>
-                                <a href="javascript:void(0)">
-                                    <img src="/images/iataabta1.png" alt="">
-                                </a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0)">
-                                    <img src="/images/american_society.png" alt="">
-                                </a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0)">
-                                    <img src="/images/Cruise-Lines-International.png" alt="">
-                                </a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0)">
-                                    <img src="/images/pci-compliance.png" alt="">
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col12">
-                        <ul class="paymentacceplist">
-                            <li>
-                                <img src="/images/Discover.png" alt="">
-                            </li>
-                            <li>
-                                <img src="/images/VISA.png" alt="">
-                            </li>
-                            <li>
-                                <img src="/images/mastercard.png" alt="">
-                            </li>
-                            <li>
-                                <img src="/images/american.png" alt="">
-                            </li>
-                        </ul>
-                    </div>
                 </div>
             </div>
         </div>
@@ -215,13 +202,21 @@ import { Link } from '@inertiajs/vue3'
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-lg-7 col-md-6 col-sm-12 col-12">
-                        <div class="copy-box">
-                            © Copyright 2025 Flyofair Web Solutions LLC | DBA - Flyofair Travels. All Rights Reserved.
-                        </div>
+                        <div class="copy-box">© Copyright 2025 Infinity Web Solutions LLC | DBA -
+                            InfinityTravels.
+                            All
+                            Rights Reserved.</div>
                     </div>
                     <div class="col-lg-5 col-md-6 col-sm-12 col-12">
                         <div class="travel-top-social footsociallist">
-                            
+                            <a href="javascript:void(0)" target="_blank"><i
+                                    class="fa-brands fa-square-facebook"></i></a>
+                            <a href="javascript:void(0)" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="javascript:void(0)" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+                            <a href="javascript:void(0)" target="_blank"><i class="bi bi-twitter-x"></i></a>
+                            <a href="javascript:void(0)" target="_blank"><i class="bi bi-pinterest"></i></a>
+                            <a href="javascript:void(0)" target="_blank"><i
+                                    class="fa-brands fa-square-linkedin"></i></a>
                         </div>
                     </div>
                 </div>
@@ -233,9 +228,9 @@ import { Link } from '@inertiajs/vue3'
     <div class="offcanvas offcanvas-start mobmenucanvas" tabindex="-1" id="offcanvasExample"
         aria-labelledby="offcanvasExampleLabel">
         <div class="offcanvas-header">
-            <Link href="/" class="navbar-brand travel-logo d-flex align-items-center">
-                <img src="/images/Flyofair_transparent_logo.png" alt="logo" class="me-2 d-block">
-            </Link>
+            <a href="index.html" class="navbar-brand travel-logo d-flex align-items-center">
+                <img src="images/logo.webp" alt="logo" class="me-2 d-block">
+            </a>
             <button type="button" class="btn-closebt" data-bs-dismiss="offcanvas">
                 <i class="fa-solid fa-xmark"></i>
             </button>
@@ -248,7 +243,7 @@ import { Link } from '@inertiajs/vue3'
                 <li class="nav-item"><a class="nav-link" href="sitemap.html">Sitemap</a></li>
                 <li class="nav-item"><a class="nav-link" href="author.html">Author</a></li>
                 <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
-                <li class="nav-item"><Link class="nav-link" href="contact.html">Contact Us</Link></li>
+                <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
             </ul>
             <!-- Call info -->
             <a href="tel:88 (09) 53 33 09" class="travel-call d-flex align-items-center me-4">
@@ -314,38 +309,4 @@ export default {
 </script>
 
 <style scoped>
-/* set .NewsLettert-TitleBox h2 font size 14 px */
-.NewsLettert-TitleBox h2 {
-    font-size: 14px;
-    font-weight: 500;
-}
-.NewsLettert-TitleBox .common-SubTitle{
-    font-size: 11px !important;
-}
-.NewsLettert-TitleBox > .section-header {
-    /* border: 1px solid red; */
-    margin-bottom: 10px !important;
-}
-.NewsLettert-form {
-    margin-top: 10px;
-}
-.NewsLettert-form div {
-    padding-left: 20px;
-    padding-right: 20px;
-}
-.NewsLettert-form button {
-    border-top-right-radius: var(--bs-border-radius);
-    border-bottom-right-radius: var(--bs-border-radius);
-}
-.common-bgBtn {
-    padding: 10px 15px;
-    font-size: 12px;
-}
-.common-box.NewsLettert-TitleBox{
-    padding: 0px 5px;
-}
-.textparafooter p, .common-para p {
-    text-align: justify;
-}
-
 </style>

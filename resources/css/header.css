@@ -13,8 +13,7 @@ header {
   top: 0;
   z-index: 999;
   width: 100%;
-  /* padding: 10px 0px; */
-  padding: 0;
+  padding: 10px 0px;
 }
 .navbar.header-fixed {
   position: fixed;
@@ -33,7 +32,9 @@ header {
   align-items: center;
   gap: 10px;
 }
-
+.travel-logo img {
+  width: 170px;
+}
 .maillink,
 .maillink:hover {
   display: flex;
@@ -53,7 +54,7 @@ header {
 }
 .location i,
 .maillink i {
-  color: rgba(var(--white-color), 1);
+  color: rgba(var(--black-color), 1);
 }
 .travel-top-social {
   display: flex;
@@ -64,8 +65,8 @@ header {
   height: 30px;
   width: 30px;
   border-radius: 50%;
-  background-color: rgba(var(--white-color), 1);
-  /* border: 1px solid rgba(var(--black-color), 1); */
+  background-color: rgba(var(--black-color), 1);
+  border: 1px solid rgba(var(--black-color), 1);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -75,7 +76,7 @@ header {
 
 /* Navbar */
 .travel-header .nav-link {
-  color: rgba(var(--white-color), 1);
+  color: rgba(var(--black-color), 1);
   transition: var(--transition-05s);
   position: relative;
   text-transform: capitalize;
@@ -118,20 +119,26 @@ header {
   right: auto;
 }
 .travel-call-icon {
-  background: rgba(var(--third-color), 1);
-  color: white;
+  background: rgba(var(--white-color), 1);
+  color: rgba(var(--dark-blue-color), 1);
   border-radius: 50%;
   padding: 6px 9px;
-  font-size: 18px;
-  width: 36px;
-  height: 36px;
+  font-size: 15px;
+  width: 30px;
+  height: 30px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
+.travel-call {
+  background: rgba(var(--main-color), 1);
+  padding: 5px 10px;
+  border-radius: 8px;
+}
 .small {
-  color: rgba(var(--white-color), 1);
-  font-weight: 600;
+  color: rgba(var(--black-color), 1);
+  font-weight: 400;
+  font-size: 13px !important;
 }
 .logbtn,
 .logbtn:focus,
@@ -605,7 +612,8 @@ button.btn-closebt:active {
   transform: rotate(90deg);
 }
 
-.travel-call-btn,.travel-call-btn:focus {
+.travel-call-btn,
+.travel-call-btn:focus {
   width: 100%;
   background: rgba(var(--fourth-color), 1);
   color: white;
@@ -703,4 +711,36 @@ button.btn-closebt:active {
   .travel-logo img {
     width: 84px;
   }
+}
+/* Country code dropdown css */
+#mobile_code1,
+#mobile_code2,
+#mobile_code3 {
+  width: 100%;
+  padding: 0px;
+  padding-right: 10px;
+  font-size: 12px !important;
+  padding: 6px 10px;
+  height: 38px;
+  border-radius: 6px !important;
+  font-size: 12px;
+  border-color: #d6d6d6;
+  outline: none;
+  box-shadow: none;
+}
+.flight-form-fields .iti {
+  position: relative;
+  display: block;
+}
+#mobile_code1::placeholder,
+#mobile_code2::placeholder,
+#mobile_code3::placeholder {
+  font-size: 12px !important;
+}
+.iti__selected-dial-code {
+  font-size: 12px !important;
+}
+.form-label .iti input {
+  width: 100% !important;
+  font-size: 12px !important;
 }

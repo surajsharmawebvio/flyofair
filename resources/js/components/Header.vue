@@ -10,60 +10,59 @@ const isActive = (path) => page.url === path;
 
 <template>
     <header>
-        <!-- ===== Topbar ===== -->
-         <!--
-        <div class="travel-topbar">
-            <div class="container">
-                <div class=" py-2 d-flex justify-content-between align-items-center">
-                    <div class="travel-top-social">
-                        <a href="javascript:void(0)" target="_blank"><i class="fa-brands fa-square-facebook"></i></a>
-                        <a href="javascript:void(0)" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="javascript:void(0)" target="_blank"><i class="fa-brands fa-youtube"></i></a>
-                        <a href="javascript:void(0)" target="_blank"><i class="bi bi-twitter-x"></i></a>
-                        <a href="javascript:void(0)" target="_blank"><i class="bi bi-pinterest"></i></a>
-                        <a href="javascript:void(0)" target="_blank"><i class="fa-brands fa-square-linkedin"></i></a>
-                    </div>
-                    <div class="">
-                        <select class="form-select" aria-label="Default select example">
-                            <option selected>English</option>
-                            <option value="2">Español</option>
-                        </select>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-        -->
         <!-- ===== Main Navbar ===== -->
-        <nav class="navbar navbar-expand-lg travel-header header-fixed">
+        <nav class="navbar navbar-expand-lg travel-header">
             <div class="container">
                 <!-- Logo -->
                 <div class="navbar-brand travel-logo d-flex align-items-center">
-                    <button class="mobbtn navbar-toggler" type="button" data-bs-toggle="offcanvas"
+                    <button class="mobbtn d-lg-none navbar-toggler" type="button" data-bs-toggle="offcanvas"
                         data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
                         <span class="navbar-toggler-icon bar-1"></span>
                         <span class="navbar-toggler-icon bar-2"></span>
                         <span class="navbar-toggler-icon bar-3"></span>
                     </button>
-                    <Link href="/" class="navbar-brand travel-logo d-flex align-items-center">
-                        <img src="/images/logo.webp" alt="logo" class="me-2 normallogo">
-                        <img src="/images/Flyofair_transparent_logo.png" alt="logo" class="me-2 stickylogo">
-                    </Link>
+                    <a href="index.html" class="navbar-brand travel-logo d-flex align-items-center">
+                        <img src="images/logo.webp" alt="logo" class="me-2 normallogo">
+                        <img src="images/logo.webp" alt="logo" class="me-2 stickylogo">
+                    </a>
                 </div>
-                
+                <!-- Reservation button (desktop) -->
+                <div class="d-lg-none ms-auto me-2 mobbtsec">
+                    <div class="langselectmob">
+                        <select class="form-select" aria-label="Default select example">
+                            <option selected>English</option>
+                            <option value="2">Español</option>
+                        </select>
+                    </div>
+                    <!-- Reservation button -->
+                    <a href="javascript:void(0)">
+                        <div class="call-icon-wrapper">
+                            <div class="call-icon-ring">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                        </div>
+                    </a>
+                </div>
                 <!-- Desktop Menu -->
                 <div class="collapse navbar-collapse" id="travelNavbar">
                     <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-                        <li class="nav-item"><Link :class="['nav-link', { active: isActive('/') }]" href="/">Home</Link></li>
-                        <li class="nav-item"><Link :class="['nav-link', { active: isActive('/blog') }]" href="/blog">Blog</Link></li>
-                        <li class="nav-item"><a class="nav-link" href="blog.html">Articulos</a></li>
+                        <!-- Normal links -->
+                        <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+                        <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Articulos</a></li>
+                        <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
                     </ul>
-                    
-                    <LanguageDropdown />
 
-                     <!-- Call info -->
+                    <!-- Call info -->
+                    <div class="m-3">
+                        <select class="form-select" aria-label="Default select example">
+                            <option selected>En</option>
+                            <option value="2">Es</option>
+                        </select>
+                    </div>
                     <a href="tel:88 (09) 53 33 09" class="travel-call d-flex align-items-center me-0">
-                        <span class="travel-call-icon me-2"><i class="bi bi-telephone-fill"></i></span>
+                        <span class="travel-call-icon me-2"><i class="bi bi-telephone"></i></span>
                         <div class="small"><strong>+88 (09) 53 33 09</strong></div>
                     </a>
                 </div>
@@ -138,78 +137,4 @@ export default {
 </script>
 
 <style scoped>
-select:focus {
-    box-shadow: none !important;
-}
-.mobbtsec {
-    z-index: 999;
-}
-.langselectmob {
-    display: block !important;
-}
-
-.langselectmob {
-    width: 120px;          /* Adjust width */
-    position: relative;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-/* Custom select styling */
-.custom-select {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    width: 100%;
-    padding: 8px 30px 8px 12px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    background-color: #fff;
-    background-image: none;
-    color: #333;
-    font-size: 14px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    outline: none;
-}
-
-/* Hover & focus states */
-.custom-select:hover {
-    border-color: #888;
-}
-.custom-select:focus {
-    border-color: #555;
-    box-shadow: none;
-}
-
-/* Custom arrow */
-.langselectmob::after {
-    content: '\25BC';
-    position: absolute;
-    top: 50%;
-    right: 10px;
-    transform: translateY(-50%);
-    pointer-events: none;
-    font-size: 12px;
-    color: #555;
-}
-
-/* Optional: smaller arrow for mobile */
-@media (max-width: 576px) {
-    .langselectmob {
-        width: 100px;
-    }
-    .langselectmob::after {
-        font-size: 10px;
-    }
-}
-/* margin left 50px on class travel-call if screen size is not mobile */
-@media (min-width: 576px) {
-    .travel-call {
-        margin-left: 50px;
-    }
-}
-.travel-logo img {
-    min-width: 50px;
-    max-width: 120px;
-}
 </style>

@@ -195,309 +195,374 @@
     <DefaultLayout>
         <section class="bannersection">
             <div class="bannerbgsec">
-                <img src="images/banner/yiKmOft.jpeg" alt="">
+                <img src="images/banner.png" alt="">
+            </div>
+
+            <div class="flight-texture">
+                <img src="images/about-loaction.png" alt="">
             </div>
             <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-10 col-md-12">
+                <div class="row justify-content-start align-items-center">
+                    <div class="col-lg-6 col-md-12 col-12">
                         <div class="banner-box">
                             <h1 class="bannertitle">
-                                Get Closer to the Dream: Your Tour Essentials Await
+                                Get Closer to the Dream: <span>Your Tour Essentials Await</span>
                             </h1>
-                            <!--
                             <div class="banner-para">
                                 <p>
                                     Your ultimate destination for all things help you celebrate & remember tour
                                     experience.
                                 </p>
                             </div>
-                            -->
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12 col-12">
+                        <div class="banner-image text-center">
+                            <img src="images/hero-man.webp" alt="banner image">
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
-        <section class="flight-booking-wrapper py-4">
-            <div class="home-flight-booking">
-                <div class="flight-booking-box">
+                <div class="row">
+                    <div class="col-12">
 
-                    <!-- Tabs -->
-                    <ul class="nav flight-radio-tabs" id="flightTab" role="tablist">
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link active" id="oneway-tab" data-bs-toggle="tab"
-                                data-bs-target="#oneway-pane" type="button" role="tab" aria-controls="oneway-pane"
-                                aria-selected="true">Oneway</button>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="round-tab" data-bs-toggle="tab" data-bs-target="#round-pane"
-                                type="button" role="tab" aria-controls="round-pane" aria-selected="false">Round
-                                Trip</button>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="multi-tab" data-bs-toggle="tab" data-bs-target="#multi-pane"
-                                type="button" role="tab" aria-controls="multi-pane" aria-selected="false">Multi
-                                Trip</button>
-                        </li>
-                    </ul>
+                        <div class="flight-booking-box">
 
-                    <!-- Tab content -->
-                    <div class="tab-content flight-tab-content" id="flightTabContent">
+                            <!-- Tabs -->
+                            <ul class="nav flight-radio-tabs" id="flightTab" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link active" id="oneway-tab" data-bs-toggle="tab"
+                                        data-bs-target="#oneway-pane" type="button" role="tab"
+                                        aria-controls="oneway-pane" aria-selected="true">Oneway</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="round-tab" data-bs-toggle="tab"
+                                        data-bs-target="#round-pane" type="button" role="tab" aria-controls="round-pane"
+                                        aria-selected="false">Round
+                                        Trip</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="multi-tab" data-bs-toggle="tab"
+                                        data-bs-target="#multi-pane" type="button" role="tab" aria-controls="multi-pane"
+                                        aria-selected="false">Multi
+                                        Trip</button>
+                                </li>
+                            </ul>
 
-                        <!-- One Way -->
-                        <div class="tab-pane fade show active" id="oneway-pane" role="tabpanel">
-                            <form class="row g-3 align-items-end flight-form-fields">
-                                <div class="col-lg-3 col-md-6 col-12">
-                                    <label class="form-label search-label">From</label>
-                                    <input type="text" class="form-control flight-input" placeholder="Add departure">
-                                </div>
-                                <div class="col-lg-3 col-md-6 col-12">
-                                    <label class="form-label search-label">To</label>
-                                    <input type="text" class="form-control flight-input" placeholder="Add destination">
-                                </div>
-                                <div class="col-lg-2 col-md-6 col-12">
-                                    <label class="form-label search-label">Departure date</label>
-                                    <input id="Departure1" type="text" class="form-control date-input flight-input"
-                                        placeholder="Departure date" readonly>
-                                </div>
-                                <div class="col-lg-3 col-md-6 col-12">
-                                    <label class="form-label search-label">Guests</label>
-                                    <input readonly class="form-control flight-guest-input flight-input"
-                                        placeholder="1 passenger ECONOMY" id="travelerInput">
-                                    <!-- Popup card -->
-                                    <div class="traveler-card shadow p-3 rounded-3 mt-2" id="travelerCard" style="display: none;">
-                                        <h6 class="mb-3 fw-bold">Select Travelers & Class</h6>
+                            <!-- Tab content -->
+                            <div class="tab-content flight-tab-content" id="flightTabContent">
 
-                                        <!-- Travelers Count -->
-                                        <div class="mb-3 traveler-section">
-                                            <div
-                                                class="traveler-row d-flex justify-content-between align-items-center mb-2">
-                                                <span class="boldtext">Adults (12+ Yrs)</span>
-                                                <div class="d-flex align-items-center">
-                                                    <button class="btn btn-light btn-sm traveler-minus"
-                                                        data-target="adult"><i class="fa-solid fa-minus"></i></button>
-                                                    <span id="adultCount" class="mx-2 common-numtext">1</span>
-                                                    <button class="btn btn-light btn-sm traveler-plus"
-                                                        data-target="adult"><i class="fa-solid fa-plus"></i></button>
+                                <!-- One Way -->
+                                <div class="tab-pane fade show active" id="oneway-pane" role="tabpanel">
+                                    <form class="row g-3 align-items-end flight-form-fields">
+                                        <div class="col-lg-3 col-md-6 col-12">
+                                            <label class="form-label search-label">Email</label>
+                                            <input type="text" class="form-control flight-input"
+                                                placeholder="Enter email">
+                                        </div>
+                                        <div class="col-lg-3 col-md-6 col-12">
+                                            <label class="form-label search-label">Phone</label>
+                                            <input type="text" id="mobile_code1" class="form-control"
+                                                placeholder="Phone Number" name="name">
+                                        </div>
+                                        <div class="col-lg-3 col-md-6 col-12">
+                                            <label class="form-label search-label">Departure from</label>
+                                            <input type="text" class="form-control flight-input"
+                                                placeholder="Add departure">
+                                        </div>
+                                        <div class="col-lg-3 col-md-6 col-12">
+                                            <label class="form-label search-label">Arrive at</label>
+                                            <input type="text" class="form-control flight-input"
+                                                placeholder="Add arrival">
+                                        </div>
+                                        <div class="col-lg-3 col-md-6 col-12">
+                                            <label class="form-label search-label">Departure date</label>
+                                            <input id="Departure1" type="text" class="date-input flight-input"
+                                                placeholder="Departure date" readonly>
+                                        </div>
+                                        <div class="col-lg-3 col-md-6 col-12">
+                                            <label class="form-label search-label">Guests</label>
+                                            <input readonly class="form-control flight-guest-input flight-input"
+                                                placeholder="1 passenger ECONOMY" id="travelerInput">
+                                            <!-- Popup card -->
+                                            <div class="traveler-card shadow p-3 rounded-3 mt-2" id="travelerCard">
+                                                <h6 class="mb-3 fw-bold">Select Travelers & Class</h6>
+
+                                                <!-- Travelers Count -->
+                                                <div class="mb-3 traveler-section">
+                                                    <div
+                                                        class="traveler-row d-flex justify-content-between align-items-center mb-2">
+                                                        <span class="boldtext">Adults (12+ Yrs)</span>
+                                                        <div class="d-flex align-items-center">
+                                                            <button class="btn btn-light btn-sm traveler-minus"
+                                                                data-target="adult"><i
+                                                                    class="fa-solid fa-minus"></i></button>
+                                                            <span id="adultCount" class="mx-2 common-numtext">1</span>
+                                                            <button class="btn btn-light btn-sm traveler-plus"
+                                                                data-target="adult"><i
+                                                                    class="fa-solid fa-plus"></i></button>
+                                                        </div>
+                                                    </div>
+                                                    <div
+                                                        class="traveler-row d-flex justify-content-between align-items-center mb-2">
+                                                        <span class="boldtext">Children (2-12 Yrs)</span>
+                                                        <div class="d-flex align-items-center">
+                                                            <button class="btn btn-light btn-sm traveler-minus"
+                                                                data-target="child"><i
+                                                                    class="fa-solid fa-minus"></i></button>
+                                                            <span id="childCount" class="mx-2 common-numtext">0</span>
+                                                            <button class="btn btn-light btn-sm traveler-plus"
+                                                                data-target="child"><i
+                                                                    class="fa-solid fa-plus"></i></button>
+                                                        </div>
+                                                    </div>
+                                                    <div
+                                                        class="traveler-row d-flex justify-content-between align-items-center">
+                                                        <span class="boldtext">Infants (0-2 Yrs)</span>
+                                                        <div class="d-flex align-items-center">
+                                                            <button class="btn btn-light btn-sm traveler-minus"
+                                                                data-target="infant"><i
+                                                                    class="fa-solid fa-minus"></i></button>
+                                                            <span id="infantCount" class="mx-2 common-numtext">0</span>
+                                                            <button class="btn btn-light btn-sm traveler-plus"
+                                                                data-target="infant"><i
+                                                                    class="fa-solid fa-plus"></i></button>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div
-                                                class="traveler-row d-flex justify-content-between align-items-center mb-2">
-                                                <span class="boldtext">Children (2-12 Yrs)</span>
-                                                <div class="d-flex align-items-center">
-                                                    <button class="btn btn-light btn-sm traveler-minus"
-                                                        data-target="child"><i class="fa-solid fa-minus"></i></button>
-                                                    <span id="childCount" class="mx-2 common-numtext">0</span>
-                                                    <button class="btn btn-light btn-sm traveler-plus"
-                                                        data-target="child"><i class="fa-solid fa-plus"></i></button>
+
+                                                <!-- Class Selection -->
+                                                <div class="mb-3 traveler-section">
+                                                    <label class="fw-semibold d-block mb-2">Class</label>
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input travel-class" type="radio"
+                                                            name="travelClass" id="eco" value="Economy" checked>
+                                                        <label class="form-check-label custome-form-check-label"
+                                                            for="eco">Economy</label>
+                                                    </div>
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input travel-class" type="radio"
+                                                            name="travelClass" id="prem" value="Premium Economy">
+                                                        <label class="form-check-label custome-form-check-label"
+                                                            for="prem">Premium Economy</label>
+                                                    </div>
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input travel-class" type="radio"
+                                                            name="travelClass" id="bus" value="Business">
+                                                        <label class="form-check-label custome-form-check-label"
+                                                            for="bus">Business</label>
+                                                    </div>
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input travel-class" type="radio"
+                                                            name="travelClass" id="first" value="First Class">
+                                                        <label class="form-check-label custome-form-check-label"
+                                                            for="first">First Class</label>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="traveler-row d-flex justify-content-between align-items-center">
-                                                <span class="boldtext">Infants (0-2 Yrs)</span>
-                                                <div class="d-flex align-items-center">
-                                                    <button class="btn btn-light btn-sm traveler-minus"
-                                                        data-target="infant"><i class="fa-solid fa-minus"></i></button>
-                                                    <span id="infantCount" class="mx-2 common-numtext">0</span>
-                                                    <button class="btn btn-light btn-sm traveler-plus"
-                                                        data-target="infant"><i class="fa-solid fa-plus"></i></button>
+
+                                                <!-- Action Buttons -->
+                                                <div class="text-end">
+                                                    <button class="btn cancelBtn me-2" id="cancelBtn">Cancel</button>
+                                                    <button class="btn applyBtn" id="applyBtn">Apply</button>
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="col-lg-2 col-12 d-grid">
+                                            <button type="submit" class="btn flight-search-btn">Get a quote</button>
+                                        </div>
+                                    </form>
+                                </div>
 
-                                        <!-- Class Selection -->
-                                        <div class="mb-3 traveler-section">
-                                            <label class="fw-semibold d-block mb-2">Class</label>
-                                            <div class="form-check form-check-inline">
-                                                <input class="form-check-input travel-class" type="radio"
-                                                    name="travelClass" id="eco" value="Economy" checked>
-                                                <label class="form-check-label custome-form-check-label"
-                                                    for="eco">Economy</label>
-                                            </div>
-                                            <div class="form-check form-check-inline">
-                                                <input class="form-check-input travel-class" type="radio"
-                                                    name="travelClass" id="prem" value="Premium Economy">
-                                                <label class="form-check-label custome-form-check-label"
-                                                    for="prem">Premium Economy</label>
-                                            </div>
-                                            <div class="form-check form-check-inline">
-                                                <input class="form-check-input travel-class" type="radio"
-                                                    name="travelClass" id="bus" value="Business">
-                                                <label class="form-check-label custome-form-check-label"
-                                                    for="bus">Business</label>
-                                            </div>
-                                            <div class="form-check form-check-inline">
-                                                <input class="form-check-input travel-class" type="radio"
-                                                    name="travelClass" id="first" value="First Class">
-                                                <label class="form-check-label custome-form-check-label"
-                                                    for="first">First Class</label>
+                                <!-- Round Trip -->
+                                <div class="tab-pane fade" id="round-pane" role="tabpanel">
+                                    <form class="row g-3 align-items-end flight-form-fields">
+                                        <div class="col-lg-3 col-md-6 col-12">
+                                            <label class="form-label search-label">Email</label>
+                                            <input type="text" class="form-control flight-input"
+                                                placeholder="Enter email">
+                                        </div>
+                                        <div class="col-lg-3 col-md-6 col-12">
+                                            <label class="form-label search-label">Phone</label>
+                                            <input type="text" id="mobile_code2" class="form-control"
+                                                placeholder="Phone Number" name="name">
+                                        </div>
+                                        <div class="col-lg-2 col-md-6 col-12">
+                                            <label class="form-label search-label">Departure from</label>
+                                            <input type="text" class="form-control flight-input"
+                                                placeholder="Add departure">
+                                        </div>
+                                        <div class="col-lg-2 col-md-6 col-12">
+                                            <label class="form-label search-label">Arrive at</label>
+                                            <input type="text" class="form-control flight-input"
+                                                placeholder="Add arrival">
+                                        </div>
+                                        <div class="col-lg-2 col-md-6 col-12">
+                                            <label class="form-label search-label">Departure date</label>
+                                            <input id="Departure" type="text" class="date-input flight-input"
+                                                placeholder="Departure date" readonly>
+                                        </div>
+                                        <div class="col-lg-3 col-md-6 col-12">
+                                            <label class="form-label search-label">Return date</label>
+                                            <input id="Return" type="text" class="date-input flight-input"
+                                                placeholder="Return date" readonly>
+                                        </div>
+                                        <div class="col-lg-3 col-12">
+                                            <label class="form-label search-label">Guests</label>
+                                            <input type="text" readonly
+                                                class="form-control flight-guest-input flight-input"
+                                                placeholder="1 passenger ECONOMY" id="travelerInput">
+                                            <!-- Popup card -->
+                                            <div class="traveler-card shadow p-3 rounded-3 mt-2" id="travelerCard">
+                                                <h6 class="mb-3 fw-bold">Select Travelers & Class</h6>
+
+                                                <!-- Travelers Count -->
+                                                <div class="mb-3 traveler-section">
+                                                    <div
+                                                        class="traveler-row d-flex justify-content-between align-items-center mb-2">
+                                                        <span class="boldtext">Adults (12+ Yrs)</span>
+                                                        <div class="d-flex">
+                                                            <button class="btn btn-light btn-sm traveler-minus"
+                                                                data-target="adult"><i
+                                                                    class="fa-solid fa-minus"></i></button>
+                                                            <span id="adultCount" class="mx-2 common-numtext">1</span>
+                                                            <button class="btn btn-light btn-sm traveler-plus"
+                                                                data-target="adult"><i
+                                                                    class="fa-solid fa-plus"></i></button>
+                                                        </div>
+                                                    </div>
+                                                    <div
+                                                        class="traveler-row d-flex justify-content-between align-items-center mb-2">
+                                                        <span class="boldtext">Children (2-12 Yrs)</span>
+                                                        <div class="d-flex">
+                                                            <button class="btn btn-light btn-sm traveler-minus"
+                                                                data-target="child"><i
+                                                                    class="fa-solid fa-minus"></i></button>
+                                                            <span id="childCount" class="mx-2 common-numtext">0</span>
+                                                            <button class="btn btn-light btn-sm traveler-plus"
+                                                                data-target="child"><i
+                                                                    class="fa-solid fa-plus"></i></button>
+                                                        </div>
+                                                    </div>
+                                                    <div
+                                                        class="traveler-row d-flex justify-content-between align-items-center">
+                                                        <span class="boldtext">Infants (0-2 Yrs)</span>
+                                                        <div class="d-flex">
+                                                            <button class="btn btn-light btn-sm traveler-minus"
+                                                                data-target="infant"><i
+                                                                    class="fa-solid fa-minus"></i></button>
+                                                            <span id="infantCount" class="mx-2 common-numtext">0</span>
+                                                            <button class="btn btn-light btn-sm traveler-plus"
+                                                                data-target="infant"><i
+                                                                    class="fa-solid fa-plus"></i></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Class Selection -->
+                                                <div class="mb-3 traveler-section">
+                                                    <label class="fw-semibold d-block mb-2">Class</label>
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input travel-class" type="radio"
+                                                            name="travelClass" id="eco" value="Economy" checked>
+                                                        <label class="form-check-label custome-form-check-label"
+                                                            for="eco">Economy</label>
+                                                    </div>
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input travel-class" type="radio"
+                                                            name="travelClass" id="prem" value="Premium Economy">
+                                                        <label class="form-check-label custome-form-check-label"
+                                                            for="prem">Premium Economy</label>
+                                                    </div>
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input travel-class" type="radio"
+                                                            name="travelClass" id="bus" value="Business">
+                                                        <label class="form-check-label custome-form-check-label"
+                                                            for="bus">Business</label>
+                                                    </div>
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input travel-class" type="radio"
+                                                            name="travelClass" id="first" value="First Class">
+                                                        <label class="form-check-label custome-form-check-label"
+                                                            for="first">First Class</label>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Action Buttons -->
+                                                <div class="text-end">
+                                                    <button class="btn cancelBtn me-2" id="cancelBtn">Cancel</button>
+                                                    <button class="btn applyBtn" id="applyBtn">Apply</button>
+                                                </div>
                                             </div>
                                         </div>
-
-                                        <!-- Action Buttons -->
-                                        <div class="text-end">
-                                            <button class="btn cancelBtn me-2" id="cancelBtn">Cancel</button>
-                                            <button class="btn applyBtn" id="applyBtn">Apply</button>
+                                        <div class="col-lg-2 col-12 d-grid">
+                                            <button type="submit" class="btn flight-search-btn">Get a quote</button>
                                         </div>
-                                    </div>
+                                    </form>
                                 </div>
-                                <div class="col-lg-1 col-12 d-grid">
-                                    <button type="submit" class="btn flight-search-btn">Search</button>
+
+                                <!-- Multi-City -->
+                                <div class="tab-pane fade" id="multi-pane" role="tabpanel">
+                                    <form class="">
+                                        <div class="row g-3 align-items-end flight-form-fields">
+                                            <div class="col-lg-3 col-md-6 col-12">
+                                                <label class="form-label search-label">Email</label>
+                                                <input type="text" class="form-control flight-input"
+                                                    placeholder="Enter email">
+                                            </div>
+                                            <div class="col-lg-3 col-md-6 col-12">
+                                                <label class="form-label search-label">Phone</label>
+                                                <input type="text" id="mobile_code3" class="form-control"
+                                                    placeholder="Phone Number" name="name">
+                                            </div>
+                                            <div class="col-lg-3 col-md-6 col-12">
+                                                <label class="form-label search-label">Departure from</label>
+                                                <input type="text" class="form-control flight-input"
+                                                    placeholder="Add departure">
+                                            </div>
+                                            <div class="col-lg-3 col-md-6 col-12">
+                                                <label class="form-label search-label">Arrive at</label>
+                                                <input type="text" class="form-control flight-input"
+                                                    placeholder="Add arrival">
+                                            </div>
+                                            <div class="col-lg-3 col-md-6 col-12">
+                                                <label class="form-label search-label">Departure date</label>
+                                                <input id="Departure1" type="text" class="date-input flight-input"
+                                                    placeholder="Departure date" readonly>
+                                            </div>
+                                            <div class="col-lg-3 col-md-6 col-12">
+                                                <label class="form-label search-label">Guests</label>
+                                                <input type="text" readonly
+                                                    class="form-control flight-guest-input flight-input"
+                                                    placeholder="1 passenger ECONOMY" id="travelerInput">
+                                            </div>
+                                            <div class="col-lg-2 col-12 d-grid mobsearchbtn">
+                                                <button type="submit" class="btn flight-search-btn">Get a quote</button>
+                                            </div>
+                                        </div>
+                                        <div class="addflightbtnbox">
+                                            <a href="" class="linkbtn applyBtn applyBtnnew"> <i
+                                                    class="fa-solid fa-plus"></i>
+                                                Add Flight</a>
+                                            <a href="" class="linkbtn cancelBtnnew cancelBtn" style="display:none;"> <i
+                                                    class="fa-solid fa-xmark"></i>
+                                                Clear
+                                                All</a>
+                                        </div>
+                                    </form>
                                 </div>
-                            </form>
+
+                            </div>
+
                         </div>
-
-                        <!-- Round Trip -->
-                        <div class="tab-pane fade" id="round-pane" role="tabpanel">
-                            <form class="row g-3 align-items-end flight-form-fields">
-                                <div class="col-lg-2 col-md-6 col-12">
-                                    <label class="form-label search-label">Departure from</label>
-                                    <input type="text" class="form-control flight-input" placeholder="Add departure">
-                                </div>
-                                <div class="col-lg-2 col-md-6 col-12">
-                                    <label class="form-label search-label">Arrive at</label>
-                                    <input type="text" class="form-control flight-input" placeholder="Add arrival">
-                                </div>
-                                <div class="col-lg-2 col-md-6 col-12">
-                                    <label class="form-label search-label">Departure date</label>
-                                    <input id="Departure" type="text" class="form-control date-input flight-input"
-                                        placeholder="Departure date" readonly>
-                                </div>
-                                <div class="col-lg-2 col-md-6 col-12">
-                                    <label class="form-label search-label">Return date</label>
-                                    <input id="Return" type="text" class="form-control date-input flight-input"
-                                        placeholder="Return date" readonly>
-                                </div>
-                                <div class="col-lg-3 col-12">
-                                    <label class="form-label search-label">Guests</label>
-                                    <input type="text" readonly class="form-control flight-guest-input flight-input"
-                                        placeholder="1 passenger ECONOMY" id="travelerInput">
-                                    <!-- Popup card -->
-                                    <div class="traveler-card shadow p-3 rounded-3 mt-2" id="travelerCard" style="display: none;">
-                                        <h6 class="mb-3 fw-bold">Select Travelers & Class</h6>
-
-                                        <!-- Travelers Count -->
-                                        <div class="mb-3 traveler-section">
-                                            <div
-                                                class="traveler-row d-flex justify-content-between align-items-center mb-2">
-                                                <span class="boldtext">Adults (12+ Yrs)</span>
-                                                <div class="d-flex">
-                                                    <button class="btn btn-light btn-sm traveler-minus"
-                                                        data-target="adult"><i class="fa-solid fa-minus"></i></button>
-                                                    <span id="adultCount" class="mx-2 common-numtext">1</span>
-                                                    <button class="btn btn-light btn-sm traveler-plus"
-                                                        data-target="adult"><i class="fa-solid fa-plus"></i></button>
-                                                </div>
-                                            </div>
-                                            <div
-                                                class="traveler-row d-flex justify-content-between align-items-center mb-2">
-                                                <span class="boldtext">Children (2-12 Yrs)</span>
-                                                <div class="d-flex">
-                                                    <button class="btn btn-light btn-sm traveler-minus"
-                                                        data-target="child"><i class="fa-solid fa-minus"></i></button>
-                                                    <span id="childCount" class="mx-2 common-numtext">0</span>
-                                                    <button class="btn btn-light btn-sm traveler-plus"
-                                                        data-target="child"><i class="fa-solid fa-plus"></i></button>
-                                                </div>
-                                            </div>
-                                            <div class="traveler-row d-flex justify-content-between align-items-center">
-                                                <span class="boldtext">Infants (0-2 Yrs)</span>
-                                                <div class="d-flex">
-                                                    <button class="btn btn-light btn-sm traveler-minus"
-                                                        data-target="infant"><i class="fa-solid fa-minus"></i></button>
-                                                    <span id="infantCount" class="mx-2 common-numtext">0</span>
-                                                    <button class="btn btn-light btn-sm traveler-plus"
-                                                        data-target="infant"><i class="fa-solid fa-plus"></i></button>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <!-- Class Selection -->
-                                        <div class="mb-3 traveler-section">
-                                            <label class="fw-semibold d-block mb-2">Class</label>
-                                            <div class="form-check form-check-inline">
-                                                <input class="form-check-input travel-class" type="radio"
-                                                    name="travelClass" id="eco" value="Economy" checked>
-                                                <label class="form-check-label custome-form-check-label"
-                                                    for="eco">Economy</label>
-                                            </div>
-                                            <div class="form-check form-check-inline">
-                                                <input class="form-check-input travel-class" type="radio"
-                                                    name="travelClass" id="prem" value="Premium Economy">
-                                                <label class="form-check-label custome-form-check-label"
-                                                    for="prem">Premium Economy</label>
-                                            </div>
-                                            <div class="form-check form-check-inline">
-                                                <input class="form-check-input travel-class" type="radio"
-                                                    name="travelClass" id="bus" value="Business">
-                                                <label class="form-check-label custome-form-check-label"
-                                                    for="bus">Business</label>
-                                            </div>
-                                            <div class="form-check form-check-inline">
-                                                <input class="form-check-input travel-class" type="radio"
-                                                    name="travelClass" id="first" value="First Class">
-                                                <label class="form-check-label custome-form-check-label"
-                                                    for="first">First Class</label>
-                                            </div>
-                                        </div>
-
-                                        <!-- Action Buttons -->
-                                        <div class="text-end">
-                                            <button class="btn cancelBtn me-2" id="cancelBtn">Cancel</button>
-                                            <button class="btn applyBtn" id="applyBtn">Apply</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-1 col-12 d-grid">
-                                    <button type="submit" class="btn flight-search-btn">Search</button>
-                                </div>
-                            </form>
-                        </div>
-
-                        <!-- Multi-City -->
-                        <div class="tab-pane fade" id="multi-pane" role="tabpanel">
-                            <form class="">
-                                <div class="row g-3 align-items-end flight-form-fields">
-                                    <div class="col-lg-3 col-md-6 col-12">
-                                        <label class="form-label search-label">Departure from</label>
-                                        <input type="text" class="form-control flight-input"
-                                            placeholder="Add departure">
-                                    </div>
-                                    <div class="col-lg-3 col-md-6 col-12">
-                                        <label class="form-label search-label">Arrive at</label>
-                                        <input type="text" class="form-control flight-input" placeholder="Add arrival">
-                                    </div>
-                                    <div class="col-lg-2 col-md-6 col-12">
-                                        <label class="form-label search-label">Departure date</label>
-                                        <input id="Departure1" type="text" class="form-control date-input flight-input"
-                                            placeholder="Departure date" readonly>
-                                    </div>
-                                    <div class="col-lg-3 col-md-6 col-12">
-                                        <label class="form-label search-label">Guests</label>
-                                        <input type="text" readonly class="form-control flight-guest-input flight-input"
-                                            placeholder="1 passenger ECONOMY" id="travelerInput">
-                                    </div>
-                                    <div class="col-lg-1 col-12 d-grid mobsearchbtn">
-                                        <button type="submit" class="btn flight-search-btn">Search</button>
-                                    </div>
-                                </div>
-                                <div class="addflightbtnbox">
-                                    <a href="" class="linkbtn applyBtn applyBtnnew"> <i class="fa-solid fa-plus"></i>
-                                        Add Flight</a>
-                                    <a href="" class="linkbtn cancelBtnnew cancelBtn" style="display:none;"> <i
-                                            class="fa-solid fa-xmark"></i>
-                                        Clear
-                                        All</a>
-                                </div>
-                            </form>
-                        </div>
-
                     </div>
-
                 </div>
             </div>
         </section>
         <section class="common-section destinations-section">
             <div class="textureimage">
                 <img src="images/home/h1-img-9.png" alt="">
+            </div>
+            <div class="textureimageleft">
+                <img src="images/about-4-1.webp" alt="">
             </div>
             <div class="container">
                 <div class="row">
@@ -518,16 +583,8 @@
                             <a href="javascript:void(0)" class="tour-card">
                                 <img src="images/home/destination-01.jpg" alt="Australia">
                                 <div class="tour-info">
-                                    <h4>Australia</h4>
-                                    <div class="rating">
-                                        <span>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                        </span>
-                                        <span>400 Reviews</span>
+                                    <div class="nameinfo-box">
+                                        <h4>New York City</h4>
                                     </div>
                                 </div>
                             </a>
@@ -535,16 +592,8 @@
                             <a href="javascript:void(0)" class="tour-card">
                                 <img src="images/home/destination-02.jpg" alt="Brazil">
                                 <div class="tour-info">
-                                    <h4>Brazil</h4>
-                                    <div class="rating">
-                                        <span>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                        </span>
-                                        <span>422 Reviews</span>
+                                    <div class="nameinfo-box">
+                                        <h4>Chicago</h4>
                                     </div>
                                 </div>
                             </a>
@@ -552,16 +601,8 @@
                             <a href="javascript:void(0)" class="tour-card">
                                 <img src="images/home/destination-03.jpg" alt="Canada">
                                 <div class="tour-info">
-                                    <h4>Canada</h4>
-                                    <div class="rating">
-                                        <span>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                        </span>
-                                        <span>370 Reviews</span>
+                                    <div class="nameinfo-box">
+                                        <h4>Los Angeles</h4>
                                     </div>
                                 </div>
                             </a>
@@ -569,32 +610,40 @@
                             <a href="javascript:void(0)" class="tour-card">
                                 <img src="images/home/destination-04.jpg" alt="Turkey">
                                 <div class="tour-info">
-                                    <h4>Turkey</h4>
-                                    <div class="rating">
-                                        <span>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                        </span>
-                                        <span>452 Reviews</span>
+                                    <div class="nameinfo-box">
+                                        <h4>Denver</h4>
                                     </div>
                                 </div>
                             </a>
                             <a href="javascript:void(0)" class="tour-card">
                                 <img src="images/home/destination-05.jpg" alt="Turkey">
                                 <div class="tour-info">
-                                    <h4>Turkey</h4>
-                                    <div class="rating">
-                                        <span>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                        </span>
-                                        <span>452 Reviews</span>
+                                    <div class="nameinfo-box">
+                                        <h4>Atlanta</h4>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="javascript:void(0)" class="tour-card">
+                                <img src="images/home/destination-05.jpg" alt="Turkey">
+                                <div class="tour-info">
+                                    <div class="nameinfo-box">
+                                        <h4>Miami</h4>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="javascript:void(0)" class="tour-card">
+                                <img src="images/home/destination-05.jpg" alt="Turkey">
+                                <div class="tour-info">
+                                    <div class="nameinfo-box">
+                                        <h4>Orlando</h4>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="javascript:void(0)" class="tour-card">
+                                <img src="images/home/destination-05.jpg" alt="Turkey">
+                                <div class="tour-info">
+                                    <div class="nameinfo-box">
+                                        <h4>Frankfurt</h4>
                                     </div>
                                 </div>
                             </a>
@@ -608,109 +657,162 @@
                 <div class="row justify-content-center">
                     <div class="col-lg-6 text-center">
                         <div class="section-header text-center">
-                            <h2 class="mb-2">Why <span class="text-primary text-primarysec text-decoration-underline">
-                                    Choose</span>
-                                Us?</h2>
-                            <p class="sub-title">
-                                DreamsTour, a tour operator specializing in dream destinations, offers
+                            <h2 class="mb-2">Our <span
+                                    class="text-primary text-primarysec text-decoration-underline">Benefits</span>
+                                &amp; Key
+                                Advantages</h2>
+                            <p class="sub-title">DreamsTour, a tour operator specializing in dream destinations, offers
                                 a variety of
-                                benefits for travelers.
-                            </p>
+                                benefits for travelers.</p>
                         </div>
                     </div>
                 </div>
-                <div class="row align-items-center justify-content-between testimonial-info-cards">
-                    <!-- Best Price Guarantee -->
+                <div class="row align-items-center justify-content-between">
                     <div class="col-sm-6 col-6 col-lg-3">
                         <div class="info-card">
-                            <div class="info-icon" style="background-color: #28a745;">
-                                <i class="fa-solid fa-tag"></i>
+                            <div class="info-icon icon-vip">
+                                <i class="fa-solid fa-briefcase"></i>
+                            </div>
+                            <h3>VIP Packages</h3>
+                            <p>Include premium seating, meet-and-greet experiences, backstage tours.</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-6 col-lg-3">
+                        <div class="info-card">
+                            <div class="info-icon icon-ticket">
+                                <i class="fa-solid fa-microphone-lines"></i>
+                            </div>
+                            <h3>Concert Tickets</h3>
+                            <p>A centralized place to buy tickets for various dates of the tour.</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-6 col-lg-3">
+                        <div class="info-card">
+                            <div class="info-icon icon-travel">
+                                <i class="fa-solid fa-plane-departure"></i>
+                            </div>
+                            <h3>Travel Packages</h3>
+                            <p>Bundles that include concert tickets, accommodations.</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-6 col-lg-3">
+                        <div class="info-card">
+                            <div class="info-icon icon-price">
+                                <i class="fa-solid fa-crown"></i>
                             </div>
                             <h3>Best Price Guarantee</h3>
-                            <p>We offer competitively priced fares to ensure you always get the best deals.</p>
+                            <p>Such as private rehearsals, soundcheck access.</p>
                         </div>
                     </div>
-
-                    <!-- 24/7 Customer Assistance -->
-                    <div class="col-sm-6 col-6 col-lg-3">
+                     <div class="col-sm-6 col-6 col-lg-3">
                         <div class="info-card">
-                            <div class="info-icon" style="background-color: #007bff;">
-                                <i class="fa-solid fa-headset"></i>
+                            <div class="info-icon icon-vip">
+                                <i class="fa-solid fa-briefcase"></i>
                             </div>
-                            <h3>24/7 Customer Assistance</h3>
-                            <p>Our dedicated team is available round the clock for any booking or travel assistance.</p>
+                            <h3>VIP Packages</h3>
+                            <p>Include premium seating, meet-and-greet experiences, backstage tours.</p>
                         </div>
                     </div>
-
-                    <!-- Flexible Changes & Cancellations -->
                     <div class="col-sm-6 col-6 col-lg-3">
                         <div class="info-card">
-                            <div class="info-icon" style="background-color: #ffc107;">
-                                <i class="fa-solid fa-sync-alt"></i>
+                            <div class="info-icon icon-ticket">
+                                <i class="fa-solid fa-microphone-lines"></i>
                             </div>
-                            <h3>Flexible Changes & Cancellations</h3>
-                            <p>Easily modify your flight details, including name changes or cancellations.</p>
+                            <h3>Concert Tickets</h3>
+                            <p>A centralized place to buy tickets for various dates of the tour.</p>
                         </div>
                     </div>
-
-                    <!-- Transparent Fees -->
                     <div class="col-sm-6 col-6 col-lg-3">
                         <div class="info-card">
-                            <div class="info-icon" style="background-color: #17a2b8;">
-                                <i class="fa-solid fa-file-invoice-dollar"></i>
+                            <div class="info-icon icon-travel">
+                                <i class="fa-solid fa-plane-departure"></i>
                             </div>
-                            <h3>Transparent Fees</h3>
-                            <p>Enjoy complete clarity with no hidden charges or surprise costs.</p>
+                            <h3>Travel Packages</h3>
+                            <p>Bundles that include concert tickets, accommodations.</p>
                         </div>
                     </div>
-
-                    <!-- Seamless Booking Experience -->
                     <div class="col-sm-6 col-6 col-lg-3">
                         <div class="info-card">
-                            <div class="info-icon" style="background-color: #6f42c1;">
-                                <i class="fa-solid fa-calendar-check"></i>
+                            <div class="info-icon icon-price">
+                                <i class="fa-solid fa-crown"></i>
                             </div>
-                            <h3>Seamless Booking Experience</h3>
-                            <p>Quick search, simple navigation, and secure checkout for hassle-free bookings.</p>
-                        </div>
-                    </div>
-
-                    <!-- Exclusive Offers & Deals -->
-                    <div class="col-sm-6 col-6 col-lg-3">
-                        <div class="info-card">
-                            <div class="info-icon" style="background-color: #e83e8c;">
-                                <i class="fa-solid fa-gift"></i>
-                            </div>
-                            <h3>Exclusive Offers & Deals</h3>
-                            <p>Get access to real-time discounts and special travel promotions.</p>
-                        </div>
-                    </div>
-
-                    <!-- Expert Travel Assistance -->
-                    <div class="col-sm-6 col-6 col-lg-3">
-                        <div class="info-card">
-                            <div class="info-icon" style="background-color: #fd7e14;">
-                                <i class="fa-solid fa-user-tie"></i>
-                            </div>
-                            <h3>Expert Travel Assistance</h3>
-                            <p>Personalized support from experienced travel professionals.</p>
-                        </div>
-                    </div>
-
-                    <!-- Secure Transactions -->
-                    <div class="col-sm-6 col-6 col-lg-3">
-                        <div class="info-card">
-                            <div class="info-icon" style="background-color: #dc3545;">
-                                <i class="fa-solid fa-lock"></i>
-                            </div>
-                            <h3>Secure Transactions</h3>
-                            <p>Your data and payments are protected with advanced security measures.</p>
+                            <h3>Best Price Guarantee</h3>
+                            <p>Such as private rehearsals, soundcheck access.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        
+
+        <section class="tg-chose-area">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-5">
+                        <div class="tg-chose-content">
+                            <div class="section-header text-start">
+                                <h2 class="mb-2">Book your next trip <span
+                                        class="text-primary text-primarysec text-decoration-underline">Benein 3 easy
+                                        stepsfits</span></h2>
+                            </div>
+                            <div class="tg-chose-list-wrap">
+                                <div class="tg-chose-list d-flex"><span class="tg-chose-list-icon list-icon-one"><svg
+                                            width="22" height="22" viewBox="0 0 22 22" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M0.544607 4.47549C0.248039 4.47549 0.00539207 4.23284 0 3.93627V0.544608C0 0.242647 0.242647 0 0.544607 0H3.93627C4.23284 0 4.47549 0.242647 4.47549 0.544608V1.72549H17.5245V0.544608C17.5245 0.248039 17.7672 0.00539216 18.0637 0H21.4554C21.752 0 21.9946 0.242647 22 0.544608V3.93627C22 4.23284 21.7574 4.47549 21.4554 4.47549H20.2745V17.5245H21.4554C21.752 17.5245 21.9946 17.7672 22 18.0637V21.4554C22 21.752 21.7574 21.9946 21.4554 22H18.0637C17.7672 22 17.5245 21.7574 17.5245 21.4554V20.2745H4.47549V21.4554C4.47549 21.752 4.23284 21.9946 3.93627 22H0.544607C0.248039 22 0.00539207 21.7574 0 21.4554V18.0637C0 17.7672 0.242647 17.5245 0.544607 17.5245H1.72549V4.47549H0.544607ZM20.9216 3.39706V1.07843H18.6029V3.39706H20.9216ZM18.6029 20.9216H20.9216V18.6029H18.6029V20.9216ZM4.47549 18.0637V19.1961H17.5245V18.0637C17.5245 17.7672 17.7672 17.5245 18.0637 17.5245H19.1961V4.47549H18.0637C17.7672 4.47549 17.5245 4.23284 17.5245 3.93627V2.80392H4.47549V3.93627C4.47549 4.23284 4.23284 4.47549 3.93627 4.47549H2.80392V17.5245H3.93627C4.23284 17.5245 4.47549 17.7672 4.47549 18.0637ZM1.07843 18.6029V20.9216H3.39706V18.6029H1.07843ZM3.39706 3.39706V1.07843H1.07843V3.39706H3.39706Z"
+                                                fill="white" />
+                                        </svg>
+
+                                    </span>
+                                    <div class="tg-chose-list-content">
+                                        <h4 class="tg-chose-list-title mb-5">Choose Destination</h4>
+                                        <p>Lorem ipsum dolor sit amet, consectetur
+                                            adipiscing elit. Urna, tortor tempus.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="tg-chose-list d-flex"><span class="tg-chose-list-icon list-icon-two"><svg
+                                            width="22" height="22" viewBox="0 0 22 22" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M0.544607 4.47549C0.248039 4.47549 0.00539207 4.23284 0 3.93627V0.544608C0 0.242647 0.242647 0 0.544607 0H3.93627C4.23284 0 4.47549 0.242647 4.47549 0.544608V1.72549H17.5245V0.544608C17.5245 0.248039 17.7672 0.00539216 18.0637 0H21.4554C21.752 0 21.9946 0.242647 22 0.544608V3.93627C22 4.23284 21.7574 4.47549 21.4554 4.47549H20.2745V17.5245H21.4554C21.752 17.5245 21.9946 17.7672 22 18.0637V21.4554C22 21.752 21.7574 21.9946 21.4554 22H18.0637C17.7672 22 17.5245 21.7574 17.5245 21.4554V20.2745H4.47549V21.4554C4.47549 21.752 4.23284 21.9946 3.93627 22H0.544607C0.248039 22 0.00539207 21.7574 0 21.4554V18.0637C0 17.7672 0.242647 17.5245 0.544607 17.5245H1.72549V4.47549H0.544607ZM20.9216 3.39706V1.07843H18.6029V3.39706H20.9216ZM18.6029 20.9216H20.9216V18.6029H18.6029V20.9216ZM4.47549 18.0637V19.1961H17.5245V18.0637C17.5245 17.7672 17.7672 17.5245 18.0637 17.5245H19.1961V4.47549H18.0637C17.7672 4.47549 17.5245 4.23284 17.5245 3.93627V2.80392H4.47549V3.93627C4.47549 4.23284 4.23284 4.47549 3.93627 4.47549H2.80392V17.5245H3.93627C4.23284 17.5245 4.47549 17.7672 4.47549 18.0637ZM1.07843 18.6029V20.9216H3.39706V18.6029H1.07843ZM3.39706 3.39706V1.07843H1.07843V3.39706H3.39706Z"
+                                                fill="white" />
+                                        </svg>
+                                    </span>
+                                    <div class="tg-chose-list-content">
+                                        <h4 class="tg-chose-list-title mb-5">Make Payment</h4>
+                                        <p>Lorem ipsum dolor sit amet, consectetur
+                                            adipiscing elit. Urna, tortor tempus.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="tg-chose-list d-flex"><span class="tg-chose-list-icon list-icon-three"><svg
+                                            width="22" height="22" viewBox="0 0 22 22" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M0.544607 4.47549C0.248039 4.47549 0.00539207 4.23284 0 3.93627V0.544608C0 0.242647 0.242647 0 0.544607 0H3.93627C4.23284 0 4.47549 0.242647 4.47549 0.544608V1.72549H17.5245V0.544608C17.5245 0.248039 17.7672 0.00539216 18.0637 0H21.4554C21.752 0 21.9946 0.242647 22 0.544608V3.93627C22 4.23284 21.7574 4.47549 21.4554 4.47549H20.2745V17.5245H21.4554C21.752 17.5245 21.9946 17.7672 22 18.0637V21.4554C22 21.752 21.7574 21.9946 21.4554 22H18.0637C17.7672 22 17.5245 21.7574 17.5245 21.4554V20.2745H4.47549V21.4554C4.47549 21.752 4.23284 21.9946 3.93627 22H0.544607C0.248039 22 0.00539207 21.7574 0 21.4554V18.0637C0 17.7672 0.242647 17.5245 0.544607 17.5245H1.72549V4.47549H0.544607ZM20.9216 3.39706V1.07843H18.6029V3.39706H20.9216ZM18.6029 20.9216H20.9216V18.6029H18.6029V20.9216ZM4.47549 18.0637V19.1961H17.5245V18.0637C17.5245 17.7672 17.7672 17.5245 18.0637 17.5245H19.1961V4.47549H18.0637C17.7672 4.47549 17.5245 4.23284 17.5245 3.93627V2.80392H4.47549V3.93627C4.47549 4.23284 4.23284 4.47549 3.93627 4.47549H2.80392V17.5245H3.93627C4.23284 17.5245 4.47549 17.7672 4.47549 18.0637ZM1.07843 18.6029V20.9216H3.39706V18.6029H1.07843ZM3.39706 3.39706V1.07843H1.07843V3.39706H3.39706Z"
+                                                fill="white" />
+                                        </svg>
+
+                                    </span>
+                                    <div class="tg-chose-list-content">
+                                        <h4 class="tg-chose-list-title mb-5">Reach Airport on Selected Date</h4>
+                                        <p>Lorem ipsum dolor sit amet, consectetur
+                                            adipiscing elit. Urna, tortor tempus.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-7">
+                        <div class="tg-chose-right">
+                            <img src="images/home/advance.png" alt="image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
         <section class="common-section faq-section">
             <div class="container">
                 <div class="row align-items-center justify-content-center">
@@ -728,8 +830,7 @@
                                 <h2 class="accordion-header" id="headingOne">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                                        <span>How far in advance should I book my flight for the best price?
-                                        </span>
+                                        <span>What is included in the cruise package?</span>
                                         <i class="icon fas fa-eye-slash ms-auto"></i>
                                     </button>
                                 </h2>
@@ -750,7 +851,7 @@
                                 <h2 class="accordion-header" id="headingTwo">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                        <span>Can I change or cancel my flight after booking?</span>
+                                        <span>What should I pack for the cruise?</span>
                                         <i class="icon fas fa-eye-slash ms-auto"></i>
                                     </button>
                                 </h2>
@@ -771,7 +872,7 @@
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#collapseThree" aria-expanded="false"
                                         aria-controls="collapseThree">
-                                        <span>What documents do I need for domestic and international flights?</span>
+                                        <span>What happens if the cruise is cancelled?</span>
                                         <i class="icon fas fa-eye-slash ms-auto"></i>
                                     </button>
                                 </h2>
@@ -792,7 +893,7 @@
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#collapseFour" aria-expanded="false"
                                         aria-controls="collapseFour">
-                                        <span>How can I check my flight status or itinerary?</span>
+                                        <span>Do I need a visa to join the cruise?</span>
                                         <i class="icon fas fa-eye-slash ms-auto"></i>
                                     </button>
                                 </h2>
@@ -813,7 +914,7 @@
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#collapseFive" aria-expanded="false"
                                         aria-controls="collapseFive">
-                                        <span>Are there additional charges for baggage?</span>
+                                        <span>What safety measures are in place on board?</span>
                                         <i class="icon fas fa-eye-slash ms-auto"></i>
                                     </button>
                                 </h2>
@@ -828,45 +929,105 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="headingSix">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
-                                        <span>How do I choose my preferred seat?</span>
-                                        <i class="icon fas fa-eye-slash ms-auto"></i>
-                                    </button>
-                                </h2>
-                                <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix"
-                                    data-bs-parent="#accordionExample">
-                                    <div class="accordion-body">
-                                        <p class="sub-title">
-                                            Safety is our top priority. We adhere to strict health protocols,
-                                            including regular sanitation, safety drills, and trained crew members to
-                                            ensure a secure and protected environment.
-                                        </p>
-                                    </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="common-section NewsLettert-section d-none">
+            <div class="container">
+                <div class="NewsLettert-InnConBox">
+                    <div class="NewsLettert-bg">
+                        <img src="images/home/header-image-2-1.jpg" alt="" class="img-fluid">
+                    </div>
+                    <div class="row">
+                        <div class="col-xxl-6 col-xl-6 col-lg-10 col-md-12 col-sm-12 col-12">
+                            <div class="common-box NewsLettert-TitleBox">
+                                <span class="common-SubTitle">stay in the loop</span>
+                                <div class="section-header text-center">
+                                    <h2 class="mb-2">sign up to receive our <span
+                                            class="text-primary text-primarysec text-decoration-underline">emails and
+                                            enjoy 15% off</span>
+                                        your first
+                                        order.</h2>
                                 </div>
-                            </div>
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="headingSeven">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#collapseSeven" aria-expanded="false"
-                                        aria-controls="collapseSeven">
-                                        <span>How do I contact customer support for flight assistance?</span>
-                                        <i class="icon fas fa-eye-slash ms-auto"></i>
-                                    </button>
-                                </h2>
-                                <div id="collapseSeven" class="accordion-collapse collapse"
-                                    aria-labelledby="headingSeven" data-bs-parent="#accordionExample">
-                                    <div class="accordion-body">
-                                        <p class="sub-title">
-                                            Safety is our top priority. We adhere to strict health protocols,
-                                            including regular sanitation, safety drills, and trained crew members to
-                                            ensure a secure and protected environment.
-                                        </p>
+                                <form action="" class="NewsLettert-form">
+                                    <div class="input-group">
+                                        <input type="email" class="form-control" placeholder="Your email here">
+                                        <button type="button" class="btn common-bgBtn"><span>get started</span></button>
                                     </div>
-                                </div>
+                                </form>
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="common-section custom-testimonial-wrapper">
+            <div class="container">
+
+                <div class="row justify-content-center">
+                    <div class="col-lg-8 col-12">
+                        <div class="section-header text-center">
+                            <h2 class="mb-2">Where Does <span
+                                    class="text-primary text-primarysec text-decoration-underline">Your
+                                    Heart</span>
+                                Wish To Wander?</h2>
+                            <p class="sub-title">DreamsTour, a tour operator specializing in dream destinations, offers
+                                a variety of
+                                benefits for travelers.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="owl-carousel custom-testimonial-carousel">
+                    <!-- Testimonial 1 -->
+                    <div class="testimonial-box">
+                        <h4>Hidden Treasure</h4>
+                        <p>I went on the Gone with the Wind tour, and it was my first multi-day bus tour. The experience
+                            was
+                            terrific, thanks to the friendly tour guides.</p>
+                        <div class="testimonial-footer">
+                            <img src="https://i.pravatar.cc/50?img=10" alt="User 1">
+                            <div>
+                                <strong>Bryan Bradfield</strong><br>
+                                <small>Cape Town, South Africa</small>
+                            </div>
+                            <span class="rating-badge">5.0</span>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 2 -->
+                    <div class="testimonial-box">
+                        <h4>Easy to Find your Leisuree Place</h4>
+                        <p>Thanks for arranging a smooth travel experience for us. Our cab driver was polite, timely,
+                            and
+                            helpful.
+                            The team ensured making it a stress-free trip.</p>
+                        <div class="testimonial-footer">
+                            <img src="https://i.pravatar.cc/50?img=11" alt="User 2">
+                            <div>
+                                <strong>Prajakta Sasane</strong><br>
+                                <small>Paris, France</small>
+                            </div>
+                            <span class="rating-badge">5.0</span>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 3 -->
+                    <div class="testimonial-box">
+                        <h4>Great Service</h4>
+                        <p>We had a fantastic time as a family. There were activities for every age group, and the kids
+                            loved
+                            the
+                            kids’ club, fun activities, good customer service.</p>
+                        <div class="testimonial-footer">
+                            <img src="https://i.pravatar.cc/50?img=12" alt="User 3">
+                            <div>
+                                <strong>James Andrew</strong><br>
+                                <small>Newyork, United States</small>
+                            </div>
+                            <span class="rating-badge">5.0</span>
                         </div>
                     </div>
                 </div>
@@ -890,84 +1051,4 @@
 </script>
 
 <style scoped>
-    @media (max-width: 767.98px) {
-        .NewsLettert-InnConBox {
-            padding-top: 10px;
-            padding-bottom: 10px;
-        }
-    }
-
-    @media (max-width: 1199px) {
-        .NewsLettert-InnConBox {
-            min-height: 250px !important;
-        }
-    }
-
-    .flight-booking-box {
-        padding: 10px;
-    }
-
-    .home-flight-booking {
-        width: 85%;
-        margin: auto;
-    }
-
-    .poppin-font {
-        font-family: 'Poppins', sans-serif;
-    }
-
-    .tg-chose-area {
-        padding: 0 0 !important;
-    }
-
-    /* use @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap'); font where class is roboto */
-    .roboto-font {
-        font-family: 'Roboto', sans-serif;
-    }
-    .testimonial-info-cards {
-        row-gap: 20px;
-    }
-
-    .testimonial-info-cards .info-card {
-        height: 175px;
-    }
-
-    /* Initially hide traveler cards */
-    .traveler-card {
-        display: none !important;
-        position: absolute;
-        z-index: 1000;
-        background: white;
-        min-width: 300px;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        top: 100%;
-        left: 0;
-        right: 0;
-    }
-
-    /* Show state */
-    .traveler-card.show {
-        display: block !important;
-    }
-
-    /* Position the traveler input container relative for absolute positioning */
-    .flight-guest-input {
-        position: relative;
-    }
-    
-    /* Ensure proper positioning for form field containers */
-    .flight-form-fields .col-lg-3 {
-        overflow: visible;
-    }
-    
-    @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
-    body, h1, h2, h3, h4, h5, h6, p {
-        /* font-family: "Rubik", sans-serif; */
-        font-family: "Cambria" !important;
-        font-weight: 400;
-        font-style: normal;
-    }
-
 </style>

@@ -30,22 +30,28 @@ export default defineConfig(({mode}) => {
     ],
     base: isProduction ? '/public/build/' : '/',
     server: {
-    host: '0.0.0.0',        // allow external access
-    port: 5173,
-    cors: true,
-    hmr: {
-      host: '192.168.0.63', // 👈 your local IP
+        // For local development with Laravel served at http://localhost:8000
+        // bind to localhost only and advertise localhost as the origin
+        host: 'localhost',
+        port: 5173,
+        cors: true,
+        strictPort: true,
+        origin: 'http://localhost:5173',
+        hmr: {
+            host: 'localhost',
+            port: 5173,
+            protocol: 'ws'
+        }
     },
     build: {
-      manifest: true,
-      outDir: 'public/build/',
-      emptyOutDir: true,
-      rollupOptions: {
-      input: {
-            app: path.resolve(__dirname, 'resources/js/app.ts'),
+        manifest: true,
+        outDir: 'public/build/',
+        emptyOutDir: true,
+        rollupOptions: {
+            input: {
+                app: path.resolve(__dirname, 'resources/js/app.ts'),
+            },
         },
-      },
     },
-  },
     }
 });

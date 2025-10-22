@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
+
 * {
   -moz-box-sizing: border-box;
   -o-box-sizing: border-box;
@@ -14,7 +15,7 @@
 }
 
 :root {
-  --Ibm-font: "Open Sans", sans-serif;
+  --Rubik-font: "Rubik", sans-serif;
   --font-awesome: "Font Awesome 6 free";
   --bootstrap-icon: "bootstrap-icons";
 
@@ -75,12 +76,12 @@ html {
 }
 
 body {
-  font-family: var(--Ibm-font);
+  font-family: var(--Rubik-font);
   margin: 0px !important;
 }
 
 :where(h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6) {
-  font-family: var(--Ibm-font);
+  font-family: var(--Rubik-font);
 }
 
 figure {
@@ -100,7 +101,7 @@ figure {
 .common-section > *,
 .banner-inner-section > *,
 .footer-section > * {
-  /* position: relative; */
+  position: relative;
   z-index: 1;
 }
 
@@ -415,12 +416,12 @@ button.common-btn:focus:not(:focus-visible),
   border-radius: 16px;
   background-position: center;
   background-repeat: no-repeat;
-  background-image: url(../../public/images/bg-slider.png);
+  background-image: url(../images/bg-slider.png);
   width: 100%;
   background-size: cover;
 }
 .card-banner-slide.offercard2 .card-image {
-  background-image: url(../../public/images/offer2.jpg);
+  background-image: url(../images/offer2.jpg);
   opacity: 0.5;
 }
 .card-banner-slide.offercard2 .box-button,
@@ -447,7 +448,7 @@ button.common-btn:focus:not(:focus-visible),
   color: rgba(var(--main-color), 1);
 }
 .card-banner-slide.offercard3 .card-image {
-  background-image: url(../../public/images/bg-slider2.png);
+  background-image: url(../images/bg-slider2.png);
 }
 .card-banner-slide .card-info {
   position: absolute;
@@ -1050,7 +1051,7 @@ button.common-btn:focus:not(:focus-visible),
 }
 
 ::selection {
-  background: rgba(var(--main-color), 1); /* orange */
+  background: #e8040f; /* orange */
   color: #fff; /* black text */
 }
 

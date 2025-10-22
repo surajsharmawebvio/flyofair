@@ -21,7 +21,7 @@
             }
         </style>
     </head>
-    <body class="font-sans antialiased">
+    <body class="font-sans antialiased" style="overflow-x: hidden;">
         @inertia
     </body>
 </html>

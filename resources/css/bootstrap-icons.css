@@ -4,18 +4,11 @@
  * Licensed under MIT (https://github.com/twbs/icons/blob/main/LICENSE)
  */
 
-/* @font-face {
-  font-display: block;
-  font-family: "bootstrap-icons";
-  src: url("../../fonts/bootstrap-icons.woff") format("woff2"),
-    url("../fonts/bootstrap-icons.woff") format("woff");
-} */
-
 @font-face {
   font-display: block;
   font-family: "bootstrap-icons";
-  src: url("./../js/fonts/bootstrap-icons.woff2") format("woff2"),
-    url("./../js/fonts/bootstrap-icons.woff") format("woff");
+  src: url("../fonts/bootstrap-icons.woff2") format("woff2"),
+    url("../fonts/bootstrap-icons.woff") format("woff");
 }
 
 .bi::before,

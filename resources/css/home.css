@@ -1,8 +1,8 @@
 /* <<<<<< ************* BANNER SECTION CSS START **************** >>>>>> */
 
 .bannersection {
-  min-height: 60vh;
-  overflow: hidden;
+  /* min-height: 80vh; */
+  overflow: visible;
   position: relative;
   display: flex;
   align-items: center;
@@ -20,33 +20,35 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 0% 67%;
+  object-position: 0% 76%;
 }
 .bannersection::before {
   content: "";
-  /* background: linear-gradient(
+  background: linear-gradient(
     180deg,
     rgba(var(--black-color), 1) 0%,
     rgba(0, 0, 0, 0) 100%
-  ); */
+  );
   width: 100%;
   height: 100%;
   position: absolute;
   top: 0;
   left: 0;
   z-index: 1;
+  display: none;
 }
 .bannersection .container {
   position: relative;
   z-index: 2;
 }
 .banner-box {
-  text-align: center;
+  text-align: start;
 }
 .bannertitle {
-  color: #ffff;
-  font-size: 52px;
+  color: #000000;
+  font-size: 45px;
   font-weight: 700;
+  margin-bottom: 10px;
 }
 .bannertitle span {
   color: rgba(var(--main-color), 1);
@@ -54,21 +56,27 @@
 .banner-para {
   font-size: 16px;
   font-weight: 600;
-  color: rgba(var(--white-color), 1);
+  color: rgba(var(--black-color), 1);
 }
-
+.banner-image img {
+  width: auto;
+  height: 600px;
+  object-fit: cover;
+}
+.flight-texture {
+  position: absolute;
+  left: 12px;
+  bottom: 100px;
+  z-index: 0;
+  opacity: 0.9;
+}
 /* <<<<<< ************* BANNER SECTION CSS END **************** >>>>>> */
 
 /* <<<<<< ************* FLIGHT SEARCH FORM SECTION CSS START **************** >>>>>> */
 
-.flight-booking-wrapper {
-  position: relative;
-  margin-top: -100px;
-  z-index: 2;
-}
-
 .flight-booking-box {
   margin: 0;
+  margin-bottom: 30px;
   background-color: #fff;
   transition: all 0.5s ease-in-out;
   position: relative;
@@ -125,10 +133,11 @@
 }
 .search-label {
   font-size: 12px;
-  font-weight: 700;
+  font-weight: 600;
   transition: all 0.3s;
   line-height: 18px;
   color: rgba(var(--black-color), 1);
+  text-transform: uppercase;
 }
 .flight-input,
 .flight-input:hover {
@@ -146,12 +155,13 @@
   box-shadow: none;
 }
 .flight-search-btn {
-  height: 45px;
+  height: 38px;
   border-radius: 8px;
-  font-weight: 600;
+  font-weight: 500;
   background-color: rgba(var(--second-color), 1);
-  color: rgba(var(--black-color), 1);
+  color: rgba(var(--white-color), 1);
   border: 1px solid transparent;
+  font-size: 15px;
 }
 .flight-search-btn:hover,
 .flight-search-btn:focus,
@@ -327,6 +337,45 @@
   object-fit: contain;
   opacity: 0.5;
 }
+.textureimageleft {
+  position: absolute;
+  left: 0;
+  bottom: 48px;
+  animation: topToBottom 3s ease-in-out infinite;
+}
+.textureimageleft:after {
+  content: "";
+  position: absolute;
+  width: 390px;
+  height: 390px;
+  bottom: 10%;
+  background: #ff5e00;
+  filter: blur(150px);
+  z-index: -1;
+  right: -20%;
+  opacity: 0.5;
+  transform: matrix(-1, 0, 0, 1, 0, 0);
+}
+
+@keyframes topToBottom {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(15px);
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}
+.textureimageleft img {
+  width: auto;
+  height: 231px;
+  object-fit: contain;
+  opacity: 1;
+}
 .tour-slider {
   width: 90%;
   margin: 0px auto;
@@ -334,46 +383,57 @@
 
 .tour-card {
   position: relative;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
-  background: #000;
   color: #fff;
   display: block;
+  display: flex;
+  flex-direction: column;
 }
 
 .tour-card img {
-  width: 100%;
-  height: 365px;
+  width: 100% !important;
+  height: 400px;
   object-fit: cover;
+  border-radius: 22px;
+}
+.nameinfo-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .tour-info {
-  padding: 12px 15px;
-  position: absolute;
+  padding: 15px 15px;
+  position: relative;
   z-index: 2;
-  height: max-content;
+  min-height: auto;
   width: 100%;
-  bottom: 0;
   background-color: transparent;
+  display: block;
+  align-content: center;
+  text-align: center;
   /* background: rgba(0, 0, 0, 0.7); */
 }
 
 .tour-info h4 {
   margin: 0;
-  font-size: 14px;
-  font-weight: bold;
-  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  color: #5e6282;
 }
-
+.tour-info h3 {
+  font-size: 18px;
+  color: #000;
+  margin-bottom: 0;
+  font-weight: 500;
+}
 .tour-info .rating {
-  margin-top: 5px;
+  margin-top: 8px;
   display: flex;
   align-items: center;
   gap: 6px;
-  font-size: 12px;
-  font-weight: 600;
-  color: #fff !important;
+  font-size: 16px;
+  font-weight: 400;
+  color: #5e6282 !important;
 }
 
 .tour-info .rating i {
@@ -383,7 +443,7 @@
 
 .tour-slider .owl-nav button {
   position: absolute;
-  top: 50%;
+  top: 45%;
   background: #fff !important;
   border-radius: 50%;
   padding: 8px 14px !important;
@@ -399,8 +459,8 @@
   font-size: 26px !important;
   line-height: normal;
   display: block;
-  margin-top: -4px;
-  margin-left: 1px;
+  margin-top: 0px;
+  margin-left: -1px;
   color: rgba(var(--second-color), 1);
 }
 
@@ -412,7 +472,7 @@
   right: -14px;
 }
 
-.tour-card::before {
+/* .tour-card::before {
   content: "";
   background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #141414 105.28%);
   left: 0;
@@ -422,12 +482,12 @@
   height: 100%;
   position: absolute;
   border-radius: 10px;
-}
+} */
 .section-header {
   margin-bottom: 40px;
 }
 .section-header h2 {
-  font-size: 32px;
+  font-size: 36px;
   font-weight: 700;
   color: #111827;
 }
@@ -443,7 +503,7 @@
 .text-primarysec {
   color: rgba(var(--main-color), 1) !important;
   opacity: 1;
-  text-decoration: underline;
+  text-decoration: none !important;
 }
 
 /* <<<<<< ************* Destinations  SECTION CSS END **************** >>>>>> */
@@ -466,6 +526,8 @@
   padding: 10px 10px;
   text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
+  margin-bottom: 24px;
 }
 
 .info-icon {
@@ -508,131 +570,6 @@
 
 /* <<<<<< ************* benefit SECTION CSS END **************** >>>>>> */
 
-/* <<<<<< ************* listdestination-section CSS START **************** >>>>>> */
-
-.textureimage02 {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  height: auto;
-  width: 111%;
-}
-.textureimage02 img {
-  width: auto;
-  height: auto;
-  object-fit: cover;
-  opacity: 0.1;
-}
-
-.city-link {
-  padding: 15px;
-  border-radius: 24px;
-  border: 1px solid #e4e6e8;
-  margin-bottom: 0px;
-  background-color: rgba(var(--white-color), 1);
-  display: block;
-}
-.city-card img {
-  position: relative;
-  overflow: hidden;
-  height: 100px;
-  width: 100%;
-  border-radius: 20px;
-  object-fit: cover;
-  margin-bottom: 18px;
-}
-.city-info h3 {
-  font-size: 15px;
-  line-height: normal;
-  font-weight: 700;
-  color: var(--black-color) !important;
-  margin-bottom: 4px;
-  display: block;
-  text-transform: uppercase;
-}
-.city-info p {
-  margin: 5px 0 0;
-  font-size: 14px;
-  color: #555;
-}
-
-.city-content .arrow {
-  transition: transform 0.8s ease-in-out; /* Smooth rotation */
-  width: 30px;
-  height: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  background: #ffa22c36;
-  color: rgba(var(--black-color), 1);
-  font-size: 14px;
-  border: 1px solid var(--second-color);
-  transform: rotate(-60deg);
-}
-
-.city-card:hover .arrow {
-  color: rgba(var(--black-color), 1);
-  transform: rotate(0deg);
-}
-.city-content {
-  display: flex;
-  align-items: end;
-  justify-content: space-between;
-  width: 100%;
-}
-.neutralhead {
-  padding: 10px;
-  margin: 0px;
-  font-size: 24px;
-  line-height: 32px;
-  color: rgba(var(--black-color), 1);
-  font-weight: 800;
-}
-.card-meta {
-  margin-top: 5px;
-  padding: 12px 26px;
-  background-color: rgba(var(--black-color), 1);
-  color: #ffffff;
-  border-radius: 16px;
-  font-size: 16px;
-  line-height: 20px;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.meta-links {
-  width: 75%;
-  line-height: 22px;
-  color: #ffffff;
-  font-size: 12px;
-}
-.card-button {
-  width: 45%;
-  text-align: right;
-}
-.card-button a {
-  display: inline-block;
-  height: 27px;
-  width: 27px;
-  text-align: center;
-  line-height: 25px;
-  border-radius: 50%;
-  background-color: rgba(var(--white-color), 1);
-}
-.card-button a svg {
-  stroke: #000000;
-}
-.city-link.seeall-card {
-  background-color: rgba(var(--third-color), 1);
-}
-.card-meta.city-content .arrow {
-  background: rgba(var(--main-color), 1);
-  color: rgba(var(--white-color), 1);
-}
-/* <<<<<< ************* listdestination-section CSS END **************** >>>>>> */
-
 /* <<<<<< ************* tg-chose-area SECTION CSS START **************** >>>>>> */
 
 .tg-chose-area {
@@ -670,7 +607,7 @@
   margin-bottom: 30px;
 }
 .tg-chose-section-title h2 {
-  font-size: 28px;
+  font-size: 20px;
   text-transform: capitalize !important;
   margin-bottom: 18px;
   color: rgba(var(--second-color), 1);
@@ -687,100 +624,76 @@
   margin-bottom: 15px;
 }
 span.tg-chose-list-icon {
+  width: 45px;
+  height: 45px;
   margin-right: 20px;
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.list-icon-three {
+  background: #f0bb1f;
+}
+.list-icon-two {
+  background: rgba(var(--main-color), 1);
+}
+.list-icon-one {
+  background: #006380;
 }
 .tg-chose-list-title {
-  font-size: 20px;
-  font-weight: 900;
+  font-size: 16px;
+  font-weight: 700;
   line-height: 1.3;
   margin-bottom: 5px !important;
-  color: rgba(var(--black-color), 1);
+  color: #5e6282;
 }
 .tg-chose-list-content p {
   margin-bottom: 15px;
-  font-size: 14px;
-  font-weight: 300;
-  color: #353844;
-  line-height: normal;
+  font-size: 15px;
+  font-weight: 400;
+  color: #5e6282;
+  line-height: 125%;
 }
 .tg-chose-list:last-child {
   margin-bottom: 40px;
 }
 .tg-chose-right {
-  margin-right: 50px;
-  margin-left: 33px;
-  margin-bottom: 25px;
-}
-.tg-chose-thumb {
-  margin-right: -117px;
-  position: relative;
-  z-index: 1;
-  margin-top: 155px;
-}
-img.tg-chose-shape-2 {
-  margin-bottom: 30px;
-  margin-left: 15px;
-  max-width: 100%;
-  transition: all 0.3s ease-out 0s;
-  color: transparent;
-}
-.tg-chose-thumb-inner {
+  display: flex;
   position: relative;
 }
-.tg-chose-thumb-2 img {
-  height: 361px;
-  aspect-ratio: auto 1157 / 1047;
-  max-width: 100%;
-  transition: all 0.3s ease-out 0s;
-  border-radius: 15px;
-  color: transparent;
-  object-position: left;
+.tg-chose-right img {
+  height: 460px;
+  object-fit: cover;
+  margin: 0 auto;
 }
-.tg-chose-big-text {
+.tg-chose-right:after {
+  content: "";
   position: absolute;
-  top: 44%;
-  right: -86%;
-  transform: rotate(-90deg) translateY(-189px);
+  width: 390px;
+  height: 390px;
+  bottom: 5%;
+  background: #ff5100;
+  filter: blur(150px);
   z-index: -1;
-}
-.tg-chose-big-text h2 {
-  font-weight: 700;
-  font-size: 40px;
-  text-transform: uppercase;
-  position: relative;
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: rgba(0, 0, 0, 0);
-  -webkit-text-stroke-color: rgba(var(--black-color), 1);
-  -webkit-text-stroke-width: 1px;
-  color: #020615;
-  line-height: 1.1;
-  margin-top: 0;
-  margin-bottom: 0.5rem;
-}
-.tg-chose-big-text h2:after {
-  content: attr(data-text);
-  position: absolute;
-  top: 0;
-  left: 0;
-  color: rgba(var(--main-color), 1);
-  -webkit-text-stroke-color: rgba(var(--main-color), 1);
-  overflow: hidden;
-  width: 100%;
-  transition: all 2s ease-out 0s;
-  animation: about-text 2s ease-in-out 1s infinite alternate-reverse forwards;
+  right: 20%;
+  opacity: 0.5;
+  transform: matrix(-1, 0, 0, 1, 0, 0);
 }
 
-@keyframes about-text {
+@keyframes topToBottom {
   0% {
-    width: 0;
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(15px);
   }
 
   to {
-    width: 100%;
+    transform: translateY(0);
   }
 }
-
 @media (max-width: 768px) {
   .tg-chose-thumb {
     margin-right: -7px;
@@ -812,84 +725,6 @@ img.tg-chose-shape-2 {
 
 /* <<<<<< ************* tg-chose-area SECTION CSS END **************** >>>>>> */
 
-/* <<<<<< ************* Partner &  Payment partner section CSS START **************** >>>>>> */
-
-.client-slider .item {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 15px;
-}
-
-.client-slider .item img {
-  max-width: 150px;
-  max-height: 60px;
-  object-fit: contain;
-  filter: grayscale(100%);
-  transition: filter 0.3s ease;
-  cursor: pointer;
-}
-
-.client-slider .item:hover img {
-  filter: grayscale(0%);
-}
-
-.client-slider .owl-nav {
-  display: none; /* hide prev/next arrows */
-}
-
-.client-slider .owl-dots {
-  margin-top: 15px;
-}
-
-.Partnered-slider .item {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 15px;
-}
-
-.Partnered-slider .item img {
-  max-width: 150px;
-  max-height: 60px;
-  object-fit: contain;
-  filter: grayscale(100%);
-  transition: filter 0.3s ease;
-  cursor: pointer;
-}
-
-.Partnered-slider .item:hover img {
-  filter: grayscale(0%);
-}
-
-.Partnered-slider .owl-nav {
-  display: none; /* hide prev/next arrows */
-}
-
-.Partnered-slider .owl-dots {
-  margin-top: 15px;
-}
-.Partnered-slider {
-  backdrop-filter: blur(30px);
-  background: rgba(255, 255, 255, 0.7);
-  border-radius: 10px;
-  padding: 30px;
-  position: relative;
-}
-.Partnered-section {
-  background-image: url(../images/about-bg-01.svg);
-  background-repeat: no-repeat;
-  background-position: 42% 71%;
-  background-color: #f5f8fa;
-  background-size: 100%;
-}
-
-.client_review_section {
-  background-color: #e3f0ff;
-}
-
-/* <<<<<< ************* Partner &  Payment partner section CSS end **************** >>>>>> */
-
 /* <<<<<< ************* NewsLettert section CSS START **************** >>>>>> */
 .NewsLettert-InnConBox {
   position: relative;
@@ -897,7 +732,7 @@ img.tg-chose-shape-2 {
   display: flex;
   align-items: center;
   justify-content: center;
-  /* border-radius: 10px; */
+  border-radius: 10px;
   overflow: hidden;
 }
 .NewsLettert-bg {
@@ -961,6 +796,9 @@ img.tg-chose-shape-2 {
   font-size: 15px;
   outline: none;
   box-shadow: none;
+  border-radius: 8px !important;
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
 }
 .NewsLettert-form .form-control::placeholder,
 .NewsLettert-form .form-select::placeholder {
@@ -975,6 +813,9 @@ img.tg-chose-shape-2 {
   --common-btn-color: rgba(var(--second-color), 1);
   --common-btn-color: rgba(var(--white-color), 1);
   font-weight: 600;
+  border-radius: 8px !important;
+  border-top-left-radius: 0px !important;
+  border-bottom-left-radius: 0px !important;
 }
 .NewsLettert-form button.common-bgBtn:focus:not(:focus-visible),
 .NewsLettert-form .common-bgBtn:focus-visible,
@@ -997,7 +838,7 @@ img.tg-chose-shape-2 {
     min-height: 60vh;
   }
   .bannertitle {
-    font-size: 40px;
+    font-size: 45px;
   }
   .neutralhead {
     font-size: 20px;
@@ -1050,7 +891,7 @@ img.tg-chose-shape-2 {
     height: 270px;
   }
   .NewsLettert-InnConBox {
-    min-height: 250px;
+    min-height: 350px;
   }
 }
 @media (max-width: 1024px) {
@@ -1299,7 +1140,7 @@ img.tg-chose-shape-2 {
 }
 
 .custom-accordion .accordion-body {
-  background-color: #fafafa;
+  background-color: rgba(var(--second-color), 0.3);
   padding: 10px 20px;
 }
 
