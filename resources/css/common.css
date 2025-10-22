@@ -101,7 +101,7 @@ figure {
 .common-section > *,
 .banner-inner-section > *,
 .footer-section > * {
-  position: relative;
+  /* position: relative; */
   z-index: 1;
 }
 

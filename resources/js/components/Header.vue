@@ -134,7 +134,18 @@ import './../../css/common.css';
 export default {
     name: 'Header',
 }
+$(document).ready(function () {
+    // Sticky Header
+    $('.travel-call').on('mouseenter', function () {
+        $(this).find('.small').css('color', '#ffffff');
+    }).on('mouseleave', function () {
+        $(this).find('.small').css('color', '#000000');
+    });
+});
 </script>
 
 <style scoped>
+.travel-call {
+    text-decoration: none;
+}
 </style>
