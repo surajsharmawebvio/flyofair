@@ -22,7 +22,7 @@
                     items: 2
                 },
                 992: {
-                    items: 3
+                    items: 4
                 }
             }
         });
@@ -54,7 +54,17 @@
             dots: true,
             autoplay: true,
             autoplayTimeout: 5000,
-            items: 1
+           responsive: {
+                0: {
+                    items: 1
+                },
+                768: {
+                    items: 2
+                },
+                992: {
+                    items: 3
+                }
+            }
         });
 
         // Initialize date picker and traveler functionality with a small delay
