@@ -22,7 +22,14 @@ class HomeController extends Controller
 
     public function searchAirports(Request $request)
     {
-        $input = $request->input('query');
+        $input = $request->all();
+
+        // get ip address from request
+
+        // return [
+        //     'ip' => $request->ip(),
+        //     'input' => $input
+        // ]
         
         $airports = $this->airportRepository->searchAirports($input);
 

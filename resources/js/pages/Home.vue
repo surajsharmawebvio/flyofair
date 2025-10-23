@@ -17,23 +17,53 @@
     const highlighted = ref(-1);
     const fromWrapper = ref(null);
 
-    const fakeList = [
-        { code: 'DEL', name: 'Delhi, India' },
-        { code: 'BOM', name: 'Mumbai, India' },
-        { code: 'JFK', name: 'New York (JFK), USA' },
-        { code: 'LHR', name: 'London Heathrow, UK' },
-        { code: 'DXB', name: 'Dubai, UAE' },
-        { code: 'SYD', name: 'Sydney, Australia' },
-        { code: 'BKK', name: 'Bangkok, Thailand' },
-        { code: 'SIN', name: 'Singapore Changi, Singapore' },
-        { code: 'CDG', name: 'Paris Charles de Gaulle, France' },
-        { code: 'NRT', name: 'Tokyo Narita, Japan' }
+    const fakeList = [{
+            code: 'DEL',
+            name: 'Delhi, India'
+        },
+        {
+            code: 'BOM',
+            name: 'Mumbai, India'
+        },
+        {
+            code: 'JFK',
+            name: 'New York (JFK), USA'
+        },
+        {
+            code: 'LHR',
+            name: 'London Heathrow, UK'
+        },
+        {
+            code: 'DXB',
+            name: 'Dubai, UAE'
+        },
+        {
+            code: 'SYD',
+            name: 'Sydney, Australia'
+        },
+        {
+            code: 'BKK',
+            name: 'Bangkok, Thailand'
+        },
+        {
+            code: 'SIN',
+            name: 'Singapore Changi, Singapore'
+        },
+        {
+            code: 'CDG',
+            name: 'Paris Charles de Gaulle, France'
+        },
+        {
+            code: 'NRT',
+            name: 'Tokyo Narita, Japan'
+        }
     ];
 
     const filteredSuggestions = computed(() => {
         const q = (fromQuery.value || '').trim().toLowerCase();
         if (!q) return fakeList.slice(0, 5);
-        return fakeList.filter(i => i.name.toLowerCase().includes(q) || i.code.toLowerCase().includes(q)).slice(0, 10);
+        return fakeList.filter(i => i.name.toLowerCase().includes(q) || i.code.toLowerCase().includes(q)).slice(
+            0, 10);
     });
 
     function onFromInput() {
@@ -73,7 +103,8 @@
     const filteredToSuggestions = computed(() => {
         const q = (toQuery.value || '').trim().toLowerCase();
         if (!q) return fakeList.slice(0, 5);
-        return fakeList.filter(i => i.name.toLowerCase().includes(q) || i.code.toLowerCase().includes(q)).slice(0, 10);
+        return fakeList.filter(i => i.name.toLowerCase().includes(q) || i.code.toLowerCase().includes(q)).slice(
+            0, 10);
     });
 
     function onToInput() {
@@ -123,26 +154,35 @@
         document.removeEventListener('click', onDocumentClick);
     });
 
-    // location refs and function (moved from options-api)
-    const latitude = ref(null);
-    const longitude = ref(null);
-    const coords = ref(null);
+    function getLocationByIp() {
+        fetch("https://api.allorigins.win/raw?url=https://ipapi.co/json/")
+            .then(response => response.json())
+            .then(data => {
+                localStorage.setItem('lat&long', JSON.stringify({
+                    lat: data.latitude,
+                    lon: data.longitude
+                }));
+            })
+            .catch(error => console.error("Error fetching IP location:", error));
+    }
 
     function getLocation() {
-        if (navigator.geolocation) {
+        if (navigator.geolocation && !localStorage.getItem('lat&long')) {
             navigator.geolocation.getCurrentPosition(
                 (position) => {
-                    latitude.value = position.coords.latitude;
-                    longitude.value = position.coords.longitude;
-                    coords.value = position.coords;
+                    localStorage.setItem('lat&long1', JSON.stringify({
+                        lat: position.coords.latitude,
+                        lon: position.coords.longitude
+                    }));
                 },
                 (error) => {
                     console.error('Error getting location:', error);
+                    getLocationByIp();
                 }
             );
+        } else {
+            getLocationByIp();
         }
-
-        console.log('Coords:', coords.value);
     }
 
     onMounted(() => {
@@ -213,9 +253,15 @@
             // Initialize traveler form functionality
             initializeTravelerForm();
         }, 100);
-
+        
         // Call the location fetch moved from options-api
+        // if (!localStorage.getItem('lat&long')) getLocation();
         getLocation();
+
+        setTimeout(() => {
+            console.log("Lat&Long by Geolocation:", JSON.parse(localStorage.getItem('lat&long1')));
+            console.log("Lat&Long by IP:", JSON.parse(localStorage.getItem('lat&long2')));
+        }, 4000);
     })
 
     // Traveler form functionality
@@ -414,28 +460,40 @@
                                 <!-- One Way -->
                                 <div class="tab-pane fade show active" id="oneway-pane" role="tabpanel">
                                     <form class="row g-3 align-items-end flight-form-fields">
-                                        <div ref="fromWrapper" class="col-lg-3 col-md-6 col-12" style="position: relative;">
+                                        <div ref="fromWrapper" class="col-lg-3 col-md-6 col-12"
+                                            style="position: relative;">
                                             <label class="form-label search-label">From</label>
                                             <input v-model="fromQuery" @input="onFromInput" @keydown="onFromKeydown"
                                                 type="text" class="form-control flight-input"
                                                 placeholder="Add departure" id="flight-search-from" autocomplete="off">
 
                                             <!-- Suggestions dropdown -->
-                                            <ul v-if="showSuggestions && filteredSuggestions.length" class="list-group position-absolute shadow" style="z-index:1050; width:100%; max-height:220px; overflow:auto;">
-                                                <li v-for="(s, idx) in filteredSuggestions" :key="s.code" @mousedown.prevent="selectSuggestion(s)" :class="['list-group-item', highlighted === idx ? 'active' : '']" style="cursor:pointer;">
+                                            <ul v-if="showSuggestions && filteredSuggestions.length"
+                                                class="list-group position-absolute shadow"
+                                                style="z-index:1050; width:100%; max-height:220px; overflow:auto;">
+                                                <li v-for="(s, idx) in filteredSuggestions" :key="s.code"
+                                                    @mousedown.prevent="selectSuggestion(s)"
+                                                    :class="['list-group-item', highlighted === idx ? 'active' : '']"
+                                                    style="cursor:pointer;">
                                                     <strong>{{ s.code }}</strong> — {{ s.name }}
                                                 </li>
                                             </ul>
                                         </div>
-                                        <div ref="toWrapper" class="col-lg-3 col-md-6 col-12" style="position: relative;">
+                                        <div ref="toWrapper" class="col-lg-3 col-md-6 col-12"
+                                            style="position: relative;">
                                             <label class="form-label search-label">To</label>
                                             <input v-model="toQuery" @input="onToInput" @keydown="onToKeydown"
                                                 type="text" class="form-control flight-input"
                                                 placeholder="Add destination" id="flight-search-to" autocomplete="off">
 
                                             <!-- To Suggestions dropdown -->
-                                            <ul v-if="showToSuggestions && filteredToSuggestions.length" class="list-group position-absolute shadow" style="z-index:1050; width:100%; max-height:220px; overflow:auto;">
-                                                <li v-for="(s, idx) in filteredToSuggestions" :key="'to-'+s.code" @mousedown.prevent="selectToSuggestion(s)" :class="['list-group-item', highlightedTo === idx ? 'active' : '']" style="cursor:pointer;">
+                                            <ul v-if="showToSuggestions && filteredToSuggestions.length"
+                                                class="list-group position-absolute shadow"
+                                                style="z-index:1050; width:100%; max-height:220px; overflow:auto;">
+                                                <li v-for="(s, idx) in filteredToSuggestions" :key="'to-'+s.code"
+                                                    @mousedown.prevent="selectToSuggestion(s)"
+                                                    :class="['list-group-item', highlightedTo === idx ? 'active' : '']"
+                                                    style="cursor:pointer;">
                                                     <strong>{{ s.code }}</strong> — {{ s.name }}
                                                 </li>
                                             </ul>
@@ -1202,5 +1260,3 @@
 
     </DefaultLayout>
 </template>
-
-
