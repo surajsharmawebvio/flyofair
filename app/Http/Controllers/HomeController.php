@@ -19,4 +19,13 @@ class HomeController extends Controller
     {
         return Inertia::render('Home');
     }
+
+    public function searchAirports(Request $request)
+    {
+        $input = $request->input('query');
+        
+        $airports = $this->airportRepository->searchAirports($input);
+
+        return response()->json($airports);
+    }
 }

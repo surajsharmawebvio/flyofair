@@ -269,7 +269,7 @@ import { Link } from '@inertiajs/vue3'
                 </div>
                 <div class="modal-body travel-modal-body">
                     <div class="travel-expert-image">
-                        <img src="images/pngcall.png" alt="Travel Expert">
+                        <img src="images/pngcall.jpg" alt="Travel Expert">
                     </div>
 
                     <ul class="travel-features-list">

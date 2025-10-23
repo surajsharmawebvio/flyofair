@@ -2,8 +2,123 @@
 <script setup>
     import DefaultLayout from '@/layouts/DefaultLayout.vue'
     import {
-        onMounted
+        onMounted,
+        onUnmounted,
+        ref,
+        computed
     } from 'vue'
+
+    // --- Dropdown (fake data) for the "From" search input ---
+    const fromQuery = ref('');
+    const showSuggestions = ref(false);
+    const highlighted = ref(-1);
+    const fromWrapper = ref(null);
+
+    const fakeList = [
+        { code: 'DEL', name: 'Delhi, India' },
+        { code: 'BOM', name: 'Mumbai, India' },
+        { code: 'JFK', name: 'New York (JFK), USA' },
+        { code: 'LHR', name: 'London Heathrow, UK' },
+        { code: 'DXB', name: 'Dubai, UAE' },
+        { code: 'SYD', name: 'Sydney, Australia' },
+        { code: 'BKK', name: 'Bangkok, Thailand' },
+        { code: 'SIN', name: 'Singapore Changi, Singapore' },
+        { code: 'CDG', name: 'Paris Charles de Gaulle, France' },
+        { code: 'NRT', name: 'Tokyo Narita, Japan' }
+    ];
+
+    const filteredSuggestions = computed(() => {
+        const q = (fromQuery.value || '').trim().toLowerCase();
+        if (!q) return fakeList.slice(0, 5);
+        return fakeList.filter(i => i.name.toLowerCase().includes(q) || i.code.toLowerCase().includes(q)).slice(0, 10);
+    });
+
+    function onFromInput() {
+        highlighted.value = -1;
+        showSuggestions.value = true;
+    }
+
+    function onFromKeydown(e) {
+        if (!showSuggestions.value) return;
+        if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            highlighted.value = Math.min(highlighted.value + 1, filteredSuggestions.value.length - 1);
+        } else if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            highlighted.value = Math.max(highlighted.value - 1, 0);
+        } else if (e.key === 'Enter') {
+            e.preventDefault();
+            if (highlighted.value >= 0) selectSuggestion(filteredSuggestions.value[highlighted.value]);
+            else if (filteredSuggestions.value.length === 1) selectSuggestion(filteredSuggestions.value[0]);
+        } else if (e.key === 'Escape') {
+            showSuggestions.value = false;
+        }
+    }
+
+    function selectSuggestion(item) {
+        fromQuery.value = item.name;
+        showSuggestions.value = false;
+        highlighted.value = -1;
+    }
+
+    // --- Duplicate logic for the "To" input ---
+    const toQuery = ref('');
+    const showToSuggestions = ref(false);
+    const highlightedTo = ref(-1);
+    const toWrapper = ref(null);
+
+    const filteredToSuggestions = computed(() => {
+        const q = (toQuery.value || '').trim().toLowerCase();
+        if (!q) return fakeList.slice(0, 5);
+        return fakeList.filter(i => i.name.toLowerCase().includes(q) || i.code.toLowerCase().includes(q)).slice(0, 10);
+    });
+
+    function onToInput() {
+        highlightedTo.value = -1;
+        showToSuggestions.value = true;
+    }
+
+    function onToKeydown(e) {
+        if (!showToSuggestions.value) return;
+        if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            highlightedTo.value = Math.min(highlightedTo.value + 1, filteredToSuggestions.value.length - 1);
+        } else if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            highlightedTo.value = Math.max(highlightedTo.value - 1, 0);
+        } else if (e.key === 'Enter') {
+            e.preventDefault();
+            if (highlightedTo.value >= 0) selectToSuggestion(filteredToSuggestions.value[highlightedTo.value]);
+            else if (filteredToSuggestions.value.length === 1) selectToSuggestion(filteredToSuggestions.value[0]);
+        } else if (e.key === 'Escape') {
+            showToSuggestions.value = false;
+        }
+    }
+
+    function selectToSuggestion(item) {
+        toQuery.value = item.name;
+        showToSuggestions.value = false;
+        highlightedTo.value = -1;
+    }
+
+    // Hide dropdowns when clicking outside
+    function onDocumentClick(e) {
+        const target = e.target;
+        if (fromWrapper.value && !fromWrapper.value.contains(target)) {
+            showSuggestions.value = false;
+        }
+        if (toWrapper.value && !toWrapper.value.contains(target)) {
+            showToSuggestions.value = false;
+        }
+    }
+
+    onMounted(() => {
+        document.addEventListener('click', onDocumentClick);
+    });
+
+    onUnmounted(() => {
+        document.removeEventListener('click', onDocumentClick);
+    });
 
     onMounted(() => {
         // Initialize all owl carousels
@@ -80,112 +195,129 @@
         // Wait a bit for DOM to be fully ready
         setTimeout(() => {
             // Handle each traveler input separately since there are multiple forms
-            $('.flight-guest-input').each(function(index) {
+            $('.flight-guest-input').each(function (index) {
                 const $input = $(this);
                 const $card = $input.siblings('.traveler-card');
-                
+
                 // Ensure the parent container is positioned relatively
                 $input.closest('.col-lg-3').css('position', 'relative');
-                
+
                 if (!$card.length) {
                     return;
                 }
 
-            const counts = { adult: 1, child: 0, infant: 0 };
-            let lastAppliedCounts = { ...counts };
-            let lastAppliedClass = 'Economy';
+                const counts = {
+                    adult: 1,
+                    child: 0,
+                    infant: 0
+                };
+                let lastAppliedCounts = {
+                    ...counts
+                };
+                let lastAppliedClass = 'Economy';
 
-            function updateCounts() {
-                // Find the count elements within this specific card
-                const $countSpans = $card.find('span.common-numtext');
-                if ($countSpans.length >= 3) {
-                    $countSpans.eq(0).text(counts.adult);
-                    $countSpans.eq(1).text(counts.child);
-                    $countSpans.eq(2).text(counts.infant);
-                }
+                function updateCounts() {
+                    // Find the count elements within this specific card
+                    const $countSpans = $card.find('span.common-numtext');
+                    if ($countSpans.length >= 3) {
+                        $countSpans.eq(0).text(counts.adult);
+                        $countSpans.eq(1).text(counts.child);
+                        $countSpans.eq(2).text(counts.infant);
+                    }
 
-                const total = counts.adult + counts.child + counts.infant;
-                const $checkedClass = $card.find('input[name="travelClass"]:checked');
-                const travelClass = $checkedClass.length ? $checkedClass.val().toUpperCase() : 'ECONOMY';
-                $input.val(`${total} passenger${total > 1 ? 's' : ''} ${travelClass}`);
-            }
-            updateCounts();
-
-            // Open card on click - use event delegation
-            $input.off('click.traveler').on('click.traveler', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                
-                // Hide all other cards first
-                $('.traveler-card').removeClass('show').hide();
-                $card.addClass('show').show();
-                lastAppliedCounts = { ...counts };
-                lastAppliedClass = $card.find('input[name="travelClass"]:checked').val() || 'Economy';
-            });
-
-            // Prevent card from closing when clicking inside
-            $card.off('click.traveler').on('click.traveler', function(e) {
-                e.stopPropagation();
-            });
-
-            // Increment buttons
-            $card.find('.traveler-plus').off('click.traveler').on('click.traveler', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                const target = $(this).attr('data-target');
-                if (target && counts.hasOwnProperty(target)) {
-                    counts[target]++;
-                    updateCounts();
-                }
-            });
-
-            // Decrement buttons
-            $card.find('.traveler-minus').off('click.traveler').on('click.traveler', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                const target = $(this).attr('data-target');
-                if (target && counts.hasOwnProperty(target)) {
-                    if (target === 'adult' && counts[target] <= 1) return; // Don't go below 1 adult
-                    if (target !== 'adult' && counts[target] <= 0) return; // Don't go below 0 for child/infant
-                    counts[target]--;
-                    updateCounts();
-                }
-            });
-
-            // Update when radio changes
-            $card.find('input[name="travelClass"]').off('change.traveler').on('change.traveler', function() {
-                updateCounts();
-            });
-
-            // Apply button
-            $card.find('#applyBtn').off('click.traveler').on('click.traveler', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                lastAppliedCounts = { ...counts };
-                lastAppliedClass = $card.find('input[name="travelClass"]:checked').val() || 'Economy';
-                $card.removeClass('show').hide();
-            });
-
-            // Cancel button
-            $card.find('#cancelBtn').off('click.traveler').on('click.traveler', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                Object.assign(counts, lastAppliedCounts);
-                const $oldRadio = $card.find(`input[name="travelClass"][value="${lastAppliedClass}"]`);
-                if ($oldRadio.length) {
-                    $oldRadio.prop('checked', true);
+                    const total = counts.adult + counts.child + counts.infant;
+                    const $checkedClass = $card.find('input[name="travelClass"]:checked');
+                    const travelClass = $checkedClass.length ? $checkedClass.val().toUpperCase() :
+                        'ECONOMY';
+                    $input.val(`${total} passenger${total > 1 ? 's' : ''} ${travelClass}`);
                 }
                 updateCounts();
-                $card.removeClass('show').hide();
-            });
-        });
 
-        // Close when clicking outside - use event delegation with namespace
-        $(document).off('click.traveler').on('click.traveler', function(e) {
-            if (!$(e.target).closest('.traveler-card, .flight-guest-input').length) {
-                $('.traveler-card').removeClass('show').hide();
-            }
-        });
+                // Open card on click - use event delegation
+                $input.off('click.traveler').on('click.traveler', function (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+
+                    // Hide all other cards first
+                    $('.traveler-card').removeClass('show').hide();
+                    $card.addClass('show').show();
+                    lastAppliedCounts = {
+                        ...counts
+                    };
+                    lastAppliedClass = $card.find('input[name="travelClass"]:checked').val() ||
+                        'Economy';
+                });
+
+                // Prevent card from closing when clicking inside
+                $card.off('click.traveler').on('click.traveler', function (e) {
+                    e.stopPropagation();
+                });
+
+                // Increment buttons
+                $card.find('.traveler-plus').off('click.traveler').on('click.traveler', function (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const target = $(this).attr('data-target');
+                    if (target && counts.hasOwnProperty(target)) {
+                        counts[target]++;
+                        updateCounts();
+                    }
+                });
+
+                // Decrement buttons
+                $card.find('.traveler-minus').off('click.traveler').on('click.traveler', function (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const target = $(this).attr('data-target');
+                    if (target && counts.hasOwnProperty(target)) {
+                        if (target === 'adult' && counts[target] <= 1)
+                            return; // Don't go below 1 adult
+                        if (target !== 'adult' && counts[target] <= 0)
+                            return; // Don't go below 0 for child/infant
+                        counts[target]--;
+                        updateCounts();
+                    }
+                });
+
+                // Update when radio changes
+                $card.find('input[name="travelClass"]').off('change.traveler').on('change.traveler',
+                    function () {
+                        updateCounts();
+                    });
+
+                // Apply button
+                $card.find('#applyBtn').off('click.traveler').on('click.traveler', function (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    lastAppliedCounts = {
+                        ...counts
+                    };
+                    lastAppliedClass = $card.find('input[name="travelClass"]:checked').val() ||
+                        'Economy';
+                    $card.removeClass('show').hide();
+                });
+
+                // Cancel button
+                $card.find('#cancelBtn').off('click.traveler').on('click.traveler', function (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    Object.assign(counts, lastAppliedCounts);
+                    const $oldRadio = $card.find(
+                        `input[name="travelClass"][value="${lastAppliedClass}"]`);
+                    if ($oldRadio.length) {
+                        $oldRadio.prop('checked', true);
+                    }
+                    updateCounts();
+                    $card.removeClass('show').hide();
+                });
+            });
+
+            // Close when clicking outside - use event delegation with namespace
+            $(document).off('click.traveler').on('click.traveler', function (e) {
+                if (!$(e.target).closest('.traveler-card, .flight-guest-input').length) {
+                    $('.traveler-card').removeClass('show').hide();
+                }
+            });
         }, 50);
     }
 
@@ -254,25 +386,31 @@
                                 <!-- One Way -->
                                 <div class="tab-pane fade show active" id="oneway-pane" role="tabpanel">
                                     <form class="row g-3 align-items-end flight-form-fields">
-                                        <div class="col-lg-3 col-md-6 col-12">
-                                            <label class="form-label search-label">Email</label>
-                                            <input type="text" class="form-control flight-input"
-                                                placeholder="Enter email">
+                                        <div ref="fromWrapper" class="col-lg-3 col-md-6 col-12" style="position: relative;">
+                                            <label class="form-label search-label">From</label>
+                                            <input v-model="fromQuery" @input="onFromInput" @keydown="onFromKeydown"
+                                                type="text" class="form-control flight-input"
+                                                placeholder="Add departure" id="flight-search-from" autocomplete="off">
+
+                                            <!-- Suggestions dropdown -->
+                                            <ul v-if="showSuggestions && filteredSuggestions.length" class="list-group position-absolute shadow" style="z-index:1050; width:100%; max-height:220px; overflow:auto;">
+                                                <li v-for="(s, idx) in filteredSuggestions" :key="s.code" @mousedown.prevent="selectSuggestion(s)" :class="['list-group-item', highlighted === idx ? 'active' : '']" style="cursor:pointer;">
+                                                    <strong>{{ s.code }}</strong> — {{ s.name }}
+                                                </li>
+                                            </ul>
                                         </div>
-                                        <div class="col-lg-3 col-md-6 col-12">
-                                            <label class="form-label search-label">Phone</label>
-                                            <input type="text" id="mobile_code1" class="form-control"
-                                                placeholder="Phone Number" name="name">
-                                        </div>
-                                        <div class="col-lg-3 col-md-6 col-12">
-                                            <label class="form-label search-label">Departure from</label>
-                                            <input type="text" class="form-control flight-input"
-                                                placeholder="Add departure">
-                                        </div>
-                                        <div class="col-lg-3 col-md-6 col-12">
-                                            <label class="form-label search-label">Arrive at</label>
-                                            <input type="text" class="form-control flight-input"
-                                                placeholder="Add arrival">
+                                        <div ref="toWrapper" class="col-lg-3 col-md-6 col-12" style="position: relative;">
+                                            <label class="form-label search-label">To</label>
+                                            <input v-model="toQuery" @input="onToInput" @keydown="onToKeydown"
+                                                type="text" class="form-control flight-input"
+                                                placeholder="Add destination" id="flight-search-to" autocomplete="off">
+
+                                            <!-- To Suggestions dropdown -->
+                                            <ul v-if="showToSuggestions && filteredToSuggestions.length" class="list-group position-absolute shadow" style="z-index:1050; width:100%; max-height:220px; overflow:auto;">
+                                                <li v-for="(s, idx) in filteredToSuggestions" :key="'to-'+s.code" @mousedown.prevent="selectToSuggestion(s)" :class="['list-group-item', highlightedTo === idx ? 'active' : '']" style="cursor:pointer;">
+                                                    <strong>{{ s.code }}</strong> — {{ s.name }}
+                                                </li>
+                                            </ul>
                                         </div>
                                         <div class="col-lg-3 col-md-6 col-12">
                                             <label class="form-label search-label">Departure date</label>
@@ -704,7 +842,7 @@
                             <p>Such as private rehearsals, soundcheck access.</p>
                         </div>
                     </div>
-                     <div class="col-sm-6 col-6 col-lg-3">
+                    <div class="col-sm-6 col-6 col-lg-3">
                         <div class="info-card">
                             <div class="info-icon icon-vip">
                                 <i class="fa-solid fa-briefcase"></i>
@@ -1040,11 +1178,42 @@
 <script>
     import './../../css/common.css';
     import DefaultLayout from '@/layouts/DefaultLayout.vue';
+    import axios from 'axios';
+    import debounce from 'lodash/debounce';
 
     export default {
         name: 'Home',
         components: {
             DefaultLayout
+        },
+        data() {
+            return {
+                latitude: null,
+                longitude: null,
+                coords: null,
+            };
+        },
+        mounted() {
+            this.getLocation();
+        },
+        methods: {
+            getLocation() {
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(
+                        (position) => {
+                            this.latitude = position.coords.latitude;
+                            this.longitude = position.coords.longitude;
+                            this.coords = position.coords;
+                            // console.log("coords:", position.coords);
+                        },
+                        (error) => {
+                            console.error("Error getting location:", error);
+                        }
+                    );
+                }
+
+                console.log("Coords:", this.coords);
+            },
         }
     }
 
