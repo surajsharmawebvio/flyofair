@@ -7,6 +7,9 @@
         ref,
         computed
     } from 'vue'
+    import './../../css/common.css';
+    import axios from 'axios';
+    import debounce from 'lodash/debounce';
 
     // --- Dropdown (fake data) for the "From" search input ---
     const fromQuery = ref('');
@@ -120,6 +123,28 @@
         document.removeEventListener('click', onDocumentClick);
     });
 
+    // location refs and function (moved from options-api)
+    const latitude = ref(null);
+    const longitude = ref(null);
+    const coords = ref(null);
+
+    function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    latitude.value = position.coords.latitude;
+                    longitude.value = position.coords.longitude;
+                    coords.value = position.coords;
+                },
+                (error) => {
+                    console.error('Error getting location:', error);
+                }
+            );
+        }
+
+        console.log('Coords:', coords.value);
+    }
+
     onMounted(() => {
         // Initialize all owl carousels
         $('.tour-slider').owlCarousel({
@@ -188,6 +213,9 @@
             // Initialize traveler form functionality
             initializeTravelerForm();
         }, 100);
+
+        // Call the location fetch moved from options-api
+        getLocation();
     })
 
     // Traveler form functionality
@@ -1175,49 +1203,4 @@
     </DefaultLayout>
 </template>
 
-<script>
-    import './../../css/common.css';
-    import DefaultLayout from '@/layouts/DefaultLayout.vue';
-    import axios from 'axios';
-    import debounce from 'lodash/debounce';
 
-    export default {
-        name: 'Home',
-        components: {
-            DefaultLayout
-        },
-        data() {
-            return {
-                latitude: null,
-                longitude: null,
-                coords: null,
-            };
-        },
-        mounted() {
-            this.getLocation();
-        },
-        methods: {
-            getLocation() {
-                if (navigator.geolocation) {
-                    navigator.geolocation.getCurrentPosition(
-                        (position) => {
-                            this.latitude = position.coords.latitude;
-                            this.longitude = position.coords.longitude;
-                            this.coords = position.coords;
-                            // console.log("coords:", position.coords);
-                        },
-                        (error) => {
-                            console.error("Error getting location:", error);
-                        }
-                    );
-                }
-
-                console.log("Coords:", this.coords);
-            },
-        }
-    }
-
-</script>
-
-<style scoped>
-</style>
