@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Http;
 
 class AirportRepository implements AirportRepositoryInterface
 {
-    protected $baseUrl = "https://development.theinfinitytravel.com/api/v1/all/airport-list";
+    protected $baseUrl = "https://development.theinfinitytravel.com/api/v1/all/airport-list?input=";
 
     public function __construct($baseUrl = "https://development.theinfinitytravel.com/api/v1/all/airport-list")
     {
@@ -22,7 +22,7 @@ class AirportRepository implements AirportRepositoryInterface
 
         } if (!is_string($input['query']) && is_string($input['lat']) && is_string($input['lng'])) {
 
-            $url = str_replace(['lat=', 'lng='], ['lat=' . $input['lat'], 'lng=' . $input['lng']], $this->searchBylatLong);
+            $url = str_replace('input=', 'lat=' . $input['lat'] . '&lng=' . $input['lng'], $baseUrl);
 
         } else {
 

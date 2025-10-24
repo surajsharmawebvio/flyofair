@@ -17,6 +17,30 @@
     const highlighted = ref(-1);
     const fromWrapper = ref(null);
 
+    // Handle clicks outside the dropdown
+    function handleClickOutside(event) {
+        if (fromWrapper.value && !fromWrapper.value.contains(event.target)) {
+            showSuggestions.value = false;
+        }
+    }
+
+    // Handle input blur
+    function handleBlur() {
+        // Use setTimeout to allow click events on suggestions to fire first
+        setTimeout(() => {
+            showSuggestions.value = false;
+        }, 200);
+    }
+
+    // Add/remove click outside listener
+    onMounted(() => {
+        document.addEventListener('click', handleClickOutside);
+    });
+
+    onUnmounted(() => {
+        document.removeEventListener('click', handleClickOutside);
+    });
+
     function onFromInput() {
         highlighted.value = -1;
         showSuggestions.value = true;
@@ -30,17 +54,32 @@
             results.value = []
             return
         }
-        var latLong = localStorage.getItem('lat&long');
-        console.log({ query, latLong })
-        const response = await axios.get(`/airports/search`, {
-            params: { query, latLong }
-        })
-        results.value = response.data
-    }, 400) // 400ms debounce
+
+        const latLong = localStorage.getItem('lat&long')
+
+        try {
+            const res = await axios.get('/airports/search', {
+                params: {
+                    query,
+                    latLong
+                },
+            })
+            results.value = res.data.data // assuming { data: [ ... ] }
+            // console.log('Fetched airports:', results.value)
+        } catch (error) {
+            console.error('Error fetching airports:', error)
+        }
+    }, 400)
 
     watch(searchQuery, (newVal) => {
         fetchAirports(newVal)
     })
+
+    const selectAirport = (airport) => {
+        searchQuery.value = `${airport.airport_code} — ${airport.airport_name}`
+        results.value = [] // hide dropdown after selection
+        showSuggestions.value = false // hide dropdown
+    }
 
     function onFromKeydown(e) {
         if (!showSuggestions.value) return;
@@ -384,19 +423,27 @@
                                         <div ref="fromWrapper" class="col-lg-3 col-md-6 col-12"
                                             style="position: relative;">
                                             <label class="form-label search-label">From</label>
-                                            <input v-model="searchQuery" @input="onFromInput" @keydown="onFromKeydown"
-                                                type="text" class="form-control flight-input"
-                                                placeholder="Add departure" id="flight-search-from" autocomplete="off">
+                                            <input v-model="searchQuery" 
+                                                @input="onFromInput" 
+                                                @keydown="onFromKeydown"
+                                                @focus="showSuggestions = true"
+                                                @blur="handleBlur"
+                                                type="text" 
+                                                class="form-control flight-input"
+                                                placeholder="Add departure" 
+                                                id="flight-search-from" 
+                                                autocomplete="off">
 
                                             <!-- Suggestions dropdown -->
-                                            <ul v-if="showSuggestions && filteredSuggestions.length"
+                                            <ul v-if="showSuggestions && results.length > 0"
                                                 class="list-group position-absolute shadow"
-                                                style="z-index:1050; width:100%; max-height:220px; overflow:auto;">
-                                                <li v-for="(s, idx) in filteredSuggestions" :key="s.code"
-                                                    @mousedown.prevent="selectSuggestion(s)"
-                                                    :class="['list-group-item', highlighted === idx ? 'active' : '']"
-                                                    style="cursor:pointer;">
-                                                    <strong>{{ s.code }}</strong> — {{ s.name }}
+                                                style="width:100%; max-height:220px; z-index:1050;">
+                                                <li v-for="(airport, index) in results" 
+                                                    :key="index"
+                                                    class="list-group-item" 
+                                                    style="cursor:pointer;"
+                                                    @mousedown.prevent="selectAirport(airport)">
+                                                    <strong>{{ airport.airport_code }}</strong> — {{ airport.airport_name }}
                                                 </li>
                                             </ul>
                                         </div>
@@ -408,14 +455,29 @@
                                                 placeholder="Add destination" id="flight-search-to" autocomplete="off">
 
                                             <!-- To Suggestions dropdown -->
-                                            <ul v-if="showToSuggestions && filteredToSuggestions.length"
-                                                class="list-group position-absolute shadow"
-                                                style="z-index:1050; width:100%; max-height:220px; overflow:auto;">
-                                                <li v-for="(s, idx) in filteredToSuggestions" :key="'to-'+s.code"
-                                                    @mousedown.prevent="selectToSuggestion(s)"
-                                                    :class="['list-group-item', highlightedTo === idx ? 'active' : '']"
-                                                    style="cursor:pointer;">
-                                                    <strong>{{ s.code }}</strong> — {{ s.name }}
+                                            <ul class="list-group position-absolute shadow"
+                                                style="width:100%; max-height:220px;">
+                                                <li class="list-group-item" style="cursor:pointer;">
+                                                    <strong>JFK</strong> — New York John F. Kennedy International
+                                                    Airport
+                                                </li>
+                                                <li class="list-group-item" style="cursor:pointer;">
+                                                    <strong>LAX</strong> — Los Angeles International Airport
+                                                </li>
+                                                <li class="list-group-item" style="cursor:pointer;">
+                                                    <strong>ORD</strong> — Chicago O'Hare International Airport
+                                                </li>
+                                                <li class="list-group-item" style="cursor:pointer;">
+                                                    <strong>LHR</strong> — London Heathrow Airport
+                                                </li>
+                                                <li class="list-group-item" style="cursor:pointer;">
+                                                    <strong>DXB</strong> — Dubai International Airport
+                                                </li>
+                                                <li class="list-group-item" style="cursor:pointer;">
+                                                    <strong>SIN</strong> — Singapore Changi Airport
+                                                </li>
+                                                <li class="list-group-item" style="cursor:pointer;">
+                                                    <strong>HKG</strong> — Hong Kong International Airport
                                                 </li>
                                             </ul>
                                         </div>
