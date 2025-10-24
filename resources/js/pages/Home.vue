@@ -1,6 +1,6 @@
 <script setup>
 import DefaultLayout from '@/layouts/DefaultLayout.vue'
-import { onMounted, onUnmounted, ref, watch } from 'vue'
+import { onMounted, onUnmounted, onBeforeUnmount, ref, watch, shallowRef, computed } from 'vue'
 import './../../css/common.css'
 import axios from 'axios'
 import debounce from 'lodash/debounce'
@@ -8,8 +8,8 @@ import debounce from 'lodash/debounce'
 // Refs for both search inputs
 const searchQuery = ref('')
 const toQuery = ref('')
-const results = ref([])
-const toResults = ref([])
+const results = shallowRef([])
+const toResults = shallowRef([])
 
 // UI state
 const showSuggestions = ref(false)
@@ -19,8 +19,27 @@ const highlightedTo = ref(-1)
 const fromWrapper = ref(null)
 const toWrapper = ref(null)
 
+// Cache for geolocation
+let cachedLatLong = null
+
+// Request controllers for cancellation
+let fromAbortController = null
+let toAbortController = null
+
+// Cache blur timeouts
+let fromBlurTimeout = null
+let toBlurTimeout = null
+
+// Get cached or fetch lat/long from localStorage
+const getLatLong = () => {
+    if (cachedLatLong === null) {
+        cachedLatLong = localStorage.getItem('lat&long')
+    }
+    return cachedLatLong
+}
+
 // Unified click outside handler
-function handleClickOutside(event) {
+const handleClickOutside = (event) => {
     const target = event.target
     if (fromWrapper.value && !fromWrapper.value.contains(target)) {
         showSuggestions.value = false
@@ -30,15 +49,18 @@ function handleClickOutside(event) {
     }
 }
 
-// Unified blur handler with delay
-const createBlurHandler = (suggestionRef) => () => {
-    setTimeout(() => {
-        suggestionRef.value = false
+// Optimized blur handlers with timeout cleanup
+const handleBlur = () => {
+    fromBlurTimeout = setTimeout(() => {
+        showSuggestions.value = false
     }, 200)
 }
 
-const handleBlur = createBlurHandler(showSuggestions)
-const handleToBlur = createBlurHandler(showToSuggestions)
+const handleToBlur = () => {
+    toBlurTimeout = setTimeout(() => {
+        showToSuggestions.value = false
+    }, 200)
+}
 
 // Unified input handler
 const onFromInput = () => {
@@ -51,43 +73,74 @@ const onToInput = () => {
     showToSuggestions.value = true
 }
 
-// Unified airport fetch function
-const createFetchAirports = (resultsRef) => debounce(async (query) => {
-    if (!query) {
+// Optimized airport fetch function with request cancellation
+const createFetchAirports = (resultsRef, controllerRef) => debounce(async (query) => {
+    if (!query || query.length < 2) {
         resultsRef.value = []
         return
     }
 
-    const latLong = localStorage.getItem('lat&long')
+    // Cancel previous request if exists
+    if (controllerRef.current) {
+        controllerRef.current.abort()
+    }
+
+    // Create new abort controller
+    controllerRef.current = new AbortController()
+    const latLong = getLatLong()
 
     try {
         const res = await axios.get('/airports/search', {
-            params: { query, latLong }
+            params: { query, latLong },
+            signal: controllerRef.current.signal
         })
         resultsRef.value = res.data.data || []
     } catch (error) {
-        console.error('Error fetching airports:', error)
+        if (error.name !== 'CanceledError' && error.name !== 'AbortError') {
+            console.error('Error fetching airports:', error)
+        }
+    } finally {
+        controllerRef.current = null
     }
 }, 400)
 
-const fetchAirports = createFetchAirports(results)
-const fetchAirportsTo = createFetchAirports(toResults)
+// Create controller wrapper objects
+const fromController = { current: null }
+const toController = { current: null }
 
-// Watch queries
-watch(searchQuery, (newVal) => fetchAirports(newVal))
-watch(toQuery, (newVal) => fetchAirportsTo(newVal))
+const fetchAirports = createFetchAirports(results, fromController)
+const fetchAirportsTo = createFetchAirports(toResults, toController)
 
-// Airport selection
+// Watch queries with better control
+watch(searchQuery, (newVal) => {
+    if (newVal) {
+        fetchAirports(newVal)
+    } else {
+        results.value = []
+    }
+})
+
+watch(toQuery, (newVal) => {
+    if (newVal) {
+        fetchAirportsTo(newVal)
+    } else {
+        toResults.value = []
+    }
+})
+
+// Airport selection - optimized
 const selectAirport = (airport) => {
     searchQuery.value = `${airport.airport_code} — ${airport.airport_name}`
     results.value = []
     showSuggestions.value = false
+    highlighted.value = -1
 }
 
 const selectToAirport = (airport) => {
     toQuery.value = `${airport.airport_code} — ${airport.airport_name}`
     toResults.value = []
     showToSuggestions.value = false
+    highlightedTo.value = -1
 }
 
 // Unified keyboard navigation
@@ -120,144 +173,172 @@ const createKeydownHandler = (suggestionRef, highlightedRef, resultsRef, selectF
 const onFromKeydown = createKeydownHandler(showSuggestions, highlighted, results, selectAirport)
 const onToKeydown = createKeydownHandler(showToSuggestions, highlightedTo, toResults, selectToAirport)
 
-// Geolocation
-function getLocation() {
-    if (navigator.geolocation && !localStorage.getItem('lat&long')) {
-        navigator.geolocation.getCurrentPosition(
-            (position) => {
-                localStorage.setItem('lat&long', JSON.stringify({
-                    lat: position.coords.latitude,
-                    lon: position.coords.longitude
-                }))
-            },
-            (error) => console.error('Error getting location:', error)
-        )
+// Geolocation with better error handling
+const getLocation = () => {
+    if (!navigator.geolocation || localStorage.getItem('lat&long')) {
+        return
     }
+
+    const options = {
+        timeout: 10000,
+        maximumAge: 300000 // Cache for 5 minutes
+    }
+
+    navigator.geolocation.getCurrentPosition(
+        (position) => {
+            const locationData = JSON.stringify({
+                lat: position.coords.latitude,
+                lon: position.coords.longitude
+            })
+            localStorage.setItem('lat&long', locationData)
+            cachedLatLong = locationData
+        },
+        (error) => console.error('Error getting location:', error),
+        options
+    )
 }
 
-// Owl Carousel initialization
-function initializeCarousels() {
-    const carouselConfigs = {
-        '.tour-slider': {
-            loop: true,
-            margin: 20,
-            nav: true,
-            dots: false,
-            autoplay: true,
-            autoplayTimeout: 5000,
-            responsive: {
-                0: { items: 1 },
-                576: { items: 2 },
-                992: { items: 3 }
-            }
-        },
-        '.blog-slider': {
-            loop: true,
-            margin: 20,
-            nav: true,
-            dots: false,
-            autoplay: true,
-            autoplayTimeout: 5000,
-            responsive: {
-                0: { items: 1 },
-                768: { items: 2 },
-                992: { items: 3 }
-            }
-        },
-        '.custom-testimonial-carousel': {
-            loop: true,
-            margin: 20,
-            nav: false,
-            dots: true,
-            autoplay: true,
-            autoplayTimeout: 5000,
-            items: 1
+// Owl Carousel initialization - optimized with config reuse
+const CAROUSEL_CONFIGS = Object.freeze({
+    '.tour-slider': {
+        loop: true,
+        margin: 20,
+        nav: true,
+        dots: false,
+        autoplay: true,
+        autoplayTimeout: 5000,
+        responsive: {
+            0: { items: 1 },
+            576: { items: 2 },
+            992: { items: 3 }
         }
+    },
+    '.blog-slider': {
+        loop: true,
+        margin: 20,
+        nav: true,
+        dots: false,
+        autoplay: true,
+        autoplayTimeout: 5000,
+        responsive: {
+            0: { items: 1 },
+            768: { items: 2 },
+            992: { items: 3 }
+        }
+    },
+    '.custom-testimonial-carousel': {
+        loop: true,
+        margin: 20,
+        nav: false,
+        dots: true,
+        autoplay: true,
+        autoplayTimeout: 5000,
+        items: 1
+    }
+})
+
+const initializeCarousels = () => {
+    if (typeof $ === 'undefined' || typeof $.fn.owlCarousel === 'undefined') {
+        console.warn('OwlCarousel not loaded')
+        return
     }
 
-    Object.entries(carouselConfigs).forEach(([selector, config]) => {
-        $(selector).owlCarousel(config)
+    Object.entries(CAROUSEL_CONFIGS).forEach(([selector, config]) => {
+        const $element = $(selector)
+        if ($element.length) {
+            $element.owlCarousel(config)
+        }
     })
 }
 
-// Traveler form functionality
-function initializeTravelerForm() {
-    setTimeout(() => {
-        $('.flight-guest-input').each(function () {
-            const $input = $(this)
-            const $card = $input.siblings('.traveler-card')
+// Optimized traveler form with better event delegation
+const initializeTravelerForm = () => {
+    const $inputs = $('.flight-guest-input')
+    if (!$inputs.length) return
 
-            $input.closest('.col-lg-3, .col-lg-2').css('position', 'relative')
+    $inputs.each(function () {
+        const $input = $(this)
+        const $card = $input.siblings('.traveler-card')
+        const $parent = $input.closest('.col-lg-3, .col-lg-2')
 
-            if (!$card.length) return
+        $parent.css('position', 'relative')
 
-            const counts = { adult: 1, child: 0, infant: 0 }
-            let lastAppliedCounts = { ...counts }
-            let lastAppliedClass = 'Economy'
+        if (!$card.length) return
 
-            function updateCounts() {
-                const $countSpans = $card.find('span.common-numtext')
-                if ($countSpans.length >= 3) {
-                    $countSpans.eq(0).text(counts.adult)
-                    $countSpans.eq(1).text(counts.child)
-                    $countSpans.eq(2).text(counts.infant)
-                }
+        const counts = { adult: 1, child: 0, infant: 0 }
+        let lastAppliedCounts = { ...counts }
+        let lastAppliedClass = 'Economy'
 
-                const total = counts.adult + counts.child + counts.infant
-                const $checkedClass = $card.find('input[name="travelClass"]:checked')
-                const travelClass = $checkedClass.length ? $checkedClass.val().toUpperCase() : 'ECONOMY'
-                $input.val(`${total} passenger${total > 1 ? 's' : ''} ${travelClass}`)
-            }
+        // Cache jQuery selectors
+        const $countSpans = $card.find('span.common-numtext')
+        const $adultCount = $countSpans.eq(0)
+        const $childCount = $countSpans.eq(1)
+        const $infantCount = $countSpans.eq(2)
 
-            updateCounts()
+        const updateCounts = () => {
+            // Update count displays
+            $adultCount.text(counts.adult)
+            $childCount.text(counts.child)
+            $infantCount.text(counts.infant)
 
-            // Event handlers
-            $input.off('click.traveler').on('click.traveler', function (e) {
-                e.preventDefault()
-                e.stopPropagation()
-                $('.traveler-card').removeClass('show').hide()
-                $card.addClass('show').show()
+            // Update input value
+            const total = counts.adult + counts.child + counts.infant
+            const $checkedClass = $card.find('input[name="travelClass"]:checked')
+            const travelClass = $checkedClass.length ? $checkedClass.val().toUpperCase() : 'ECONOMY'
+            $input.val(`${total} passenger${total > 1 ? 's' : ''} ${travelClass}`)
+        }
+
+        updateCounts()
+
+        // Event handlers with better delegation
+        $input.off('click.traveler').on('click.traveler', function (e) {
+            e.preventDefault()
+            e.stopPropagation()
+            $('.traveler-card').not($card).removeClass('show').hide()
+            $card.toggleClass('show').toggle()
+            if ($card.hasClass('show')) {
                 lastAppliedCounts = { ...counts }
                 lastAppliedClass = $card.find('input[name="travelClass"]:checked').val() || 'Economy'
-            })
+            }
+        })
 
-            $card.off('click.traveler').on('click.traveler', (e) => e.stopPropagation())
+        $card.off('click.traveler').on('click.traveler', (e) => e.stopPropagation())
 
-            // Plus/Minus buttons
-            $card.find('.traveler-plus').off('click.traveler').on('click.traveler', function (e) {
+        // Plus/Minus buttons with event delegation
+        $card.off('click.traveler', '.traveler-plus, .traveler-minus')
+            .on('click.traveler', '.traveler-plus, .traveler-minus', function (e) {
                 e.preventDefault()
                 e.stopPropagation()
-                const target = $(this).attr('data-target')
-                if (target && counts.hasOwnProperty(target)) {
+
+                const $btn = $(this)
+                const target = $btn.attr('data-target')
+                const isPlus = $btn.hasClass('traveler-plus')
+
+                if (!target || !counts.hasOwnProperty(target)) return
+
+                if (isPlus) {
                     counts[target]++
-                    updateCounts()
-                }
-            })
-
-            $card.find('.traveler-minus').off('click.traveler').on('click.traveler', function (e) {
-                e.preventDefault()
-                e.stopPropagation()
-                const target = $(this).attr('data-target')
-                if (target && counts.hasOwnProperty(target)) {
+                } else {
                     if (target === 'adult' && counts[target] <= 1) return
                     if (target !== 'adult' && counts[target] <= 0) return
                     counts[target]--
-                    updateCounts()
                 }
+
+                updateCounts()
             })
 
-            $card.find('input[name="travelClass"]').off('change.traveler').on('change.traveler', updateCounts)
+        $card.find('input[name="travelClass"]').off('change.traveler').on('change.traveler', updateCounts)
 
-            // Apply/Cancel buttons
-            $card.find('#applyBtn').off('click.traveler').on('click.traveler', function (e) {
+        // Apply/Cancel buttons
+        $card.off('click.traveler', '#applyBtn, #cancelBtn')
+            .on('click.traveler', '#applyBtn', function (e) {
                 e.preventDefault()
                 e.stopPropagation()
                 lastAppliedCounts = { ...counts }
                 lastAppliedClass = $card.find('input[name="travelClass"]:checked').val() || 'Economy'
                 $card.removeClass('show').hide()
             })
-
-            $card.find('#cancelBtn').off('click.traveler').on('click.traveler', function (e) {
+            .on('click.traveler', '#cancelBtn', function (e) {
                 e.preventDefault()
                 e.stopPropagation()
                 Object.assign(counts, lastAppliedCounts)
@@ -266,43 +347,76 @@ function initializeTravelerForm() {
                 updateCounts()
                 $card.removeClass('show').hide()
             })
-        })
+    })
 
-        // Close on outside click
-        $(document).off('click.traveler').on('click.traveler', function (e) {
-            if (!$(e.target).closest('.traveler-card, .flight-guest-input').length) {
-                $('.traveler-card').removeClass('show').hide()
-            }
-        })
-    }, 50)
+    // Global click handler with delegation
+    $(document).off('click.traveler').on('click.traveler', function (e) {
+        if (!$(e.target).closest('.traveler-card, .flight-guest-input').length) {
+            $('.traveler-card').removeClass('show').hide()
+        }
+    })
+}
+
+// Initialize flatpickr
+const initializeFlatpickr = () => {
+    if (typeof flatpickr === 'undefined') return
+
+    const $dateInputs = $('.date-input')
+    if (!$dateInputs.length) return
+
+    flatpickr('.date-input', {
+        altInput: true,
+        altFormat: 'F j, Y',
+        dateFormat: 'Y-m-d',
+        minDate: 'today',
+        disableMobile: true
+    })
+}
+
+// Cleanup function
+const cleanup = () => {
+    // Cancel any pending API requests
+    if (fromController.current) fromController.current.abort()
+    if (toController.current) toController.current.abort()
+
+    // Clear timeouts
+    if (fromBlurTimeout) clearTimeout(fromBlurTimeout)
+    if (toBlurTimeout) clearTimeout(toBlurTimeout)
+
+    // Remove event listeners
+    document.removeEventListener('click', handleClickOutside)
+    $(document).off('click.traveler')
+
+    // Destroy carousels
+    Object.keys(CAROUSEL_CONFIGS).forEach(selector => {
+        const $element = $(selector)
+        if ($element.length && $element.data('owl.carousel')) {
+            $element.trigger('destroy.owl.carousel')
+        }
+    })
 }
 
 // Lifecycle hooks
 onMounted(() => {
-    document.addEventListener('click', handleClickOutside)
+    document.addEventListener('click', handleClickOutside, { passive: true })
     
-    initializeCarousels()
-
-    // Initialize date picker and traveler form
-    setTimeout(() => {
-        if (typeof flatpickr !== 'undefined' && $('.date-input').length) {
-            flatpickr('.date-input', {
-                altInput: true,
-                altFormat: 'F j, Y',
-                dateFormat: 'Y-m-d',
-                minDate: 'today',
-                disableMobile: true
-            })
-        }
-        initializeTravelerForm()
-    }, 100)
-
+    // Initialize in optimal order
     getLocation()
+    
+    // Use requestAnimationFrame for better performance
+    requestAnimationFrame(() => {
+        initializeCarousels()
+        
+        // Defer non-critical initializations
+        setTimeout(() => {
+            initializeFlatpickr()
+            initializeTravelerForm()
+        }, 50)
+    })
 })
 
-onUnmounted(() => {
-    document.removeEventListener('click', handleClickOutside)
-})
+onBeforeUnmount(cleanup)
+onUnmounted(cleanup)
 </script>
 
 <template>
