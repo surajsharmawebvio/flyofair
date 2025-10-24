@@ -5,65 +5,17 @@
         onMounted,
         onUnmounted,
         ref,
-        computed
+        computed,
+        watch
     } from 'vue'
     import './../../css/common.css';
     import axios from 'axios';
     import debounce from 'lodash/debounce';
 
-    // --- Dropdown (fake data) for the "From" search input ---
+    // --- From search input handling ---
     const showSuggestions = ref(false);
     const highlighted = ref(-1);
     const fromWrapper = ref(null);
-
-    const fakeList = [{
-            code: 'DEL',
-            name: 'Delhi, India'
-        },
-        {
-            code: 'BOM',
-            name: 'Mumbai, India'
-        },
-        {
-            code: 'JFK',
-            name: 'New York (JFK), USA'
-        },
-        {
-            code: 'LHR',
-            name: 'London Heathrow, UK'
-        },
-        {
-            code: 'DXB',
-            name: 'Dubai, UAE'
-        },
-        {
-            code: 'SYD',
-            name: 'Sydney, Australia'
-        },
-        {
-            code: 'BKK',
-            name: 'Bangkok, Thailand'
-        },
-        {
-            code: 'SIN',
-            name: 'Singapore Changi, Singapore'
-        },
-        {
-            code: 'CDG',
-            name: 'Paris Charles de Gaulle, France'
-        },
-        {
-            code: 'NRT',
-            name: 'Tokyo Narita, Japan'
-        }
-    ];
-
-    const filteredSuggestions = computed(() => {
-        const q = (searchQuery.value || '').trim().toLowerCase();
-        if (!q) return fakeList.slice(0, 5);
-        return fakeList.filter(i => i.name.toLowerCase().includes(q) || i.code.toLowerCase().includes(q)).slice(
-            0, 10);
-    });
 
     function onFromInput() {
         highlighted.value = -1;
@@ -113,45 +65,15 @@
         highlighted.value = -1;
     }
 
-    // --- Duplicate logic for the "To" input ---
+    // --- To search input handling ---
     const toQuery = ref('');
     const showToSuggestions = ref(false);
     const highlightedTo = ref(-1);
     const toWrapper = ref(null);
 
-    const filteredToSuggestions = computed(() => {
-        const q = (toQuery.value || '').trim().toLowerCase();
-        if (!q) return fakeList.slice(0, 5);
-        return fakeList.filter(i => i.name.toLowerCase().includes(q) || i.code.toLowerCase().includes(q)).slice(
-            0, 10);
-    });
-
     function onToInput() {
         highlightedTo.value = -1;
         showToSuggestions.value = true;
-    }
-
-    function onToKeydown(e) {
-        if (!showToSuggestions.value) return;
-        if (e.key === 'ArrowDown') {
-            e.preventDefault();
-            highlightedTo.value = Math.min(highlightedTo.value + 1, filteredToSuggestions.value.length - 1);
-        } else if (e.key === 'ArrowUp') {
-            e.preventDefault();
-            highlightedTo.value = Math.max(highlightedTo.value - 1, 0);
-        } else if (e.key === 'Enter') {
-            e.preventDefault();
-            if (highlightedTo.value >= 0) selectToSuggestion(filteredToSuggestions.value[highlightedTo.value]);
-            else if (filteredToSuggestions.value.length === 1) selectToSuggestion(filteredToSuggestions.value[0]);
-        } else if (e.key === 'Escape') {
-            showToSuggestions.value = false;
-        }
-    }
-
-    function selectToSuggestion(item) {
-        toQuery.value = item.name;
-        showToSuggestions.value = false;
-        highlightedTo.value = -1;
     }
 
     // Hide dropdowns when clicking outside
