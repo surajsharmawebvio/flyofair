@@ -4,14 +4,15 @@ import { createInertiaApp, Link } from '@inertiajs/vue3';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import type { DefineComponent } from 'vue';
 import { createApp, h } from 'vue';
+import $ from 'jquery';
 
 // Script
-import './../js/jquery-3.7.1.min.js';
-import './../js/bootstrap.bundle.5.3.8.min.js';
-import './../js/owl.carousel.2.3.4.min.js';
-import './../js/main.js';
-import './../js/home.js';
-import './../js/form.js';
+import './jquery-3.7.1.min.js';
+import './bootstrap';
+import './owl.carousel.2.3.4.min.js';
+import './main.js';
+import './home.js';
+import './form.js';
 import 'https://cdn.jsdelivr.net/npm/flatpickr';
 
 
@@ -30,3 +31,5 @@ createInertiaApp({
         color: '#4B5563',
     },
 });
+
+export { $ };
