@@ -12,7 +12,6 @@
     import debounce from 'lodash/debounce';
 
     // --- Dropdown (fake data) for the "From" search input ---
-    const fromQuery = ref('');
     const showSuggestions = ref(false);
     const highlighted = ref(-1);
     const fromWrapper = ref(null);
@@ -60,7 +59,7 @@
     ];
 
     const filteredSuggestions = computed(() => {
-        const q = (fromQuery.value || '').trim().toLowerCase();
+        const q = (searchQuery.value || '').trim().toLowerCase();
         if (!q) return fakeList.slice(0, 5);
         return fakeList.filter(i => i.name.toLowerCase().includes(q) || i.code.toLowerCase().includes(q)).slice(
             0, 10);
@@ -70,6 +69,26 @@
         highlighted.value = -1;
         showSuggestions.value = true;
     }
+
+    const searchQuery = ref('')
+    const results = ref([])
+
+    const fetchAirports = debounce(async (query) => {
+        if (!query) {
+            results.value = []
+            return
+        }
+        var latLong = localStorage.getItem('lat&long');
+        console.log({ query, latLong })
+        const response = await axios.get(`/airports/search`, {
+            params: { query, latLong }
+        })
+        results.value = response.data
+    }, 400) // 400ms debounce
+
+    watch(searchQuery, (newVal) => {
+        fetchAirports(newVal)
+    })
 
     function onFromKeydown(e) {
         if (!showSuggestions.value) return;
@@ -89,7 +108,7 @@
     }
 
     function selectSuggestion(item) {
-        fromQuery.value = item.name;
+        searchQuery.value = item.name;
         showSuggestions.value = false;
         highlighted.value = -1;
     }
@@ -154,34 +173,19 @@
         document.removeEventListener('click', onDocumentClick);
     });
 
-    function getLocationByIp() {
-        fetch("https://api.allorigins.win/raw?url=https://ipapi.co/json/")
-            .then(response => response.json())
-            .then(data => {
-                localStorage.setItem('lat&long', JSON.stringify({
-                    lat: data.latitude,
-                    lon: data.longitude
-                }));
-            })
-            .catch(error => console.error("Error fetching IP location:", error));
-    }
-
     function getLocation() {
         if (navigator.geolocation && !localStorage.getItem('lat&long')) {
             navigator.geolocation.getCurrentPosition(
                 (position) => {
-                    localStorage.setItem('lat&long1', JSON.stringify({
+                    localStorage.setItem('lat&long', JSON.stringify({
                         lat: position.coords.latitude,
                         lon: position.coords.longitude
                     }));
                 },
                 (error) => {
                     console.error('Error getting location:', error);
-                    getLocationByIp();
                 }
             );
-        } else {
-            getLocationByIp();
         }
     }
 
@@ -253,15 +257,10 @@
             // Initialize traveler form functionality
             initializeTravelerForm();
         }, 100);
-        
+
         // Call the location fetch moved from options-api
         // if (!localStorage.getItem('lat&long')) getLocation();
         getLocation();
-
-        setTimeout(() => {
-            console.log("Lat&Long by Geolocation:", JSON.parse(localStorage.getItem('lat&long1')));
-            console.log("Lat&Long by IP:", JSON.parse(localStorage.getItem('lat&long2')));
-        }, 4000);
     })
 
     // Traveler form functionality
@@ -463,7 +462,7 @@
                                         <div ref="fromWrapper" class="col-lg-3 col-md-6 col-12"
                                             style="position: relative;">
                                             <label class="form-label search-label">From</label>
-                                            <input v-model="fromQuery" @input="onFromInput" @keydown="onFromKeydown"
+                                            <input v-model="searchQuery" @input="onFromInput" @keydown="onFromKeydown"
                                                 type="text" class="form-control flight-input"
                                                 placeholder="Add departure" id="flight-search-from" autocomplete="off">
 
