@@ -141,6 +141,13 @@ $(document).ready(function () {
     }).on('mouseleave', function () {
         $(this).find('.small').css('color', '#000000');
     });
+
+    // route is / then class '' else 'header-fixed'
+    if (window.location.pathname === '/') {
+        $('.navbar').removeClass('header-fixed');
+    } else {
+        $('.navbar').addClass('header-fixed');
+    }
 });
 </script>
 

@@ -17,6 +17,8 @@
 import Header from '@/components/Header.vue'
 import Footer from '@/components/Footer.vue'
 import SocialBar from '@/components/SocialBar.vue'
+import $ from 'jquery';
+import './../../js/main';
 
 export default {
     name: 'DefaultLayout',

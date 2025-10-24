@@ -1,95 +1,105 @@
 // Initialize owl carousel function
 function initOwlCarousels() {
-  if ($('.owl-carousel').length) {
-    // Tour Slider
-    if ($('.tour-slider').length) {
-      $('.tour-slider').owlCarousel({
-        loop: true,
-        margin: 20,
-        nav: true,
-        dots: false,
-        autoplay: true,
-        autoplayTimeout: 5000,
-        responsive: {
-          0: { items: 1 },
-          576: { items: 2 },
-          992: { items: 3 }
+    if ($('.owl-carousel').length) {
+        // Tour Slider
+        if ($('.tour-slider').length) {
+            $('.tour-slider').owlCarousel({
+                loop: true,
+                margin: 20,
+                nav: true,
+                dots: false,
+                autoplay: true,
+                autoplayTimeout: 5000,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    576: {
+                        items: 2
+                    },
+                    992: {
+                        items: 3
+                    }
+                }
+            });
         }
-      });
-    }
 
-    // Blog Slider
-    if ($('.blog-slider').length) {
-      $('.blog-slider').owlCarousel({
-        loop: true,
-        margin: 20,
-        nav: true,
-        dots: false,
-        autoplay: true,
-        autoplayTimeout: 5000,
-        responsive: {
-          0: { items: 1 },
-          768: { items: 2 },
-          992: { items: 3 }
+        // Blog Slider
+        if ($('.blog-slider').length) {
+            $('.blog-slider').owlCarousel({
+                loop: true,
+                margin: 20,
+                nav: true,
+                dots: false,
+                autoplay: true,
+                autoplayTimeout: 5000,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    768: {
+                        items: 2
+                    },
+                    992: {
+                        items: 3
+                    }
+                }
+            });
         }
-      });
-    }
 
-    // Testimonial Carousel
-    if ($('.custom-testimonial-carousel').length) {
-      $('.custom-testimonial-carousel').owlCarousel({
-        loop: true,
-        margin: 20,
-        nav: false,
-        dots: true,
-        autoplay: true,
-        autoplayTimeout: 5000,
-        items: 1
-      });
+        // Testimonial Carousel
+        if ($('.custom-testimonial-carousel').length) {
+            $('.custom-testimonial-carousel').owlCarousel({
+                loop: true,
+                margin: 20,
+                nav: false,
+                dots: true,
+                autoplay: true,
+                autoplayTimeout: 5000,
+                items: 1
+            });
+        }
     }
-  }
 }
 
 $(document).ready(function () {
-  // Initialize carousels
-  initOwlCarousels();
+    // Initialize carousels
+    initOwlCarousels();
 
-  // $(window).scroll(function () {
-  //   if ($(window).scrollTop() >= 10) {
-  //     $(".navbar").addClass("header-fixed");
-  //   } else {
-  //     $(".navbar").removeClass("header-fixed");
-  //   }
-  // });
-});
+    // $(window).scroll(function () {
+    //   if ($(window).scrollTop() >= 10) {
+    //     $(".navbar").addClass("header-fixed");
+    //   } else {
+    //     $(".navbar").removeClass("header-fixed");
+    //   }
+    // });
 
-$(document).ready(function () {
-  // Check if any element with class 'date-input' exists
-  if ($(".date-input").length) {
-    // Initialize Flatpickr
-    flatpickr(".date-input", {
-      altInput: true,       // nice formatted text
-      altFormat: "F j, Y",  // e.g., Oct 21, 2024
-      dateFormat: "Y-m-d",  // value sent to backend
-      minDate: "today",     // disable past dates
-      disableMobile: true,  // always use custom calendar
-    });
-  }
+    // Check if any element with class 'date-input' exists
+    if ($(".date-input").length) {
+        // Initialize Flatpickr
+        flatpickr(".date-input", {
+            altInput: true, // nice formatted text
+            altFormat: "F j, Y", // e.g., Oct 21, 2024
+            dateFormat: "Y-m-d", // value sent to backend
+            minDate: "today", // disable past dates
+            disableMobile: true, // always use custom calendar
+        });
+    }
 });
 
 function togglePassword(inputId, toggleIcon) {
-  const passwordInput = document.getElementById(inputId);
-  const isPassword = passwordInput.type === "password";
+    const passwordInput = document.getElementById(inputId);
+    const isPassword = passwordInput.type === "password";
 
-  passwordInput.type = isPassword ? "text" : "password";
-  toggleIcon.classList.toggle("bi-eye");
-  toggleIcon.classList.toggle("bi-eye-slash");
+    passwordInput.type = isPassword ? "text" : "password";
+    toggleIcon.classList.toggle("bi-eye");
+    toggleIcon.classList.toggle("bi-eye-slash");
 }
 
 // Create scroll to top button HTML and inject into page
 (function () {
-  // Create button HTML
-  const scrollTopHTML = `
+    // Create button HTML
+    const scrollTopHTML = `
         <div class="topscroll-button-container">
             <button class="topscroll-main-button" id="topscrollBtn" aria-label="Scroll to top">
                 <i class="fas fa-arrow-up topscroll-icon"></i>
@@ -97,8 +107,8 @@ function togglePassword(inputId, toggleIcon) {
         </div>
     `;
 
-  // Create styles
-  const scrollTopStyles = `
+    // Create styles
+    const scrollTopStyles = `
         <style>
             .topscroll-button-container {
                 position: fixed;
@@ -163,42 +173,42 @@ function togglePassword(inputId, toggleIcon) {
         </style>
     `;
 
-  // Inject styles into head
-  document.head.insertAdjacentHTML("beforeend", scrollTopStyles);
+    // Inject styles into head
+    document.head.insertAdjacentHTML("beforeend", scrollTopStyles);
 
-  // Inject button into body
-  document.body.insertAdjacentHTML("beforeend", scrollTopHTML);
+    // Inject button into body
+    document.body.insertAdjacentHTML("beforeend", scrollTopHTML);
 
-  // Get the button element
-  const topscrollBtn = document.getElementById("topscrollBtn");
+    // Get the button element
+    const topscrollBtn = document.getElementById("topscrollBtn");
 
-  // Show/hide button based on scroll position
-  window.addEventListener("scroll", function () {
-    if (window.pageYOffset > 300) {
-      topscrollBtn.classList.add("topscroll-visible");
-    } else {
-      topscrollBtn.classList.remove("topscroll-visible");
-    }
-  });
-
-  // Smooth scroll to top when button is clicked
-  topscrollBtn.addEventListener("click", function () {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
+    // Show/hide button based on scroll position
+    window.addEventListener("scroll", function () {
+        if (window.pageYOffset > 300) {
+            topscrollBtn.classList.add("topscroll-visible");
+        } else {
+            topscrollBtn.classList.remove("topscroll-visible");
+        }
     });
-  });
+
+    // Smooth scroll to top when button is clicked
+    topscrollBtn.addEventListener("click", function () {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+        });
+    });
 })();
 
 // Floating Call Button - Pure JavaScript
 (function () {
-  // Create Font Awesome link
-  const faLink = document.createElement("link");
-  document.head.appendChild(faLink);
+    // Create Font Awesome link
+    const faLink = document.createElement("link");
+    document.head.appendChild(faLink);
 
-  // Create styles
-  const style = document.createElement("style");
-  style.textContent = `
+    // Create styles
+    const style = document.createElement("style");
+    style.textContent = `
         .floating-call-btn {
             position: fixed;
             bottom: 20px;
@@ -295,25 +305,25 @@ function togglePassword(inputId, toggleIcon) {
             }
         }
     `;
-  document.head.appendChild(style);
+    document.head.appendChild(style);
 
-  // Create button HTML
-  const callBtn = document.createElement("a");
-  callBtn.href = "#travelExpertModal"; // Replace with your phone number
-  callBtn.className = "floating-call-btn";
-  callBtn.setAttribute("data-bs-toggle", "modal");
-  callBtn.innerHTML = `
+    // Create button HTML
+    const callBtn = document.createElement("a");
+    callBtn.href = "#travelExpertModal"; // Replace with your phone number
+    callBtn.className = "floating-call-btn";
+    callBtn.setAttribute("data-bs-toggle", "modal");
+    callBtn.innerHTML = `
 <i class="fa-solid fa-headset"></i>
     `;
 
-  // Add to body when DOM is ready
-  if (document.body) {
-    document.body.appendChild(callBtn);
-  } else {
-    document.addEventListener("DOMContentLoaded", function () {
-      document.body.appendChild(callBtn);
-    });
-  }
+    // Add to body when DOM is ready
+    if (document.body) {
+        document.body.appendChild(callBtn);
+    } else {
+        document.addEventListener("DOMContentLoaded", function () {
+            document.body.appendChild(callBtn);
+        });
+    }
 })();
 
 // ==============================
@@ -392,7 +402,7 @@ document.head.appendChild(style);
 
 // Ensure loader displays immediately before rendering
 document.addEventListener("DOMContentLoaded", () => {
-  loaderWrapper.style.display = "flex";
+    loaderWrapper.style.display = "flex";
 });
 
 // Loader visible duration
@@ -400,8 +410,8 @@ const loaderDuration = 1500; // 1.5 seconds
 
 // Hide loader after page load + delay
 window.addEventListener("load", () => {
-  setTimeout(() => {
-    loaderWrapper.classList.add("hidden");
-    setTimeout(() => loaderWrapper.remove(), 600);
-  }, loaderDuration);
+    setTimeout(() => {
+        loaderWrapper.classList.add("hidden");
+        setTimeout(() => loaderWrapper.remove(), 600);
+    }, loaderDuration);
 });
