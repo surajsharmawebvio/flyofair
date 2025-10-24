@@ -1,6 +1,6 @@
 <script setup>
 import DefaultLayout from '@/layouts/DefaultLayout.vue'
-import { onMounted, onUnmounted, ref, watch } from 'vue'
+import { onMounted, onUnmounted, ref, watch, nextTick } from 'vue'
 import './../../css/common.css'
 import axios from 'axios'
 import debounce from 'lodash/debounce'
@@ -18,6 +18,10 @@ const highlighted = ref(-1)
 const highlightedTo = ref(-1)
 const fromWrapper = ref(null)
 const toWrapper = ref(null)
+
+// Prevent redundant fetches when setting input programmatically
+let suppressFromWatch = false
+let suppressToWatch = false
 
 // Unified click outside handler
 function handleClickOutside(event) {
@@ -51,40 +55,79 @@ const onToInput = () => {
     showToSuggestions.value = true
 }
 
-// Unified airport fetch function
-const createFetchAirports = (resultsRef) => debounce(async (query) => {
-    if (!query) {
-        resultsRef.value = []
-        return
-    }
+// Unified airport fetch function with caching and request cancellation
+const createFetchAirports = (resultsRef) => {
+    const cache = new Map()
+    let abortController = null
 
-    const latLong = localStorage.getItem('lat&long')
+    const fetcher = debounce(async (rawQuery) => {
+        const query = String(rawQuery || '').trim()
+        if (!query) {
+            resultsRef.value = []
+            return
+        }
 
-    try {
-        const res = await axios.get('/airports/search', {
-            params: { query, latLong }
-        })
-        resultsRef.value = res.data.data || []
-    } catch (error) {
-        console.error('Error fetching airports:', error)
-    }
-}, 400)
+        const latLong = localStorage.getItem('lat&long') || ''
+        const cacheKey = `${query.toLowerCase()}|${latLong}`
+
+        if (cache.has(cacheKey)) {
+            resultsRef.value = cache.get(cacheKey)
+            return
+        }
+
+        if (abortController) abortController.abort()
+        abortController = new AbortController()
+
+        try {
+            const res = await axios.get('/airports/search', {
+                params: { query, latLong },
+                signal: abortController.signal
+            })
+            const data = (res && res.data && res.data.data) ? res.data.data : []
+            cache.set(cacheKey, data)
+            resultsRef.value = data
+        } catch (error) {
+            // Ignore cancellations; surface other errors minimally
+            const code = error && (error.code || error.name || error.message)
+            if (code === 'ERR_CANCELED' || code === 'CanceledError' || code === 'AbortError' || code === 'canceled') {
+                return
+            }
+            // console.error('Error fetching airports:', error)
+        }
+    }, 300)
+
+    return fetcher
+}
 
 const fetchAirports = createFetchAirports(results)
 const fetchAirportsTo = createFetchAirports(toResults)
 
-// Watch queries
-watch(searchQuery, (newVal) => fetchAirports(newVal))
-watch(toQuery, (newVal) => fetchAirportsTo(newVal))
+// Watch queries (guard against programmatic updates)
+watch(searchQuery, (newVal) => {
+    if (suppressFromWatch) {
+        suppressFromWatch = false
+        return
+    }
+    fetchAirports(newVal)
+})
+watch(toQuery, (newVal) => {
+    if (suppressToWatch) {
+        suppressToWatch = false
+        return
+    }
+    fetchAirportsTo(newVal)
+})
 
 // Airport selection
 const selectAirport = (airport) => {
+    suppressFromWatch = true
     searchQuery.value = `${airport.airport_code} — ${airport.airport_name}`
     results.value = []
     showSuggestions.value = false
 }
 
 const selectToAirport = (airport) => {
+    suppressToWatch = true
     toQuery.value = `${airport.airport_code} — ${airport.airport_name}`
     toResults.value = []
     showToSuggestions.value = false
@@ -135,173 +178,197 @@ function getLocation() {
     }
 }
 
-// Owl Carousel initialization
-function initializeCarousels() {
-    const carouselConfigs = {
-        '.tour-slider': {
-            loop: true,
-            margin: 20,
-            nav: true,
-            dots: false,
-            autoplay: true,
-            autoplayTimeout: 5000,
-            responsive: {
-                0: { items: 1 },
-                576: { items: 2 },
-                992: { items: 3 }
-            }
-        },
-        '.blog-slider': {
-            loop: true,
-            margin: 20,
-            nav: true,
-            dots: false,
-            autoplay: true,
-            autoplayTimeout: 5000,
-            responsive: {
-                0: { items: 1 },
-                768: { items: 2 },
-                992: { items: 3 }
-            }
-        },
-        '.custom-testimonial-carousel': {
-            loop: true,
-            margin: 20,
-            nav: false,
-            dots: true,
-            autoplay: true,
-            autoplayTimeout: 5000,
-            items: 1
+// Owl Carousel configuration and lifecycle-safe init/destroy
+const CAROUSEL_CONFIGS = {
+    '.tour-slider': {
+        loop: true,
+        margin: 20,
+        nav: true,
+        dots: false,
+        autoplay: true,
+        autoplayTimeout: 5000,
+        responsive: {
+            0: { items: 1 },
+            576: { items: 2 },
+            992: { items: 3 }
         }
+    },
+    '.blog-slider': {
+        loop: true,
+        margin: 20,
+        nav: true,
+        dots: false,
+        autoplay: true,
+        autoplayTimeout: 5000,
+        responsive: {
+            0: { items: 1 },
+            768: { items: 2 },
+            992: { items: 3 }
+        }
+    },
+    '.custom-testimonial-carousel': {
+        loop: true,
+        margin: 20,
+        nav: false,
+        dots: true,
+        autoplay: true,
+        autoplayTimeout: 5000,
+        items: 1
     }
+}
 
-    Object.entries(carouselConfigs).forEach(([selector, config]) => {
-        $(selector).owlCarousel(config)
+function initializeCarousels() {
+    Object.entries(CAROUSEL_CONFIGS).forEach(([selector, config]) => {
+        const $el = $(selector)
+        if (!$el.length) return
+        // Skip if already initialized
+        if ($el.hasClass('owl-loaded') || $el.data('owl.carousel')) return
+        $el.owlCarousel(config)
     })
 }
 
-// Traveler form functionality
-function initializeTravelerForm() {
-    setTimeout(() => {
-        $('.flight-guest-input').each(function () {
-            const $input = $(this)
-            const $card = $input.siblings('.traveler-card')
+function destroyCarousels() {
+    Object.keys(CAROUSEL_CONFIGS).forEach((selector) => {
+        const $el = $(selector)
+        if ($el.data('owl.carousel')) {
+            $el.trigger('destroy.owl.carousel')
+        }
+    })
+}
 
-            $input.closest('.col-lg-3, .col-lg-2').css('position', 'relative')
+// Traveler form functionality (idempotent init)
+async function initializeTravelerForm() {
+    await nextTick()
 
-            if (!$card.length) return
+    $('.flight-guest-input').each(function () {
+        const $input = $(this)
+        const $card = $input.siblings('.traveler-card')
 
-            const counts = { adult: 1, child: 0, infant: 0 }
-            let lastAppliedCounts = { ...counts }
-            let lastAppliedClass = 'Economy'
+        $input.closest('.col-lg-3, .col-lg-2').css('position', 'relative')
 
-            function updateCounts() {
-                const $countSpans = $card.find('span.common-numtext')
-                if ($countSpans.length >= 3) {
-                    $countSpans.eq(0).text(counts.adult)
-                    $countSpans.eq(1).text(counts.child)
-                    $countSpans.eq(2).text(counts.infant)
-                }
+        if (!$card.length) return
 
-                const total = counts.adult + counts.child + counts.infant
-                const $checkedClass = $card.find('input[name="travelClass"]:checked')
-                const travelClass = $checkedClass.length ? $checkedClass.val().toUpperCase() : 'ECONOMY'
-                $input.val(`${total} passenger${total > 1 ? 's' : ''} ${travelClass}`)
+        const counts = { adult: 1, child: 0, infant: 0 }
+        let lastAppliedCounts = { ...counts }
+        let lastAppliedClass = 'Economy'
+
+        function updateCounts() {
+            const $countSpans = $card.find('span.common-numtext')
+            if ($countSpans.length >= 3) {
+                $countSpans.eq(0).text(counts.adult)
+                $countSpans.eq(1).text(counts.child)
+                $countSpans.eq(2).text(counts.infant)
             }
 
-            updateCounts()
+            const total = counts.adult + counts.child + counts.infant
+            const $checkedClass = $card.find('input[name="travelClass"]:checked')
+            const travelClass = $checkedClass.length ? $checkedClass.val().toUpperCase() : 'ECONOMY'
+            $input.val(`${total} passenger${total > 1 ? 's' : ''} ${travelClass}`)
+        }
 
-            // Event handlers
-            $input.off('click.traveler').on('click.traveler', function (e) {
-                e.preventDefault()
-                e.stopPropagation()
-                $('.traveler-card').removeClass('show').hide()
-                $card.addClass('show').show()
-                lastAppliedCounts = { ...counts }
-                lastAppliedClass = $card.find('input[name="travelClass"]:checked').val() || 'Economy'
-            })
+        updateCounts()
 
-            $card.off('click.traveler').on('click.traveler', (e) => e.stopPropagation())
+        // Event handlers
+        $input.off('click.traveler').on('click.traveler', function (e) {
+            e.preventDefault()
+            e.stopPropagation()
+            $('.traveler-card').removeClass('show').hide()
+            $card.addClass('show').show()
+            lastAppliedCounts = { ...counts }
+            lastAppliedClass = $card.find('input[name="travelClass"]:checked').val() || 'Economy'
+        })
 
-            // Plus/Minus buttons
-            $card.find('.traveler-plus').off('click.traveler').on('click.traveler', function (e) {
-                e.preventDefault()
-                e.stopPropagation()
-                const target = $(this).attr('data-target')
-                if (target && counts.hasOwnProperty(target)) {
-                    counts[target]++
-                    updateCounts()
-                }
-            })
+        $card.off('click.traveler').on('click.traveler', (e) => e.stopPropagation())
 
-            $card.find('.traveler-minus').off('click.traveler').on('click.traveler', function (e) {
-                e.preventDefault()
-                e.stopPropagation()
-                const target = $(this).attr('data-target')
-                if (target && counts.hasOwnProperty(target)) {
-                    if (target === 'adult' && counts[target] <= 1) return
-                    if (target !== 'adult' && counts[target] <= 0) return
-                    counts[target]--
-                    updateCounts()
-                }
-            })
-
-            $card.find('input[name="travelClass"]').off('change.traveler').on('change.traveler', updateCounts)
-
-            // Apply/Cancel buttons
-            $card.find('#applyBtn').off('click.traveler').on('click.traveler', function (e) {
-                e.preventDefault()
-                e.stopPropagation()
-                lastAppliedCounts = { ...counts }
-                lastAppliedClass = $card.find('input[name="travelClass"]:checked').val() || 'Economy'
-                $card.removeClass('show').hide()
-            })
-
-            $card.find('#cancelBtn').off('click.traveler').on('click.traveler', function (e) {
-                e.preventDefault()
-                e.stopPropagation()
-                Object.assign(counts, lastAppliedCounts)
-                const $oldRadio = $card.find(`input[name="travelClass"][value="${lastAppliedClass}"]`)
-                if ($oldRadio.length) $oldRadio.prop('checked', true)
+        // Plus/Minus buttons
+        $card.find('.traveler-plus').off('click.traveler').on('click.traveler', function (e) {
+            e.preventDefault()
+            e.stopPropagation()
+            const target = $(this).attr('data-target')
+            if (target && Object.prototype.hasOwnProperty.call(counts, target)) {
+                counts[target]++
                 updateCounts()
-                $card.removeClass('show').hide()
-            })
-        })
-
-        // Close on outside click
-        $(document).off('click.traveler').on('click.traveler', function (e) {
-            if (!$(e.target).closest('.traveler-card, .flight-guest-input').length) {
-                $('.traveler-card').removeClass('show').hide()
             }
         })
-    }, 50)
+
+        $card.find('.traveler-minus').off('click.traveler').on('click.traveler', function (e) {
+            e.preventDefault()
+            e.stopPropagation()
+            const target = $(this).attr('data-target')
+            if (target && Object.prototype.hasOwnProperty.call(counts, target)) {
+                if (target === 'adult' && counts[target] <= 1) return
+                if (target !== 'adult' && counts[target] <= 0) return
+                counts[target]--
+                updateCounts()
+            }
+        })
+
+        $card.find('input[name="travelClass"]').off('change.traveler').on('change.traveler', updateCounts)
+
+        // Apply/Cancel buttons
+        $card.find('#applyBtn').off('click.traveler').on('click.traveler', function (e) {
+            e.preventDefault()
+            e.stopPropagation()
+            lastAppliedCounts = { ...counts }
+            lastAppliedClass = $card.find('input[name="travelClass"]:checked').val() || 'Economy'
+            $card.removeClass('show').hide()
+        })
+
+        $card.find('#cancelBtn').off('click.traveler').on('click.traveler', function (e) {
+            e.preventDefault()
+            e.stopPropagation()
+            Object.assign(counts, lastAppliedCounts)
+            const $oldRadio = $card.find(`input[name="travelClass"][value="${lastAppliedClass}"]`)
+            if ($oldRadio.length) $oldRadio.prop('checked', true)
+            updateCounts()
+            $card.removeClass('show').hide()
+        })
+    })
+
+    // Close on outside click
+    $(document).off('click.traveler').on('click.traveler', function (e) {
+        if (!$(e.target).closest('.traveler-card, .flight-guest-input').length) {
+            $('.traveler-card').removeClass('show').hide()
+        }
+    })
 }
 
 // Lifecycle hooks
-onMounted(() => {
+onMounted(async () => {
     document.addEventListener('click', handleClickOutside)
-    
+
     initializeCarousels()
 
-    // Initialize date picker and traveler form
-    setTimeout(() => {
-        if (typeof flatpickr !== 'undefined' && $('.date-input').length) {
-            flatpickr('.date-input', {
+    // Initialize date picker and traveler form without timeouts
+    await nextTick()
+    if (typeof flatpickr !== 'undefined' && $('.date-input').length) {
+        $('.date-input').each(function () {
+            if (this._flatpickr) return
+            flatpickr(this, {
                 altInput: true,
                 altFormat: 'F j, Y',
                 dateFormat: 'Y-m-d',
                 minDate: 'today',
                 disableMobile: true
             })
-        }
-        initializeTravelerForm()
-    }, 100)
+        })
+    }
+    initializeTravelerForm()
 
     getLocation()
 })
 
 onUnmounted(() => {
     document.removeEventListener('click', handleClickOutside)
+    $(document).off('click.traveler')
+    // Destroy date pickers if present
+    if (typeof flatpickr !== 'undefined') {
+        $('.date-input').each(function () {
+            if (this._flatpickr) this._flatpickr.destroy()
+        })
+    }
+    // Destroy carousels
+    destroyCarousels()
 })
 </script>
 
