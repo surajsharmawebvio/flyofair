@@ -28,21 +28,7 @@ export default defineConfig(({mode}) => {
             formVariants: true,
         }),
     ],
-    base: isProduction ? '/public/build/' : '/',
-    server: {
-        // For local development with Laravel served at http://localhost:8000
-        // bind to localhost only and advertise localhost as the origin
-        host: 'localhost',
-        port: 5173,
-        cors: true,
-        strictPort: true,
-        origin: 'http://localhost:5173',
-        hmr: {
-            host: 'localhost',
-            port: 5173,
-            protocol: 'ws'
-        }
-    },
+    base: isProduction ? '/build/' : '/',
     build: {
         manifest: true,
         outDir: 'public/build/',

@@ -14,7 +14,7 @@
         <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" />
 
         @inertiaHead
-        @vite(['resources/js/app.ts', "resources/js/pages/{$page['component']}.vue", 'resources/css/app.css'])
+        @vite(['resources/js/app.ts', "resources/js/pages/{$page['component']}.vue"])
         <style>
             a, h1, h2, h3, h4, h5, h6, p {
                 text-decoration: none;

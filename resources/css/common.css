@@ -416,12 +416,12 @@ button.common-btn:focus:not(:focus-visible),
     border-radius: 16px;
     background-position: center;
     background-repeat: no-repeat;
-    background-image: url(../images/bg-slider.png);
+    /* background-image: url(../images/bg-slider.png); */
     width: 100%;
     background-size: cover;
 }
 .card-banner-slide.offercard2 .card-image {
-    background-image: url(../images/offer2.jpg);
+    /* background-image: url(../images/offer2.jpg); */
     opacity: 0.5;
 }
 .card-banner-slide.offercard2 .box-button,
@@ -448,7 +448,7 @@ button.common-btn:focus:not(:focus-visible),
     color: rgba(var(--main-color), 1);
 }
 .card-banner-slide.offercard3 .card-image {
-    background-image: url(../images/bg-slider2.png);
+    /* background-image: url(../images/bg-slider2.png); */
 }
 .card-banner-slide .card-info {
     position: absolute;

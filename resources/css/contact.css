@@ -79,8 +79,8 @@
 
 /* Newsletter box */
 .custom-newsletter-box {
-  background: #6a8a8b url("../images/contact/contact.jpg") center/cover
-    no-repeat;
+  /* background: #6a8a8b url("../images/contact/contact.jpg") center/cover */
+    /* no-repeat; */
   border-radius: 20px;
   padding: 2rem;
   color: #fff;
