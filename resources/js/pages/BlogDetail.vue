@@ -23,8 +23,8 @@
                             <h1 class="blogtitle-heading">Best cruise near me</h1>
                             <nav aria-label="breadcrumb" class="breadcrumb-wrap">
                                 <ol class="breadcrumb mb-0">
-                                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                                    <li class="breadcrumb-item"><a href="blog.html">Blog</a></li>
+                                    <li class="breadcrumb-item"><Link href="/">Home</Link></li>
+                                    <li class="breadcrumb-item"><Link href="/blog">Blog</Link></li>
                                     <li class="breadcrumb-item active" aria-current="page">Best cruise near me</li>
                                 </ol>
                             </nav>

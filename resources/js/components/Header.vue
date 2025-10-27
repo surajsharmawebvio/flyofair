@@ -75,9 +75,9 @@ watch(() => currentPath.value, () => {
                         <!-- Normal links -->
                         <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
                         <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
-                        <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+                        <li class="nav-item"><Link class="nav-link" href="/blog">Blog</Link></li>
                         <li class="nav-item"><a class="nav-link" href="#">Articulos</a></li>
-                        <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+                        <li class="nav-item"><Link class="nav-link" href="contact">Contact Us</Link></li>
                     </ul>
 
                     <!-- Call info -->

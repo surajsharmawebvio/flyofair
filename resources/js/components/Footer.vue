@@ -242,7 +242,7 @@ import { Link } from '@inertiajs/vue3'
                 <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
                 <li class="nav-item"><a class="nav-link" href="sitemap.html">Sitemap</a></li>
                 <li class="nav-item"><a class="nav-link" href="author.html">Author</a></li>
-                <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+                <li class="nav-item"><Link class="nav-link" href="blog">Blog</Link></li>
                 <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
             </ul>
             <!-- Call info -->
