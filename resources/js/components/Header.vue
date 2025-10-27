@@ -1,11 +1,37 @@
 <script setup>
 import { Link, usePage } from '@inertiajs/vue3'
-import { route } from 'ziggy-js';
-import LanguageDropdown from '@/components/LanguageDropdown.vue';
+import { onMounted, watch, ref } from 'vue'
+import $ from 'jquery'
+import LanguageDropdown from '@/components/LanguageDropdown.vue'
 
-const page = usePage();
-const isActive = (path) => page.url === path;
+const page = usePage()
+const isActive = (path) => page.url === path
+const currentPath = ref('')
 
+const toggleNavbarClass = () => {
+  if (window.location.pathname === '/') {
+    $('.navbar').removeClass('header-fixed')
+  } else {
+    $('.navbar').addClass('header-fixed')
+  }
+  currentPath.value = window.location.pathname
+}
+
+onMounted(() => {
+  toggleNavbarClass()
+  
+  // Initialize jQuery event handlers
+  $('.travel-call').on('mouseenter', function () {
+    $(this).find('.small').css('color', '#ffffff')
+  }).on('mouseleave', function () {
+    $(this).find('.small').css('color', '#000000')
+  })
+})
+
+// Watch for route changes to toggle navbar class
+watch(() => currentPath.value, () => {
+  toggleNavbarClass()
+})
 </script>
 
 <template>
@@ -21,10 +47,10 @@ const isActive = (path) => page.url === path;
                         <span class="navbar-toggler-icon bar-2"></span>
                         <span class="navbar-toggler-icon bar-3"></span>
                     </button>
-                    <a href="index.html" class="navbar-brand travel-logo d-flex align-items-center">
-                        <img src="images/logo.webp" alt="logo" class="me-2 normallogo">
-                        <img src="images/logo.webp" alt="logo" class="me-2 stickylogo">
-                    </a>
+                    <Link href="/" class="navbar-brand travel-logo d-flex align-items-center">
+                        <img src="/images/logo.webp" alt="logo" class="me-2 normallogo">
+                        <img src="/images/logo.webp" alt="logo" class="me-2 stickylogo">
+                    </Link>
                 </div>
                 <!-- Reservation button (desktop) -->
                 <div class="d-lg-none ms-auto me-2 mobbtsec">
@@ -131,24 +157,6 @@ const isActive = (path) => page.url === path;
 
 <script>
 import './../../css/common.css';
-export default {
-    name: 'Header',
-}
-$(document).ready(function () {
-    // Sticky Header
-    $('.travel-call').on('mouseenter', function () {
-        $(this).find('.small').css('color', '#ffffff');
-    }).on('mouseleave', function () {
-        $(this).find('.small').css('color', '#000000');
-    });
-
-    // route is / then class '' else 'header-fixed'
-    if (window.location.pathname === '/') {
-        $('.navbar').removeClass('header-fixed');
-    } else {
-        $('.navbar').addClass('header-fixed');
-    }
-});
 </script>
 
 <style scoped>

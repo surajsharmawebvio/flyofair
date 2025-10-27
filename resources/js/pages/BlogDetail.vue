@@ -2,7 +2,7 @@
     <DefaultLayout>
        <section class="innerbanner-section">
             <div class="innerbannerbg">
-                <img src="images/blogbanner.jpg" alt="">
+                <img src="/images/blogbanner.jpg" alt="">
             </div>
             <!-- <div class="container">
                     <div class="row align-items-center justify-content-center">
@@ -33,16 +33,16 @@
                     <div class="col-lg-7 col-md-7 col-12">
                         <article class="post-detail-container">
                             <div class="post-featured-image">
-                                <img src="images/blogbigbanner.jpg" alt="Paris cityscape with Eiffel Tower">
+                                <img src="/images/blogbigbanner.jpg" alt="Paris cityscape with Eiffel Tower">
                             </div>
 
                             <div class="post-content-wrapper">
                                 <div class="post-meta-header">
                                     <div class="post-author-info">
-                                        <a href="#"><img src="images/tw.png" alt="Bryan Bradfield"></a>
-                                        <a href="#"><img src="images/facebook.png" alt="Bryan Bradfield"></a>
-                                        <a href="#"><img src="images/pint.png" alt="Bryan Bradfield"></a>
-                                        <a href="#"><img src="images/share.png" alt="Bryan Bradfield"></a>
+                                        <a href="#"><img src="/images/tw.png" alt="Bryan Bradfield"></a>
+                                        <a href="#"><img src="/images/facebook.png" alt="Bryan Bradfield"></a>
+                                        <a href="#"><img src="/images/pint.png" alt="Bryan Bradfield"></a>
+                                        <a href="#"><img src="/images/share.png" alt="Bryan Bradfield"></a>
                                     </div>
                                 </div>
 
@@ -240,7 +240,7 @@
                                     <!-- Author Profile -->
                                     <div class="author-profile-content-box">
                                         <div class="author-profile-image-wrapper">
-                                            <img src="images/Author-Profile.png" alt="Alice Walker"
+                                            <img src="/images/Author-Profile.png" alt="Alice Walker"
                                                 class="author-photo-element">
                                         </div>
 
@@ -317,7 +317,7 @@
                                 <div class="related-posts-list">
                                     <div class="related-post-card">
                                         <div class="related-post-thumbnail">
-                                            <img src="images/bloglist1.png" alt="Post thumbnail">
+                                            <img src="/images/bloglist1.png" alt="Post thumbnail">
                                         </div>
                                         <div class="related-post-details">
                                             <h4 class="related-post-title">Step-wise Detailed Guide on Hawaiian
@@ -363,7 +363,7 @@
                                     </div>
                                     <div class="related-post-card">
                                         <div class="related-post-thumbnail">
-                                            <img src="images/bloglist1.png" alt="Post thumbnail">
+                                            <img src="/images/bloglist1.png" alt="Post thumbnail">
                                         </div>
                                         <div class="related-post-details">
                                             <h4 class="related-post-title">Step-wise Detailed Guide on Hawaiian
@@ -377,7 +377,7 @@
                                     </div>
                                     <div class="related-post-card">
                                         <div class="related-post-thumbnail">
-                                            <img src="images/bloglist1.png" alt="Post thumbnail">
+                                            <img src="/images/bloglist1.png" alt="Post thumbnail">
                                         </div>
                                         <div class="related-post-details">
                                             <h4 class="related-post-title">Step-wise Detailed Guide on Hawaiian
@@ -391,7 +391,7 @@
                                     </div>
                                     <div class="related-post-card">
                                         <div class="related-post-thumbnail">
-                                            <img src="images/bloglist1.png" alt="Post thumbnail">
+                                            <img src="/images/bloglist1.png" alt="Post thumbnail">
                                         </div>
                                         <div class="related-post-details">
                                             <h4 class="related-post-title">Step-wise Detailed Guide on Hawaiian

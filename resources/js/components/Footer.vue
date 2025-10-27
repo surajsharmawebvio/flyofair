@@ -10,7 +10,7 @@ import { Link } from '@inertiajs/vue3'
                     <!-- <div class="col-xxl-3 col-xl-3 col-lg-2 col-sm-12 col-12">
                         <div class="footer-box">
                             <div class="footer-logo">
-                                <img src="images/logo.webp" alt="" class="img-fluid">
+                                <img src="/images/logo.webp" alt="" class="img-fluid">
                             </div>
                             <div class="common-para">
                                 <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Animi, suscipit non. Porro,
@@ -23,19 +23,19 @@ import { Link } from '@inertiajs/vue3'
                             <h5 class="foot-title">Quick Link</h5>
                             <ul class="foot-list">
                                 <li>
-                                    <a href="index.html" aria-current="page">Home</a>
+                                    <Link href="/" aria-current="page">Home</Link>
                                 </li>
                                 <li>
-                                    <a href="about.html" aria-current="page">About Us</a>
+                                    <Link href="/about" aria-current="page">About Us</Link>
                                 </li>
                                 <li>
-                                    <a href="contact.html">Contact Us</a>
+                                    <Link href="/contact">Contact Us</Link>
                                 </li>
                                 <li>
-                                    <a href="author.html">Author</a>
+                                    <Link href="/author">Author</Link>
                                 </li>
                                 <li>
-                                    <a href="blog.html">Blog</a>
+                                    <Link href="/blog">Blog</Link>
                                 </li>
                             </ul>
                         </div>
@@ -116,27 +116,27 @@ import { Link } from '@inertiajs/vue3'
                         <ul class="memberlist">
                             <li>
                                 <a href="javascript:void(0)">
-                                    <img src="images/iataabta1.png" alt="">
+                                    <img src="/images/iataabta1.png" alt="">
                                 </a>
                             </li>
                             <li>
                                 <a href="javascript:void(0)">
-                                    <img src="images/american_society.png" alt="">
+                                    <img src="/images/american_society.png" alt="">
                                 </a>
                             </li>
                             <li>
                                 <a href="javascript:void(0)">
-                                    <img src="images/Cruise-Lines-International.png" alt="">
+                                    <img src="/images/Cruise-Lines-International.png" alt="">
                                 </a>
                             </li>
                             <li>
                                 <a href="javascript:void(0)">
-                                    <img src="images/pci-compliance.png" alt="">
+                                    <img src="/images/pci-compliance.png" alt="">
                                 </a>
                             </li>
                             <li>
                                 <a href="javascript:void(0)">
-                                    <img src="images/cloudflare-logo.webp" alt="">
+                                    <img src="/images/cloudflare-logo.webp" alt="">
                                 </a>
                             </li>
                         </ul>
@@ -144,16 +144,16 @@ import { Link } from '@inertiajs/vue3'
                     <div class="col-lg-4 col-md-6 col12">
                         <ul class="paymentacceplist">
                             <li>
-                                <img src="images/Discover.png" alt="">
+                                <img src="/images/Discover.png" alt="">
                             </li>
                             <li>
-                                <img src="images/VISA.png" alt="">
+                                <img src="/images/VISA.png" alt="">
                             </li>
                             <li>
-                                <img src="images/mastercard.png" alt="">
+                                <img src="/images/mastercard.png" alt="">
                             </li>
                             <li>
-                                <img src="images/american.png" alt="">
+                                <img src="/images/american.png" alt="">
                             </li>
                         </ul>
                     </div>
@@ -229,7 +229,7 @@ import { Link } from '@inertiajs/vue3'
         aria-labelledby="offcanvasExampleLabel">
         <div class="offcanvas-header">
             <a href="index.html" class="navbar-brand travel-logo d-flex align-items-center">
-                <img src="images/logo.webp" alt="logo" class="me-2 d-block">
+                                    <img src="/images/logo.webp" alt="logo" class="me-2 d-block">
             </a>
             <button type="button" class="btn-closebt" data-bs-dismiss="offcanvas">
                 <i class="fa-solid fa-xmark"></i>
@@ -238,7 +238,7 @@ import { Link } from '@inertiajs/vue3'
         <div class="offcanvas-body">
             <ul class="navbar-nav mx-auto mb-2 mb-lg-0 travel-header">
                 <!-- Normal links -->
-                <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+                <li class="nav-item"><Link class="nav-link" :class="{ 'active': $page.url === '/' }" href="/">Home</Link></li>
                 <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
                 <li class="nav-item"><a class="nav-link" href="sitemap.html">Sitemap</a></li>
                 <li class="nav-item"><a class="nav-link" href="author.html">Author</a></li>
@@ -269,7 +269,7 @@ import { Link } from '@inertiajs/vue3'
                 </div>
                 <div class="modal-body travel-modal-body">
                     <div class="travel-expert-image">
-                        <img src="images/pngcall.jpg" alt="Travel Expert">
+                        <img src="/images/pngcall.jpg" alt="Travel Expert">
                     </div>
 
                     <ul class="travel-features-list">

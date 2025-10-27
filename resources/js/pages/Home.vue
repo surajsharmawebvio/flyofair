@@ -182,6 +182,144 @@
         }, 200);
     }
 
+    // --- Round Trip From search handling ---
+    const roundFromQuery = ref('');
+    const roundFromResults = ref([]);
+    const showRoundFromSuggestions = ref(false);
+    const highlightedRoundFrom = ref(-1);
+    const roundFromWrapper = ref(null);
+
+    const fetchRoundFromAirports = debounce(async (query) => {
+        if (!query) {
+            roundFromResults.value = [];
+            return;
+        }
+
+        const latLong = localStorage.getItem('lat&long');
+
+        try {
+            const res = await axios.get('/airports/search', {
+                params: {
+                    query,
+                    latLong
+                },
+            });
+            roundFromResults.value = res.data.data || [];
+        } catch (error) {
+            console.error('Error fetching airports (round from):', error);
+        }
+    }, 400);
+
+    watch(roundFromQuery, (newVal) => {
+        fetchRoundFromAirports(newVal);
+    });
+
+    function onRoundFromInput() {
+        highlightedRoundFrom.value = -1;
+        showRoundFromSuggestions.value = true;
+    }
+
+    function handleRoundFromBlur() {
+        setTimeout(() => {
+            showRoundFromSuggestions.value = false;
+        }, 200);
+    }
+
+    function selectRoundFromAirport(airport) {
+        roundFromQuery.value = `${airport.airport_code} — ${airport.airport_name}`;
+        roundFromResults.value = [];
+        showRoundFromSuggestions.value = false;
+    }
+
+    function onRoundFromKeydown(e) {
+        if (!showRoundFromSuggestions.value) return;
+        if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            highlightedRoundFrom.value = Math.min(highlightedRoundFrom.value + 1, roundFromResults.value.length - 1);
+        } else if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            highlightedRoundFrom.value = Math.max(highlightedRoundFrom.value - 1, 0);
+        } else if (e.key === 'Enter') {
+            e.preventDefault();
+            if (highlightedRoundFrom.value >= 0 && roundFromResults.value[highlightedRoundFrom.value]) {
+                selectRoundFromAirport(roundFromResults.value[highlightedRoundFrom.value]);
+            } else if (roundFromResults.value.length === 1) {
+                selectRoundFromAirport(roundFromResults.value[0]);
+            }
+        } else if (e.key === 'Escape') {
+            showRoundFromSuggestions.value = false;
+        }
+    }
+
+    // --- Round Trip To search handling ---
+    const roundToQuery = ref('');
+    const roundToResults = ref([]);
+    const showRoundToSuggestions = ref(false);
+    const highlightedRoundTo = ref(-1);
+    const roundToWrapper = ref(null);
+
+    const fetchRoundToAirports = debounce(async (query) => {
+        if (!query) {
+            roundToResults.value = [];
+            return;
+        }
+
+        const latLong = localStorage.getItem('lat&long');
+
+        try {
+            const res = await axios.get('/airports/search', {
+                params: {
+                    query,
+                    latLong
+                },
+            });
+            roundToResults.value = res.data.data || [];
+        } catch (error) {
+            console.error('Error fetching airports (round to):', error);
+        }
+    }, 400);
+
+    watch(roundToQuery, (newVal) => {
+        fetchRoundToAirports(newVal);
+    });
+
+    function onRoundToInput() {
+        highlightedRoundTo.value = -1;
+        showRoundToSuggestions.value = true;
+    }
+
+    function handleRoundToBlur() {
+        setTimeout(() => {
+            showRoundToSuggestions.value = false;
+        }, 200);
+    }
+
+    function selectRoundToAirport(airport) {
+        roundToQuery.value = `${airport.airport_code} — ${airport.airport_name}`;
+        roundToResults.value = [];
+        showRoundToSuggestions.value = false;
+    }
+
+    function onRoundToKeydown(e) {
+        if (!showRoundToSuggestions.value) return;
+        if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            highlightedRoundTo.value = Math.min(highlightedRoundTo.value + 1, roundToResults.value.length - 1);
+        } else if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            highlightedRoundTo.value = Math.max(highlightedRoundTo.value - 1, 0);
+        } else if (e.key === 'Enter') {
+            e.preventDefault();
+            if (highlightedRoundTo.value >= 0 && roundToResults.value[highlightedRoundTo.value]) {
+                selectRoundToAirport(roundToResults.value[highlightedRoundTo.value]);
+            } else if (roundToResults.value.length === 1) {
+                selectRoundToAirport(roundToResults.value[0]);
+            }
+        } else if (e.key === 'Escape') {
+            showRoundToSuggestions.value = false;
+        }
+    }
+
     function getLocation() {
         if (navigator.geolocation && !localStorage.getItem('lat&long')) {
             navigator.geolocation.getCurrentPosition(
@@ -734,21 +872,55 @@ function initializeTravelerForm() {
                                 <!-- Round Trip -->
                                 <div class="tab-pane fade" id="round-pane" role="tabpanel">
                                     <form class="row g-3 align-items-end flight-form-fields">
-                                        <div class="col-lg-3 col-md-6 col-12">
-                                            <label class="form-label search-label">Email</label>
-                                            <input type="text" class="form-control flight-input" placeholder="Enter email" />
+                                        <div ref="roundFromWrapper" class="col-lg-2 col-md-6 col-12" style="position: relative;">
+                                            <label class="form-label search-label">From</label>
+                                            <input 
+                                                v-model="roundFromQuery" 
+                                                @input="onRoundFromInput"
+                                                @keydown="onRoundFromKeydown"
+                                                @focus="showRoundFromSuggestions = true"
+                                                @blur="handleRoundFromBlur"
+                                                type="text" 
+                                                class="form-control flight-input" 
+                                                placeholder="Add departure"
+                                                autocomplete="off"
+                                            />
+                                            <ul v-if="showRoundFromSuggestions && roundFromResults.length > 0"
+                                                class="list-group position-absolute shadow"
+                                                style="width:100%; max-height:220px; z-index:1050;">
+                                                <li v-for="(airport, index) in roundFromResults" 
+                                                    :key="index"
+                                                    class="list-group-item" 
+                                                    style="cursor:pointer;"
+                                                    @mousedown.prevent="selectRoundFromAirport(airport)">
+                                                    <strong>{{ airport.airport_code }}</strong> — {{ airport.airport_name }}
+                                                </li>
+                                            </ul>
                                         </div>
-                                        <div class="col-lg-3 col-md-6 col-12">
-                                            <label class="form-label search-label">Phone</label>
-                                            <input type="text" id="mobile_code2" class="form-control" placeholder="Phone Number" name="name" />
-                                        </div>
-                                        <div class="col-lg-2 col-md-6 col-12">
-                                            <label class="form-label search-label">Departure from</label>
-                                            <input type="text" class="form-control flight-input" placeholder="Add departure" />
-                                        </div>
-                                        <div class="col-lg-2 col-md-6 col-12">
-                                            <label class="form-label search-label">Arrive at</label>
-                                            <input type="text" class="form-control flight-input" placeholder="Add arrival" />
+                                        <div ref="roundToWrapper" class="col-lg-2 col-md-6 col-12" style="position: relative;">
+                                            <label class="form-label search-label">To</label>
+                                            <input 
+                                                v-model="roundToQuery" 
+                                                @input="onRoundToInput"
+                                                @keydown="onRoundToKeydown"
+                                                @focus="showRoundToSuggestions = true"
+                                                @blur="handleRoundToBlur"
+                                                type="text" 
+                                                class="form-control flight-input" 
+                                                placeholder="Add arrival"
+                                                autocomplete="off"
+                                            />
+                                            <ul v-if="showRoundToSuggestions && roundToResults.length > 0"
+                                                class="list-group position-absolute shadow"
+                                                style="width:100%; max-height:220px; z-index:1050;">
+                                                <li v-for="(airport, index) in roundToResults" 
+                                                    :key="index"
+                                                    class="list-group-item" 
+                                                    style="cursor:pointer;"
+                                                    @mousedown.prevent="selectRoundToAirport(airport)">
+                                                    <strong>{{ airport.airport_code }}</strong> — {{ airport.airport_name }}
+                                                </li>
+                                            </ul>
                                         </div>
                                         <div class="col-lg-2 col-md-6 col-12">
                                             <label class="form-label search-label">Departure date</label>
