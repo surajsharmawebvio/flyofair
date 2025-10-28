@@ -40,7 +40,7 @@ import { Link } from '@inertiajs/vue3'
                             </ul>
                         </div>
                     </div>
-                    <div class="col-xxl-3 col-xl-3 col-lg-3 col-sm-6 col-12">
+                    <div class="col-xxl-3 col-xl-3 col-lg-2 col-sm-6 col-12">
                         <div class="footer-box">
                             <h5 class="foot-title">Legal</h5>
                             <ul class="foot-list">
@@ -94,7 +94,7 @@ import { Link } from '@inertiajs/vue3'
                             </ul>
                         </div>
                     </div>
-                    <div class="col-xxl-4 col-xl-4 col-lg-3 col-sm-6 col-12">
+                    <div class="col-xxl-4 col-xl-4 col-lg-5 col-sm-6 col-12">
                         <div class="footer-box">
                             <h5 class="foot-title">Subscribe to Our Newsletter</h5>
                             <small class="smalltextsec">Just sign up and we'll send you a notification by email.</small>
