@@ -87,6 +87,7 @@ $(document).ready(function () {
     }
 });
 
+// faq eyes
 function togglePassword(inputId, toggleIcon) {
     const passwordInput = document.getElementById(inputId);
     const isPassword = passwordInput.type === "password";

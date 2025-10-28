@@ -8,7 +8,7 @@
     <DefaultLayout>
         <section class="innerbanner-section">
             <div class="innerbannerbg">
-                <img src="images/banner/about-banner.jpg" alt="">
+                <img src="/images/banner/about-banner.jpg" alt="">
             </div>
             <div class="container">
                 <div class="row align-items-center justify-content-center">
@@ -30,11 +30,11 @@
                                 <div class="adventure-info-box">
                                     <p><strong>15 Years of<br>Experience</strong></p>
                                 </div>
-                                <img src="images/about/montreal_destination_banner.webp" alt="Sailing Experience"
+                                <img src="/images/about/montreal_destination_banner.webp" alt="Sailing Experience"
                                     class="adventure-sailing-img">
                             </div>
                             <div class="adventure-right">
-                                <img src="images/about/toure-3.webp" alt="Kayaking Experience"
+                                <img src="/images/about/toure-3.webp" alt="Kayaking Experience"
                                     class="adventure-kayaking-img">
                             </div>
                         </div>
@@ -184,7 +184,7 @@
                                 </a>
                             </div>
                             <div class="update-bg">
-                                <img src="images/update-bg.png" alt="img">
+                                <img src="/images/update-bg.png" alt="img">
                             </div>
                         </div>
                     </div>
@@ -194,7 +194,7 @@
 
         <section class="trevana-benefits common-section text-center">
             <div class="textureimage02">
-                <img src="images/footer-bg-1-1.png" alt="">
+                <img src="/images/footer-bg-1-1.png" alt="">
             </div>
             <div class="container">
                 <div class="section-header text-center mb-5">
@@ -208,7 +208,7 @@
                     <!-- Item 1 -->
                     <div class="col-lg-3 col-md-6 col-sm-6 col-12">
                         <div class="benefit-item">
-                            <img src="images/about/f1.png" alt="24/7 support icon" class="benefit-icon mb-3">
+                            <img src="/images/about/f1.png" alt="24/7 support icon" class="benefit-icon mb-3">
                             <h5 class="benefit-title fw-semibold">Best Price Guarantee</h5>
                             <p class="benefit-text">We offer competitive rates every time</p>
                         </div>
@@ -217,7 +217,7 @@
                     <!-- Item 2 -->
                     <div class="col-lg-3 col-md-6 col-sm-6 col-12">
                         <div class="benefit-item">
-                            <img src="images/about/f2.png" alt="Reward icon" class="benefit-icon mb-3">
+                            <img src="/images/about/f2.png" alt="Reward icon" class="benefit-icon mb-3">
                             <h5 class="benefit-title fw-semibold">Trusted by Thousands</h5>
                             <p class="benefit-text">Reliable service you can count on</p>
                         </div>
@@ -226,7 +226,7 @@
                     <!-- Item 3 -->
                     <div class="col-lg-3 col-md-6 col-sm-6 col-12">
                         <div class="benefit-item">
-                            <img src="images/about/f3.png" alt="Reviews icon" class="benefit-icon mb-3">
+                            <img src="/images/about/f3.png" alt="Reviews icon" class="benefit-icon mb-3">
                             <h5 class="benefit-title fw-semibold">Wide Range of Destinations</h5>
                             <p class="benefit-text">Wide Range of Destinations</p>
                         </div>
@@ -235,7 +235,7 @@
                     <!-- Item 4 -->
                     <div class="col-lg-3 col-md-6 col-sm-6 col-12">
                         <div class="benefit-item">
-                            <img src="images/about/f4.png" alt="Plan icon" class="benefit-icon mb-3">
+                            <img src="/images/about/f4.png" alt="Plan icon" class="benefit-icon mb-3">
                             <h5 class="benefit-title fw-semibold">Easy Booking Process</h5>
                             <p class="benefit-text">Instant and smooth reservation process</p>
                         </div>
