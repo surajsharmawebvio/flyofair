@@ -20,20 +20,20 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="blogtitle-head">
-                            <h1 class="blogtitle-heading">Best cruise near me</h1>
+                            <h1 class="blogtitle-heading">{{ blog.title }}</h1>
                             <nav aria-label="breadcrumb" class="breadcrumb-wrap">
                                 <ol class="breadcrumb mb-0">
                                     <li class="breadcrumb-item"><Link href="/">Home</Link></li>
                                     <li class="breadcrumb-item"><Link href="/blog">Blog</Link></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Best cruise near me</li>
+                                    <li class="breadcrumb-item active" aria-current="page">{{ blog.title }}</li>
                                 </ol>
                             </nav>
                         </div>
                     </div>
-                    <div class="col-lg-7 col-md-7 col-12">
+                    <div class="col-lg-8 col-md-8 col-12">
                         <article class="post-detail-container">
                             <div class="post-featured-image">
-                                <img src="/images/blogbigbanner.jpg" alt="Paris cityscape with Eiffel Tower">
+                                <img :src="blog.image" alt="Paris cityscape with Eiffel Tower">
                             </div>
 
                             <div class="post-content-wrapper">
@@ -49,222 +49,42 @@
                                 <!-- <h1 class="post-main-title">The Ultimate Guide to Solo Travel: Tips for First-Time
                                     Travelers</h1> -->
 
-                                <p class="post-intro-text">
-                                    Solo travel can be an incredibly empowering and enriching experience, offering
-                                    you
-                                    the freedom to explore the world at your own pace and make personal connections
-                                    with
-                                    different cultures. However, if it's your first time traveling solo, the idea
-                                    can be
-                                    both exciting and a bit intimidating. This guide provides essential tips to help
-                                    you
-                                    prepare for your adventure and make the most of your solo journey.
-                                </p>
-
-                                <p class="post-body-text">
-                                    When traveling solo, it's important to have a rough plan in place, especially if
-                                    it's your first time. Research your destinations in advance, and have a basic
-                                    itinerary. However, don't over-plan! Leave some room for spontaneity so you can
-                                    explore new opportunities and experiences that arise along the way. If you're
-                                    feeling anxious about traveling solo for the first time, consider starting with
-                                    a
-                                    short trip, or offline destination known for being solo traveler-friendly. Many
-                                    European cities, Southeast Asia, and parts of Latin America have well-trodden
-                                    paths
-                                    with plenty of resources for solo travelers.
-                                </p>
-                                <h3>What Is Avios Upgrade?</h3>
-                                <p class="post-body-text">
-                                    When traveling solo, it's important to have a rough plan in place, especially if
-                                    it's your first time. Research your destinations in advance, and have a basic
-                                    itinerary. However, don't over-plan! Leave some room for spontaneity so you can
-                                    explore new opportunities and experiences that arise along the way. If you're
-                                    feeling anxious about traveling solo for the first time, consider starting with
-                                    a
-                                    short trip, or offline destination known for being solo traveler-friendly. Many
-                                    European cities, Southeast Asia, and parts of Latin America have well-trodden
-                                    paths
-                                    with plenty of resources for solo travelers.
-                                </p>
-                                <h4>
-                                    British Airways Upgrade With Avios: Terms & Conditions
-                                </h4>
-                                <p class="post-body-text">
-                                    When traveling solo, it's important to have a rough plan in place, especially if
-                                    it's your first time. Research your destinations in advance, and have a basic
-                                    itinerary.</p>
-                                <ul class="post-bullet-list">
-                                    <li class="post-bullet-item">Prioritize safety by booking your first night's
-                                        accommodation before you arrive.</li>
-                                    <li class="post-bullet-item">Bring only essentials to make moving around easier
-                                        and
-                                        keep your hands free.</li>
-                                    <li class="post-bullet-item">Have a small first-aid kit with basic supplies in
-                                        case
-                                        of minor injuries or health issues.</li>
-                                </ul>
-                                <h3>What Is Avios Upgrade?</h3>
-                                <p class="post-body-text">
-                                    When traveling solo, it's important to have a rough plan in place, especially if
-                                    it's your first time. Research your destinations in advance, and have a basic
-                                    itinerary. However, don't over-plan! Leave some room for spontaneity so you can
-                                    explore new opportunities and experiences that arise along the way. If you're
-                                    feeling anxious about traveling solo for the first time, consider starting with
-                                    a
-                                    short trip, or offline destination known for being solo traveler-friendly. Many
-                                    European cities, Southeast Asia, and parts of Latin America have well-trodden
-                                    paths
-                                    with plenty of resources for solo travelers.
-                                </p>
-                                <h3>What Is Avios Upgrade?</h3>
-                                <p class="post-conclusion-text">
-                                    Solo travel is a fantastic way to grow, explore, and discover new aspects of
-                                    yourself and the world. While it may feel daunting at first, with the right
-                                    preparation, mindset, and a bit of courage, it can become one of the most
-                                    fulfilling
-                                    experiences of your life. So pack your bags, take that leap, and embrace the
-                                    adventure!
-                                </p>
-                                <h4>
-                                    British Airways Upgrade With Avios: Terms & Conditions
-                                </h4>
-                                <p class="post-body-text">
-                                    When traveling solo, it's important to have a rough plan in place, especially if
-                                    it's your first time. Research your destinations in advance, and have a basic
-                                    itinerary.</p>
-                                <ul class="post-bullet-list">
-                                    <li class="post-bullet-item"><strong>Prioritize safety: </strong> by booking your
-                                        first night's
-                                        accommodation before you arrive.</li>
-                                    <li class="post-bullet-item"><strong>Bring only: </strong> essentials to make moving
-                                        around easier
-                                        and
-                                        keep your hands free.</li>
-                                    <li class="post-bullet-item"><strong>Have a small: </strong> first-aid kit with
-                                        basic supplies in
-                                        case
-                                        of minor injuries or health issues.</li>
-                                </ul>
-                                <p class="post-body-text">
-                                    When traveling solo, it's important to have a rough plan in place, especially if
-                                    it's your first time. Research your destinations in advance, and have a basic
-                                    itinerary. However, don't over-plan! Leave some room for spontaneity so you can
-                                    explore new opportunities and experiences that arise along the way. If you're
-                                    feeling anxious about traveling solo for the first time, consider starting with
-                                    a
-                                    short trip, or offline destination known for being solo traveler-friendly. Many
-                                    European cities, Southeast Asia, and parts of Latin America have well-trodden
-                                    paths
-                                    with plenty of resources for solo travelers.
-                                </p>
-                                <h3>What Is Avios Upgrade?</h3>
-                                <p class="post-body-text">
-                                    When traveling solo, it's important to have a rough plan in place, especially if
-                                    it's your first time. Research your destinations in advance, and have a basic
-                                    itinerary. However, don't over-plan! Leave some room for spontaneity so you can
-                                    explore new opportunities and experiences that arise along the way. If you're
-                                    feeling anxious about traveling solo for the first time, consider starting with
-                                    a
-                                    short trip, or offline destination known for being solo traveler-friendly. Many
-                                    European cities, Southeast Asia, and parts of Latin America have well-trodden
-                                    paths
-                                    with plenty of resources for solo travelers.
-                                </p>
-                                <h4>
-                                    British Airways Upgrade With Avios: Terms & Conditions
-                                </h4>
-                                <p class="post-body-text">
-                                    When traveling solo, it's important to have a rough plan in place, especially if
-                                    it's your first time. Research your destinations in advance, and have a basic
-                                    itinerary.</p>
-                                <ul class="post-bullet-list">
-                                    <li class="post-bullet-item">Prioritize safety by booking your first night's
-                                        accommodation before you arrive.</li>
-                                    <li class="post-bullet-item">Bring only essentials to make moving around easier
-                                        and
-                                        keep your hands free.</li>
-                                    <li class="post-bullet-item">Have a small first-aid kit with basic supplies in
-                                        case
-                                        of minor injuries or health issues.</li>
-                                </ul>
-                                <h3>What Is Avios Upgrade?</h3>
-                                <p class="post-body-text">
-                                    When traveling solo, it's important to have a rough plan in place, especially if
-                                    it's your first time. Research your destinations in advance, and have a basic
-                                    itinerary. However, don't over-plan! Leave some room for spontaneity so you can
-                                    explore new opportunities and experiences that arise along the way. If you're
-                                    feeling anxious about traveling solo for the first time, consider starting with
-                                    a
-                                    short trip, or offline destination known for being solo traveler-friendly. Many
-                                    European cities, Southeast Asia, and parts of Latin America have well-trodden
-                                    paths
-                                    with plenty of resources for solo travelers.
-                                </p>
-                                <h3>What Is Avios Upgrade?</h3>
-                                <p class="post-conclusion-text">
-                                    Solo travel is a fantastic way to grow, explore, and discover new aspects of
-                                    yourself and the world. While it may feel daunting at first, with the right
-                                    preparation, mindset, and a bit of courage, it can become one of the most
-                                    fulfilling
-                                    experiences of your life. So pack your bags, take that leap, and embrace the
-                                    adventure!
-                                </p>
-                                <h4>
-                                    British Airways Upgrade With Avios: Terms & Conditions
-                                </h4>
-                                <p class="post-body-text">
-                                    When traveling solo, it's important to have a rough plan in place, especially if
-                                    it's your first time. Research your destinations in advance, and have a basic
-                                    itinerary.</p>
-                                <ul class="post-bullet-list">
-                                    <li class="post-bullet-item"><strong>Prioritize safety: </strong> by booking your
-                                        first night's
-                                        accommodation before you arrive.</li>
-                                    <li class="post-bullet-item"><strong>Bring only: </strong> essentials to make moving
-                                        around easier
-                                        and
-                                        keep your hands free.</li>
-                                    <li class="post-bullet-item"><strong>Have a small: </strong> first-aid kit with
-                                        basic supplies in
-                                        case
-                                        of minor injuries or health issues.</li>
-                                </ul>
-
-                                <div class="author-bio-section-container">
-                                    <!-- Section Header -->
-                                    <div class="section-heading-wrapper">
-                                        <img class="feather-icon-decoration" src="images/author-1.png" />
-                                        <h2 class="main-section-title-heading">About The Author</h2>
-                                    </div>
-
-                                    <!-- Author Profile -->
-                                    <div class="author-profile-content-box">
-                                        <div class="author-profile-image-wrapper">
-                                            <img src="/images/Author-Profile.png" alt="Alice Walker"
-                                                class="author-photo-element">
-                                        </div>
-
-                                        <div class="author-details-text-section">
-                                            <h3 class="author-full-name-title">Alice Walker</h3>
-                                            <p class="author-biography-paragraph">
-                                                Elena Porter, a passionate traveler and writer. With over 12 years of
-                                                experience in the travel industry, Elena Porter began her career as a
-                                                customer service agent for a major international airline, giving her
-                                                first-hand insight into the complexities of ticketing and passenger
-                                                support. Since joining FlyOfinder in 2019, she has specialized in
-                                                decoding complex airline policies to help travelers save money and avoid
-                                                stress. Known for her insightful advice, Elena's advice focuses on
-                                                practical, actionable strategies. She is an expert in leveraging airline
-                                                loyalty programs, navigating intricate baggage fee structures, and
-                                                finding unpublished deals using tools like the low-fare calendar.
-                                            </p>
+                                <div v-html="blog.content"></div>
+                                
+                                <!-- Add FAQ Section -->
+                                <div v-if="blog.faqs && blog.faqs.length" class="faq-section mt-5">
+                                    <h2 class="mb-4">Frequently Asked Questions</h2>
+                                    <div class="accordion" id="blogFaqAccordion">
+                                        <div class="accordion-item" v-for="(faq, index) in blog.faqs" :key="index">
+                                            <h3 class="accordion-header">
+                                                <button 
+                                                    class="accordion-button" 
+                                                    :class="{ collapsed: index !== 0 }"
+                                                    type="button" 
+                                                    data-bs-toggle="collapse" 
+                                                    :data-bs-target="'#faq-' + index"
+                                                    :aria-expanded="index === 0"
+                                                >
+                                                    {{ faq.question }}
+                                                </button>
+                                            </h3>
+                                            <div 
+                                                :id="'faq-' + index" 
+                                                class="accordion-collapse collapse" 
+                                                :class="{ show: index === 0 }"
+                                                data-bs-parent="#blogFaqAccordion"
+                                            >
+                                                <div class="accordion-body">
+                                                    {{ faq.answer }}
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+
                                 <hr>
-                                <div class="replay-formsec">
-                                    <h5 class="smalltextsec-box">Leave a Reply</h5>
-                                </div>
+                                <!-- ... existing comment form ... -->
+
                                 <h3>Any thoughts or questions? Comment below!</h3>
                                 <form action="#" class="replay-form">
                                     <div class="row">
@@ -296,7 +116,7 @@
                         </article>
                     </div>
 
-                    <div class="col-lg-5 col-md-5 col-12">
+                    <div class="col-lg-4 col-md-4 col-12">
                         <div class="sidebar-widget-wrap">
                             <div class="contact-info-cta-container">
                                 <h2 class="cta-main-heading-text">
@@ -415,12 +235,16 @@
 
 <script setup>
 import "./../../css/blog.css";
-import { onMounted } from 'vue';
+import { onMounted, defineProps } from 'vue';
 import DefaultLayout from '@/layouts/DefaultLayout.vue'
 
 const props = defineProps({
     slug: {
         type: String,
+        required: true
+    },
+    blog: {
+        type: Object,
         required: true
     }
 });
@@ -430,4 +254,34 @@ onMounted(() => {
 });
 </script>
 <style scoped>
+.faq-section {
+    background-color: #f8f9fa;
+    padding: 2rem;
+    border-radius: 8px;
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: #e7f1ff;
+    color: #0c63e4;
+    box-shadow: inset 0 -1px 0 rgba(0,0,0,.125);
+}
+
+.accordion-button:focus {
+    box-shadow: none;
+    border-color: rgba(0,0,0,.125);
+}
+
+.accordion-item {
+    border: 1px solid rgba(0,0,0,.125);
+    margin-bottom: 0.5rem;
+}
+
+.accordion-button {
+    font-weight: 500;
+}
+
+.accordion-body {
+    background-color: white;
+    padding: 1.25rem;
+}
 </style>

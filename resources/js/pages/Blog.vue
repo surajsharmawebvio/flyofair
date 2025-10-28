@@ -17,17 +17,16 @@
 
         <section class="common-section bloglist-section">
             <div class="container">
-                <div class="row">
-                    <div class="col-lg-4 col-md-6 col-12">
+                <div class="row" v-if="props.blogs.length">
+                    <div class="col-lg-4 col-md-6 col-12" v-for="blog in props.blogs" :key="blog.id">
                         <article class="blog-card-item">
                             <div class="blog-card-image">
-                                <img src="images/blog-banner.png" alt="Blog post">
+                                <img :src="blog.image" alt="Blog post">
                             </div>
                             <div class="blog-card-content">
-                                <h3 class="blog-card-title">Delta Name Change Policy After Marriage: Your Step-by-
-                                    Step Guide</h3>
+                                <h3 class="blog-card-title">{{ blog.title }}</h3>
                                 <div class="blog-card-footer">
-                                    <Link href="/blog/slug-here" class="blog-card-read-more">
+                                    <Link :href="`/blog/${blog.slug}`" class="blog-card-read-more">
                                         Read More <i class="fas fa-arrow-right"></i>
                                     </Link>
                                 </div>
@@ -65,8 +64,8 @@ import DefaultLayout from '@/layouts/DefaultLayout.vue'
 import { Link } from '@inertiajs/vue3'
 
 const props = defineProps({
-  blog: {
-    type: Object,
+  blogs: {
+    type: Array,
     required: true
   }
 })
