@@ -21,7 +21,17 @@ class BlogController extends Controller
     {
         $blog = Blog::where('slug', $slug)->where('published', true)->firstOrFail();
         $blog->image = asset('storage/' . $blog->image);
-        
-        return Inertia::render('BlogDetail', ['blog' => $blog]);
+
+        // Prepare SEO data
+        $seo = [
+            'title' => $blog->meta_title ?? $blog->title,
+            'description' => $blog->meta_description ?? substr(strip_tags($blog->content), 0, 160),
+            'keywords' => $blog->meta_keywords,
+            'canonical' => $blog->canonical_url ?? url("/blog/{$blog->slug}"),
+            'ogImage' => $blog->image,
+        ];
+
+        return Inertia::render('BlogDetail', ['blog' => $blog, 'seo' => $seo]);
     }
 }
+    

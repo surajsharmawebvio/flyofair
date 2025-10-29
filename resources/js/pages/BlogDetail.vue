@@ -1,4 +1,24 @@
 <template>
+    <Head>
+        <title>{{ seo.title }}</title>
+        <meta name="description" :content="seo.description">
+        <meta name="keywords" :content="seo.keywords">
+        <link rel="canonical" :href="seo.canonical">
+        
+        <!-- Open Graph / Social Media -->
+        <meta property="og:title" :content="seo.title">
+        <meta property="og:description" :content="seo.description">
+        <meta property="og:image" :content="seo.ogImage">
+        <meta property="og:url" :content="seo.canonical">
+        <meta property="og:type" content="article">
+        
+        <!-- Twitter Card -->
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" :content="seo.title">
+        <meta name="twitter:description" :content="seo.description">
+        <meta name="twitter:image" :content="seo.ogImage">
+    </Head>
+    
     <DefaultLayout>
        <section class="innerbanner-section">
             <div class="innerbannerbg">
@@ -237,6 +257,7 @@
 import "./../../css/blog.css";
 import { onMounted, defineProps } from 'vue';
 import DefaultLayout from '@/layouts/DefaultLayout.vue'
+import { Head } from "@inertiajs/vue3";
 
 const props = defineProps({
     slug: {
@@ -244,6 +265,10 @@ const props = defineProps({
         required: true
     },
     blog: {
+        type: Object,
+        required: true
+    },
+    seo: {
         type: Object,
         required: true
     }
