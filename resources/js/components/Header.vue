@@ -1,37 +1,45 @@
 <script setup>
-import { Link, usePage } from '@inertiajs/vue3'
-import { onMounted, watch, ref } from 'vue'
-import $ from 'jquery'
-import LanguageDropdown from '@/components/LanguageDropdown.vue'
+    import {
+        Link,
+        usePage
+    } from '@inertiajs/vue3'
+    import {
+        onMounted,
+        watch,
+        ref
+    } from 'vue'
+    import $ from 'jquery'
+    import LanguageDropdown from '@/components/LanguageDropdown.vue'
 
-const page = usePage()
-const isActive = (path) => page.url === path
-const currentPath = ref('')
+    const page = usePage()
+    const isActive = (path) => page.url === path
+    const currentPath = ref('')
 
-const toggleNavbarClass = () => {
-  if (window.location.pathname === '/') {
-    $('.navbar').removeClass('header-fixed')
-  } else {
-    $('.navbar').addClass('header-fixed')
-  }
-  currentPath.value = window.location.pathname
-}
+    const toggleNavbarClass = () => {
+        if (window.location.pathname === '/') {
+            $('.navbar').removeClass('header-fixed')
+        } else {
+            $('.navbar').addClass('header-fixed')
+        }
+        currentPath.value = window.location.pathname
+    }
 
-onMounted(() => {
-  toggleNavbarClass()
-  
-  // Initialize jQuery event handlers
-  $('.travel-call').on('mouseenter', function () {
-    $(this).find('.small').css('color', '#ffffff')
-  }).on('mouseleave', function () {
-    $(this).find('.small').css('color', '#000000')
-  })
-})
+    onMounted(() => {
+        toggleNavbarClass()
 
-// Watch for route changes to toggle navbar class
-watch(() => currentPath.value, () => {
-  toggleNavbarClass()
-})
+        // Initialize jQuery event handlers
+        $('.travel-call').on('mouseenter', function () {
+            $(this).find('.small').css('color', '#ffffff')
+        }).on('mouseleave', function () {
+            $(this).find('.small').css('color', '#000000')
+        })
+    })
+
+    // Watch for route changes to toggle navbar class
+    watch(() => currentPath.value, () => {
+        toggleNavbarClass()
+    })
+
 </script>
 
 <template>
@@ -48,20 +56,20 @@ watch(() => currentPath.value, () => {
                         <span class="navbar-toggler-icon bar-3"></span>
                     </button>
                     <Link href="/" class="navbar-brand travel-logo d-flex align-items-center">
-                        <img src="/images/logo.webp" alt="logo" class="me-2 normallogo">
-                        <img src="/images/logo.webp" alt="logo" class="me-2 stickylogo">
+                    <img src="/images/logo.webp" alt="logo" class="me-2 normallogo">
+                    <img src="/images/logo.webp" alt="logo" class="me-2 stickylogo">
                     </Link>
                 </div>
                 <!-- Reservation button (desktop) -->
                 <div class="d-lg-none ms-auto me-2 mobbtsec">
                     <div class="langselectmob">
                         <select class="form-select" aria-label="Default select example">
-                             <option selected>En</option>
+                            <option selected>En</option>
                             <option value="2">Es</option>
                         </select>
                     </div>
                     <!-- Reservation button -->
-                  <a href="tel:88 (09) 53 33 09" class="travel-call d-flex align-items-center me-0 newtravel-call">
+                    <a href="tel:88 (09) 53 33 09" class="travel-call d-flex align-items-center me-0 newtravel-call">
                         <span class="travel-call-icon me-2"><i class="bi bi-telephone"></i></span>
                         <div class="small"><strong>+88 (09) 53 33 09</strong></div>
                     </a>
@@ -70,11 +78,22 @@ watch(() => currentPath.value, () => {
                 <div class="collapse navbar-collapse" id="travelNavbar">
                     <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
                         <!-- Normal links -->
-                        <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
-                        <li class="nav-item"><Link class="nav-link" href="/blog">Blog</Link></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Articulos</a></li>
-                        <li class="nav-item"><Link class="nav-link" href="contact">Contact Us</Link></li>
+                        <li class="nav-item">
+                            <Link :class="['nav-link', isActive('/') ? 'active' : '']" href="/">Home</Link>
+                        </li>
+                        <li class="nav-item">
+                            <a :class="['nav-link', isActive('/about') ? 'active' : '']" href="about.html">About Us</a>
+                        </li>
+                        <li class="nav-item">
+                            <Link :class="['nav-link', isActive('/blog') ? 'active' : '']" href="/blog">Blog</Link>
+                        </li>
+                        <li class="nav-item">
+                            <a :class="['nav-link', isActive('/articulos') ? 'active' : '']" href="#">Articulos</a>
+                        </li>
+                        <li class="nav-item">
+                            <Link :class="['nav-link', isActive('/contact') ? 'active' : '']" href="contact">Contact Us
+                            </Link>
+                        </li>
                     </ul>
 
                     <!-- Call info -->
@@ -153,11 +172,13 @@ watch(() => currentPath.value, () => {
 </template>
 
 <script>
-import './../../css/common.css';
+    import './../../css/common.css';
+
 </script>
 
 <style scoped>
-.travel-call {
-    text-decoration: none;
-}
+    .travel-call {
+        text-decoration: none;
+    }
+
 </style>

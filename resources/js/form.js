@@ -145,7 +145,7 @@ function updateCounts() {
   if (infantEl) infantEl.textContent = counts.infant;
 
   const total = counts.adult + counts.child + counts.infant;
-  const travelClassInput = document.querySelector(
+  const travelClass  = document.querySelector(
     'input[name="travelClass"]:checked'
   );
   const travelClass = travelClassInput

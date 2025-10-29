@@ -23,7 +23,10 @@
         }
 
         const latLong = JSON.parse(localStorage.getItem('lat&long') || '{}')
-        const { lat, lng } = latLong
+        const {
+            lat,
+            lng
+        } = latLong
 
         let url = API_BASE_URL
 
@@ -187,7 +190,8 @@
     const highlightedRoundFrom = ref(-1);
     const roundFromWrapper = ref(null);
 
-    const fetchRoundFromAirports = debounce((query) => searchAirports(query, results => roundFromResults.value = results), 400)
+    const fetchRoundFromAirports = debounce((query) => searchAirports(query, results => roundFromResults.value =
+        results), 400)
 
     watch(roundFromQuery, (newVal) => {
         fetchRoundFromAirports(newVal)
@@ -237,7 +241,8 @@
     const highlightedRoundTo = ref(-1);
     const roundToWrapper = ref(null);
 
-    const fetchRoundToAirports = debounce((query) => searchAirports(query, results => roundToResults.value = results), 400)
+    const fetchRoundToAirports = debounce((query) => searchAirports(query, results => roundToResults.value = results),
+        400)
 
     watch(roundToQuery, (newVal) => {
         fetchRoundToAirports(newVal)
@@ -382,6 +387,24 @@
             // Initialize traveler form functionality
             initializeTravelerForm();
         }, 100);
+
+        document.querySelectorAll(".accordion-button").forEach((button) => {
+            const icon = button.querySelector(".icon");
+            const collapseTargetId = button.getAttribute("data-bs-target");
+            const collapseElement = document.querySelector(collapseTargetId);
+
+            // When accordion is fully shown
+            collapseElement.addEventListener("shown.bs.collapse", () => {
+                icon.classList.remove("fa-eye-slash");
+                icon.classList.add("fa-eye");
+            });
+
+            // When accordion is fully hidden
+            collapseElement.addEventListener("hidden.bs.collapse", () => {
+                icon.classList.remove("fa-eye");
+                icon.classList.add("fa-eye-slash");
+            });
+        });
     });
 
     // Traveler form functionality
