@@ -56,17 +56,14 @@ watch(() => currentPath.value, () => {
                 <div class="d-lg-none ms-auto me-2 mobbtsec">
                     <div class="langselectmob">
                         <select class="form-select" aria-label="Default select example">
-                            <option selected>English</option>
-                            <option value="2">Español</option>
+                             <option selected>En</option>
+                            <option value="2">Es</option>
                         </select>
                     </div>
                     <!-- Reservation button -->
-                    <a href="javascript:void(0)">
-                        <div class="call-icon-wrapper">
-                            <div class="call-icon-ring">
-                                <i class="fas fa-phone"></i>
-                            </div>
-                        </div>
+                  <a href="tel:88 (09) 53 33 09" class="travel-call d-flex align-items-center me-0 newtravel-call">
+                        <span class="travel-call-icon me-2"><i class="bi bi-telephone"></i></span>
+                        <div class="small"><strong>+88 (09) 53 33 09</strong></div>
                     </a>
                 </div>
                 <!-- Desktop Menu -->

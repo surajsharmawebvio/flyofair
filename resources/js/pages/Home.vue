@@ -354,6 +354,9 @@ onMounted(() => {
                 items: 2,
             },
             992: {
+                items: 3,
+            },
+              1500: {
                 items: 4,
             },
         },
@@ -872,7 +875,7 @@ function initializeTravelerForm() {
                                 <!-- Round Trip -->
                                 <div class="tab-pane fade" id="round-pane" role="tabpanel">
                                     <form class="row g-3 align-items-end flight-form-fields">
-                                        <div ref="roundFromWrapper" class="col-lg-2 col-md-6 col-12" style="position: relative;">
+                                        <div ref="roundFromWrapper" class="col-xl-2 col-lg-3 col-md-6 col-12" style="position: relative;">
                                             <label class="form-label search-label">From</label>
                                             <input 
                                                 v-model="roundFromQuery" 
@@ -897,7 +900,7 @@ function initializeTravelerForm() {
                                                 </li>
                                             </ul>
                                         </div>
-                                        <div ref="roundToWrapper" class="col-lg-2 col-md-6 col-12" style="position: relative;">
+                                        <div ref="roundToWrapper" class="col-xl-2 col-lg-3 col-md-6 col-12" style="position: relative;">
                                             <label class="form-label search-label">To</label>
                                             <input 
                                                 v-model="roundToQuery" 
@@ -922,7 +925,7 @@ function initializeTravelerForm() {
                                                 </li>
                                             </ul>
                                         </div>
-                                        <div class="col-lg-2 col-md-6 col-12">
+                                        <div class="col-xl-2 col-lg-3 col-md-6 col-12">
                                             <label class="form-label search-label">Departure date</label>
                                             <input id="Departure" type="text" class="date-input flight-input" placeholder="Departure date" readonly />
                                         </div>
@@ -930,7 +933,7 @@ function initializeTravelerForm() {
                                             <label class="form-label search-label">Return date</label>
                                             <input id="Return" type="text" class="date-input flight-input" placeholder="Return date" readonly />
                                         </div>
-                                        <div class="col-lg-3 col-12">
+                                        <div class="col-xl-3 col-lg-4 col-12">
                                             <label class="form-label search-label">Guests</label>
                                             <input
                                                 type="text"
@@ -1200,7 +1203,7 @@ function initializeTravelerForm() {
         <section class="common-section benefit-section">
             <div class="container">
                 <div class="row justify-content-center">
-                    <div class="col-lg-6 text-center">
+                    <div class="col-xl-6 col-lg-8 text-center">
                         <div class="section-header text-center">
                             <h2 class="mb-2">
                                 Our <span class="text-primary text-primarysec text-decoration-underline">Benefits</span> &amp; Key Advantages
@@ -1291,7 +1294,7 @@ function initializeTravelerForm() {
         <section class="tg-chose-area">
             <div class="container">
                 <div class="row align-items-center">
-                    <div class="col-lg-5">
+                    <div class="col-xl-5 col-lg-7">
                         <div class="tg-chose-content">
                             <div class="section-header text-start">
                                 <h2 class="mb-2">
@@ -1345,7 +1348,7 @@ function initializeTravelerForm() {
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-7">
+                    <div class="col-xl-7 col-lg-5">
                         <div class="tg-chose-right">
                             <img src="images/home/advance.png" alt="image" />
                         </div>

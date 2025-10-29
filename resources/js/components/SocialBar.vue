@@ -56,4 +56,11 @@ export default {
   border-radius: 0 5px 5px 0;
   opacity: 0.9;
 }
+
+@media(max-width:1199px){
+  .social-bar a {
+  padding: 4px;
+    font-size: 13px;
+}
+}
 </style>

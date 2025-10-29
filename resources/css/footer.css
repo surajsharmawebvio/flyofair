@@ -326,6 +326,11 @@
   .footer-box .common-para p {
     font-size: 12px;
   }
+  .smalltextsec{
+    margin-bottom: 10px;
+    display: block;
+    line-height: normal;
+  }
 }
 .smalltextsec {
   font-size: 13px;
