@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Repositories\AirportRepository;
+use App\Models\NewsLatter;
 
 class HomeController extends Controller
 {
@@ -34,5 +35,20 @@ class HomeController extends Controller
         $airports = $this->airportRepository->searchAirports($input);
 
         return response()->json($airports);
+    }
+
+    public function subscribeNewsletter(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email|unique:news_latters,email',
+        ]);
+
+        // Create a new newsletter subscription
+        NewsLatter::create([
+            'email' => $request->input('email'),
+            'is_subscribed' => true,
+        ]);
+
+        return response()->json(['message' => 'Successfully subscribed to the newsletter.']);
     }
 }

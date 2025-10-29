@@ -1,5 +1,45 @@
 <script setup>
+import { ref } from 'vue'
 import { Link } from '@inertiajs/vue3'
+import axios from 'axios'
+import Swal from 'sweetalert2'
+
+const email = ref('')
+const loading = ref(false)
+
+async function subscribe(event) {
+    // form submit prevented by @submit.prevent
+    if (!email.value) {
+        await Swal.fire({ icon: 'warning', title: 'Please enter your email.' })
+        return
+    }
+
+    loading.value = true
+    try {
+        const tokenMeta = document.head.querySelector('meta[name="csrf-token"]')
+        const headers = {}
+        if (tokenMeta) headers['X-CSRF-TOKEN'] = tokenMeta.getAttribute('content')
+
+        const res = await axios.post('/newsletter/subscribe', { email: email.value }, { headers })
+
+        await Swal.fire({ icon: 'success', title: res.data.message || 'Subscribed successfully' })
+        email.value = ''
+    } catch (err) {
+        if (err.response && err.response.status === 422 && err.response.data.errors) {
+            // validation errors
+            const firstKey = Object.keys(err.response.data.errors)[0]
+            const firstMsg = err.response.data.errors[firstKey][0]
+            await Swal.fire({ icon: 'error', title: firstMsg })
+        } else if (err.response && err.response.data && err.response.data.message) {
+            await Swal.fire({ icon: 'error', title: err.response.data.message })
+        } else {
+            await Swal.fire({ icon: 'error', title: 'Something went wrong. Please try again.' })
+        }
+    } finally {
+        loading.value = false
+    }
+}
+
 </script>
 
 <template>
@@ -98,10 +138,13 @@ import { Link } from '@inertiajs/vue3'
                         <div class="footer-box">
                             <h5 class="foot-title">Subscribe to Our Newsletter</h5>
                             <small class="smalltextsec">Just sign up and we'll send you a notification by email.</small>
-                            <form action="" class="NewsLettert-form">
+                            <form @submit.prevent="subscribe" class="NewsLettert-form">
                                 <div class="input-group">
-                                    <input type="email" class="form-control" placeholder="Your email here">
-                                    <button type="button" class="btn common-bgBtn"><span>get started</span></button>
+                                    <input v-model="email" type="email" class="form-control" placeholder="Your email here" required>
+                                    <button :disabled="loading" type="submit" class="btn common-bgBtn">
+                                        <span v-if="!loading">get started</span>
+                                        <span v-else>please wait...</span>
+                                    </button>
                                 </div>
                             </form>
                         </div>

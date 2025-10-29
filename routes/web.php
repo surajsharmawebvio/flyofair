@@ -18,3 +18,4 @@ Route::get('/about', [AboutController::class, 'index'])->name('about');
 Route::get('/author', [AuthorController::class, 'index'])->name('author');
 
 Route::get('/airports/search', [HomeController::class, 'searchAirports'])->name('airports.search');
+Route::post('/newsletter/subscribe', [HomeController::class, 'subscribeNewsletter'])->name('newsletter.subscribe');
