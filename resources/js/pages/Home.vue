@@ -11,6 +11,7 @@
     import './../../css/common.css';
     import axios from 'axios';
     import debounce from 'lodash/debounce';
+    import Swal from 'sweetalert2';
 
     const API_BASE_URL = 'https://development.theinfinitytravel.com/api/v1/all/airport-list?input='
 
@@ -334,15 +335,33 @@
             }));
         }
 
-        // TODO: Make API call with formData
+        // Make API call with formData
         axios.post('/get-quote', formData)
             .then(response => {
                 console.log('Quote request successful:', response.data);
-                // Handle success (e.g., show a success message)
+                const message = response.data.message || 'Quote request sent successfully.';
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Sent',
+                    text: message,
+                    confirmButtonText: 'OK'
+                });
+                // Optionally clear fields after success
+                // form.reset();
             })
             .catch(error => {
                 console.error('Error submitting quote request:', error);
-                // Handle error (e.g., show an error message)
+                let errMsg = 'Failed to send quote request.';
+                if (error.response && error.response.data) {
+                    if (error.response.data.message) errMsg = error.response.data.message;
+                    else if (error.response.data.errors) errMsg = Object.values(error.response.data.errors).flat().join('\n');
+                }
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: errMsg,
+                    confirmButtonText: 'OK'
+                });
             });
         
         // console.log('Submitting flight search:', formData);

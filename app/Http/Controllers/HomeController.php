@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Repositories\AirportRepository;
 use App\Models\NewsLatter;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Log;
+use Exception;
+use App\Jobs\SendGetQuoteEmails;
 
 class HomeController extends Controller
 {
@@ -59,6 +63,26 @@ class HomeController extends Controller
 
     public function getQuote(Request $request)
     {
-        dd($request->all());
+        // Basic validation
+        $validator = Validator::make($request->all(), [
+            'tripType' => 'required|in:oneway,round,multi',
+            'email' => 'required|email',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()], 422);
+        }
+
+        $data = $request->all();
+
+        try {
+            // dispatch a job to send emails (processed by queue workers)
+            SendGetQuoteEmails::dispatch($data);
+
+            return response()->json(['message' => 'Quote request queued for processing.']);
+        } catch (Exception $e) {
+            Log::error('Failed to dispatch quote email job: ' . $e->getMessage(), ['data' => $data]);
+            return response()->json(['message' => 'Failed to queue quote request.'], 500);
+        }
     }
 }
