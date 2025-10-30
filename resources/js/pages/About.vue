@@ -2,365 +2,75 @@
 <script setup>
     import "./../../css/about.css";
     import DefaultLayout from '@/layouts/DefaultLayout.vue'
+
 </script>
 
 <template>
     <DefaultLayout>
+
         <section class="innerbanner-section">
             <div class="innerbannerbg">
-                <img src="/images/banner/about-banner.jpg" alt="">
-            </div>
-            <div class="container">
-                <div class="row align-items-center justify-content-center">
-                    <div class="col-lg-10 col-12">
-                        <div class="inner-bannerbox">
-                            <h1 class="innercommon-heading" data-text="ABOUT US">About Us</h1>
-                        </div>
-                    </div>
-                </div>
+                <img src="/images/blogbanner.jpg" alt="about banner">
             </div>
         </section>
 
         <section class="common-section abouttext-section">
             <div class="container">
-                <div class="row">
-                    <div class="col-lg-6 col-md-12 col-12">
-                        <div class="adventure-experience">
-                            <div class="adventure-left">
-                                <div class="adventure-info-box">
-                                    <p><strong>15 Years of<br>Experience</strong></p>
-                                </div>
-                                <img src="/images/about/montreal_destination_banner.webp" alt="Sailing Experience"
-                                    class="adventure-sailing-img">
-                            </div>
-                            <div class="adventure-right">
-                                <img src="/images/about/toure-3.webp" alt="Kayaking Experience"
-                                    class="adventure-kayaking-img">
-                            </div>
-                        </div>
-                    </div>
+                <div class="row align-items-center">
                     <div class="col-lg-6 col-md-12 col-12">
                         <div class="section-header text-start">
-                            <h2 class="mb-2">We Are <span
-                                    class="text-primary text-primarysec text-decoration-underline"> The Best For</span>
+                            <div class="subspan">
+                                About Us
+                            </div>
+                            <h2 class="mb-2">Helping businesses
+                                deliver <span class="text-primary text-primarysec text-decoration-underline">buyer
+                                    experiences.</span>
                                 Your Travel</h2>
-                            <p class="sub-title">Blienum nhaedrum torquatos nec eul, vis detraxit periculis ex, nihil is
-                                in mei. Xei an periculaeuripidis, fincartem ei est. Dlienum phaed is in mei. Lei an
-                                Hericulaeuripidis, hincartem ei est.</p>
+                            <p class="sub-title">Vidyard is the leading video messaging and asynchronous
+                                communications platform for go-to-market teams. Millions of sales
+                                professionals and more than 250,000 go-to-market teams use Vidyard’s
+                                AI-powered video messaging, video hosting, and digital sales rooms to
+                                connect with more prospects and generate more revenue.</p>
+                            <a href="#" class="btn common-bgBtn">Get the latest updates</a>
+                        </div>
+                    </div>
 
-                            <p class="sub-title">Blienum nhaedrum torquatos nec eul, vis detraxit periculis ex, nihil is
-                                in mei. Xei an
-                                periculaeuripidis, fincartem ei est. Dlienum phaed is in mei. Lei an Hericulaeuripidis,
-                                hincartem ei est. Blienum nhaedrum torquatos nec e </p>
-                            <ul class="about-list1">
-                                <li>Mei an periculaeuripidis.</li>
-                                <li>Blienum nhaedrum tortos.</li>
-                                <li>torquatos nec euls vis.</li>
-                                <li>Lorem ipsum dolor sit am.</li>
-                                <li>Dlienum phaed is in meis.</li>
-                                <li>peric uripidis, fincartem.</li>
-                                <li>pericu laeuri pidis Mei sm.
-                                </li>
-                            </ul>
+                    <div class="col-lg-6 col-md-12 col-12">
+                        <div class="adventure-experience">
+                            <img src="/images/about/about-image-1.jpg" alt="">
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-
-        <section class="common-section offer-section">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-4 col-md-6 col-12">
-                        <a href="javascript:void(0)" class="card-banner-slide">
-                            <div class="card-image"></div>
-                            <div class="card-info">
-                                <h6>We Make Every<br>Trips Special</h6>
-                                <div class="box-button"><button class="btn offerbtn" href="#">View More <i
-                                            class="fa-solid fa-arrow-right-long"></i>
-                                    </button></div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-12">
-                        <a href="javascript:void(0)" class="card-banner-slide offercard2">
-                            <div class="card-image"></div>
-                            <div class="card-info">
-                                <h6>We Make Every<br>Trips Special</h6>
-                                <div class="box-button"><button class="btn offerbtn" href="#">View More <i
-                                            class="fa-solid fa-arrow-right-long"></i>
-                                    </button></div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-12">
-                        <a href="javascript:void(0)" class="card-banner-slide offercard3">
-                            <div class="card-image"></div>
-                            <div class="card-info">
-                                <h6>We Make Every<br>Trips Special</h6>
-                                <div class="box-button"><button class="btn offerbtn" href="#">View More <i
-                                            class="fa-solid fa-arrow-right-long"></i>
-                                    </button></div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
+        <section class="ai-section common-section">
+            <div class="backtexbox">
+                <!-- <img src="images/group-doodle.png" alt=""> -->
             </div>
-        </section>
-
-        <section class="custom-counter-section common-section">
             <div class="container">
-                <div class="row align-items-center">
-                    <!-- Left Text Content -->
-                    <div class="col-lg-6">
-                        <div class="section-header custom-counter-title text-start">
-                            <h2>We Are <span class="text-primary text-primarysec text-decoration-underline"> The Best
-                                    For</span>
-                                Your Travel</h2>
-                            <p class="custom-counter-desc mb-1">
-                                Leverage the power of an integrated identity management solution. Focus on your business
-                                prospects, not on mundane administrative chores. Gain complete control, stay compliant,
-                                minimize operational overheads, and herald the age of digital agility.
+                <div class="row align-items-center justify-content-between">
+                    <!-- Left Text -->
+                    <div class="col-md-5 mb-4 mb-md-0">
+                        <h2 class="ai-title">
+                            Built for go-to-market teams, powered by AI
+                        </h2>
+                    </div>
+
+                    <!-- Right Box -->
+                    <div class="col-md-6">
+                        <div class="ai-box">
+                            <p>
+                                We believe in the power of video to foster human connections and empower
+                                go-to-market professionals to deliver trusted and productive buyer experiences.
                             </p>
-                            <p class="custom-counter-desc">
-                                Leverage the power of an integrated identity management solution. Focus on your business
-                                prospects, not on mundane administrative chores. Gain complete control, stay compliant,
-                                minimize operational overheads, and herald the age of digital agility.
+                            <p>
+                                We also believe in the power of AI to help sales and marketing teams unlock
+                                their creativity and connect with more prospects than ever before.
                             </p>
-                            <div class="custom-counter-buttons">
-                                <a href="#" class="btn common-bgBtn"> <i class="fa-solid fa-phone"></i> Try the solution
-                                    today</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Right Counters -->
-                    <div class="col-lg-6">
-                        <div class="row g-3">
-                            <div class="col-6">
-                                <div class="custom-counter-box gradient-orange">
-                                    <div class="custom-counter-number" data-target="500" data-unit="k">0</div>
-                                    <p>Reduction in identity management</p>
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="custom-counter-box gradient-red">
-                                    <div class="custom-counter-number" data-target="980" data-unit="k">0</div>
-                                    <p>Improvement in Employee satisfaction</p>
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="custom-counter-box gradient-red">
-                                    <div class="custom-counter-number" data-target="970" data-unit="k">0</div>
-                                    <p>Fewer security related incidences</p>
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="custom-counter-box gradient-orange">
-                                    <div class="custom-counter-number" data-target="300" data-unit="k">0</div>
-                                    <p>Lightning fast authentication</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="update-section common-section">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="update-sec">
-                            <div class="section-header text-center">
-                                <h2 class="mb-1">Make Your Next Journey The Best One!</h2>
-                                <p class="sub-title">Reach out to us for making travelling happen now to some of the
-                                    best places
-                                    of the globe. </p>
-                            </div>
-                            <div class="input-group justify-content-center mx-auto">
-                                <a href="tel:(844) 933-1926" class="linkbtn">
-                                    (844) 933-1926
-                                </a>
-                            </div>
-                            <div class="update-bg">
-                                <img src="/images/update-bg.png" alt="img">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="trevana-benefits common-section text-center">
-            <div class="textureimage02">
-                <img src="/images/footer-bg-1-1.png" alt="">
-            </div>
-            <div class="container">
-                <div class="section-header text-center mb-5">
-                    <h2 class="mb-2">Travel Benefits <span
-                            class="text-primary text-primarysec text-decoration-underline">You
-                            Can Trust</span>
-                    </h2>
-                </div>
-                <div class="row g-4">
-
-                    <!-- Item 1 -->
-                    <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-                        <div class="benefit-item">
-                            <img src="/images/about/f1.png" alt="24/7 support icon" class="benefit-icon mb-3">
-                            <h5 class="benefit-title fw-semibold">Best Price Guarantee</h5>
-                            <p class="benefit-text">We offer competitive rates every time</p>
-                        </div>
-                    </div>
-
-                    <!-- Item 2 -->
-                    <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-                        <div class="benefit-item">
-                            <img src="/images/about/f2.png" alt="Reward icon" class="benefit-icon mb-3">
-                            <h5 class="benefit-title fw-semibold">Trusted by Thousands</h5>
-                            <p class="benefit-text">Reliable service you can count on</p>
-                        </div>
-                    </div>
-
-                    <!-- Item 3 -->
-                    <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-                        <div class="benefit-item">
-                            <img src="/images/about/f3.png" alt="Reviews icon" class="benefit-icon mb-3">
-                            <h5 class="benefit-title fw-semibold">Wide Range of Destinations</h5>
-                            <p class="benefit-text">Wide Range of Destinations</p>
-                        </div>
-                    </div>
-
-                    <!-- Item 4 -->
-                    <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-                        <div class="benefit-item">
-                            <img src="/images/about/f4.png" alt="Plan icon" class="benefit-icon mb-3">
-                            <h5 class="benefit-title fw-semibold">Easy Booking Process</h5>
-                            <p class="benefit-text">Instant and smooth reservation process</p>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <section class="common-section faq-section">
-            <div class="container">
-                <div class="row align-items-center justify-content-center">
-                    <div class="col-12">
-                        <div class="section-header text-center">
-                            <h2 class="mb-2">Everything You Wonder <span
-                                    class="text-primary text-primarysec text-decoration-underline">About
-                                    Cruises:</span>
-                                Answered Here</h2>
-                        </div>
-                        <div class="accordion custom-accordion" id="accordionExample">
-
-                            <!-- Accordion Item 1 -->
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="headingOne">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                                        <span>What is included in the cruise package?</span>
-                                        <i class="icon fas fa-eye-slash ms-auto"></i>
-                                    </button>
-                                </h2>
-                                <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
-                                    data-bs-parent="#accordionExample">
-                                    <div class="accordion-body">
-                                        <p class="sub-title">
-                                            Our cruise packages typically include accommodation, meals, entertainment,
-                                            and access to onboard activities. Some packages also include shore
-                                            excursions and drinks. Check your specific package details.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Accordion Item 2 -->
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="headingTwo">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                        <span>What should I pack for the cruise?</span>
-                                        <i class="icon fas fa-eye-slash ms-auto"></i>
-                                    </button>
-                                </h2>
-                                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
-                                    data-bs-parent="#accordionExample">
-                                    <div class="accordion-body">
-                                        <p class="sub-title">
-                                            Bring comfortable clothing for daytime activities, formal wear for dinners,
-                                            swimwear, toiletries, and any personal items you need. Don’t forget your
-                                            travel documents and a hat or sunscreen for sunny days.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Accordion Item 2 -->
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="headingThree">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#collapseThree" aria-expanded="false"
-                                        aria-controls="collapseThree">
-                                        <span>What happens if the cruise is cancelled?</span>
-                                        <i class="icon fas fa-eye-slash ms-auto"></i>
-                                    </button>
-                                </h2>
-                                <div id="collapseThree" class="accordion-collapse collapse"
-                                    aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                                    <div class="accordion-body">
-                                        <p class="sub-title">
-                                            In case of cancellation due to unforeseen circumstances, we offer full
-                                            refunds or the option to reschedule your cruise. We will inform you promptly
-                                            and assist with your preferred option to ensure a smooth process.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Accordion Item 2 -->
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="headingFour">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#collapseFour" aria-expanded="false"
-                                        aria-controls="collapseFour">
-                                        <span>Do I need a visa to join the cruise?</span>
-                                        <i class="icon fas fa-eye-slash ms-auto"></i>
-                                    </button>
-                                </h2>
-                                <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
-                                    data-bs-parent="#accordionExample">
-                                    <div class="accordion-body">
-                                        <p class="sub-title">
-                                            Visa requirements depend on your nationality and the cruise itinerary. We
-                                            recommend checking the visa policies for each port of call and consulting
-                                            with your local embassy before booking.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Accordion Item 2 -->
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="headingFive">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#collapseFive" aria-expanded="false"
-                                        aria-controls="collapseFive">
-                                        <span>What safety measures are in place on board?</span>
-                                        <i class="icon fas fa-eye-slash ms-auto"></i>
-                                    </button>
-                                </h2>
-                                <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive"
-                                    data-bs-parent="#accordionExample">
-                                    <div class="accordion-body">
-                                        <p class="sub-title">
-                                            Safety is our top priority. We adhere to strict health protocols,
-                                            including regular sanitation, safety drills, and trained crew members to
-                                            ensure a secure and protected environment.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
+                            <p>
+                                We’re committed to helping our customers grow their revenue faster by
+                                unleashing the potential of video and AI.
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -369,12 +79,221 @@
     </DefaultLayout>
 </template>
 <style scoped>
-.about-section {
-    padding: 40px 0;
-    text-align: center;
-}
-.about-title {
-    font-size: 36px;
-    margin-bottom: 20px;
-}
+    /* <<<<<< ************* ABOUT TEXT SECTION CSS START **************** >>>>>> */
+    .abouttext-section {
+        background-color: rgba(var(--black-color), 0.03);
+    }
+
+    /* Main container */
+    .adventure-experience {
+        display: flex;
+        gap: 20px;
+        justify-content: end;
+    }
+
+    /* Left column */
+    .adventure-left {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    /* Info box */
+    .adventure-info-box {
+        background-color: rgba(var(--second-color), 1);
+        color: rgba(var(--black-color), 1);
+        padding: 40px 20px;
+        border-top-left-radius: 50px;
+        font-size: 18px;
+        font-weight: 700;
+        text-align: center;
+    }
+
+    .adventure-info-box p {
+        margin-bottom: 0;
+    }
+
+    /* Sailing image */
+    .adventure-sailing-img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        border-bottom-left-radius: 50px;
+    }
+
+    /* Right column */
+    .adventure-right {
+        flex: 1;
+    }
+
+    /* Kayaking image */
+    .adventure-kayaking-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-top-right-radius: 50px;
+        border-bottom-right-radius: 50px;
+    }
+
+    .about-list1 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        margin: 0px;
+        padding: 0px;
+        list-style: none;
+    }
+
+    .about-list1 li {
+        position: relative;
+        padding-left: 25px;
+        margin-bottom: 5px;
+        margin-right: 15px;
+        font-size: 14px;
+        color: rgba(var(--black-color), 1);
+        font-weight: 500;
+    }
+
+    .about-list1 li::before {
+        content: "";
+        width: 6px;
+        height: 6px;
+        background-color: rgba(var(--second-color), 1);
+        position: absolute;
+        left: 5px;
+        top: 10px;
+        outline: 5px solid rgba(var(--second-color), 0.4);
+        border-radius: 50%;
+    }
+
+    /* <<<<<< ************* ABOUT TEXT SECTION CSS END  **************** >>>>>> */
+    .ai-section {
+        background-color: #f7f9fc;
+    }
+
+    .ai-title {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #1c1f26;
+        line-height: 1.3;
+    }
+
+    .ai-box {
+        border: 1px solid #222;
+        border-radius: 10px;
+        background: #fff;
+        padding: 25px 30px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        font-size: 0.95rem;
+        line-height: 1.6;
+        color: #333;
+    }
+
+    .ai-box p:not(:last-child) {
+        margin-bottom: 10px;
+    }
+
+    @media (max-width: 1366px) {
+        .custom-counter-box {
+            min-height: 186px;
+        }
+    }
+
+    @media (max-width: 1024px) {
+        .benefit-title {
+            font-size: 16px;
+        }
+
+        .benefit-text {
+            font-size: 13px;
+        }
+    }
+
+    @media (max-width: 991px) {
+        .adventure-sailing-img {
+            height: 150px;
+        }
+
+        .adventure-info-box {
+            padding: 20px;
+        }
+
+        .adventure-experience {
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .section-header {
+            margin-bottom: 20px;
+        }
+    }
+
+    @media (max-width: 767px) {
+        .custom-counter-number {
+            font-size: 30px;
+        }
+
+        .custom-counter-box {
+            min-height: 100%;
+        }
+
+        .custom-accordion .accordion-button {
+            font-size: 14px;
+        }
+    }
+
+    @media (max-width: 580px) {
+        .about-list1 li {
+            font-size: 12px;
+            line-height: normal;
+        }
+
+        .common-section {
+            padding: 30px 0px;
+        }
+
+        .adventure-info-box {
+            font-size: 14px;
+        }
+
+        .custom-counter-desc {
+            font-size: 13px;
+        }
+
+        .custom-counter-box p {
+            font-size: 13px;
+        }
+
+        .custom-counter-number {
+            font-size: 24px;
+        }
+
+        .custom-counter-box {
+            padding: 10px;
+        }
+
+        .adventure-left {
+            gap: 10px;
+        }
+    }
+
+    @media (max-width: 380px) {
+        .custom-accordion .accordion-button {
+            font-size: 13px;
+        }
+    }
+
+    .backtexbox {
+        position: absolute;
+        width: 30%;
+        height: 200%;
+        left: 0;
+        top: 0px;
+    }
+
+    .backtexbox img {
+        object-fit: contain;
+        height: 405px;
+    }
+
 </style>
