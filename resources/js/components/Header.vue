@@ -9,11 +9,20 @@
         ref
     } from 'vue'
     import $ from 'jquery'
-    import LanguageDropdown from '@/components/LanguageDropdown.vue'
+    import { router } from '@inertiajs/vue3';
 
     const page = usePage()
     const isActive = (path) => page.url === path
     const currentPath = ref('')
+    const selectedLang = ref('en')
+
+    const handleLanguageChange = (event) => {
+        const newLang = event.target.value
+        selectedLang.value = newLang
+        
+        localStorage.setItem('language', newLang);
+        router.visit('/');
+    }
 
     const toggleNavbarClass = () => {
         if (window.location.pathname === '/') {
@@ -33,6 +42,8 @@
         }).on('mouseleave', function () {
             $(this).find('.small').css('color', '#000000')
         })
+
+        selectedLang.value = localStorage.getItem('language') || 'en';
     })
 
     // Watch for route changes to toggle navbar class
@@ -63,9 +74,10 @@
                 <!-- Reservation button (desktop) -->
                 <div class="d-lg-none ms-auto me-2 mobbtsec">
                     <div class="langselectmob">
-                        <select class="form-select" aria-label="Default select example">
-                            <option selected>En</option>
-                            <option value="2">Es</option>
+                        <select class="form-select" aria-label="Language selector" v-model="selectedLang"
+                            @change="handleLanguageChange">
+                            <option value="en">En</option>
+                            <option value="es">Es</option>
                         </select>
                     </div>
                     <!-- Reservation button -->
@@ -79,18 +91,20 @@
                     <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
                         <!-- Normal links -->
                         <li class="nav-item">
-                            <Link :class="['nav-link', isActive('/') ? 'active' : '']" href="/">Home</Link>
+                            <Link class="nav-link" :class="{ active: isActive('/') }" href="/">
+                            Home
+                            </Link>
                         </li>
-                        <li class="nav-item">
-                            <a :class="['nav-link', isActive('/about') ? 'active' : '']" href="about.html">About Us</a>
+                        <li class="nav-item" v-if="selectedLang === 'en'">
+                            <Link :class="['nav-link', isActive('/about') ? 'active' : '']" href="/about">About Us</Link>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item" v-if="selectedLang === 'en'">
                             <Link :class="['nav-link', isActive('/blog') ? 'active' : '']" href="/blog">Blog</Link>
                         </li>
-                        <li class="nav-item">
-                            <a :class="['nav-link', isActive('/articulos') ? 'active' : '']" href="#">Articulos</a>
+                        <li class="nav-item" v-if="selectedLang === 'es'">
+                            <Link :class="['nav-link', isActive('/articulos') ? 'active' : '']" href="/articulos">Articulos</Link>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item" v-if="selectedLang === 'en'">
                             <Link :class="['nav-link', isActive('/contact') ? 'active' : '']" href="contact">Contact Us
                             </Link>
                         </li>
@@ -98,9 +112,10 @@
 
                     <!-- Call info -->
                     <div class="m-3">
-                        <select class="form-select" aria-label="Default select example">
-                            <option selected>En</option>
-                            <option value="2">Es</option>
+                        <select class="form-select" aria-label="Language selector" v-model="selectedLang"
+                            @change="handleLanguageChange">
+                            <option value="en">En</option>
+                            <option value="es">Es</option>
                         </select>
                     </div>
                     <a href="tel:88 (09) 53 33 09" class="travel-call d-flex align-items-center me-0">

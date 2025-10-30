@@ -12,6 +12,15 @@
             <div class="innerbannerbg">
                 <img src="/images/blogbanner.jpg" alt="about banner">
             </div>
+            <div class="container">
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-lg-10 col-12">
+                        <div class="inner-bannerbox">
+                            <h1 class="innercommon-heading">About</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <section class="common-section abouttext-section">

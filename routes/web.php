@@ -13,6 +13,7 @@ use App\Http\Controllers\{
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/blog', [BlogController::class, 'index'])->name('blog');
+Route::get('/articulos', [BlogController::class, 'articulos'])->name('articulos');
 Route::get('/blog/{slug}', [BlogController::class, 'show'])->name('blog.show');
 Route::get('/contact', [ContectController::class, 'index'])->name('contact');
 Route::get('/about', [AboutController::class, 'index'])->name('about');

@@ -17,13 +17,13 @@ class Blog extends Model
         'published',
         'meta_title',
         'meta_description',
-        'meta_keywords',
         'canonical_url',
         'faqs',
         'lang',
     ];
 
     protected $casts = [
+        'lang',
         'published' => 'boolean',
         'faqs' => 'array',
     ];

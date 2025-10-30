@@ -10,7 +10,16 @@ class BlogController extends Controller
 {
     public function index()
     {
-        $blogs = Blog::where('published', true)->latest()->get()->map(function ($blog) {
+        $blogs = Blog::where(['published' => true, 'lang' => 'en'])->latest()->get()->map(function ($blog) {
+            $blog->image = asset('storage/' . $blog->image);
+            return $blog;
+        });
+        return Inertia::render('Blog', ['blogs' => $blogs]);
+    }
+
+    public function articulos()
+    {
+        $blogs = Blog::where(['published' => true, 'lang' => 'es'])->latest()->get()->map(function ($blog) {
             $blog->image = asset('storage/' . $blog->image);
             return $blog;
         });

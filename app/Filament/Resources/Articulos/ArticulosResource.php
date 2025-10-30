@@ -16,7 +16,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 use Filament\Schemas\Components\Section;
-use Filament\Forms\Components\{TextInput, FileUpload, Toggle, RichEditor, Textarea, Repeater};
+use Filament\Forms\Components\{TextInput, FileUpload, Toggle, RichEditor, Textarea, Repeater, Hidden};
 use Illuminate\Support\Str;
 use Filament\Tables\Columns\{TextColumn, ImageColumn, IconColumn};
 
@@ -46,6 +46,7 @@ class ArticulosResource extends Resource
                         $set('slug', Str::slug($state))
                         ),
                         TextInput::make('slug')->required()->unique(ignoreRecord: true),
+                        Hidden::make('lang')->default('es'),
                         RichEditor::make('content')->required(),
                         FileUpload::make('image')->disk('public')->directory('blogs')->image()->nullable(),
                         Toggle::make('published')
