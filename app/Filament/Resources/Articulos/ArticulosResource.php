@@ -1,33 +1,35 @@
 <?php
 
-namespace App\Filament\Resources\Blogs;
+namespace App\Filament\Resources\Articulos;
 
-use App\Filament\Resources\Blogs\Pages\CreateBlog;
-use App\Filament\Resources\Blogs\Pages\EditBlog;
-use App\Filament\Resources\Blogs\Pages\ListBlogs;
-use App\Filament\Resources\Blogs\Schemas\BlogForm;
-use App\Filament\Resources\Blogs\Tables\BlogsTable;
+use App\Filament\Resources\Articulos\Pages\CreateArticulos;
+use App\Filament\Resources\Articulos\Pages\EditArticulos;
+use App\Filament\Resources\Articulos\Pages\ListArticulos;
+use App\Filament\Resources\Articulos\Schemas\ArticulosForm;
+use App\Filament\Resources\Articulos\Tables\ArticulosTable;
 use App\Models\Blog;
+use App\Models\Articulo;
 use BackedEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
+use Illuminate\Database\Eloquent\Builder;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
-use Filament\Forms\Components\{TextInput, FileUpload, Toggle, RichEditor, Textarea, Repeater};
-use Filament\Tables\Columns\{TextColumn, ImageColumn, IconColumn};
-use Filament\Resources\Pages\{ListRecords, CreateRecord, EditRecord};
-use Illuminate\Support\Str;
 use Filament\Schemas\Components\Section;
+use Filament\Forms\Components\{TextInput, FileUpload, Toggle, RichEditor, Textarea, Repeater};
+use Illuminate\Support\Str;
+use Filament\Tables\Columns\{TextColumn, ImageColumn, IconColumn};
 
-class BlogResource extends Resource
+class ArticulosResource extends Resource
 {
-    protected static ?string $model = Blog::class;
+    protected static ?string $model = Articulo::class;
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
-    protected static ?string $recordTitleAttribute = 'Blog';
+    protected static ?string $recordTitleAttribute = 'Articulos';
+    
+    // Label shown in the Filament navigation
+    protected static ?string $navigationLabel = 'Articulos';
 
     public static function form(Schema $schema): Schema
     {
@@ -106,26 +108,18 @@ class BlogResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => ListBlogs::route('/'),
-            'create' => CreateBlog::route('/create'),
-            'edit' => EditBlog::route('/{record}/edit'),
+            'index' => ListArticulos::route('/'),
+            'create' => CreateArticulos::route('/create'),
+            'edit' => EditArticulos::route('/{record}/edit'),
         ];
     }
 
-    public static function getRecordRouteBindingEloquentQuery(): Builder
-    {
-        return parent::getRecordRouteBindingEloquentQuery()
-            ->withoutGlobalScopes([
-                SoftDeletingScope::class,
-            ]);
-    }
-
     /**
-     * Apply a default filter so the resource only lists Blog records with lang = 'en'.
+     * Limit the Articulos resource to records where lang = 'en'.
      */
     public static function getEloquentQuery(): Builder
     {
         return parent::getEloquentQuery()
-            ->where('lang', 'en');
+            ->where('lang', 'es');
     }
 }

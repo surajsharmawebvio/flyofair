@@ -1,0 +1,12 @@
+<template>
+    <DefaultLayout>
+        services page
+    </DefaultLayout>
+</template>
+
+<script setup>
+import DefaultLayout from '@/layouts/DefaultLayout.vue'
+</script>
+
+<style scoped>
+</style>

@@ -20,6 +20,7 @@ class Blog extends Model
         'meta_keywords',
         'canonical_url',
         'faqs',
+        'lang',
     ];
 
     protected $casts = [

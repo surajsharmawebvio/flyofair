@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Inertia\Inertia;
 use App\Http\Controllers\{
     HomeController, 
     BlogController, 
@@ -19,3 +20,18 @@ Route::get('/author', [AuthorController::class, 'index'])->name('author');
 
 Route::get('/airports/search', [HomeController::class, 'searchAirports'])->name('airports.search');
 Route::post('/newsletter/subscribe', [HomeController::class, 'subscribeNewsletter'])->name('newsletter.subscribe');
+Route::get('/sitemap', [HomeController::class, 'siteMap'])->name('site.map');
+
+// Static Pages
+Route::get('/terms-and-conditions', function () {
+    return Inertia::render('TermsAndConditions');
+})->name('terms');
+Route::get('/privacy-policy', function () {
+    return Inertia::render('PrivacyPolicy');
+})->name('privacy.policy');
+Route::get('/disclaimer', function () {
+    return Inertia::render('Disclaimer');
+})->name('disclaimer');
+Route::get('/services', function () {
+    return Inertia::render('Services');
+})->name('services');

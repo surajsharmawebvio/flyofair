@@ -10,9 +10,9 @@ import $ from 'jquery';
 import './jquery-3.7.1.min.js';
 import './bootstrap';
 import './owl.carousel.2.3.4.min.js';
-import './main.js';
-import './home.js';
-import './form.js';
+// import './main.js';
+// import './home.js';
+// import './form.js';
 import 'https://cdn.jsdelivr.net/npm/flatpickr';
 
 

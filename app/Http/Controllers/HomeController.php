@@ -51,4 +51,9 @@ class HomeController extends Controller
 
         return response()->json(['message' => 'Successfully subscribed to the newsletter.']);
     }
+
+    public function siteMap()
+    {
+        return Inertia::render('SiteMap');
+    }
 }

@@ -85,20 +85,20 @@ async function subscribe(event) {
                             <h5 class="foot-title">Legal</h5>
                             <ul class="foot-list">
                                 <li>
-                                    <a href="default.html">
-                                        Terms & Conditions</a>
+                                    <Link href="/terms-and-conditions">
+                                        Terms & Conditions</Link>
                                 </li>
                                 <li>
-                                    <a href="default.html">Privacy Policy</a>
+                                    <Link href="/privacy-policy">Privacy Policy</Link>
                                 </li>
                                 <li>
-                                    <a href="default.html">Disclaimer</a>
+                                    <Link href="/disclaimer">Disclaimer</Link>
                                 </li>
                                 <li>
-                                    <a href="sitemap.html">Sitemap</a>
+                                    <Link href="/sitemap">Sitemap</Link>
                                 </li>
                                 <li>
-                                    <a href="services.html">Services</a>
+                                    <Link href="/services">Services</Link>
                                 </li>
                             </ul>
                         </div>
