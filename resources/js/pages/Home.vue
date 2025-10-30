@@ -301,6 +301,53 @@
         }
     }
 
+    const handleFormSubmit = (event) => {
+        event.preventDefault();
+        const form = event.target;
+        const tripType = form.querySelector('input[name="tripType"]').value;
+
+        // Common form data for all trip types
+        const formData = {
+            tripType,
+            email: form.querySelector('input[placeholder="Enter email"]').value,
+            phone: form.querySelector('input[placeholder="Phone Number"]').value,
+            travelerInfo: form.querySelector('.flight-guest-input').value
+        };
+
+        // Add specific fields based on trip type
+        if (tripType === 'oneway') {
+            formData.from = searchQuery.value;
+            formData.to = toQuery.value;
+            formData.departureDate = form.querySelector('#Departure1').value;
+        } else if (tripType === 'round') {
+            formData.from = roundFromQuery.value;
+            formData.to = roundToQuery.value;
+            formData.departureDate = form.querySelector('#Departure').value;
+            formData.returnDate = form.querySelector('#Return').value;
+        } else if (tripType === 'multi') {
+            // Handle multi-city trips
+            const flightRows = form.querySelectorAll('.flight-row');
+            formData.trips = Array.from(flightRows).map(row => ({
+                from: row.querySelector('input[placeholder="Add departure"]').value,
+                to: row.querySelector('input[placeholder="Add arrival"]').value,
+                date: row.querySelector('.date-input').value
+            }));
+        }
+
+        // TODO: Make API call with formData
+        axios.post('/get-quote', formData)
+            .then(response => {
+                console.log('Quote request successful:', response.data);
+                // Handle success (e.g., show a success message)
+            })
+            .catch(error => {
+                console.error('Error submitting quote request:', error);
+                // Handle error (e.g., show an error message)
+            });
+        
+        // console.log('Submitting flight search:', formData);
+    };
+
     onMounted(() => {
         // Initialize all owl carousels
         $('.tour-slider').owlCarousel({
@@ -404,6 +451,79 @@
                 icon.classList.remove("fa-eye");
                 icon.classList.add("fa-eye-slash");
             });
+        });
+
+        function initFlatpickr(container) {
+            if (typeof flatpickr !== "undefined") {
+                container.find(".date-input").each(function () {
+                    if (this._flatpickr) this._flatpickr.destroy();
+                    flatpickr(this, {
+                        altInput: true,
+                        altFormat: "F j, Y",
+                        dateFormat: "Y-m-d",
+                        minDate: "today",
+                        disableMobile: true,
+                    });
+                });
+            }
+        }
+
+        function toggleClearButton() {
+            $(".tab-pane").each(function () {
+                const pane = $(this);
+                const rowCount = pane.find(".flight-form-fields .flight-row").length;
+                // Show Clear All only if more than 1 row exists
+                pane.find(".cancelBtnnew").toggle(rowCount > 1);
+            });
+        }
+
+        const newRowTemplate = (isFirst = false) => `
+            <div class="flight-row row g-3 mb-0 mt-2">
+            ${
+                isFirst
+                ? `
+            <div class="mobtravel-list-diveder">
+                <span class="mob-diverder">
+                ** -------------- Trip list-------------- **
+                </span>
+            </div>`
+                : ""
+            }
+            <div class="col-lg-4 col-md-4 col-12">
+                <label class="form-label search-label">Departure from</label>
+                <input type="text" class="form-control flight-input" placeholder="Add departure">
+            </div>
+            <div class="col-lg-4 col-md-4 col-12">
+                <label class="form-label search-label">Arrive at</label>
+                <input type="text" class="form-control flight-input" placeholder="Add arrival">
+            </div>
+            <div class="col-lg-3 col-md-3 col-12">
+                <label class="form-label search-label">Departure date</label>
+                <input type="text" class="form-control date-input flight-input" placeholder="Departure date" readonly>
+            </div>
+            <div class="col-lg-1 col-md-1">
+                <a href="#" class="linkbtn cancelthisBtnnew cancelBtn">
+                <i class="fa-solid fa-trash-can"></i>
+                </a>
+            </div>
+            </div>`;
+
+        $(".applyBtnnew").on("click", function (e) {
+            e.preventDefault();
+            const activeTab = $(".tab-pane.active");
+            const fieldContainer = activeTab.find(".flight-form-fields");
+            const totalRows = fieldContainer.find(".flight-row").length;
+
+            if (totalRows >= 5) {
+                alert("You can add a maximum of 5 trips.");
+                return;
+            }
+
+            const newRow = $(newRowTemplate(totalRows === 0)); // divider only for first row
+            fieldContainer.append(newRow);
+
+            initFlatpickr(newRow);
+            toggleClearButton();
         });
     });
 
@@ -675,7 +795,18 @@
                             <div class="tab-content flight-tab-content" id="flightTabContent">
                                 <!-- One Way -->
                                 <div class="tab-pane fade show active" id="oneway-pane" role="tabpanel">
-                                    <form class="row g-3 align-items-end flight-form-fields">
+                                    <form @submit="handleFormSubmit" class="row g-3 align-items-end flight-form-fields">
+                                        <input type="hidden" name="tripType" value="oneway" />
+                                        <div class="col-lg-3 col-md-6 col-12">
+                                            <label class="form-label search-label">Email</label>
+                                            <input type="text" class="form-control flight-input"
+                                                placeholder="Enter email" />
+                                        </div>
+                                        <div class="col-lg-3 col-md-6 col-12">
+                                            <label class="form-label search-label">Phone</label>
+                                            <input type="text" class="form-control" placeholder="Phone Number"
+                                                name="name" />
+                                        </div>
                                         <div ref="fromWrapper" class="col-lg-3 col-md-6 col-12"
                                             style="position: relative;">
                                             <label class="form-label search-label">From</label>
@@ -822,8 +953,19 @@
 
                                 <!-- Round Trip -->
                                 <div class="tab-pane fade" id="round-pane" role="tabpanel">
-                                    <form class="row g-3 align-items-end flight-form-fields">
-                                        <div ref="roundFromWrapper" class="col-xl-2 col-lg-3 col-md-6 col-12"
+                                    <form @submit="handleFormSubmit" class="row g-3 align-items-end flight-form-fields">
+                                        <input type="hidden" name="tripType" value="round" />
+                                        <div class="col-lg-3 col-md-6 col-12">
+                                            <label class="form-label search-label">Email</label>
+                                            <input type="text" class="form-control flight-input"
+                                                placeholder="Enter email" />
+                                        </div>
+                                        <div class="col-lg-3 col-md-6 col-12">
+                                            <label class="form-label search-label">Phone</label>
+                                            <input type="text" class="form-control" placeholder="Phone Number"
+                                                name="name" />
+                                        </div>
+                                        <div ref="roundFromWrapper" class="col-lg-3 col-md-6 col-12"
                                             style="position: relative;">
                                             <label class="form-label search-label">From</label>
                                             <input v-model="roundFromQuery" @input="onRoundFromInput"
@@ -842,7 +984,7 @@
                                                 </li>
                                             </ul>
                                         </div>
-                                        <div ref="roundToWrapper" class="col-xl-2 col-lg-3 col-md-6 col-12"
+                                        <div ref="roundToWrapper" class="col-lg-3 col-md-6 col-12"
                                             style="position: relative;">
                                             <label class="form-label search-label">To</label>
                                             <input v-model="roundToQuery" @input="onRoundToInput"
@@ -860,7 +1002,7 @@
                                                 </li>
                                             </ul>
                                         </div>
-                                        <div class="col-xl-2 col-lg-3 col-md-6 col-12">
+                                        <div class="col-lg-3 col-md-6 col-12">
                                             <label class="form-label search-label">Departure date</label>
                                             <input id="Departure" type="text" class="date-input flight-input"
                                                 placeholder="Departure date" readonly />
@@ -870,7 +1012,7 @@
                                             <input id="Return" type="text" class="date-input flight-input"
                                                 placeholder="Return date" readonly />
                                         </div>
-                                        <div class="col-xl-3 col-lg-4 col-12">
+                                        <div class="col-xl-3 col-lg-3 col-md-6 col-12">
                                             <label class="form-label search-label">Guests</label>
                                             <input type="text" readonly
                                                 class="form-control flight-guest-input flight-input"
@@ -972,7 +1114,8 @@
 
                                 <!-- Multi-City -->
                                 <div class="tab-pane fade" id="multi-pane" role="tabpanel">
-                                    <form class="">
+                                    <form @submit="handleFormSubmit" class="">
+                                        <input type="hidden" name="tripType" value="multi" />
                                         <div class="row g-3 align-items-end flight-form-fields">
                                             <div class="col-lg-3 col-md-6 col-12">
                                                 <label class="form-label search-label">Email</label>
@@ -981,8 +1124,8 @@
                                             </div>
                                             <div class="col-lg-3 col-md-6 col-12">
                                                 <label class="form-label search-label">Phone</label>
-                                                <input type="text" id="mobile_code3" class="form-control"
-                                                    placeholder="Phone Number" name="name" />
+                                                <input type="text" class="form-control" placeholder="Phone Number"
+                                                    name="name" />
                                             </div>
                                             <div class="col-lg-3 col-md-6 col-12">
                                                 <label class="form-label search-label">Departure from</label>

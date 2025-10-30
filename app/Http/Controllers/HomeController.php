@@ -56,4 +56,9 @@ class HomeController extends Controller
     {
         return Inertia::render('SiteMap');
     }
+
+    public function getQuote(Request $request)
+    {
+        dd($request->all());
+    }
 }
