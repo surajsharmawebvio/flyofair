@@ -17,7 +17,6 @@
 
     // Common function for airport search
     async function searchAirports(query, resultsSetter) {
-        console.log('Searching airports with query:', query);
         if (!query) {
             resultsSetter([])
             return
@@ -40,7 +39,6 @@
         try {
             const res = await axios.get(url)
             resultsSetter(res.data.data || res.data || [])
-            console.log('API Response:', res.data)
         } catch (error) {
             console.error('Error fetching airports:', error)
         }
@@ -61,6 +59,13 @@
         }
         if (toWrapper.value && !toWrapper.value.contains(target)) {
             showToSuggestions.value = false;
+        }
+        // multi-city wrappers
+        if (multiFromWrapper && multiFromWrapper.value && !multiFromWrapper.value.contains(target)) {
+            showMultiFromSuggestions.value = false;
+        }
+        if (multiToWrapper && multiToWrapper.value && !multiToWrapper.value.contains(target)) {
+            showMultiToSuggestions.value = false;
         }
     }
 
@@ -242,6 +247,20 @@
     const highlightedRoundTo = ref(-1);
     const roundToWrapper = ref(null);
 
+    // --- Multi Trip From search handling ---
+    const multiFromQuery = ref('');
+    const multiFromResults = ref([]);
+    const showMultiFromSuggestions = ref(false);
+    const highlightedMultiFrom = ref(-1);
+    const multiFromWrapper = ref(null);
+
+    // --- Multi Trip To search handling ---
+    const multiToQuery = ref('');
+    const multiToResults = ref([]);
+    const showMultiToSuggestions = ref(false);
+    const highlightedMultiTo = ref(-1);
+    const multiToWrapper = ref(null);
+
     const fetchRoundToAirports = debounce((query) => searchAirports(query, results => roundToResults.value = results),
         400)
 
@@ -283,6 +302,94 @@
             }
         } else if (e.key === 'Escape') {
             showRoundToSuggestions.value = false;
+        }
+    }
+
+    // --- Multi Trip functions (reuse searchAirports) ---
+    const fetchMultiFromAirports = debounce((query) => searchAirports(query, results => multiFromResults.value = results), 400)
+    const fetchMultiToAirports = debounce((query) => searchAirports(query, results => multiToResults.value = results), 400)
+
+    watch(multiFromQuery, (newVal) => {
+        fetchMultiFromAirports(newVal)
+    })
+
+    watch(multiToQuery, (newVal) => {
+        fetchMultiToAirports(newVal)
+    })
+
+    function onMultiFromInput() {
+        highlightedMultiFrom.value = -1;
+        showMultiFromSuggestions.value = true;
+        // ensure the value propagates for watcher
+        // (if using event target like other handlers, but here we use v-model)
+    }
+
+    function onMultiToInput() {
+        highlightedMultiTo.value = -1;
+        showMultiToSuggestions.value = true;
+    }
+
+    function handleMultiFromBlur() {
+        setTimeout(() => {
+            showMultiFromSuggestions.value = false;
+        }, 200);
+    }
+
+    function handleMultiToBlur() {
+        setTimeout(() => {
+            showMultiToSuggestions.value = false;
+        }, 200);
+    }
+
+    function selectMultiFromAirport(airport) {
+        multiFromQuery.value = `${airport.airport_code} — ${airport.airport_name}`;
+        multiFromResults.value = [];
+        showMultiFromSuggestions.value = false;
+    }
+
+    function selectMultiToAirport(airport) {
+        multiToQuery.value = `${airport.airport_code} — ${airport.airport_name}`;
+        multiToResults.value = [];
+        showMultiToSuggestions.value = false;
+    }
+
+    function onMultiFromKeydown(e) {
+        if (!showMultiFromSuggestions.value) return;
+        if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            highlightedMultiFrom.value = Math.min(highlightedMultiFrom.value + 1, multiFromResults.value.length - 1);
+        } else if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            highlightedMultiFrom.value = Math.max(highlightedMultiFrom.value - 1, 0);
+        } else if (e.key === 'Enter') {
+            e.preventDefault();
+            if (highlightedMultiFrom.value >= 0 && multiFromResults.value[highlightedMultiFrom.value]) {
+                selectMultiFromAirport(multiFromResults.value[highlightedMultiFrom.value]);
+            } else if (multiFromResults.value.length === 1) {
+                selectMultiFromAirport(multiFromResults.value[0]);
+            }
+        } else if (e.key === 'Escape') {
+            showMultiFromSuggestions.value = false;
+        }
+    }
+
+    function onMultiToKeydown(e) {
+        if (!showMultiToSuggestions.value) return;
+        if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            highlightedMultiTo.value = Math.min(highlightedMultiTo.value + 1, multiToResults.value.length - 1);
+        } else if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            highlightedMultiTo.value = Math.max(highlightedMultiTo.value - 1, 0);
+        } else if (e.key === 'Enter') {
+            e.preventDefault();
+            if (highlightedMultiTo.value >= 0 && multiToResults.value[highlightedMultiTo.value]) {
+                selectMultiToAirport(multiToResults.value[highlightedMultiTo.value]);
+            } else if (multiToResults.value.length === 1) {
+                selectMultiToAirport(multiToResults.value[0]);
+            }
+        } else if (e.key === 'Escape') {
+            showMultiToSuggestions.value = false;
         }
     }
 
@@ -527,6 +634,90 @@
             </div>
             </div>`;
 
+        // Attach autocomplete to a newly created jQuery row (departure/arrival inputs)
+        function attachAutocompleteToRow($row) {
+            const $from = $row.find('input[placeholder="Add departure"]');
+            const $to = $row.find('input[placeholder="Add arrival"]');
+
+            [$from, $to].forEach(function ($input) {
+                if (!$input || !$input.length) return;
+                const $wrapper = $input.parent();
+                $wrapper.css('position', 'relative');
+
+                const $list = $('<ul class="list-group position-absolute shadow" '
+                    + 'style="width:100%; max-height:220px; z-index:1050; display:none;"></ul>');
+                $wrapper.append($list);
+
+                const debouncedSearch = debounce(function (query) {
+                    if (!query) {
+                        $list.empty().hide();
+                        return;
+                    }
+                    // reuse searchAirports which accepts (query, resultsSetter)
+                    searchAirports(query, function (results) {
+                        $list.empty();
+                        if (!results || results.length === 0) {
+                            $list.hide();
+                            return;
+                        }
+                        results.forEach(function (airport) {
+                            const $li = $(
+                                '<li class="list-group-item" style="cursor:pointer;"><strong>'
+                                + airport.airport_code + '</strong> — ' + airport.airport_name + '</li>'
+                            );
+                            $li.on('mousedown', function (e) {
+                                e.preventDefault();
+                                $input.val(airport.airport_code + ' — ' + airport.airport_name);
+                                $list.empty().hide();
+                            });
+                            $list.append($li);
+                        });
+                        $list.show();
+                    });
+                }, 400);
+
+                $input.on('input', function () {
+                    debouncedSearch($input.val());
+                });
+
+                $input.on('keydown', function (e) {
+                    const $items = $list.find('li');
+                    if (!$items.length) return;
+                    let idx = $items.index($items.filter('.active'));
+                    if (e.key === 'ArrowDown') {
+                        e.preventDefault();
+                        idx = Math.min(idx + 1, $items.length - 1);
+                        $items.removeClass('active');
+                        $items.eq(idx).addClass('active');
+                    } else if (e.key === 'ArrowUp') {
+                        e.preventDefault();
+                        idx = Math.max(idx - 1, 0);
+                        $items.removeClass('active');
+                        $items.eq(idx).addClass('active');
+                    } else if (e.key === 'Enter') {
+                        e.preventDefault();
+                        if (idx >= 0 && $items.length) {
+                            $items.eq(idx).trigger('mousedown');
+                        } else if ($items.length === 1) {
+                            $items.eq(0).trigger('mousedown');
+                        }
+                    } else if (e.key === 'Escape') {
+                        $list.hide();
+                    }
+                });
+
+                $input.on('blur', function () {
+                    setTimeout(function () {
+                        $list.hide();
+                    }, 200);
+                });
+
+                $input.on('focus', function () {
+                    if ($list.children().length) $list.show();
+                });
+            });
+        }
+
         $(".applyBtnnew").on("click", function (e) {
             e.preventDefault();
             const activeTab = $(".tab-pane.active");
@@ -542,7 +733,14 @@
             fieldContainer.append(newRow);
 
             initFlatpickr(newRow);
+            // attach autocomplete to inputs in the newly appended row
+            attachAutocompleteToRow(newRow);
             toggleClearButton();
+        });
+
+        // Attach autocomplete to any existing rows on page load (multi-pane)
+        $('#multi-pane .flight-form-fields .flight-row').each(function () {
+            attachAutocompleteToRow($(this));
         });
     });
 
@@ -1146,15 +1344,49 @@
                                                 <input type="text" class="form-control" placeholder="Phone Number"
                                                     name="name" />
                                             </div>
-                                            <div class="col-lg-3 col-md-6 col-12">
-                                                <label class="form-label search-label">Departure from</label>
-                                                <input type="text" class="form-control flight-input"
-                                                    placeholder="Add departure" />
+                                            <div ref="multiFromWrapper" class="col-lg-3 col-md-6 col-12" style="position: relative;">
+                                                <label class="form-label search-label">From</label>
+                                                <input v-model="multiFromQuery"
+                                                    @input="onMultiFromInput"
+                                                    @keydown="onMultiFromKeydown"
+                                                    @focus="showMultiFromSuggestions = true"
+                                                    @blur="handleMultiFromBlur"
+                                                    type="text"
+                                                    class="form-control flight-input"
+                                                    placeholder="Add departure"
+                                                    autocomplete="off" />
+                                                <ul v-if="showMultiFromSuggestions && multiFromResults.length > 0"
+                                                    class="list-group position-absolute shadow"
+                                                    style="width:100%; max-height:220px; z-index:1050;">
+                                                    <li v-for="(airport, index) in multiFromResults" :key="index"
+                                                        class="list-group-item" style="cursor:pointer;"
+                                                        @mousedown.prevent="selectMultiFromAirport(airport)">
+                                                        <strong>{{ airport.airport_code }}</strong> —
+                                                        {{ airport.airport_name }}
+                                                    </li>
+                                                </ul>
                                             </div>
-                                            <div class="col-lg-3 col-md-6 col-12">
-                                                <label class="form-label search-label">Arrive at</label>
-                                                <input type="text" class="form-control flight-input"
-                                                    placeholder="Add arrival" />
+                                            <div ref="multiToWrapper" class="col-lg-3 col-md-6 col-12" style="position: relative;">
+                                                <label class="form-label search-label">To</label>
+                                                <input v-model="multiToQuery"
+                                                    @input="onMultiToInput"
+                                                    @keydown="onMultiToKeydown"
+                                                    @focus="showMultiToSuggestions = true"
+                                                    @blur="handleMultiToBlur"
+                                                    type="text"
+                                                    class="form-control flight-input"
+                                                    placeholder="Add arrival"
+                                                    autocomplete="off" />
+                                                <ul v-if="showMultiToSuggestions && multiToResults.length > 0"
+                                                    class="list-group position-absolute shadow"
+                                                    style="width:100%; max-height:220px; z-index:1050;">
+                                                    <li v-for="(airport, index) in multiToResults" :key="index"
+                                                        class="list-group-item" style="cursor:pointer;"
+                                                        @mousedown.prevent="selectMultiToAirport(airport)">
+                                                        <strong>{{ airport.airport_code }}</strong> —
+                                                        {{ airport.airport_name }}
+                                                    </li>
+                                                </ul>
                                             </div>
                                             <div class="col-lg-3 col-md-6 col-12">
                                                 <label class="form-label search-label">Departure date</label>

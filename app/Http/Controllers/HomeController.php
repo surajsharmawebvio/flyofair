@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Log;
 use Exception;
 use App\Jobs\SendGetQuoteEmails;
+use App\Models\Quote;
 
 class HomeController extends Controller
 {
@@ -67,6 +68,11 @@ class HomeController extends Controller
         $validator = Validator::make($request->all(), [
             'tripType' => 'required|in:oneway,round,multi',
             'email' => 'required|email',
+            // when tripType is multi expect trips array with from/to/date
+            'trips' => 'required_if:tripType,multi|array',
+            'trips.*.from' => 'required_with:trips|string',
+            'trips.*.to' => 'required_with:trips|string',
+            'trips.*.date' => 'required_with:trips|date',
         ]);
 
         if ($validator->fails()) {
@@ -75,7 +81,48 @@ class HomeController extends Controller
 
         $data = $request->all();
 
+        // dd($data);
+
         try {
+
+            // Create a new quote
+            $quote = new Quote();
+            $quote->trip_type = $data['tripType'];
+            $quote->email = $data['email'];
+            $quote->phone = $data['phone'] ?? null;
+            $quote->traveler_info = $data['travelerInfo'] ?? '';
+
+            // Handle per-trip-type fields
+            if (($data['tripType'] ?? '') === 'multi') {
+                // Expecting an array of trips in 'trips' (from front-end)
+                $trips = $data['trips'] ?? [];
+                // Store the multi-city details as JSON
+                $quote->multi_city_details = !empty($trips) ? json_encode($trips) : null;
+
+                // Set from/to to first trip values if available (fallback empty)
+                if (!empty($trips) && is_array($trips[0])) {
+                    $quote->from_location = $trips[0]['from'] ?? '';
+                    $quote->to_location = $trips[0]['to'] ?? '';
+                    // Use first trip date as primary departure_date to satisfy non-null constraint
+                    $quote->departure_date = $trips[0]['date'] ?? null;
+                } else {
+                    $quote->from_location = '';
+                    $quote->to_location = '';
+                    $quote->departure_date = null;
+                }
+
+                $quote->return_date = null;
+            } else {
+                $quote->from_location = $data['from'] ?? '';
+                $quote->to_location = $data['to'] ?? '';
+                $quote->departure_date = $data['departureDate'] ?? null;
+                $quote->return_date = $data['returnDate'] ?? null;
+                $quote->multi_city_details = isset($data['multiCityDetails']) ? json_encode($data['multiCityDetails']) : null;
+            }
+
+            $quote->status = 'pending';
+            $quote->save();
+
             // dispatch a job to send emails (processed by queue workers)
             SendGetQuoteEmails::dispatch($data);
 

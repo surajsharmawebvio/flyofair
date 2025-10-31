@@ -1,11 +1,14 @@
 <script setup>
 import { ref } from 'vue'
-import { Link } from '@inertiajs/vue3'
+import { Link, usePage } from '@inertiajs/vue3'
 import axios from 'axios'
 import Swal from 'sweetalert2'
 
 const email = ref('')
 const loading = ref(false)
+
+const page = usePage()
+const isActive = (path) => page.url === path
 
 async function subscribe(event) {
     // form submit prevented by @submit.prevent
@@ -281,12 +284,12 @@ async function subscribe(event) {
         <div class="offcanvas-body">
             <ul class="navbar-nav mx-auto mb-2 mb-lg-0 travel-header">
                 <!-- Normal links -->
-                <li class="nav-item"><Link class="nav-link" :class="{ 'active': $page.url === '/' }" href="/">Home</Link></li>
-                <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
-                <li class="nav-item"><a class="nav-link" href="sitemap.html">Sitemap</a></li>
-                <li class="nav-item"><a class="nav-link" href="author.html">Author</a></li>
-                <li class="nav-item"><Link class="nav-link" href="blog">Blog</Link></li>
-                <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+                <li class="nav-item"><Link class="nav-link" :class="{ active: isActive('/') }" href="/">Home</Link></li>
+                <li class="nav-item"><Link class="nav-link" :class="{ active: isActive('/about') }" href="/about">About Us</Link></li>
+                <li class="nav-item"><Link class="nav-link" :class="{ active: isActive('/sitemap') }" href="/sitemap">Sitemap</Link></li>
+                <li class="nav-item"><Link class="nav-link" :class="{ active: isActive('/author') }" href="/author">Author</Link></li>
+                <li class="nav-item"><Link class="nav-link" :class="{ active: isActive('/blog') }" href="/blog">Blog</Link></li>
+                <li class="nav-item"><Link class="nav-link" :class="{ active: isActive('/contact') }" href="/contact">Contact Us</Link></li>
             </ul>
             <!-- Call info -->
             <a href="tel:88 (09) 53 33 09" class="travel-call d-flex align-items-center me-4">

@@ -9,6 +9,7 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\GetQuoteUserMail;
 use App\Mail\GetQuoteAdminMail;
+use Exception;
 
 class SendGetQuoteEmails implements ShouldQueue
 {
@@ -29,18 +30,28 @@ class SendGetQuoteEmails implements ShouldQueue
      */
     public function handle()
     {
-        // send to user
-        if (!empty($this->data['email'])) {
-            Mail::to($this->data['email'])->send(new GetQuoteUserMail($this->data));
-        }
+        try {
+            // Send to user
+            if (!empty($this->data['email'])) {
+                Mail::to($this->data['email'])->send(new GetQuoteUserMail($this->data));
+            }
 
-        // small delay (Mailtrap allows only 1 email/sec in free tier)
-        sleep(2);
-
-        // send to admin
-        $adminEmail = env('ADMIN_EMAIL', config('mail.from.address'));
-        if (!empty($adminEmail)) {
-            Mail::to($adminEmail)->send(new GetQuoteAdminMail($this->data));
+            // Send to admin
+            $adminEmail = env('ADMIN_EMAIL', 'suraj.webvio@gmail.com');
+            
+            if (!empty($adminEmail)) {
+                try {
+                    Mail::to($adminEmail)->send(new GetQuoteAdminMail($this->data));
+                } catch (Exception $e) {
+                    report($e); // Using Laravel's report helper
+                    throw $e;
+                }
+            } else {
+                info('Admin email address is empty or invalid');
+            }
+        } catch (Exception $e) {
+            report($e); // Using Laravel's report helper
+            throw $e;
         }
     }
 }
