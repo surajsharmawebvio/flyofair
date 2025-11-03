@@ -11,14 +11,19 @@
 
     # Handle X-XSRF-Token Header
     RewriteCond %{HTTP:x-xsrf-token} .
-    RewriteRule .* - [E=HTTP_X_XSRF_TOKEN:%{HTTP:X-XSRF-Token}]
+    RewriteRule .* - [E=HTTP_X_XSRF_TOKEN:%{HTTP:x-xsrf-token}]
 
-    # Add Trailing Slash If Not A File Or Directory
+    # ✅ Add Trailing Slash ONLY for Blog pages
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteCond %{REQUEST_URI} !\.[^./]+$          # Skip URLs with a dot (files)
-    RewriteCond %{REQUEST_URI} !(.*)/$              # Skip if already ends with slash
-    RewriteRule ^(.*)$ /$1/ [L,R=301]
+    RewriteCond %{REQUEST_URI} ^/blog(/.*)?$
+    RewriteCond %{REQUEST_URI} !\.[^./]+$
+    RewriteCond %{REQUEST_URI} !(.*)/$
+    RewriteRule ^blog(/.*)?$ /blog$1/ [L,R=301]
+
+    # ✅ Prevent POST requests from being rewritten
+    RewriteCond %{REQUEST_METHOD} ^(POST|PUT|DELETE)$ [NC]
+    RewriteRule .* - [L]
 
     # Send Requests To Front Controller
     RewriteCond %{REQUEST_FILENAME} !-d

@@ -66,9 +66,6 @@ async function subscribe(event) {
                             <h5 class="foot-title">Quick Link</h5>
                             <ul class="foot-list">
                                 <li>
-                                    <Link href="/" aria-current="page">Home</Link>
-                                </li>
-                                <li>
                                     <Link href="/about" aria-current="page">About Us</Link>
                                 </li>
                                 <li>
@@ -78,7 +75,10 @@ async function subscribe(event) {
                                     <Link href="/author">Author</Link>
                                 </li>
                                 <li>
-                                    <Link href="/blog">Blog</Link>
+                                    <Link href="/" aria-current="page">Home</Link>
+                                </li>
+                                <li>
+                                    <Link href="/blog/">Blog</Link>
                                 </li>
                             </ul>
                         </div>
@@ -101,7 +101,7 @@ async function subscribe(event) {
                                     <Link href="/sitemap">Sitemap</Link>
                                 </li>
                                 <li>
-                                    <Link href="/services">Services</Link>
+                                    <Link href="/articulos">articulos</Link>
                                 </li>
                             </ul>
                         </div>

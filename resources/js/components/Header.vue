@@ -78,10 +78,10 @@
                         <span class="navbar-toggler-icon bar-2"></span>
                         <span class="navbar-toggler-icon bar-3"></span>
                     </button>
-                    <Link href="/" class="navbar-brand travel-logo d-flex align-items-center">
+                    <div class="navbar-brand travel-logo d-flex align-items-center">
                     <img src="/images/logo.webp" alt="logo" class="me-2 normallogo">
                     <img src="/images/logo.webp" alt="logo" class="me-2 stickylogo">
-                    </Link>
+                    </div>
                 </div>
                 <!-- Reservation button (desktop) -->
                 <div class="d-lg-none ms-auto me-2 mobbtsec">
@@ -108,16 +108,16 @@
                             </Link>
                         </li>
                         <li class="nav-item" v-if="selectedLang === 'en'">
-                            <Link :class="['nav-link', isActive('/about/') ? 'active' : '']" href="/about/">About Us</Link>
+                            <Link :class="['nav-link', isActive('/about') ? 'active' : '']" href="/about">About Us</Link>
                         </li>
                         <li class="nav-item" v-if="selectedLang === 'en'">
                             <Link :class="['nav-link', isActive('/blog/') ? 'active' : '']" href="/blog/">Blog</Link>
                         </li>
                         <li class="nav-item" v-if="selectedLang === 'es'">
-                            <Link :class="['nav-link', isActive('/articulos/') ? 'active' : '']" href="/articulos/">Articulos</Link>
+                            <Link :class="['nav-link', isActive('/articulos') ? 'active' : '']" href="/articulos">Articulos</Link>
                         </li>
                         <li class="nav-item" v-if="selectedLang === 'en'">
-                            <Link :class="['nav-link', isActive('/contact') ? 'active' : '']" href="/contact/">Contact Us
+                            <Link :class="['nav-link', isActive('/contact') ? 'active' : '']" href="/contact">Contact Us
                             </Link>
                         </li>
                     </ul>
@@ -144,16 +144,16 @@
         <Link href="/" class="mobnav-item active" data-page="Home" :class="{ active: isActive('/') }">
             <span>Home</span>
         </Link>
-        <Link href="/about/" class="mobnav-item" data-page="My Trips" :class="['nav-link', isActive('/about/') ? 'active' : '']">
+        <Link href="/about" class="mobnav-item" data-page="My Trips" :class="['nav-link', isActive('/about') ? 'active' : '']">
             <span>About</span>
         </Link>
         <Link href="/blog/" class="mobnav-item" data-page="My Trips" :class="['nav-link', isActive('/blog/') ? 'active' : '']">
             <span>Blog</span>
         </Link>
-        <Link href="/articulos/" class="mobnav-item" data-page="Where2Go" :class="['nav-link', isActive('/articulos/') ? 'active' : '']">
+        <Link href="/articulos" class="mobnav-item" data-page="Where2Go" :class="['nav-link', isActive('/articulos') ? 'active' : '']">
             <span>Articulos</span>
         </Link>
-        <Link href="/contact/" class="mobnav-item" data-page="Wallet" :class="['nav-link', isActive('/contact/') ? 'active' : '']">
+        <Link href="/contact" class="mobnav-item" data-page="Wallet" :class="['nav-link', isActive('/contact') ? 'active' : '']">
             <span>Contact</span>
         </Link>
     </nav>
