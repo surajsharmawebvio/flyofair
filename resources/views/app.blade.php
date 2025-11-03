@@ -14,11 +14,20 @@
         <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" />
 
         <meta name="robots" content="noindex, nofollow" />
+        <meta name="csrf-token" content="{{ csrf_token() }}">
         @inertiaHead
         @vite(['resources/js/app.ts', "resources/js/pages/{$page['component']}.vue"])
         <style>
+            @font-face {
+                font-family: 'Cambria';
+                src: local('Cambria');
+            }
+            body {
+                font-family: 'Cambria', serif !important;
+            }
             a, h1, h2, h3, h4, h5, h6, p {
                 text-decoration: none;
+                font-family: 'Cambria', serif !important;
             }
         </style>
     </head>

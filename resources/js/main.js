@@ -403,7 +403,7 @@ document.head.appendChild(style);
 
 // Ensure loader displays immediately before rendering
 document.addEventListener("DOMContentLoaded", () => {
-    loaderWrapper.style.display = "flex";
+    loaderWrapper.style.display = "none";
 });
 
 // Loader visible duration
