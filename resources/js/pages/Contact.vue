@@ -8,9 +8,17 @@
             <div class="container">
                 <div class="row align-items-center justify-content-center">
                     <div class="col-lg-10 col-12">
-                        <div class="inner-bannerbox">
-                            <h1 class="innercommon-heading" data-text="CONTACT US">Contact Us</h1>
-                        </div>
+                                        <div class="inner-bannerbox">
+                                            <h1 class="innercommon-heading" data-text="CONTACT US">Contact Us</h1>
+                                            <div class="breadcrumb-box">
+                                                <Link href="/" class="breadcrumb-home">
+                                                    <i class="fa fa-home"></i>
+                                                    <span class="ms-1">Home</span>
+                                                </Link>
+                                                <span class="breadcrumb-sep">&gt;</span>
+                                                <span class="breadcrumb-current">Contact Us</span>
+                                            </div>
+                                        </div>
                     </div>
                 </div>
             </div>
@@ -122,9 +130,8 @@
     import DefaultLayout from '@/layouts/DefaultLayout.vue';
     import './../../css/common.css';
     import './../../css/contact.css';
-    import {
-        ref
-    } from 'vue';
+    import { ref } from 'vue';
+    import { Link } from '@inertiajs/vue3';
 
     const form = ref({
         name: '',
@@ -140,6 +147,37 @@
 </script>
 
 <style scoped>
+    /* Breadcrumb under banner */
+    .breadcrumb-box {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 12px;
+        color: #ffffffcc;
+        font-size: 14px;
+    }
+    .breadcrumb-box .breadcrumb-home {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        color: #ff6b35; /* home icon / primary accent */
+        font-weight: 600;
+        text-decoration: none;
+    }
+    .breadcrumb-box .breadcrumb-home i {
+        font-size: 14px;
+        color: #ff6b35;
+    }
+    .breadcrumb-box .breadcrumb-sep {
+        color: #ffffff99;
+        font-weight: 600;
+    }
+    .breadcrumb-box .breadcrumb-current {
+        color: #ffffff;
+        font-weight: 600;
+    }
+
 .contact-section {
   padding: 60px 0;
 }

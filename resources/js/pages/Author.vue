@@ -2,6 +2,7 @@
 <script setup>
     import "./../../css/author.css";
     import DefaultLayout from '@/layouts/DefaultLayout.vue'
+    import { Link } from '@inertiajs/vue3';
 </script>
 
 <template>
@@ -15,6 +16,14 @@
                     <div class="col-lg-10 col-12">
                         <div class="inner-bannerbox">
                             <h1 class="innercommon-heading">author</h1>
+                        	<div class="breadcrumb-box">
+                                <Link href="/" class="breadcrumb-home">
+                                    <i class="fa fa-home"></i>
+                                    <span class="ms-1">Home</span>
+                                </Link>
+                                <span class="breadcrumb-sep">&gt;</span>
+                                <span class="breadcrumb-current">Author</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -132,6 +141,36 @@
   background: #d9d9d9;
   padding: 30px 0px;
   border-radius: 20px;
+}
+/* Breadcrumb under banner */
+.breadcrumb-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 12px;
+    color: #ffffffcc;
+    font-size: 14px;
+}
+.breadcrumb-box .breadcrumb-home {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #ff6b35; /* home icon / primary accent */
+    font-weight: 600;
+    text-decoration: none;
+}
+.breadcrumb-box .breadcrumb-home i {
+    font-size: 14px;
+    color: #ff6b35;
+}
+.breadcrumb-box .breadcrumb-sep {
+    color: #ffffff99;
+    font-weight: 600;
+}
+.breadcrumb-box .breadcrumb-current {
+    color: #ffffff;
+    font-weight: 600;
 }
  
 </style>

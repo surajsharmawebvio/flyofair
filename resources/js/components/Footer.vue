@@ -23,6 +23,9 @@ async function subscribe(event) {
         const headers = {}
         if (tokenMeta) headers['X-CSRF-TOKEN'] = tokenMeta.getAttribute('content')
 
+        headers['Accept'] = 'application/json'
+        headers['Content-Type'] = 'application/json'
+
         const res = await axios.post('/newsletter/subscribe', { email: email.value }, { headers })
 
         await Swal.fire({ icon: 'success', title: res.data.message || 'Subscribed successfully' })
