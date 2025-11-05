@@ -20,6 +20,20 @@ Route::group(['prefix' => 'es'], function () {
     Route::get('/contactanos', [ContectController::class, 'indexEs'])->name('contact.es');
     Route::get('/sobre-nosotros', [AboutController::class, 'indexEs'])->name('about.es');
     Route::get('/autor', [AuthorController::class, 'indexEs'])->name('author.es');
+    
+    // Spanish Static Pages
+    Route::get('/terminos-y-condiciones', function () {
+        return Inertia::render('TerminosYCondiciones');
+    })->name('terms.es');
+    Route::get('/politica-de-privacidad', function () {
+        return Inertia::render('PoliticaDePrivacidad');
+    })->name('privacy.policy.es');
+    Route::get('/aviso-legal', function () {
+        return Inertia::render('AvisoLegal');
+    })->name('disclaimer.es');
+    Route::get('/servicios', function () {
+        return Inertia::render('Servicios');
+    })->name('services.es');
 });
 
 Route::get('/blog', [BlogController::class, 'index'])->name('blog');
