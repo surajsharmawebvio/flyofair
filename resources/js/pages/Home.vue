@@ -37,7 +37,12 @@
         }
 
         try {
-            const res = await axios.get(url)
+            const res = await axios.get(url, {
+                withCredentials: false,
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
             resultsSetter(res.data.data || res.data || [])
         } catch (error) {
             console.error('Error fetching airports:', error)
