@@ -11,4 +11,9 @@ class AboutController extends Controller
     {
         return Inertia::render('About');
     }
+
+    public function indexEs()
+    {
+        return Inertia::render('SobreNosotros');
+    }
 }

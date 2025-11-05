@@ -11,4 +11,9 @@ class ContectController extends Controller
     {
         return Inertia::render('Contact');
     }
+
+    public function indexEs()
+    {
+        return Inertia::render('Contactanos');
+    }
 }

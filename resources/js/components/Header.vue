@@ -12,7 +12,11 @@
     import { router } from '@inertiajs/vue3';
 
     const page = usePage()
-    const isActive = (path) => page.url === path
+    const isActive = (path) => {
+        const currentUrl = page.url
+        // Handle exact matches and trailing slash variations
+        return currentUrl === path || currentUrl === path + '/' || currentUrl + '/' === path
+    }
     const currentPath = ref('')
     const selectedLang = ref('en')
 
@@ -30,12 +34,23 @@
     }
 
     const toggleNavbarClass = () => {
-        if (window.location.pathname === '/') {
+        if (window.location.pathname === '/' || window.location.pathname === '/es' || window.location.pathname === '/es/') {
             $('.navbar').removeClass('header-fixed')
         } else {
             $('.navbar').addClass('header-fixed')
         }
         currentPath.value = window.location.pathname
+    }
+
+    const detectLanguageFromUrl = () => {
+        const path = window.location.pathname
+        if (path.startsWith('/es')) {
+            selectedLang.value = 'es'
+            localStorage.setItem('language', 'es')
+        } else {
+            selectedLang.value = 'en'
+            localStorage.setItem('language', 'en')
+        }
     }
 
     const closeOffcanvas = () => {
@@ -49,6 +64,7 @@
 
     onMounted(() => {
         toggleNavbarClass()
+        detectLanguageFromUrl()
 
         // Initialize jQuery event handlers
         $('.travel-call').on('mouseenter', function () {
@@ -60,7 +76,8 @@
         // Close offcanvas when any Link component is clicked
         document.addEventListener('inertia:navigate', closeOffcanvas);
 
-        selectedLang.value = localStorage.getItem('language') || 'en';
+        // Detect language changes on navigation
+        document.addEventListener('inertia:navigate', detectLanguageFromUrl);
     })
 
     // Watch for route changes to toggle navbar class
@@ -83,7 +100,7 @@
                         <span class="navbar-toggler-icon bar-2"></span>
                         <span class="navbar-toggler-icon bar-3"></span>
                     </button>
-                    <Link href="/" class="navbar-brand travel-logo d-flex align-items-center">
+                    <Link :href="selectedLang === 'es' ? '/es' : '/'" class="navbar-brand travel-logo d-flex align-items-center">
                     <img src="/images/logo.webp" alt="logo" class="me-2 normallogo">
                     <img src="/images/logo.webp" alt="logo" class="me-2 stickylogo">
                     </Link>
@@ -106,25 +123,41 @@
                 <!-- Desktop Menu -->
                 <div class="collapse navbar-collapse" id="travelNavbar">
                     <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-                        <!-- Normal links -->
-                        <li class="nav-item">
-                            <Link class="nav-link" :class="{ active: isActive('/') }" href="/">
-                            Home
-                            </Link>
-                        </li>
-                        <li class="nav-item" v-if="selectedLang === 'en'">
-                            <Link :class="['nav-link', isActive('/about-us/') ? 'active' : '']" href="/about-us/">About Us</Link>
-                        </li>
-                        <li class="nav-item" v-if="selectedLang === 'en'">
-                            <Link :class="['nav-link', isActive('/blog/') ? 'active' : '']" href="/blog/">Blog</Link>
-                        </li>
-                        <li class="nav-item" v-if="selectedLang === 'es'">
-                            <Link :class="['nav-link', isActive('/articulos/') ? 'active' : '']" href="/articulos/">Articulos</Link>
-                        </li>
-                        <li class="nav-item" v-if="selectedLang === 'en'">
-                            <Link :class="['nav-link', isActive('/contact-us/') ? 'active' : '']" href="/contact-us/">Contact Us
-                            </Link>
-                        </li>
+                        <!-- English links -->
+                        <template v-if="selectedLang === 'en'">
+                            <li class="nav-item">
+                                <Link class="nav-link" :class="{ active: isActive('/') }" href="/">
+                                Home
+                                </Link>
+                            </li>
+                            <li class="nav-item">
+                                <Link :class="['nav-link', isActive('/about-us/') ? 'active' : '']" href="/about-us/">About Us</Link>
+                            </li>
+                            <li class="nav-item">
+                                <Link :class="['nav-link', isActive('/blog/') ? 'active' : '']" href="/blog/">Blog</Link>
+                            </li>
+                            <li class="nav-item">
+                                <Link :class="['nav-link', isActive('/contact-us/') ? 'active' : '']" href="/contact-us/">Contact Us</Link>
+                            </li>
+                        </template>
+                        
+                        <!-- Spanish links -->
+                        <template v-if="selectedLang === 'es'">
+                            <li class="nav-item">
+                                <Link class="nav-link" :class="{ active: isActive('/es') || isActive('/es/') }" href="/es">
+                                Inicio
+                                </Link>
+                            </li>
+                            <li class="nav-item">
+                                <Link :class="['nav-link', isActive('/es/sobre-nosotros') ? 'active' : '']" href="/es/sobre-nosotros">Sobre Nosotros</Link>
+                            </li>
+                            <li class="nav-item">
+                                <Link :class="['nav-link', isActive('/es/articulos') ? 'active' : '']" href="/es/articulos">Artículos</Link>
+                            </li>
+                            <li class="nav-item">
+                                <Link :class="['nav-link', isActive('/es/contactanos') ? 'active' : '']" href="/es/contactanos">Contáctanos</Link>
+                            </li>
+                        </template>
                     </ul>
 
                     <!-- Call info -->
@@ -146,21 +179,37 @@
     </header>
     <!-- Bottom Navigation -->
     <nav class="bottom-nav">
-        <Link href="/" class="mobnav-item active" data-page="Home" :class="{ active: isActive('/') }">
-            <span>Home</span>
-        </Link>
-        <Link href="/about-us/" class="mobnav-item" data-page="My Trips" :class="['nav-link', isActive('/about-us/') ? 'active' : '']">
-            <span>About</span>
-        </Link>
-        <Link href="/blog/" class="mobnav-item" data-page="My Trips" :class="['nav-link', isActive('/blog/') ? 'active' : '']">
-            <span>Blog</span>
-        </Link>
-        <Link href="/articulos/" class="mobnav-item" data-page="Where2Go" :class="['nav-link', isActive('/articulos/') ? 'active' : '']">
-            <span>Articulos</span>
-        </Link>
-        <Link href="/contact-us/" class="mobnav-item" data-page="Wallet" :class="['nav-link', isActive('/contact-us/') ? 'active' : '']">
-            <span>Contact</span>
-        </Link>
+        <!-- English navigation -->
+        <template v-if="selectedLang === 'en'">
+            <Link href="/" class="mobnav-item" data-page="Home" :class="{ active: isActive('/') }">
+                <span>Home</span>
+            </Link>
+            <Link href="/about-us/" class="mobnav-item" data-page="About" :class="['nav-link', isActive('/about-us/') ? 'active' : '']">
+                <span>About</span>
+            </Link>
+            <Link href="/blog/" class="mobnav-item" data-page="Blog" :class="['nav-link', isActive('/blog/') ? 'active' : '']">
+                <span>Blog</span>
+            </Link>
+            <Link href="/contact-us/" class="mobnav-item" data-page="Contact" :class="['nav-link', isActive('/contact-us/') ? 'active' : '']">
+                <span>Contact</span>
+            </Link>
+        </template>
+        
+        <!-- Spanish navigation -->
+        <template v-if="selectedLang === 'es'">
+            <Link href="/es" class="mobnav-item" data-page="Inicio" :class="{ active: isActive('/es') || isActive('/es/') }">
+                <span>Inicio</span>
+            </Link>
+            <Link href="/es/sobre-nosotros" class="mobnav-item" data-page="Sobre" :class="['nav-link', isActive('/es/sobre-nosotros') ? 'active' : '']">
+                <span>Sobre</span>
+            </Link>
+            <Link href="/es/articulos" class="mobnav-item" data-page="Articulos" :class="['nav-link', isActive('/es/articulos') ? 'active' : '']">
+                <span>Artículos</span>
+            </Link>
+            <Link href="/es/contactanos" class="mobnav-item" data-page="Contacto" :class="['nav-link', isActive('/es/contactanos') ? 'active' : '']">
+                <span>Contacto</span>
+            </Link>
+        </template>
     </nav>
 </template>
 

@@ -8,17 +8,17 @@
             <div class="container">
                 <div class="row align-items-center justify-content-center">
                     <div class="col-lg-10 col-12">
-                        <div class="inner-bannerbox">
-                            <h1 class="innercommon-heading" data-text="CONTACT US">Contact Us</h1>
-                            <div class="breadcrumb-box">
-                                <Link href="/" class="breadcrumb-home">
-                                <i class="fa fa-home"></i>
-                                <span class="ms-1">Home</span>
-                                </Link>
-                                <span class="breadcrumb-sep">&gt;</span>
-                                <span class="breadcrumb-current">Contact Us</span>
-                            </div>
-                        </div>
+                                        <div class="inner-bannerbox">
+                                            <h1 class="innercommon-heading" data-text="CONTÁCTANOS">Contáctanos</h1>
+                                            <div class="breadcrumb-box">
+                                                <Link href="/es" class="breadcrumb-home">
+                                                    <i class="fa fa-home"></i>
+                                                    <span class="ms-1">Inicio</span>
+                                                </Link>
+                                                <span class="breadcrumb-sep">&gt;</span>
+                                                <span class="breadcrumb-current">Contáctanos</span>
+                                            </div>
+                                        </div>
                     </div>
                 </div>
             </div>
@@ -28,10 +28,11 @@
             <section class="contactus-section py-5">
                 <div class="container text-center">
                     <h2 class="contactus-heading mb-2">
-                        How can you <span>connect with us?</span>
+                        Cómo <span>Contactarnos</span>
                     </h2>
                     <p class="contactus-subtext mb-5">
-                        You can reach out to us by phone, website, mail, or other means.
+                        Para contactar a los profesionales de Airlines Travel Help, elige cualquiera de las opciones mencionadas a continuación según
+                        tu comodidad.
                     </p>
 
                     <div class="row justify-content-center g-4">
@@ -41,7 +42,7 @@
                                 <div class="contactus-icon">
                                     <img src="/images/location.png" alt="">
                                 </div>
-                                <h5 class="contactus-title">Location</h5>
+                                <h5 class="contactus-title">Ubicación</h5>
                                 <p class="contactus-info">
                                     18 Valentino Dr, Old Bridge, New Jersey,
                                     08857, USA
@@ -55,7 +56,7 @@
                                 <div class="contactus-icon">
                                     <img src="/images/phone.png" alt="">
                                 </div>
-                                <h5 class="contactus-title">Phone</h5>
+                                <h5 class="contactus-title">Teléfono</h5>
                                 <p class="contactus-info">+88 (09) 53 33 09</p>
                             </div>
                         </div>
@@ -86,32 +87,28 @@
                         <div class="col-lg-7">
                             <form class="custom-contact-form">
                                 <h2 class="contactus-heading mb-2">
-                                    Write Your <span>Thoughts Here!</span>
+                                    Cómo <span>Contactarnos</span>
                                 </h2>
                                 <p class="contactus-subtext text-start mb-3" style="max-width: 100%;">
-                                    To contact the professionals from Airlines Travel Help, choose any options mentioned
-                                    below based on
-                                    your comfort.
+                                    Para contactar a los profesionales de Airlines Travel Help, elige cualquiera de las opciones mencionadas
+                                    a continuación según tu comodidad.
                                 </p>
                                 <div class="row g-3">
-                                    <div class="col-6">
-                                        <input type="text" class="form-control custom-input" placeholder="Your Name">
+                                    <div class="col-12">
+                                        <input type="text" class="form-control custom-input" placeholder="Tu Nombre">
                                     </div>
                                     <div class="col-md-6">
-                                        <input type="email" class="form-control custom-input" placeholder="Your Email">
-                                    </div>
-                                    <div class="col-6">
-                                        <input type="text" class="form-control custom-input" placeholder="Your Phone">
+                                        <input type="email" class="form-control custom-input" placeholder="Tu Email">
                                     </div>
                                     <div class="col-md-6">
-                                        <input type="text" class="form-control custom-input" placeholder="Your Subject">
+                                        <input type="text" class="form-control custom-input" placeholder="Tu Asunto">
                                     </div>
                                     <div class="col-12">
                                         <textarea class="form-control custom-input custom-textarea"
-                                            placeholder="Your Message(optional)"></textarea>
+                                            placeholder="Tu Mensaje (opcional)"></textarea>
                                     </div>
                                     <div class="col-12">
-                                        <button type="submit" class="btn common-bgBtn">Submit</button>
+                                        <button type="submit" class="btn common-bgBtn">Enviar</button>
                                     </div>
                                 </div>
                             </form>
@@ -131,12 +128,8 @@
     import DefaultLayout from '@/layouts/DefaultLayout.vue';
     import './../../css/common.css';
     import './../../css/contact.css';
-    import {
-        ref
-    } from 'vue';
-    import {
-        Link
-    } from '@inertiajs/vue3';
+    import { ref } from 'vue';
+    import { Link } from '@inertiajs/vue3';
 
     const form = ref({
         name: '',
@@ -162,103 +155,98 @@
         color: #ffffffcc;
         font-size: 14px;
     }
-
     .breadcrumb-box .breadcrumb-home {
         display: inline-flex;
         align-items: center;
         gap: 6px;
-        color: #ff6b35;
-        /* home icon / primary accent */
+        color: #ff6b35; /* home icon / primary accent */
         font-weight: 600;
         text-decoration: none;
     }
-
     .breadcrumb-box .breadcrumb-home i {
         font-size: 14px;
         color: #ff6b35;
     }
-
     .breadcrumb-box .breadcrumb-sep {
         color: #ffffff99;
         font-weight: 600;
     }
-
     .breadcrumb-box .breadcrumb-current {
         color: #ffffff;
         font-weight: 600;
     }
 
-    .contact-section {
-        padding: 60px 0;
-    }
+.contact-section {
+  padding: 60px 0;
+}
 
-    /* Contact form */
-    .custom-contact-form .custom-input {
-        background: rgb(255 255 255);
-        border: 1px solid rgb(172 172 172 / 69%);
-        border-radius: 10px;
-        padding: 10px 12px;
-        color: rgba(var(--black-color), 1);
-    }
+/* Contact form */
+.custom-contact-form .custom-input {
+    background: rgb(255 255 255);
+    border: 1px solid rgb(172 172 172 / 69%);
+    border-radius: 10px;
+    padding: 10px 12px;
+    color: rgba(var(--black-color), 1);
+}
 
-    .custom-contact-form .custom-textarea {
-        height: 140px;
-        resize: none;
-    }
+.custom-contact-form .custom-textarea {
+  height: 140px;
+  resize: none;
+}
 
-    .contactus-section {
-        background-color: #f2f8ff;
-    }
+.contactus-section {
+  background-color: #f2f8ff;
+}
 
-    .contactus-heading {
-        font-size: 1.8rem;
-        font-weight: 700;
-        color: #1d2433;
-    }
+.contactus-heading {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #1d2433;
+}
 
-    .contactus-heading span {
-        color: #f39c12;
-    }
+.contactus-heading span {
+  color: #f39c12;
+}
 
-    .contactus-subtext {
-        color: #4b5563;
-        font-size: 0.95rem;
-        max-width: 600px;
-        margin: 0 auto;
-    }
+.contactus-subtext {
+  color: #4b5563;
+  font-size: 0.95rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
 
-    .contactus-card {
-        background: #fff;
-        border-radius: 10px;
-        padding: 30px 20px;
-        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
-        border-bottom: 3px solid transparent;
-        transition: all 0.3s ease;
-        height: 100%;
-    }
+.contactus-card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 30px 20px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+  border-bottom: 3px solid transparent;
+  transition: all 0.3s ease;
+  height: 100%;
+}
 
-    .contactus-card:hover {
-        border-bottom: 3px solid #212529;
-        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
-    }
+.contactus-card:hover {
+  border-bottom: 3px solid #212529;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
 
-    .contactus-icon {
-        font-size: 2rem;
-        color: #007bff;
-        margin-bottom: 15px;
-    }
+.contactus-icon {
+  font-size: 2rem;
+  color: #007bff;
+  margin-bottom: 15px;
+}
 
-    .contactus-title {
-        font-size: 1.1rem;
-        font-weight: 600;
-        color: #1d2433;
-        margin-bottom: 10px;
-    }
+.contactus-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1d2433;
+  margin-bottom: 10px;
+}
 
-    .contactus-info {
-        color: #555;
-        font-size: 0.95rem;
-        margin: 0;
-    }
-
+.contactus-info {
+  color: #555;
+  font-size: 0.95rem;
+  margin: 0;
+}
+ 
 </style>

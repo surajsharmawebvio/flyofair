@@ -1477,14 +1477,6 @@
                                 </div>
                             </a>
                             <a href="javascript:void(0)" class="tour-card">
-                                <img src="/images/destination/chicago.webp" alt="Chicago" />
-                                <div class="tour-info">
-                                    <div class="nameinfo-box">
-                                        <h4>Chicago</h4>
-                                    </div>
-                                </div>
-                            </a>
-                            <a href="javascript:void(0)" class="tour-card">
                                 <img src="/images/destination/miami.webp" alt="miami" />
                                 <div class="tour-info">
                                     <div class="nameinfo-box">

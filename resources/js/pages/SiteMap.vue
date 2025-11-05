@@ -20,9 +20,9 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="footer-links-wrapper">
-                            <!-- Quick Link Section -->
+                            <!-- English Quick Links Section -->
                             <div class="footer-section-block">
-                                <h3 class="footer-section-heading">Quick Link</h3>
+                                <h3 class="footer-section-heading">English Pages</h3>
                                 <div class="footer-links-grid">
                                     <div class="footer-link-column">
                                         <Link href="/" class="footer-link-item">
@@ -33,27 +33,27 @@
                                             <i class="bi bi-record-circle footer-link-arrow"></i>
                                             <span class="footer-link-text">Blog</span>
                                         </Link>
-                                        <Link href="/about" class="footer-link-item">
+                                        <Link href="/about-us" class="footer-link-item">
                                             <i class="bi bi-record-circle footer-link-arrow"></i>
                                             <span class="footer-link-text">About Us</span>
                                         </Link>
                                     </div>
                                     <div class="footer-link-column">
-                                        <Link href="/contact" class="footer-link-item">
+                                        <Link href="/contact-us" class="footer-link-item">
                                             <i class="bi bi-record-circle footer-link-arrow"></i>
                                             <span class="footer-link-text">Contact Us</span>
+                                        </Link>
+                                        <Link href="/author" class="footer-link-item">
+                                            <i class="bi bi-record-circle footer-link-arrow"></i>
+                                            <span class="footer-link-text">Author</span>
                                         </Link>
                                         <Link href="/services" class="footer-link-item">
                                             <i class="bi bi-record-circle footer-link-arrow"></i>
                                             <span class="footer-link-text">Services</span>
                                         </Link>
-                                        <Link href="/articulos" class="footer-link-item">
-                                            <i class="bi bi-record-circle footer-link-arrow"></i>
-                                            <span class="footer-link-text">Articulos</span>
-                                        </Link>
                                     </div>
                                     <div class="footer-link-column">
-                                        <Link href="/terms" class="footer-link-item">
+                                        <Link href="/terms-and-conditions" class="footer-link-item">
                                             <i class="bi bi-record-circle footer-link-arrow"></i>
                                             <span class="footer-link-text">Terms and Conditions</span>
                                         </Link>
@@ -65,6 +65,40 @@
                                             <i class="bi bi-record-circle footer-link-arrow"></i>
                                             <span class="footer-link-text">Disclaimer</span>
                                         </Link>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Spanish Quick Links Section -->
+                            <div class="footer-section-block">
+                                <h3 class="footer-section-heading">Páginas en Español</h3>
+                                <div class="footer-links-grid">
+                                    <div class="footer-link-column">
+                                        <Link href="/es" class="footer-link-item">
+                                            <i class="bi bi-record-circle footer-link-arrow"></i>
+                                            <span class="footer-link-text">Inicio</span>
+                                        </Link>
+                                        <Link href="/es/articulos" class="footer-link-item">
+                                            <i class="bi bi-record-circle footer-link-arrow"></i>
+                                            <span class="footer-link-text">Artículos</span>
+                                        </Link>
+                                        <Link href="/es/sobre-nosotros" class="footer-link-item">
+                                            <i class="bi bi-record-circle footer-link-arrow"></i>
+                                            <span class="footer-link-text">Sobre Nosotros</span>
+                                        </Link>
+                                    </div>
+                                    <div class="footer-link-column">
+                                        <Link href="/es/contactanos" class="footer-link-item">
+                                            <i class="bi bi-record-circle footer-link-arrow"></i>
+                                            <span class="footer-link-text">Contáctanos</span>
+                                        </Link>
+                                        <Link href="/es/autor" class="footer-link-item">
+                                            <i class="bi bi-record-circle footer-link-arrow"></i>
+                                            <span class="footer-link-text">Autor</span>
+                                        </Link>
+                                    </div>
+                                    <div class="footer-link-column">
+                                        <!-- Empty column for layout balance -->
                                     </div>
                                 </div>
                             </div>
@@ -98,7 +132,7 @@
                                             <Link 
                                                 v-for="articulo in articuloGroup" 
                                                 :key="articulo.slug"
-                                                :href="`/articulos/${articulo.slug}`"
+                                                :href="`/es/articulos/${articulo.slug}`"
                                                 class="footer-link-item"
                                             >
                                                 <i class="bi bi-record-circle footer-link-arrow"></i>

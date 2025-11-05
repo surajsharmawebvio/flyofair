@@ -11,4 +11,9 @@ class AuthorController extends Controller
     {
         return Inertia::render('Author');
     }
+
+    public function indexEs()
+    {
+        return Inertia::render('Autor');
+    }
 }

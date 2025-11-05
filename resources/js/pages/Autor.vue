@@ -18,14 +18,14 @@
                 <div class="row align-items-center justify-content-center">
                     <div class="col-lg-10 col-12">
                         <div class="inner-bannerbox">
-                            <h1 class="innercommon-heading">author</h1>
+                            <h1 class="innercommon-heading">autor</h1>
                             <div class="breadcrumb-box">
-                                <Link href="/" class="breadcrumb-home">
+                                <Link href="/es" class="breadcrumb-home">
                                 <i class="fa fa-home"></i>
-                                <span class="ms-1">Home</span>
+                                <span class="ms-1">Inicio</span>
                                 </Link>
                                 <span class="breadcrumb-sep">&gt;</span>
-                                <span class="breadcrumb-current">Author</span>
+                                <span class="breadcrumb-current">Autor</span>
                             </div>
                         </div>
                     </div>
@@ -40,7 +40,7 @@
                         <!-- Author Image -->
                         <div class="col-md-3 text-center">
                             <img src="https://avatars.mds.yandex.net/i?id=348ec891cb9b141194a6f6c5252ddaf6468600fb-10805306-images-thumbs&n=13"
-                                alt="Author" class="authorbio-image rounded-circle">
+                                alt="Autor" class="authorbio-image rounded-circle">
                         </div>
 
                         <!-- Author Name -->
@@ -51,20 +51,20 @@
 
                     <!-- About Author -->
                     <div class="authorbio-content mt-4">
-                        <h5 class="authorbio-title">ABOUT AUTHOR</h5>
+                        <h5 class="authorbio-title">SOBRE EL AUTOR</h5>
                         <p class="authorbio-text">
-                            Hi, I am Alice Walker. I am a solo traveler and share my experiences by writing stories. Well, I have 8 Years
-                             of experience as a travel and aviation researcher. With a strong understanding of aviation trends and 
-                             traveler behavior ,I’m aiming to simplify complex flight policy and inspire travelers to fly frequently.
-                              With my  insightful guide on flight policy,cancellation, changing flight, and how to change the name on 
-                              the ticket, etc. You will get each and every detailed information on the aviation industry only at FlyOFair
-                               in an easy way without making it complex. Join me for trusted travel tips and honest aviation insights.
+                            Hola, soy Alice Walker. Soy una viajera solitaria y comparto mis experiencias escribiendo historias. Bueno, tengo 8 años
+                             de experiencia como investigadora de viajes y aviación. Con una sólida comprensión de las tendencias de aviación y 
+                             el comportamiento del viajero, mi objetivo es simplificar las políticas de vuelo complejas e inspirar a los viajeros a volar con frecuencia.
+                              Con mi guía perspicaz sobre políticas de vuelo, cancelaciones, cambios de vuelo y cómo cambiar el nombre en 
+                              el boleto, etc. Obtendrás toda la información detallada sobre la industria de la aviación solo en FlyOFair
+                               de manera fácil sin complicaciones. Únete a mí para consejos de viaje confiables y perspectivas honestas de aviación.
                         </p>
                     </div>
 
                     <!-- Social Links -->
                     <div class="authorbio-social mt-4 text-md-start text-center">
-                        <h6 class="mb-3 fw-bold">CONNECT WITH ALICE</h6>
+                        <h6 class="mb-3 fw-bold">CONÉCTATE CON ALICE</h6>
                         <a href="#" class="authorbio-social-link"><i class="bi bi-instagram"></i></a>
                         <a href="#" class="authorbio-social-link"><i class="bi bi-facebook"></i></a>
                         <a href="#" class="authorbio-social-link"><i class="bi bi-twitter-x"></i></a>

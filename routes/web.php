@@ -13,10 +13,17 @@ use App\Http\Controllers\{
 // English home page
 Route::get('/', [HomeController::class, 'index'])->name('home');
 // Spanish home page
-Route::get('/es', [HomeController::class, 'indexEs'])->name('home.es');
+Route::group(['prefix' => 'es'], function () {
+    Route::get('/', [HomeController::class, 'indexEs'])->name('home.es');
+    Route::get('/articulos', [BlogController::class, 'articulosEs'])->name('articulos.es');
+    Route::get('/articulos/{slug}', [BlogController::class, 'showEs'])->name('blog.show.es');
+    Route::get('/contactanos', [ContectController::class, 'indexEs'])->name('contact.es');
+    Route::get('/sobre-nosotros', [AboutController::class, 'indexEs'])->name('about.es');
+    Route::get('/autor', [AuthorController::class, 'indexEs'])->name('author.es');
+});
 
 Route::get('/blog', [BlogController::class, 'index'])->name('blog');
-Route::get('/articulos', [BlogController::class, 'articulos'])->name('articulos');
+// Route::get('/articulos', [BlogController::class, 'articulos'])->name('articulos');
 Route::get('/blog/{slug}', [BlogController::class, 'show'])->name('blog.show');
 Route::get('/contact-us', [ContectController::class, 'index'])->name('contact');
 Route::get('/about-us', [AboutController::class, 'index'])->name('about');
