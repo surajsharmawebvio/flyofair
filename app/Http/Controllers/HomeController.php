@@ -26,6 +26,11 @@ class HomeController extends Controller
         return Inertia::render('Home');
     }
 
+    public function indexEs()
+    {
+        return Inertia::render('Home-es');
+    }
+
     public function searchAirports(Request $request)
     {
         $input = $request->all();
@@ -58,8 +63,78 @@ class HomeController extends Controller
     }
 
     public function siteMap()
+    {   
+        // Fetch all published blog posts
+        $blogs = \App\Models\Blog::select('title', 'slug', 'lang')
+            ->where('published', 1)
+            ->orderBy('created_at', 'desc')
+            ->get();
+
+        // Split blogs by language
+        $englishBlogs = $blogs->where('lang', 'en');
+        $spanishBlogs = $blogs->where('lang', 'es');
+
+        // dd($englishBlogs, $spanishBlogs);
+
+        return Inertia::render('SiteMap', [
+            'blogs' => $englishBlogs,
+            'articulos' => $spanishBlogs
+        ]);
+    }
+
+    public function generateSitemapXml()
     {
-        return Inertia::render('SiteMap');
+        // Fetch all published blog posts
+        $blogs = \App\Models\Blog::select('slug', 'lang', 'updated_at')
+            ->where('published', 1)
+            ->get();
+
+        $xml = new \SimpleXMLElement('<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="sitemap.xsl"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml"/>');
+
+        // Add static pages
+        $staticPages = [
+            '/' => '1.0',
+            '/about' => '0.8',
+            '/contact' => '0.8',
+            '/services' => '0.9',
+            '/blog' => '0.9',
+            '/articulos' => '0.9',
+            '/terms-and-conditions' => '0.7',
+            '/privacy-policy' => '0.7',
+            '/disclaimer' => '0.7'
+        ];
+
+        foreach ($staticPages as $url => $priority) {
+            $urlElement = $xml->addChild('url');
+            $urlElement->addChild('loc', url($url));
+            $urlElement->addChild('changefreq', 'weekly');
+            $urlElement->addChild('priority', $priority);
+            $urlElement->addChild('lastmod', now()->toW3cString());
+        }
+
+        // Add blog posts and articles
+        foreach ($blogs as $blog) {
+            $urlElement = $xml->addChild('url');
+            $path = $blog->lang === 'en' ? 'blog' : 'articulos';
+            $urlElement->addChild('loc', url("/{$path}/{$blog->slug}"));
+            $urlElement->addChild('changefreq', 'monthly');
+            $urlElement->addChild('priority', '0.8');
+            $urlElement->addChild('lastmod', $blog->updated_at->toW3cString());
+
+            // Add language alternates
+            $alternateUrl = $xml->addChild('xhtml:link');
+            $alternateUrl->addAttribute('rel', 'alternate');
+            $alternateUrl->addAttribute('hreflang', $blog->lang);
+            $alternateUrl->addAttribute('href', url("/{$path}/{$blog->slug}"));
+        }
+
+        $response = response($xml->asXML(), 200);
+        $response->header('Content-Type', 'text/xml');
+        
+        // Generate file
+        $xml->asXML(public_path('sitemap.xml'));
+
+        return $response;
     }
 
     public function getQuote(Request $request)

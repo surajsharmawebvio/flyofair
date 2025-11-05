@@ -39,15 +39,11 @@
                             <div class="subspan">
                                 About Us
                             </div>
-                            <h2 class="mb-2">Helping businesses
-                                deliver <span class="text-primary text-primarysec text-decoration-underline">buyer
-                                    experiences.</span>
-                                Your Travel</h2>
-                            <p class="sub-title">Vidyard is the leading video messaging and asynchronous
-                                communications platform for go-to-market teams. Millions of sales
-                                professionals and more than 250,000 go-to-market teams use Vidyard’s
-                                AI-powered video messaging, video hosting, and digital sales rooms to
-                                connect with more prospects and generate more revenue.</p>
+                            <h2 class="mb-2">
+                                Assisting Travelers to Experience the Best Flying Experience 
+                                <!-- <span class="text-primary text-primarysec text-decoration-underline">buyer experiences.</span> -->
+                                </h2>
+                            <p class="sub-title">FlyOFair is an emerging Online Travel Agency (OTA) that offers the best platform for global passengers to book flights, cancel flights, and access other travel services. We assure passengers that we provide 24/7 and 365-day travel assistance. With us, we can guarantee that travelers can find the best deals and discounts. </p>
                             <a href="#" class="btn common-bgBtn">Get the latest updates</a>
                         </div>
                     </div>
@@ -69,7 +65,7 @@
                     <!-- Left Text -->
                     <div class="col-md-5 mb-4 mb-md-0">
                         <h2 class="ai-title">
-                            Built for go-to-market teams, powered by AI
+                            Explore your desired destinations without thinking TWICE!
                         </h2>
                     </div>
 
@@ -77,16 +73,14 @@
                     <div class="col-md-6">
                         <div class="ai-box">
                             <p>
-                                We believe in the power of video to foster human connections and empower
-                                go-to-market professionals to deliver trusted and productive buyer experiences.
+                                We offer a one-stop solution for all airline travel needs, helping passengers get the best deals and discounts. Not only the deals and discounts, but also 24/7 assistance from our experts can lead to an amazing flying experience. 
+
                             </p>
                             <p>
-                                We also believe in the power of AI to help sales and marketing teams unlock
-                                their creativity and connect with more prospects than ever before.
+                                So, what are you waiting for? Connect with FlyOFair and get your desired flight booked with us in no time. 
                             </p>
                             <p>
-                                We’re committed to helping our customers grow their revenue faster by
-                                unleashing the potential of video and AI.
+                                We will not restrict ourselves to assisting passengers with airlines’ queries; we will also guide global passengers with hotel bookings, cruise bookings, car rentals, etc. We will be offering 360-degree assistance to the passengers from the tip to the bottom.
                             </p>
                         </div>
                     </div>

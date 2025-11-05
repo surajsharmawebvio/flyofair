@@ -1,8 +1,18 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import { Link, usePage } from '@inertiajs/vue3'
 import axios from 'axios'
 import Swal from 'sweetalert2'
+
+// Configure axios defaults
+axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'
+axios.defaults.withCredentials = true
+
+// Get CSRF token from meta tag
+const token = document.head.querySelector('meta[name="csrf-token"]')
+if (token) {
+    axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content
+}
 
 const email = ref('')
 const loading = ref(false)
@@ -19,14 +29,7 @@ async function subscribe(event) {
 
     loading.value = true
     try {
-        const tokenMeta = document.head.querySelector('meta[name="csrf-token"]')
-        const headers = {}
-        if (tokenMeta) headers['X-CSRF-TOKEN'] = tokenMeta.getAttribute('content')
-
-        headers['Accept'] = 'application/json'
-        headers['Content-Type'] = 'application/json'
-
-        const res = await axios.post('/newsletter/subscribe', { email: email.value }, { headers })
+        const res = await axios.post('/api/newsletter/subscribe', { email: email.value })
 
         await Swal.fire({ icon: 'success', title: res.data.message || 'Subscribed successfully' })
         email.value = ''

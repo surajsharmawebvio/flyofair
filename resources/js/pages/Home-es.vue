@@ -966,7 +966,7 @@
                 <div class="row justify-content-start align-items-center">
                     <div class="col-lg-6 col-md-12 col-12">
                         <div class="banner-box">
-                            <h1 class="bannertitle">Get Closer to the Dream: <span>Your Tour Essentials Await</span>
+                            <h1 class="bannertitle">Get Closer es to the Dream: <span>Your Tour Essentials Await</span>
                             </h1>
                             <div class="banner-para">
                                 <p>Your ultimate destination for all things help you celebrate & remember tour

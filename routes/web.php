@@ -10,7 +10,10 @@ use App\Http\Controllers\{
     AuthorController
 };
 
+// English home page
 Route::get('/', [HomeController::class, 'index'])->name('home');
+// Spanish home page
+Route::get('/es', [HomeController::class, 'indexEs'])->name('home.es');
 
 Route::get('/blog', [BlogController::class, 'index'])->name('blog');
 Route::get('/articulos', [BlogController::class, 'articulos'])->name('articulos');
@@ -20,9 +23,13 @@ Route::get('/about', [AboutController::class, 'index'])->name('about');
 Route::get('/author', [AuthorController::class, 'index'])->name('author');
 
 Route::get('/airports/search', [HomeController::class, 'searchAirports'])->name('airports.search');
-Route::post('/newsletter/subscribe', [HomeController::class, 'subscribeNewsletter'])->name('newsletter.subscribe');
-Route::post('/get-quote', [HomeController::class, 'getQuote'])->name('get.quote');
+// Also expose API endpoints via web router (some environments don't auto-load routes/api.php)
+Route::post('/api/newsletter/subscribe', [HomeController::class, 'subscribeNewsletter']);
+Route::post('/api/get-quote', [HomeController::class, 'getQuote']);
+// HTML Sitemap
 Route::get('/sitemap', [HomeController::class, 'siteMap'])->name('site.map');
+// XML Sitemap
+Route::get('/sitemap.xml', [HomeController::class, 'generateSitemapXml'])->name('sitemap.xml');
 
 // Static Pages
 Route::get('/terms-and-conditions', function () {

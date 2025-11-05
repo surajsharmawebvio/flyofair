@@ -21,7 +21,12 @@
         selectedLang.value = newLang
         
         localStorage.setItem('language', newLang);
-        router.visit('/');
+        // Always redirect to root for English, /es for Spanish
+        if (newLang === 'en') {
+            router.visit('/');
+        } else {
+            router.visit('/es');
+        }
     }
 
     const toggleNavbarClass = () => {
