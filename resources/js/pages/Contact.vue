@@ -81,7 +81,7 @@
                     <div class="row g-4 justify-content-center">
                         <div class="col-lg-5">
                             <div class="contact-img-box">
-                                <img src="/images/contact-us-img-1.png" alt="" class="img-fluid">
+                                <img src="/images/contact-us image.png" alt="" class="img-fluid">
                             </div>
                         </div>
                         <!-- Contact Form -->

@@ -50,7 +50,7 @@
 
                     <div class="col-lg-6 col-md-12 col-12">
                         <div class="adventure-experience">
-                            <img src="/images/about/about-image-1.jpg" alt="">
+                            <img src="/images/about/about-123.png" alt="">
                         </div>
                     </div>
                 </div>

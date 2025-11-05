@@ -92,7 +92,7 @@
 .footer-section .contact-list li a:visited,
 .footer-section .contact-list li a:focus,
 .footer-section .contact-list li a:hover {
-  font-weight: 600;
+  font-weight: 400;
   color: rgba(var(--white-color), 1);
   transition: all ease-in-out 0.5s;
   font-size: 13px;

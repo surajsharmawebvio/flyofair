@@ -19,7 +19,7 @@
     RewriteCond %{REQUEST_URI} ^/blog(/.*)?$
     RewriteCond %{REQUEST_URI} !\.[^./]+$
     RewriteCond %{REQUEST_URI} !(.*)/$
-    RewriteRule ^blog(/.*)?$ /blog$1/ [L,R=301]
+    RewriteRule ^blog(/.*)?$ /$1/ [L,R=301]
 
     # ✅ Prevent POST requests from being rewritten
     RewriteCond %{REQUEST_METHOD} ^(POST|PUT|DELETE)$ [NC]

@@ -966,11 +966,10 @@
                 <div class="row justify-content-start align-items-center">
                     <div class="col-lg-6 col-md-12 col-12">
                         <div class="banner-box">
-                            <h1 class="bannertitle">Get Closer to the Dream: <span>Your Tour Essentials Await</span>
+                            <h1 class="bannertitle">The sky isn't the limit, <span> it's just the beginning.</span>
                             </h1>
                             <div class="banner-para">
-                                <p>Your ultimate destination for all things help you celebrate & remember tour
-                                    experience.</p>
+                                <p>With FlyOFair, take your dreams to the sky and bring back moments that will stay in your heart forever!</p>
                             </div>
                         </div>
                     </div>
@@ -1431,31 +1430,28 @@
                             <div class="col-xl-8 col-lg-10 text-center">
                                 <div class="section-header text-center">
                                     <h2 class="mb-2">
-                                        Search by <span
-                                            class="text-primary text-primarysec text-decoration-underline">Destinations</span>
-                                        Around the
-                                        World
+                                        Explore your desired  <span
+                                            class="text-primary text-primarysec text-decoration-underline">destinations</span>
+                                         at ease.
                                     </h2>
                                     <p class="sub-title">
-                                        DreamsTour Marketplace is a platform designed to connect fans with exclusive
-                                        experiences related to a specific
-                                        tour
+                                        FlyOFair offers a passenger-centric platform that delivers the cheapest deals and 24/7 assistance to global travellers. 
                                     </p>
                                 </div>
                             </div>
                         </div>
                         <div class="tour-slider owl-carousel">
                             <a href="javascript:void(0)" class="tour-card">
-                                <img src="images/home/destination-01.jpg" alt="Australia" />
+                                <img src="/images/destination/atlanta.webp" alt="Atlanta" />
                                 <div class="tour-info">
                                     <div class="nameinfo-box">
-                                        <h4>New York City</h4>
+                                        <h4>Atlanta</h4>
                                     </div>
                                 </div>
                             </a>
 
                             <a href="javascript:void(0)" class="tour-card">
-                                <img src="images/home/destination-02.jpg" alt="Brazil" />
+                                <img src="/images/destination/chicago.webp" alt="Chicago" />
                                 <div class="tour-info">
                                     <div class="nameinfo-box">
                                         <h4>Chicago</h4>
@@ -1464,32 +1460,32 @@
                             </a>
 
                             <a href="javascript:void(0)" class="tour-card">
-                                <img src="images/home/destination-03.jpg" alt="Canada" />
+                                <img src="/images/destination/Frankfurt.webp" alt="Frankfurt" />
+                                <div class="tour-info">
+                                    <div class="nameinfo-box">
+                                        <h4>Frankfurt</h4>
+                                    </div>
+                                </div>
+                            </a>
+
+                            <a href="javascript:void(0)" class="tour-card">
+                                <img src="/images/destination/los-angeles.webp" alt="los-angeles" />
                                 <div class="tour-info">
                                     <div class="nameinfo-box">
                                         <h4>Los Angeles</h4>
                                     </div>
                                 </div>
                             </a>
-
                             <a href="javascript:void(0)" class="tour-card">
-                                <img src="images/home/destination-04.jpg" alt="Turkey" />
+                                <img src="/images/destination/chicago.webp" alt="Chicago" />
                                 <div class="tour-info">
                                     <div class="nameinfo-box">
-                                        <h4>Denver</h4>
+                                        <h4>Chicago</h4>
                                     </div>
                                 </div>
                             </a>
                             <a href="javascript:void(0)" class="tour-card">
-                                <img src="images/home/destination-05.jpg" alt="Turkey" />
-                                <div class="tour-info">
-                                    <div class="nameinfo-box">
-                                        <h4>Atlanta</h4>
-                                    </div>
-                                </div>
-                            </a>
-                            <a href="javascript:void(0)" class="tour-card">
-                                <img src="images/home/destination-05.jpg" alt="Turkey" />
+                                <img src="/images/destination/miami.webp" alt="miami" />
                                 <div class="tour-info">
                                     <div class="nameinfo-box">
                                         <h4>Miami</h4>
@@ -1497,18 +1493,18 @@
                                 </div>
                             </a>
                             <a href="javascript:void(0)" class="tour-card">
-                                <img src="images/home/destination-05.jpg" alt="Turkey" />
+                                <img src="/images/destination/new-york-city.webp" alt="new-york-city" />
                                 <div class="tour-info">
                                     <div class="nameinfo-box">
-                                        <h4>Orlando</h4>
+                                        <h4>New York City</h4>
                                     </div>
                                 </div>
                             </a>
                             <a href="javascript:void(0)" class="tour-card">
-                                <img src="images/home/destination-05.jpg" alt="Turkey" />
+                                <img src="/images/destination/orlando.webp" alt="orlando" />
                                 <div class="tour-info">
                                     <div class="nameinfo-box">
-                                        <h4>Frankfurt</h4>
+                                        <h4>Orlando</h4>
                                     </div>
                                 </div>
                             </a>
@@ -1522,13 +1518,11 @@
                 <div class="row justify-content-center">
                     <div class="col-xl-6 col-lg-8 text-center">
                         <div class="section-header text-center">
-                            <h2 class="mb-2">
-                                Our <span class="text-primary text-primarysec text-decoration-underline">Benefits</span>
-                                &amp; Key Advantages
-                            </h2>
+                            <h3 class="mb-2">
+                                Why are we the best?
+                            </h3>
                             <p class="sub-title">
-                                DreamsTour, a tour operator specializing in dream destinations, offers a variety of
-                                benefits for travelers.
+                                Check out our key benefits and advantages that can guide you to the right ways for your next travel planning. 
                             </p>
                         </div>
                     </div>
@@ -1539,8 +1533,8 @@
                             <div class="info-icon icon-vip">
                                 <i class="fa-solid fa-briefcase"></i>
                             </div>
-                            <h3>VIP Packages</h3>
-                            <p>Include premium seating, meet-and-greet experiences, backstage tours.</p>
+                            <h3>Smooth Flight Search</h3>
+                            <p>Search flights without hassle and find the best fare for your destination.</p>
                         </div>
                     </div>
                     <div class="col-sm-6 col-lg-3 col-6">
@@ -1548,8 +1542,8 @@
                             <div class="info-icon icon-ticket">
                                 <i class="fa-solid fa-microphone-lines"></i>
                             </div>
-                            <h3>Concert Tickets</h3>
-                            <p>A centralized place to buy tickets for various dates of the tour.</p>
+                            <h3>Easy Flight Booking</h3>
+                            <p>Get the seamless booking process with us for your dream destination.</p>
                         </div>
                     </div>
                     <div class="col-sm-6 col-lg-3 col-6">
@@ -1557,8 +1551,8 @@
                             <div class="info-icon icon-travel">
                                 <i class="fa-solid fa-plane-departure"></i>
                             </div>
-                            <h3>Travel Packages</h3>
-                            <p>Bundles that include concert tickets, accommodations.</p>
+                            <h3>Get Flight Deals</h3>
+                            <p>Find the best flight deals and discounts from us and save your money.</p>
                         </div>
                     </div>
                     <div class="col-sm-6 col-lg-3 col-6">
@@ -1566,8 +1560,8 @@
                             <div class="info-icon icon-price">
                                 <i class="fa-solid fa-crown"></i>
                             </div>
-                            <h3>Best Price Guarantee</h3>
-                            <p>Such as private rehearsals, soundcheck access.</p>
+                            <h3>Transparent Process</h3>
+                            <p>We don't charge any hidden fees or use any hidden procedures.</p>
                         </div>
                     </div>
                     <div class="col-sm-6 col-6 col-lg-3">
@@ -1575,8 +1569,8 @@
                             <div class="info-icon icon-vip">
                                 <i class="fa-solid fa-briefcase"></i>
                             </div>
-                            <h3>VIP Packages</h3>
-                            <p>Include premium seating, meet-and-greet experiences, backstage tours.</p>
+                            <h3>24/7 Travel Assistance</h3>
+                            <p>Get 24/7, 365-day assistance from us for your travel needs.</p>
                         </div>
                     </div>
                     <div class="col-sm-6 col-lg-3 col-6">
@@ -1584,8 +1578,8 @@
                             <div class="info-icon icon-ticket">
                                 <i class="fa-solid fa-microphone-lines"></i>
                             </div>
-                            <h3>Concert Tickets</h3>
-                            <p>A centralized place to buy tickets for various dates of the tour.</p>
+                            <h3>Passenger-friendly platform</h3>
+                            <p>Get a passenger-friendly platform to make your dream travel come true.</p>
                         </div>
                     </div>
                     <div class="col-sm-6 col-lg-3 col-6">
@@ -1593,8 +1587,8 @@
                             <div class="info-icon icon-travel">
                                 <i class="fa-solid fa-plane-departure"></i>
                             </div>
-                            <h3>Travel Packages</h3>
-                            <p>Bundles that include concert tickets, accommodations.</p>
+                            <h3>Information Travel Resources</h3>
+                            <p>Find all updates and information related to airlines' deals and discounts</p>
                         </div>
                     </div>
                     <div class="col-sm-6 col-lg-3 col-6">
@@ -1602,8 +1596,8 @@
                             <div class="info-icon icon-price">
                                 <i class="fa-solid fa-crown"></i>
                             </div>
-                            <h3>Best Price Guarantee</h3>
-                            <p>Such as private rehearsals, soundcheck access.</p>
+                            <h3>Trusted </h3>
+                            <p>As an IATA-approved OTA, we drive complete trust with our end consumers.</p>
                         </div>
                     </div>
                 </div>
@@ -1617,9 +1611,8 @@
                         <div class="tg-chose-content">
                             <div class="section-header text-start">
                                 <h2 class="mb-2">
-                                    Book your next trip
-                                    <span class="text-primary text-primarysec text-decoration-underline">Benein 3 easy
-                                        stepsfits</span>
+                                   Key Benefits of 
+                                    <span class="text-primary text-primarysec text-decoration-underline">Choosing FlyOFair</span>
                                 </h2>
                             </div>
                             <div class="tg-chose-list-wrap">
@@ -1632,8 +1625,8 @@
                                         </svg>
                                     </span>
                                     <div class="tg-chose-list-content">
-                                        <h4 class="tg-chose-list-title mb-5">Choose Destination</h4>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Urna, tortor tempus.
+                                        <h3 class="tg-chose-list-title mb-5">Personalized Flight Recommendations</h3>
+                                        <p>FlyOFair will guide you and suggest tailor-made flight options.
                                         </p>
                                     </div>
                                 </div>
@@ -1646,8 +1639,8 @@
                                         </svg>
                                     </span>
                                     <div class="tg-chose-list-content">
-                                        <h4 class="tg-chose-list-title mb-5">Make Payment</h4>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Urna, tortor tempus.
+                                        <h4 class="tg-chose-list-title mb-5">Real-time Flight Updates</h4>
+                                        <p>Always stay informed with real-time flight updates and notifications. 
                                         </p>
                                     </div>
                                 </div>
@@ -1660,8 +1653,8 @@
                                         </svg>
                                     </span>
                                     <div class="tg-chose-list-content">
-                                        <h4 class="tg-chose-list-title mb-5">Reach Airport on Selected Date</h4>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Urna, tortor tempus.
+                                        <h4 class="tg-chose-list-title mb-5">Easy modifications </h4>
+                                        <p>Get the benefits of modifying your booking, including cancellations and changes.
                                         </p>
                                     </div>
                                 </div>
@@ -1682,9 +1675,8 @@
                     <div class="col-12">
                         <div class="section-header text-center">
                             <h2 class="mb-2">
-                                Everything You Wonder
-                                <span class="text-primary text-primarysec text-decoration-underline">About
-                                    Cruises:</span> Answered Here
+                                All About 
+                                <span class="text-primary text-primarysec text-decoration-underline">FlyOFair</span> You Should Know 
                             </h2>
                         </div>
                         <div class="accordion custom-accordion" id="accordionExample">

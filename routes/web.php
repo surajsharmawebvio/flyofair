@@ -18,8 +18,8 @@ Route::get('/es', [HomeController::class, 'indexEs'])->name('home.es');
 Route::get('/blog', [BlogController::class, 'index'])->name('blog');
 Route::get('/articulos', [BlogController::class, 'articulos'])->name('articulos');
 Route::get('/blog/{slug}', [BlogController::class, 'show'])->name('blog.show');
-Route::get('/contact', [ContectController::class, 'index'])->name('contact');
-Route::get('/about', [AboutController::class, 'index'])->name('about');
+Route::get('/contact-us', [ContectController::class, 'index'])->name('contact');
+Route::get('/about-us', [AboutController::class, 'index'])->name('about');
 Route::get('/author', [AuthorController::class, 'index'])->name('author');
 
 Route::get('/airports/search', [HomeController::class, 'searchAirports'])->name('airports.search');
