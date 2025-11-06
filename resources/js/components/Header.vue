@@ -115,9 +115,9 @@
                         </select>
                     </div>
                     <!-- Reservation button -->
-                    <a href="tel:88 (09) 53 33 09" class="travel-call d-flex align-items-center me-0 newtravel-call">
+                    <a href="tel:+1-877-238-0219" class="travel-call d-flex align-items-center me-0 newtravel-call">
                         <span class="travel-call-icon me-2"><i class="bi bi-telephone"></i></span>
-                        <div class="small"><strong>+88 (09) 53 33 09</strong></div>
+                        <div class="small"><strong>+1-877-238-0219 </strong></div>
                     </a>
                 </div>
                 <!-- Desktop Menu -->
@@ -168,9 +168,9 @@
                             <option value="es">Es</option>
                         </select>
                     </div>
-                    <a href="tel:88 (09) 53 33 09" class="travel-call d-flex align-items-center me-0">
+                    <a href="tel:+1-877-238-0219" class="travel-call d-flex align-items-center me-0">
                         <span class="travel-call-icon me-2"><i class="bi bi-telephone"></i></span>
-                        <div class="small"><strong>+88 (09) 53 33 09</strong></div>
+                        <div class="small"><strong>+1-877-238-0219 </strong></div>
                     </a>
                 </div>
             </div>

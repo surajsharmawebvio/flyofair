@@ -1813,12 +1813,10 @@
                     <div class="col-lg-8 col-12">
                         <div class="section-header text-center">
                             <h2 class="mb-2">
-                                Where Does <span class="text-primary text-primarysec text-decoration-underline">Your
-                                    Heart</span> Wish To Wander?
+                                Qué opinan nuestros <span class="text-primary text-primarysec text-decoration-underline">valiosos pasajeros</span> sobre nosotros?
                             </h2>
                             <p class="sub-title">
-                                DreamsTour, a tour operator specializing in dream destinations, offers a variety of
-                                benefits for travelers.
+                                Valoramos mucho la experiencia de viaje de nuestros pasajeros, y aquí hay algunos comentarios que lo explican todo.
                             </p>
                         </div>
                     </div>
@@ -1827,55 +1825,53 @@
                 <div class="owl-carousel custom-testimonial-carousel">
                     <!-- Testimonial 1 -->
                     <div class="testimonial-box">
-                        <h4>Hidden Treasure</h4>
                         <p>
-                            I went on the Gone with the Wind tour, and it was my first multi-day bus tour. The
-                            experience was terrific, thanks to the
-                            friendly tour guides.
+                            Desde el momento en que hice la reserva hasta que aterricé en Bali, todo fue muy fácil. El equipo de facturación fue muy amable e incluso recordaba mi preferencia de asiento. Ver el amanecer sobre el océano mientras aterrizábamos fue perfecto. No parecía un simple viaje, sino el comienzo de algo mágico.
                         </p>
                         <div class="testimonial-footer">
-                            <img src="https://i.pravatar.cc/50?img=10" alt="User 1" />
+                            <!-- <img src="https://i.pravatar.cc/50?img=10" alt="User 1" /> -->
                             <div>
                                 <strong>Bryan Bradfield</strong><br />
-                                <small>Cape Town, South Africa</small>
                             </div>
-                            <span class="rating-badge">5.0</span>
                         </div>
                     </div>
 
                     <!-- Testimonial 2 -->
                     <div class="testimonial-box">
-                        <h4>Easy to Find your Leisuree Place</h4>
                         <p>
-                            Thanks for arranging a smooth travel experience for us. Our cab driver was polite, timely,
-                            and helpful. The team ensured
-                            making it a stress-free trip.
+                            Estaba nerviosa por viajar sola, pero la tripulación me hizo sentir como en casa. Me ayudaron a encontrar consejos locales sobre París e incluso me imprimieron una mini guía de la ciudad. Un servicio increíble con un toque personal: llegué lista para enamorarme de la ciudad de las luces.
                         </p>
                         <div class="testimonial-footer">
-                            <img src="https://i.pravatar.cc/50?img=11" alt="User 2" />
+                            <!-- <img src="https://i.pravatar.cc/50?img=11" alt="User 2" /> -->
                             <div>
                                 <strong>Prajakta Sasane</strong><br />
-                                <small>Paris, France</small>
                             </div>
-                            <span class="rating-badge">5.0</span>
                         </div>
                     </div>
 
                     <!-- Testimonial 3 -->
                     <div class="testimonial-box">
-                        <h4>Great Service</h4>
                         <p>
-                            We had a fantastic time as a family. There were activities for every age group, and the kids
-                            loved the kids’ club, fun
-                            activities, good customer service.
+                            Normalmente, los vuelos largos son agotadores, pero este se me pasó volando. Todo, desde la comodidad del asiento hasta la cena a bordo, me hizo sentir cuidada. Cuando descendimos sobre el horizonte neón de Tokio, me sentía renovada y emocionada, no cansada. Esa es la diferencia que marca la hospitalidad genuina.
                         </p>
                         <div class="testimonial-footer">
-                            <img src="https://i.pravatar.cc/50?img=12" alt="User 3" />
+                            <!-- <img src="https://i.pravatar.cc/50?img=12" alt="User 3" /> -->
                             <div>
                                 <strong>James Andrew</strong><br />
-                                <small>Newyork, United States</small>
                             </div>
-                            <span class="rating-badge">5.0</span>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 4 -->
+                    <div class="testimonial-box">
+                        <p>
+                            A veces, viajar parece una transacción. Pero esta vez no fue así. El equipo se anticipó a mis necesidades antes incluso de que las expresara, desde mantener mi café caliente hasta ayudarme con un traslado retrasado. Cuando llegué a Zúrich, me di cuenta de que no solo me había impresionado el destino, sino también el viaje.
+                        </p>
+                        <div class="testimonial-footer">
+                            <!-- <img src="https://i.pravatar.cc/50?img=12" alt="User 4" /> -->
+                            <div>
+                                <strong>James Anderson</strong><br />
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -14,7 +14,6 @@
                 </div>
             </div>
         </section>
-
         <section class="common-section">
             <div class="container">
                 <div class="row">

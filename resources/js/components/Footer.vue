@@ -135,7 +135,7 @@ async function subscribe(event) {
                                             <i class="bi bi-geo-alt"></i>
                                         </span>
                                     </div>
-                                    <a>1876 Harvest Cir Tustin, CA 92780, USA</a>
+                                    <a>17875 Von Karman Ave, Suite 150 & 250, Irvine, California, 92614, United States of America</a>
                                 </li>
                             </ul>
                         </div>
@@ -270,9 +270,9 @@ async function subscribe(event) {
                 <li class="nav-item"><Link class="nav-link" :class="{ active: isActive('/contact-us/') }" href="/contact-us/">Contact Us</Link></li>
             </ul>
             <!-- Call info -->
-            <a href="tel:88 (09) 53 33 09" class="travel-call d-flex align-items-center me-4">
+            <a href="tel:+1-877-238-0219" class="travel-call d-flex align-items-center me-4">
                 <span class="travel-call-icon me-2"><i class="bi bi-telephone"></i></span>
-                <div class="small">Call Us<br><strong>+88 (09) 53 33 09</strong></div>
+                <div class="small">Call Us<br><strong>+1-877-238-0219 </strong></div>
             </a>
         </div>
     </div>
@@ -315,9 +315,9 @@ async function subscribe(event) {
                         </li>
                     </ul>
 
-                    <a href="tel:+18447331212" class="travel-call-btn">
+                    <a href="tel:+1-877-238-0219" class="travel-call-btn">
                         <i class="fas fa-phone"></i>
-                        +1 (844) 733-1212
+                        +1-877-238-0219 
                     </a>
                 </div>
             </div>

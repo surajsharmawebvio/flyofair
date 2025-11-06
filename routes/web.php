@@ -28,8 +28,8 @@ Route::group(['prefix' => 'es'], function () {
     Route::get('/politica-de-privacidad', function () {
         return Inertia::render('PoliticaDePrivacidad');
     })->name('privacy.policy.es');
-    Route::get('/aviso-legal', function () {
-        return Inertia::render('AvisoLegal');
+    Route::get('/descargo-de-responsabilidad', function () {
+        return Inertia::render('DescargoDeResponsabilidad');
     })->name('disclaimer.es');
     Route::get('/servicios', function () {
         return Inertia::render('Servicios');

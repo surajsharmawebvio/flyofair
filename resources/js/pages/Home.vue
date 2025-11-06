@@ -37,12 +37,7 @@
         }
 
         try {
-            const res = await axios.get(url, {
-                withCredentials: false,
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            })
+            const res = await axios.get(url)
             resultsSetter(res.data.data || res.data || [])
         } catch (error) {
             console.error('Error fetching airports:', error)
@@ -311,8 +306,10 @@
     }
 
     // --- Multi Trip functions (reuse searchAirports) ---
-    const fetchMultiFromAirports = debounce((query) => searchAirports(query, results => multiFromResults.value = results), 400)
-    const fetchMultiToAirports = debounce((query) => searchAirports(query, results => multiToResults.value = results), 400)
+    const fetchMultiFromAirports = debounce((query) => searchAirports(query, results => multiFromResults.value =
+        results), 400)
+    const fetchMultiToAirports = debounce((query) => searchAirports(query, results => multiToResults.value = results),
+        400)
 
     watch(multiFromQuery, (newVal) => {
         fetchMultiFromAirports(newVal)
@@ -466,7 +463,8 @@
                 let errMsg = 'Failed to send quote request.';
                 if (error.response && error.response.data) {
                     if (error.response.data.message) errMsg = error.response.data.message;
-                    else if (error.response.data.errors) errMsg = Object.values(error.response.data.errors).flat().join('\n');
+                    else if (error.response.data.errors) errMsg = Object.values(error.response.data.errors)
+                        .flat().join('\n');
                 }
                 Swal.fire({
                     icon: 'error',
@@ -475,7 +473,7 @@
                     confirmButtonText: 'OK'
                 });
             });
-        
+
         // console.log('Submitting flight search:', formData);
     };
 
@@ -649,8 +647,8 @@
                 const $wrapper = $input.parent();
                 $wrapper.css('position', 'relative');
 
-                const $list = $('<ul class="list-group position-absolute shadow" '
-                    + 'style="width:100%; max-height:220px; z-index:1050; display:none;"></ul>');
+                const $list = $('<ul class="list-group position-absolute shadow" ' +
+                    'style="width:100%; max-height:220px; z-index:1050; display:none;"></ul>');
                 $wrapper.append($list);
 
                 const debouncedSearch = debounce(function (query) {
@@ -667,12 +665,14 @@
                         }
                         results.forEach(function (airport) {
                             const $li = $(
-                                '<li class="list-group-item" style="cursor:pointer;"><strong>'
-                                + airport.airport_code + '</strong> — ' + airport.airport_name + '</li>'
+                                '<li class="list-group-item" style="cursor:pointer;"><strong>' +
+                                airport.airport_code + '</strong> — ' +
+                                airport.airport_name + '</li>'
                             );
                             $li.on('mousedown', function (e) {
                                 e.preventDefault();
-                                $input.val(airport.airport_code + ' — ' + airport.airport_name);
+                                $input.val(airport.airport_code +
+                                    ' — ' + airport.airport_name);
                                 $list.empty().hide();
                             });
                             $list.append($li);
@@ -974,7 +974,8 @@
                             <h1 class="bannertitle">The sky isn't the limit, <span> it's just the beginning.</span>
                             </h1>
                             <div class="banner-para">
-                                <p>With FlyOFair, take your dreams to the sky and bring back moments that will stay in your heart forever!</p>
+                                <p>With FlyOFair, take your dreams to the sky and bring back moments that will stay in
+                                    your heart forever!</p>
                             </div>
                         </div>
                     </div>
@@ -1348,17 +1349,14 @@
                                                 <input type="text" class="form-control" placeholder="Phone Number"
                                                     name="name" />
                                             </div>
-                                            <div ref="multiFromWrapper" class="col-lg-3 col-md-6 col-12" style="position: relative;">
+                                            <div ref="multiFromWrapper" class="col-lg-3 col-md-6 col-12"
+                                                style="position: relative;">
                                                 <label class="form-label search-label">From</label>
-                                                <input v-model="multiFromQuery"
-                                                    @input="onMultiFromInput"
+                                                <input v-model="multiFromQuery" @input="onMultiFromInput"
                                                     @keydown="onMultiFromKeydown"
-                                                    @focus="showMultiFromSuggestions = true"
-                                                    @blur="handleMultiFromBlur"
-                                                    type="text"
-                                                    class="form-control flight-input"
-                                                    placeholder="Add departure"
-                                                    autocomplete="off" />
+                                                    @focus="showMultiFromSuggestions = true" @blur="handleMultiFromBlur"
+                                                    type="text" class="form-control flight-input"
+                                                    placeholder="Add departure" autocomplete="off" />
                                                 <ul v-if="showMultiFromSuggestions && multiFromResults.length > 0"
                                                     class="list-group position-absolute shadow"
                                                     style="width:100%; max-height:220px; z-index:1050;">
@@ -1370,16 +1368,13 @@
                                                     </li>
                                                 </ul>
                                             </div>
-                                            <div ref="multiToWrapper" class="col-lg-3 col-md-6 col-12" style="position: relative;">
+                                            <div ref="multiToWrapper" class="col-lg-3 col-md-6 col-12"
+                                                style="position: relative;">
                                                 <label class="form-label search-label">To</label>
-                                                <input v-model="multiToQuery"
-                                                    @input="onMultiToInput"
-                                                    @keydown="onMultiToKeydown"
-                                                    @focus="showMultiToSuggestions = true"
-                                                    @blur="handleMultiToBlur"
-                                                    type="text"
-                                                    class="form-control flight-input"
-                                                    placeholder="Add arrival"
+                                                <input v-model="multiToQuery" @input="onMultiToInput"
+                                                    @keydown="onMultiToKeydown" @focus="showMultiToSuggestions = true"
+                                                    @blur="handleMultiToBlur" type="text"
+                                                    class="form-control flight-input" placeholder="Add arrival"
                                                     autocomplete="off" />
                                                 <ul v-if="showMultiToSuggestions && multiToResults.length > 0"
                                                     class="list-group position-absolute shadow"
@@ -1435,12 +1430,13 @@
                             <div class="col-xl-8 col-lg-10 text-center">
                                 <div class="section-header text-center">
                                     <h2 class="mb-2">
-                                        Explore your desired  <span
+                                        Explore your desired <span
                                             class="text-primary text-primarysec text-decoration-underline">destinations</span>
-                                         at ease.
+                                        at ease.
                                     </h2>
                                     <p class="sub-title">
-                                        FlyOFair offers a passenger-centric platform that delivers the cheapest deals and 24/7 assistance to global travellers. 
+                                        FlyOFair offers a passenger-centric platform that delivers the cheapest deals
+                                        and 24/7 assistance to global travellers.
                                     </p>
                                 </div>
                             </div>
@@ -1482,6 +1478,14 @@
                                 </div>
                             </a>
                             <a href="javascript:void(0)" class="tour-card">
+                                <img src="/images/destination/chicago.webp" alt="Chicago" />
+                                <div class="tour-info">
+                                    <div class="nameinfo-box">
+                                        <h4>Chicago</h4>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="javascript:void(0)" class="tour-card">
                                 <img src="/images/destination/miami.webp" alt="miami" />
                                 <div class="tour-info">
                                     <div class="nameinfo-box">
@@ -1519,7 +1523,8 @@
                                 Why are we the best?
                             </h3>
                             <p class="sub-title">
-                                Check out our key benefits and advantages that can guide you to the right ways for your next travel planning. 
+                                Check out our key benefits and advantages that can guide you to the right ways for your
+                                next travel planning.
                             </p>
                         </div>
                     </div>
@@ -1608,8 +1613,9 @@
                         <div class="tg-chose-content">
                             <div class="section-header text-start">
                                 <h2 class="mb-2">
-                                   Key Benefits of 
-                                    <span class="text-primary text-primarysec text-decoration-underline">Choosing FlyOFair</span>
+                                    Key Benefits of
+                                    <span class="text-primary text-primarysec text-decoration-underline">Choosing
+                                        FlyOFair</span>
                                 </h2>
                             </div>
                             <div class="tg-chose-list-wrap">
@@ -1637,7 +1643,7 @@
                                     </span>
                                     <div class="tg-chose-list-content">
                                         <h4 class="tg-chose-list-title mb-5">Real-time Flight Updates</h4>
-                                        <p>Always stay informed with real-time flight updates and notifications. 
+                                        <p>Always stay informed with real-time flight updates and notifications.
                                         </p>
                                     </div>
                                 </div>
@@ -1651,7 +1657,8 @@
                                     </span>
                                     <div class="tg-chose-list-content">
                                         <h4 class="tg-chose-list-title mb-5">Easy modifications </h4>
-                                        <p>Get the benefits of modifying your booking, including cancellations and changes.
+                                        <p>Get the benefits of modifying your booking, including cancellations and
+                                            changes.
                                         </p>
                                     </div>
                                 </div>
@@ -1672,17 +1679,19 @@
                     <div class="col-12">
                         <div class="section-header text-center">
                             <h2 class="mb-2">
-                                All About 
-                                <span class="text-primary text-primarysec text-decoration-underline">FlyOFair</span> You Should Know 
+                                All About
+                                <span class="text-primary text-primarysec text-decoration-underline">FlyOFair</span> You
+                                Should Know
                             </h2>
                         </div>
                         <div class="accordion custom-accordion" id="accordionExample">
+                            <!-- Accordion Item 1 -->
                             <!-- Accordion Item 1 -->
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="headingOne">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                                        <span>What is included in the cruise package?</span>
+                                        <span>Why makes FlyOFair better than other online travel agencies?</span>
                                         <i class="icon fas fa-eye-slash ms-auto"></i>
                                     </button>
                                 </h2>
@@ -1690,10 +1699,8 @@
                                     data-bs-parent="#accordionExample">
                                     <div class="accordion-body">
                                         <p class="sub-title">
-                                            Our cruise packages typically include accommodation, meals, entertainment,
-                                            and access to onboard
-                                            activities. Some packages also include shore excursions and drinks. Check
-                                            your specific package details.
+                                            FlyOFair is completely focused on passenger satisfaction and convenience. As
+                                            a trusted OTA, we offer an easy flight search and reservation experience.
                                         </p>
                                     </div>
                                 </div>
@@ -1704,7 +1711,7 @@
                                 <h2 class="accordion-header" id="headingTwo">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                        <span>What should I pack for the cruise?</span>
+                                        <span>How can FlyOFair help you find the best deals?</span>
                                         <i class="icon fas fa-eye-slash ms-auto"></i>
                                     </button>
                                 </h2>
@@ -1712,21 +1719,20 @@
                                     data-bs-parent="#accordionExample">
                                     <div class="accordion-body">
                                         <p class="sub-title">
-                                            Bring comfortable clothing for daytime activities, formal wear for dinners,
-                                            swimwear, toiletries, and any
-                                            personal items you need. Don’t forget your travel documents and a hat or
-                                            sunscreen for sunny days.
+                                            We are offering the best passenger-centric platform that delivers amazing
+                                            deals and discounts through fare comparison for global travellers.
                                         </p>
                                     </div>
                                 </div>
                             </div>
-                            <!-- Accordion Item 2 -->
+
+                            <!-- Accordion Item 3 -->
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="headingThree">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#collapseThree" aria-expanded="false"
                                         aria-controls="collapseThree">
-                                        <span>What happens if the cruise is cancelled?</span>
+                                        <span>Can I modify my reservation on FlyOFair?</span>
                                         <i class="icon fas fa-eye-slash ms-auto"></i>
                                     </button>
                                 </h2>
@@ -1734,21 +1740,20 @@
                                     aria-labelledby="headingThree" data-bs-parent="#accordionExample">
                                     <div class="accordion-body">
                                         <p class="sub-title">
-                                            In case of cancellation due to unforeseen circumstances, we offer full
-                                            refunds or the option to reschedule
-                                            your cruise. We will inform you promptly and assist with your preferred
-                                            option to ensure a smooth process.
+                                            Yes, you can modify your reservation in accordance with the airline's terms
+                                            and conditions. We are available 24/7 to guide you with the modifications.
                                         </p>
                                     </div>
                                 </div>
                             </div>
-                            <!-- Accordion Item 2 -->
+
+                            <!-- Accordion Item 4 -->
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="headingFour">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#collapseFour" aria-expanded="false"
                                         aria-controls="collapseFour">
-                                        <span>Do I need a visa to join the cruise?</span>
+                                        <span>Does FlyOFair offer customer service assistance?</span>
                                         <i class="icon fas fa-eye-slash ms-auto"></i>
                                     </button>
                                 </h2>
@@ -1756,21 +1761,20 @@
                                     data-bs-parent="#accordionExample">
                                     <div class="accordion-body">
                                         <p class="sub-title">
-                                            Visa requirements depend on your nationality and the cruise itinerary. We
-                                            recommend checking the visa
-                                            policies for each port of call and consulting with your local embassy before
-                                            booking.
+                                            Yes, FlyOFair offers customer service assistance to its valued passengers.
+                                            Travellers can connect with us 24/7, 365 days a year for expert help.
                                         </p>
                                     </div>
                                 </div>
                             </div>
-                            <!-- Accordion Item 2 -->
+
+                            <!-- Accordion Item 5 -->
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="headingFive">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#collapseFive" aria-expanded="false"
                                         aria-controls="collapseFive">
-                                        <span>What safety measures are in place on board?</span>
+                                        <span>How can I stay updated on new offers and deals?</span>
                                         <i class="icon fas fa-eye-slash ms-auto"></i>
                                     </button>
                                 </h2>
@@ -1778,10 +1782,9 @@
                                     data-bs-parent="#accordionExample">
                                     <div class="accordion-body">
                                         <p class="sub-title">
-                                            Safety is our top priority. We adhere to strict health protocols, including
-                                            regular sanitation, safety
-                                            drills, and trained crew members to ensure a secure and protected
-                                            environment.
+                                            With FlyOFair, you can access our newsletter, and from there you will
+                                            receive emails with current deals and discounts to your desired
+                                            destinations.
                                         </p>
                                     </div>
                                 </div>
@@ -1827,12 +1830,12 @@
                     <div class="col-lg-8 col-12">
                         <div class="section-header text-center">
                             <h2 class="mb-2">
-                                Where Does <span class="text-primary text-primarysec text-decoration-underline">Your
-                                    Heart</span> Wish To Wander?
+                                What do our
+                                <span class="text-primary text-primarysec text-decoration-underline">valuable
+                                    passengers</span> say about us?
                             </h2>
                             <p class="sub-title">
-                                DreamsTour, a tour operator specializing in dream destinations, offers a variety of
-                                benefits for travelers.
+                                We truly value our passengers' travel experience, and here are some that explain everything.
                             </p>
                         </div>
                     </div>
@@ -1841,55 +1844,53 @@
                 <div class="owl-carousel custom-testimonial-carousel">
                     <!-- Testimonial 1 -->
                     <div class="testimonial-box">
-                        <h4>Hidden Treasure</h4>
                         <p>
-                            I went on the Gone with the Wind tour, and it was my first multi-day bus tour. The
-                            experience was terrific, thanks to the
-                            friendly tour guides.
+                            From the moment I booked until landing in Bali, everything felt effortless. The check‑in team was so kind and even remembered my seat preference. Watching the sunrise over the ocean as we landed — perfection. It didn't feel like just a trip; it felt like the beginning of something magical.
                         </p>
                         <div class="testimonial-footer">
-                            <img src="https://i.pravatar.cc/50?img=10" alt="User 1" />
+                            <!-- <img src="https://i.pravatar.cc/50?img=10" alt="User 1" /> -->
                             <div>
                                 <strong>Bryan Bradfield</strong><br />
-                                <small>Cape Town, South Africa</small>
                             </div>
-                            <span class="rating-badge">5.0</span>
                         </div>
                     </div>
 
                     <!-- Testimonial 2 -->
                     <div class="testimonial-box">
-                        <h4>Easy to Find your Leisuree Place</h4>
                         <p>
-                            Thanks for arranging a smooth travel experience for us. Our cab driver was polite, timely,
-                            and helpful. The team ensured
-                            making it a stress-free trip.
+                            I was nervous about traveling solo, but the crew made me feel right at home. They helped me find local tips for Paris and even printed a mini city guide. Amazing service with a personal touch — I arrived ready to fall in love with the city of lights.
                         </p>
                         <div class="testimonial-footer">
-                            <img src="https://i.pravatar.cc/50?img=11" alt="User 2" />
+                            <!-- <img src="https://i.pravatar.cc/50?img=11" alt="User 2" /> -->
                             <div>
                                 <strong>Prajakta Sasane</strong><br />
-                                <small>Paris, France</small>
                             </div>
-                            <span class="rating-badge">5.0</span>
                         </div>
                     </div>
 
                     <!-- Testimonial 3 -->
                     <div class="testimonial-box">
-                        <h4>Great Service</h4>
                         <p>
-                            We had a fantastic time as a family. There were activities for every age group, and the kids
-                            loved the kids’ club, fun
-                            activities, good customer service.
+                            Usually, long flights feel exhausting, but this one honestly flew by. Everything from the seat comfort to the onboard dinner made me feel cared for. By the time we descended over Tokyo's neon skyline, I felt refreshed and excited, not tired. That's the difference genuine hospitality makes
                         </p>
                         <div class="testimonial-footer">
-                            <img src="https://i.pravatar.cc/50?img=12" alt="User 3" />
+                            <!-- <img src="https://i.pravatar.cc/50?img=12" alt="User 3" /> -->
                             <div>
                                 <strong>James Andrew</strong><br />
-                                <small>Newyork, United States</small>
                             </div>
-                            <span class="rating-badge">5.0</span>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 4 -->
+                    <div class="testimonial-box">
+                        <p>
+                            Sometimes, travel feels transactional. But not this time. The team anticipated what I needed before I even asked — from keeping my coffee hot to helping with a delayed transfer. When I reached Zurich, I realized it wasn't just the destination that impressed me — it was the journey.
+                        </p>
+                        <div class="testimonial-footer">
+                            <!-- <img src="https://i.pravatar.cc/50?img=12" alt="User 4" /> -->
+                            <div>
+                                <strong>James Andrson</strong><br />
+                            </div>
                         </div>
                     </div>
                 </div>
