@@ -29,3 +29,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 // Public API Routes
 Route::post('/newsletter/subscribe', [HomeController::class, 'subscribeNewsletter']);
 Route::post('/get-quote', [HomeController::class, 'getQuote']);
+Route::post('/contact/submit', [ContectController::class, 'submit']);

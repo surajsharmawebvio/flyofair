@@ -105,35 +105,35 @@ async function subscribe(event) {
                                 <!-- English links -->
                                 <template v-if="selectedLang === 'en'">
                                     <li>
-                                        <Link href="/blog">Blog</Link>
+                                        <Link href="/blog/">Blog</Link>
                                     </li>
                                     <li>
-                                        <Link href="/about-us">About Us</Link>
+                                        <Link href="/about-us/">About Us</Link>
                                     </li>
                                     <li>
-                                        <Link href="/author">Author</Link>
+                                        <Link href="/author/">Author</Link>
                                     </li>
                                     <li>
-                                        <Link href="/contact-us">Contact Us</Link>
+                                        <Link href="/contact-us/">Contact Us</Link>
                                     </li>
                                     <li>
-                                    <Link href="/sitemap">{{ selectedLang === 'es' ? 'Mapa del Sitio' : 'Sitemap' }}</Link>
+                                    <Link href="/sitemap/">{{ selectedLang === 'es' ? 'Mapa del Sitio' : 'Sitemap' }}</Link>
                                 </li>
                                 </template>
                                 
                                 <!-- Spanish links -->
                                 <template v-if="selectedLang === 'es'">
                                     <li>
-                                        <Link href="/es/articulos">Artículos</Link>
+                                        <Link href="/es/articulos/">Artículos</Link>
                                     </li>
                                     <li>
-                                        <Link href="/es/sobre-nosotros">Sobre Nosotros</Link>
+                                        <Link href="/es/sobre-nosotros/">Sobre Nosotros</Link>
                                     </li>
                                     <li>
-                                        <Link href="/es/autor">Autor</Link>
+                                        <Link href="/es/autor/">Autor</Link>
                                     </li>
                                     <li>
-                                        <Link href="/es/contactanos">Contáctanos</Link>
+                                        <Link href="/es/contactanos/">Contáctanos</Link>
                                     </li>
                                 </template>
                             </ul>
@@ -144,17 +144,17 @@ async function subscribe(event) {
                             <p class="foot-title">{{ selectedLang === 'es' ? 'Legal' : 'Legal' }}</p>
                             <ul class="foot-list">
                                 <li>
-                                    <Link :href="selectedLang === 'es' ? '/es/descargo-de-responsabilidad' : '/disclaimer'">
+                                    <Link :href="selectedLang === 'es' ? '/es/descargo-de-responsabilidad/' : '/disclaimer/'">
                                         {{ selectedLang === 'es' ? 'Descargo de Responsabilidad' : 'Disclaimer' }}
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link :href="selectedLang === 'es' ? '/es/politica-de-privacidad' : '/privacy-policy'">
+                                    <Link :href="selectedLang === 'es' ? '/es/politica-de-privacidad/' : '/privacy-policy/'">
                                         {{ selectedLang === 'es' ? 'Política de Privacidad' : 'Privacy Policy' }}
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link :href="selectedLang === 'es' ? '/es/terminos-y-condiciones' : '/terms-and-conditions'">
+                                    <Link :href="selectedLang === 'es' ? '/es/terminos-y-condiciones/' : '/terms-and-conditions/'">
                                         {{ selectedLang === 'es' ? 'Términos y Condiciones' : 'Terms & Conditions' }}
                                     </Link>
                                 </li>
@@ -307,21 +307,21 @@ async function subscribe(event) {
                 <!-- English links -->
                 <template v-if="selectedLang === 'en'">
                     <li class="nav-item"><Link class="nav-link" :class="{ active: isActive('/') }" href="/">Home</Link></li>
-                    <li class="nav-item"><Link class="nav-link" :class="{ active: isActive('/about-us') }" href="/about-us">About Us</Link></li>
-                    <li class="nav-item"><Link class="nav-link" :class="{ active: isActive('/sitemap') }" href="/sitemap">Sitemap</Link></li>
-                    <li class="nav-item"><Link class="nav-link" :class="{ active: isActive('/author') }" href="/author">Author</Link></li>
-                    <li class="nav-item"><Link class="nav-link" :class="{ active: isActive('/blog') }" href="/blog">Blog</Link></li>
-                    <li class="nav-item"><Link class="nav-link" :class="{ active: isActive('/contact-us') }" href="/contact-us">Contact Us</Link></li>
+                    <li class="nav-item"><Link class="nav-link" :class="{ active: isActive('/about-us/') }" href="/about-us/">About Us</Link></li>
+                    <li class="nav-item"><Link class="nav-link" :class="{ active: isActive('/sitemap/') }" href="/sitemap/">Sitemap</Link></li>
+                    <li class="nav-item"><Link class="nav-link" :class="{ active: isActive('/author/') }" href="/author/">Author</Link></li>
+                    <li class="nav-item"><Link class="nav-link" :class="{ active: isActive('/blog/') }" href="/blog/">Blog</Link></li>
+                    <li class="nav-item"><Link class="nav-link" :class="{ active: isActive('/contact-us/') }" href="/contact-us/">Contact Us</Link></li>
                 </template>
                 
                 <!-- Spanish links -->
                 <template v-if="selectedLang === 'es'">
-                    <li class="nav-item"><Link class="nav-link" :class="{ active: isActive('/es') || isActive('/es/') }" href="/es">Inicio</Link></li>
-                    <li class="nav-item"><Link class="nav-link" :class="{ active: isActive('/es/sobre-nosotros') }" href="/es/sobre-nosotros">Sobre Nosotros</Link></li>
-                    <li class="nav-item"><Link class="nav-link" :class="{ active: isActive('/es/sitemap') }" href="/sitemap">Mapa del Sitio</Link></li>
-                    <li class="nav-item"><Link class="nav-link" :class="{ active: isActive('/es/autor') }" href="/es/autor">Autor</Link></li>
-                    <li class="nav-item"><Link class="nav-link" :class="{ active: isActive('/es/articulos') }" href="/es/articulos">Artículos</Link></li>
-                    <li class="nav-item"><Link class="nav-link" :class="{ active: isActive('/es/contactanos') }" href="/es/contactanos">Contáctanos</Link></li>
+                    <li class="nav-item"><Link class="nav-link" :class="{ active: isActive('/es/') || isActive('/es/') }" href="/es/">Inicio</Link></li>
+                    <li class="nav-item"><Link class="nav-link" :class="{ active: isActive('/es/sobre-nosotros/') }" href="/es/sobre-nosotros/">Sobre Nosotros</Link></li>
+                    <li class="nav-item"><Link class="nav-link" :class="{ active: isActive('/es/sitemap/') }" href="/sitemap/">Mapa del Sitio</Link></li>
+                    <li class="nav-item"><Link class="nav-link" :class="{ active: isActive('/es/autor/') }" href="/es/autor/">Autor</Link></li>
+                    <li class="nav-item"><Link class="nav-link" :class="{ active: isActive('/es/articulos/') }" href="/es/articulos/">Artículos</Link></li>
+                    <li class="nav-item"><Link class="nav-link" :class="{ active: isActive('/es/contactanos/') }" href="/es/contactanos/">Contáctanos</Link></li>
                 </template>
             </ul>
             <!-- Call info -->

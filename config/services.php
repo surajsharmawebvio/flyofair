@@ -35,4 +35,6 @@ return [
         ],
     ],
 
+    'admin_email' => env('ADMIN_EMAIL', 'surajkumarsharma123@gmail.com'),
+
 ];
