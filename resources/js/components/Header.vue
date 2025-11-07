@@ -148,9 +148,9 @@
                                 Inicio
                                 </Link>
                             </li>
-                            <li class="nav-item">
+                            <!-- <li class="nav-item">
                                 <Link :class="['nav-link', isActive('/es/sobre-nosotros') ? 'active' : '']" href="/es/sobre-nosotros">Sobre Nosotros</Link>
-                            </li>
+                            </li> -->
                             <li class="nav-item">
                                 <Link :class="['nav-link', isActive('/es/articulos') ? 'active' : '']" href="/es/articulos">Artículos</Link>
                             </li>
@@ -178,39 +178,6 @@
 
     </header>
     <!-- Bottom Navigation -->
-    <nav class="bottom-nav">
-        <!-- English navigation -->
-        <template v-if="selectedLang === 'en'">
-            <Link href="/" class="mobnav-item" data-page="Home" :class="{ active: isActive('/') }">
-                <span>Home</span>
-            </Link>
-            <Link href="/about-us/" class="mobnav-item" data-page="About" :class="['nav-link', isActive('/about-us/') ? 'active' : '']">
-                <span>About</span>
-            </Link>
-            <Link href="/blog/" class="mobnav-item" data-page="Blog" :class="['nav-link', isActive('/blog/') ? 'active' : '']">
-                <span>Blog</span>
-            </Link>
-            <Link href="/contact-us/" class="mobnav-item" data-page="Contact" :class="['nav-link', isActive('/contact-us/') ? 'active' : '']">
-                <span>Contact</span>
-            </Link>
-        </template>
-        
-        <!-- Spanish navigation -->
-        <template v-if="selectedLang === 'es'">
-            <Link href="/es" class="mobnav-item" data-page="Inicio" :class="{ active: isActive('/es') || isActive('/es/') }">
-                <span>Inicio</span>
-            </Link>
-            <Link href="/es/sobre-nosotros" class="mobnav-item" data-page="Sobre" :class="['nav-link', isActive('/es/sobre-nosotros') ? 'active' : '']">
-                <span>Sobre</span>
-            </Link>
-            <Link href="/es/articulos" class="mobnav-item" data-page="Articulos" :class="['nav-link', isActive('/es/articulos') ? 'active' : '']">
-                <span>Artículos</span>
-            </Link>
-            <Link href="/es/contactanos" class="mobnav-item" data-page="Contacto" :class="['nav-link', isActive('/es/contactanos') ? 'active' : '']">
-                <span>Contacto</span>
-            </Link>
-        </template>
-    </nav>
 </template>
 
 <script>

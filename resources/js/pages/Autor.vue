@@ -38,10 +38,10 @@
                 <div class="authorbio-card p-4">
                     <div class="row align-items-center difcolor">
                         <!-- Author Image -->
-                        <div class="col-md-3 text-center">
+                        <!-- <div class="col-md-3 text-center">
                             <img src="https://avatars.mds.yandex.net/i?id=348ec891cb9b141194a6f6c5252ddaf6468600fb-10805306-images-thumbs&n=13"
                                 alt="Autor" class="authorbio-image rounded-circle">
-                        </div>
+                        </div> -->
 
                         <!-- Author Name -->
                         <div class="col-md-9 text-md-start text-center">
@@ -51,7 +51,7 @@
 
                     <!-- About Author -->
                     <div class="authorbio-content mt-4">
-                        <h5 class="authorbio-title">SOBRE EL AUTOR</h5>
+                        <p class="authorbio-title">SOBRE EL AUTOR</p>
                         <p class="authorbio-text">
                             Hola, soy Alice Walker. Soy una viajera solitaria y comparto mis experiencias escribiendo historias. Bueno, tengo 8 años
                              de experiencia como investigadora de viajes y aviación. Con una sólida comprensión de las tendencias de aviación y 

@@ -20,6 +20,32 @@ const loading = ref(false)
 const page = usePage()
 const isActive = (path) => page.url === path
 
+// Language detection
+const selectedLang = ref('en')
+
+const detectLanguageFromUrl = () => {
+    const path = window.location.pathname
+    if (path.startsWith('/es')) {
+        selectedLang.value = 'es'
+    } else {
+        selectedLang.value = 'en'
+    }
+}
+
+const checkLanguageChange = () => {
+    const storedLang = localStorage.getItem('language')
+    if (storedLang && storedLang !== selectedLang.value) {
+        selectedLang.value = storedLang
+    }
+}
+
+onMounted(() => {
+    detectLanguageFromUrl()
+    
+    // Check for language changes every second
+    setInterval(checkLanguageChange, 1000)
+})
+
 async function subscribe(event) {
     // form submit prevented by @submit.prevent
     if (!email.value) {
@@ -74,49 +100,70 @@ async function subscribe(event) {
                     </div> -->
                     <div class="col-xxl-2 col-xl-2 col-lg-2 col-sm-6 col-12">
                         <div class="footer-box">
-                            <h5 class="foot-title">Quick Link</h5>
+                            <p class="foot-title">{{ selectedLang === 'es' ? 'Enlaces Rápidos' : 'Quick Link' }}</p>
                             <ul class="foot-list">
-                                <li>
-                                    <Link href="/blog">Blog</Link>
+                                <!-- English links -->
+                                <template v-if="selectedLang === 'en'">
+                                    <li>
+                                        <Link href="/blog">Blog</Link>
+                                    </li>
+                                    <li>
+                                        <Link href="/about-us">About Us</Link>
+                                    </li>
+                                    <li>
+                                        <Link href="/author">Author</Link>
+                                    </li>
+                                    <li>
+                                        <Link href="/contact-us">Contact Us</Link>
+                                    </li>
+                                    <li>
+                                    <Link href="/sitemap">{{ selectedLang === 'es' ? 'Mapa del Sitio' : 'Sitemap' }}</Link>
                                 </li>
-                                <li>
-                                    <Link href="/about-us" aria-current="page">About Us</Link>
-                                </li>
-                                <li>
-                                    <Link href="/es/articulos">Artículos</Link>
-                                </li>
-                                <li>
-                                    <Link href="/author">Author</Link>
-                                </li>
-                                <li>
-                                    <Link href="/contact-us">Contact Us</Link>
-                                </li>
+                                </template>
+                                
+                                <!-- Spanish links -->
+                                <template v-if="selectedLang === 'es'">
+                                    <li>
+                                        <Link href="/es/articulos">Artículos</Link>
+                                    </li>
+                                    <li>
+                                        <Link href="/es/sobre-nosotros">Sobre Nosotros</Link>
+                                    </li>
+                                    <li>
+                                        <Link href="/es/autor">Autor</Link>
+                                    </li>
+                                    <li>
+                                        <Link href="/es/contactanos">Contáctanos</Link>
+                                    </li>
+                                </template>
                             </ul>
                         </div>
                     </div>
                     <div class="col-xxl-3 col-xl-3 col-lg-2 col-sm-6 col-12">
                         <div class="footer-box">
-                            <h5 class="foot-title">Legal</h5>
+                            <p class="foot-title">{{ selectedLang === 'es' ? 'Legal' : 'Legal' }}</p>
                             <ul class="foot-list">
                                 <li>
-                                    <Link href="/sitemap">Sitemap</Link>
+                                    <Link :href="selectedLang === 'es' ? '/es/descargo-de-responsabilidad' : '/disclaimer'">
+                                        {{ selectedLang === 'es' ? 'Descargo de Responsabilidad' : 'Disclaimer' }}
+                                    </Link>
                                 </li>
                                 <li>
-                                    <Link href="/disclaimer">Disclaimer</Link>
+                                    <Link :href="selectedLang === 'es' ? '/es/politica-de-privacidad' : '/privacy-policy'">
+                                        {{ selectedLang === 'es' ? 'Política de Privacidad' : 'Privacy Policy' }}
+                                    </Link>
                                 </li>
                                 <li>
-                                    <Link href="/privacy-policy">Privacy Policy</Link>
-                                </li>
-                                <li>
-                                    <Link href="/terms-and-conditions">
-                                        Terms & Conditions</Link>
+                                    <Link :href="selectedLang === 'es' ? '/es/terminos-y-condiciones' : '/terms-and-conditions'">
+                                        {{ selectedLang === 'es' ? 'Términos y Condiciones' : 'Terms & Conditions' }}
+                                    </Link>
                                 </li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-xxl-3 col-xl-3 col-lg-3 col-sm-6 col-12">
                         <div class="footer-box">
-                            <h5 class="foot-title">contact</h5>
+                            <p class="foot-title">{{ selectedLang === 'es' ? 'contacto' : 'contact' }}</p>
                             <ul class="contact-list">
                                 <li>
                                     <div class="">
@@ -147,8 +194,8 @@ async function subscribe(event) {
                     </div>
                     <div class="col-xxl-4 col-xl-4 col-lg-5 col-sm-6 col-12">
                         <div class="footer-box">
-                            <h5 class="foot-title">Subscribe to Our Newsletter</h5>
-                            <small class="smalltextsec">Just sign up and we'll send you a notification by email.</small>
+                            <p class="foot-title">{{ selectedLang === 'es' ? 'Suscríbete a Nuestro Boletín' : 'Subscribe to Our Newsletter' }}</p>
+                            <small class="smalltextsec">{{ selectedLang === 'es' ? 'Solo regístrate y te enviaremos una notificación por correo electrónico.' : 'Just sign up and we\'ll send you a notification by email.' }}</small>
                             <form @submit.prevent="subscribe" class="NewsLettert-form">
                                 <div class="input-group">
                                     <input v-model="email" type="email" class="form-control" placeholder="Your email here" required>
@@ -219,8 +266,11 @@ async function subscribe(event) {
                 <div class="row align-items-center justify-content-center">
                     <div class="col-lg-12 col-12">
                         <div class="textparafooter">
-                            <p>
+                            <p v-if="selectedLang === 'en'">
                                 FlyOFair is a third-party Online Travel Agency, or OTA, that does not represent itself as an authorised partner of any airline. We offer information on airlines' services and facilities. Also, all the information on this website is based on research and current market updates. But we assure you that we offer 100% legitimate services with completely transparent procedures—without any hidden charges. By using our services and facilities, you agree to our terms and conditions and privacy policy. 
+                            </p>
+                            <p v-else>
+                                FlyOFair es una Agencia de Viajes en Línea (OTA) de terceros que no se presenta como socio autorizado de ninguna aerolínea. Ofrecemos información sobre los servicios y comodidades de las aerolíneas. Además, toda la información en este sitio web se basa en investigación y actualizaciones actuales del mercado. Pero te aseguramos que ofrecemos servicios 100% legítimos con procedimientos completamente transparentes, sin cargos ocultos. Al usar nuestros servicios y comodidades, aceptas nuestros términos y condiciones y política de privacidad.
                             </p>
                         </div>
                     </div>
@@ -235,18 +285,6 @@ async function subscribe(event) {
                             InfinityTravels.
                             All
                             Rights Reserved.</div>
-                    </div>
-                    <div class="col-lg-5 col-md-6 col-sm-12 col-12">
-                        <div class="travel-top-social footsociallist">
-                            <a href="javascript:void(0)" target="_blank"><i
-                                    class="fa-brands fa-square-facebook"></i></a>
-                            <a href="javascript:void(0)" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-                            <a href="javascript:void(0)" target="_blank"><i class="fa-brands fa-youtube"></i></a>
-                            <a href="javascript:void(0)" target="_blank"><i class="bi bi-twitter-x"></i></a>
-                            <a href="javascript:void(0)" target="_blank"><i class="bi bi-pinterest"></i></a>
-                            <a href="javascript:void(0)" target="_blank"><i
-                                    class="fa-brands fa-square-linkedin"></i></a>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -266,13 +304,25 @@ async function subscribe(event) {
         </div>
         <div class="offcanvas-body">
             <ul class="navbar-nav mx-auto mb-2 mb-lg-0 travel-header">
-                <!-- Normal links -->
-                <li class="nav-item"><Link class="nav-link" :class="{ active: isActive('/') }" href="/">Home</Link></li>
-                <li class="nav-item"><Link class="nav-link" :class="{ active: isActive('/about-us') }" href="/about-us">About Us</Link></li>
-                <li class="nav-item"><Link class="nav-link" :class="{ active: isActive('/sitemap') }" href="/sitemap">Sitemap</Link></li>
-                <li class="nav-item"><Link class="nav-link" :class="{ active: isActive('/author') }" href="/author">Author</Link></li>
-                <li class="nav-item"><Link class="nav-link" :class="{ active: isActive('/blog') }" href="/blog">Blog</Link></li>
-                <li class="nav-item"><Link class="nav-link" :class="{ active: isActive('/contact-us') }" href="/contact-us">Contact Us</Link></li>
+                <!-- English links -->
+                <template v-if="selectedLang === 'en'">
+                    <li class="nav-item"><Link class="nav-link" :class="{ active: isActive('/') }" href="/">Home</Link></li>
+                    <li class="nav-item"><Link class="nav-link" :class="{ active: isActive('/about-us') }" href="/about-us">About Us</Link></li>
+                    <li class="nav-item"><Link class="nav-link" :class="{ active: isActive('/sitemap') }" href="/sitemap">Sitemap</Link></li>
+                    <li class="nav-item"><Link class="nav-link" :class="{ active: isActive('/author') }" href="/author">Author</Link></li>
+                    <li class="nav-item"><Link class="nav-link" :class="{ active: isActive('/blog') }" href="/blog">Blog</Link></li>
+                    <li class="nav-item"><Link class="nav-link" :class="{ active: isActive('/contact-us') }" href="/contact-us">Contact Us</Link></li>
+                </template>
+                
+                <!-- Spanish links -->
+                <template v-if="selectedLang === 'es'">
+                    <li class="nav-item"><Link class="nav-link" :class="{ active: isActive('/es') || isActive('/es/') }" href="/es">Inicio</Link></li>
+                    <li class="nav-item"><Link class="nav-link" :class="{ active: isActive('/es/sobre-nosotros') }" href="/es/sobre-nosotros">Sobre Nosotros</Link></li>
+                    <li class="nav-item"><Link class="nav-link" :class="{ active: isActive('/es/sitemap') }" href="/sitemap">Mapa del Sitio</Link></li>
+                    <li class="nav-item"><Link class="nav-link" :class="{ active: isActive('/es/autor') }" href="/es/autor">Autor</Link></li>
+                    <li class="nav-item"><Link class="nav-link" :class="{ active: isActive('/es/articulos') }" href="/es/articulos">Artículos</Link></li>
+                    <li class="nav-item"><Link class="nav-link" :class="{ active: isActive('/es/contactanos') }" href="/es/contactanos">Contáctanos</Link></li>
+                </template>
             </ul>
             <!-- Call info -->
             <a href="tel:+1-877-238-0219" class="travel-call d-flex align-items-center me-4">
@@ -291,9 +341,9 @@ async function subscribe(event) {
                     <button type="button" class="travel-close-btn" data-bs-dismiss="modal" aria-label="Close">
                         <i class="fas fa-times"></i>
                     </button>
-                    <h5 class="travel-modal-title" id="travelExpertModalLabel">
+                    <p class="travel-modal-title" id="travelExpertModalLabel">
                         Talk To Our Travel Expert Now (24X7)
-                    </h5>
+                    </p>
                     <p class="travel-modal-subtitle">Why Call To Our Travel Expert</p>
                 </div>
                 <div class="modal-body travel-modal-body">

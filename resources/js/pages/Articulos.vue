@@ -2,7 +2,7 @@
     <DefaultLayout>
         <section class="innerbanner-section">
             <div class="innerbannerbg">
-                <img src="images/blogbanner.jpg" alt="">
+                <img src="/images/blogbanner.jpg" alt="">
             </div>
             <div class="container">
                 <div class="row align-items-center justify-content-center">

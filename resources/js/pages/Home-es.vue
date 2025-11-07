@@ -1167,7 +1167,7 @@
                                             </div>
                                         </div>
                                         <div class="col-lg-2 d-grid col-12">
-                                            <button type="submit" class="btn flight-search-btn">Get a quote</button>
+                                            <button type="submit" class="btn flight-search-btn">GET A QUOTE</button>
                                         </div>
                                     </form>
                                 </div>
@@ -1328,7 +1328,7 @@
                                             </div>
                                         </div>
                                         <div class="col-lg-2 d-grid col-12">
-                                            <button type="submit" class="btn flight-search-btn">Get a quote</button>
+                                            <button type="submit" class="btn flight-search-btn">GET A QUOTE</button>
                                         </div>
                                     </form>
                                 </div>
@@ -1404,7 +1404,7 @@
                                                     placeholder="1 passenger ECONOMY" id="travelerInput" />
                                             </div>
                                             <div class="col-lg-2 d-grid mobsearchbtn col-12">
-                                                <button type="submit" class="btn flight-search-btn">Get a quote</button>
+                                                <button type="submit" class="btn flight-search-btn">GET A QUOTE</button>
                                             </div>
                                         </div>
                                         <div class="addflightbtnbox">

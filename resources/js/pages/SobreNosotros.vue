@@ -96,6 +96,7 @@
         margin-top: 12px;
         color: #ffffffcc;
         font-size: 14px;
+        flex-wrap: wrap;
     }
     .breadcrumb-box .breadcrumb-home {
         display: inline-flex;
@@ -127,7 +128,16 @@
     .adventure-experience {
         display: flex;
         gap: 20px;
-        justify-content: end;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .adventure-experience img {
+        width: 100%;
+        height: auto;
+        max-width: 400px;
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     }
 
     /* Left column */
@@ -215,6 +225,7 @@
         font-weight: 700;
         color: #1c1f26;
         line-height: 1.3;
+        margin-bottom: 1rem;
     }
 
     .ai-box {
@@ -229,7 +240,7 @@
     }
 
     .ai-box p:not(:last-child) {
-        margin-bottom: 10px;
+        margin-bottom: 15px;
     }
 
     @media (max-width: 1366px) {
@@ -245,6 +256,10 @@
 
         .benefit-text {
             font-size: 13px;
+        }
+
+        .ai-title {
+            font-size: 1.8rem;
         }
     }
 
@@ -265,6 +280,16 @@
         .section-header {
             margin-bottom: 20px;
         }
+
+        .ai-title {
+            font-size: 1.6rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .ai-box {
+            padding: 20px;
+        }
     }
 
     @media (max-width: 767px) {
@@ -278,6 +303,50 @@
 
         .custom-accordion .accordion-button {
             font-size: 14px;
+        }
+
+        /* Banner improvements */
+        .innercommon-heading {
+            font-size: 2rem;
+        }
+
+        .breadcrumb-box {
+            font-size: 12px;
+            gap: 8px;
+        }
+
+        /* About section improvements */
+        .section-header h2 {
+            font-size: 1.8rem;
+            line-height: 1.3;
+        }
+
+        .sub-title {
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .btn.common-bgBtn {
+            width: 100%;
+            padding: 12px 24px;
+            font-size: 1rem;
+            margin-top: 1rem;
+        }
+
+        /* AI section improvements */
+        .ai-section .row {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .ai-title {
+            font-size: 1.4rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .ai-box {
+            padding: 20px 15px;
+            font-size: 0.9rem;
         }
     }
 
@@ -314,11 +383,90 @@
         .adventure-left {
             gap: 10px;
         }
+
+        /* Banner mobile optimization */
+        .inner-bannerbox {
+            text-align: center;
+            padding: 20px 15px;
+        }
+
+        .innercommon-heading {
+            font-size: 1.8rem;
+        }
+
+        /* About section mobile optimization */
+        .section-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .section-header h2 {
+            font-size: 1.5rem;
+        }
+
+        .sub-title {
+            font-size: 0.9rem;
+        }
+
+        .adventure-experience img {
+            max-width: 100%;
+            height: auto;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .container {
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+
+        .innercommon-heading {
+            font-size: 1.6rem;
+        }
+
+        .breadcrumb-box {
+            font-size: 11px;
+            gap: 6px;
+        }
+
+        .section-header h2 {
+            font-size: 1.3rem;
+        }
+
+        .sub-title {
+            font-size: 0.85rem;
+        }
+
+        .ai-title {
+            font-size: 1.2rem;
+        }
+
+        .ai-box {
+            padding: 15px;
+            font-size: 0.85rem;
+        }
+
+        .btn.common-bgBtn {
+            padding: 10px 20px;
+            font-size: 0.9rem;
+        }
     }
 
     @media (max-width: 380px) {
         .custom-accordion .accordion-button {
             font-size: 13px;
+        }
+
+        .innercommon-heading {
+            font-size: 1.4rem;
+        }
+
+        .section-header h2 {
+            font-size: 1.2rem;
+        }
+
+        .ai-title {
+            font-size: 1.1rem;
         }
     }
 
@@ -333,5 +481,35 @@
     .backtexbox img {
         object-fit: contain;
         height: 405px;
+    }
+
+    /* Mobile-specific improvements */
+    @media (max-width: 767px) {
+        .backtexbox {
+            display: none; /* Hide background texture on mobile for better performance */
+        }
+
+        .ai-section {
+            position: relative;
+        }
+
+        /* Improve section spacing on mobile */
+        .common-section {
+            padding: 40px 0;
+        }
+
+        .abouttext-section {
+            padding: 50px 0;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .common-section {
+            padding: 30px 0;
+        }
+
+        .abouttext-section {
+            padding: 40px 0;
+        }
     }
 </style>

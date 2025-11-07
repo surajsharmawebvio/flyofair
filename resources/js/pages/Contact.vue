@@ -41,10 +41,9 @@
                                 <div class="contactus-icon">
                                     <img src="/images/location.png" alt="">
                                 </div>
-                                <h5 class="contactus-title">Location</h5>
+                                <p class="contactus-title">Location</p>
                                 <p class="contactus-info">
-                                    18 Valentino Dr, Old Bridge, New Jersey,
-                                    08857, USA
+                                    17875 Von Karman Ave, Suite 150 & 250, Irvine, California, 92614,       United States of America
                                 </p>
                             </div>
                         </div>
@@ -55,8 +54,10 @@
                                 <div class="contactus-icon">
                                     <img src="/images/phone.png" alt="">
                                 </div>
-                                <h5 class="contactus-title">Phone</h5>
-                                <p class="contactus-info">+88 (09) 53 33 09</p>
+                                <p class="contactus-title">Phone</p>
+                                <p class="contactus-info">
+                                    <a href="tel:+1-877-238-0219">+1-877-238-0219</a>
+                                </p>
                             </div>
                         </div>
 
@@ -66,8 +67,10 @@
                                 <div class="contactus-icon">
                                     <img src="/images/email.png" alt="">
                                 </div>
-                                <h5 class="contactus-title">Email</h5>
-                                <p class="contactus-info">info@flyofair.com</p>
+                                <p class="contactus-title">Email</p>
+                                <p class="contactus-info">
+                                    <a href="mailto:contact@flyofair.com">contact@flyofair.com</a>
+                                </p>
                             </div>
                         </div>
                     </div>

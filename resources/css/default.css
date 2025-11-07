@@ -23,11 +23,11 @@
 .innerdefaultpage-contentbox ul {
   margin-left: 25px;
   margin-bottom: 10px;
-  list-style: square;
+  list-style: disc;
 }
 .innerdefaultpage-contentbox ul li::marker {
-  content: "▣ "; /* square bullet */
-  color: rgba(var(--fourth-color), 1);
+  content: "• "; /* simple bullet */
+  color: rgba(var(--black-color), 0.6);
 }
 .innerdefaultpage-contentbox ul li {
   font-size: 14px;
