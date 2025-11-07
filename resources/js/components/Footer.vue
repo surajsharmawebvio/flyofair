@@ -29,7 +29,12 @@ async function subscribe(event) {
 
     loading.value = true
     try {
-        const res = await axios.post('/api/newsletter/subscribe', { email: email.value })
+        const res = await axios.post('/api/newsletter/subscribe', { email: email.value }, {
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+            },
+        })
 
         await Swal.fire({ icon: 'success', title: res.data.message || 'Subscribed successfully' })
         email.value = ''
@@ -72,16 +77,16 @@ async function subscribe(event) {
                             <h5 class="foot-title">Quick Link</h5>
                             <ul class="foot-list">
                                 <li>
-                                    <Link href="/blog/">Blog</Link>
+                                    <Link href="/blog">Blog</Link>
                                 </li>
                                 <li>
-                                    <Link href="/about-us/" aria-current="page">About Us</Link>
+                                    <Link href="/about-us" aria-current="page">About Us</Link>
                                 </li>
                                 <li>
-                                    <Link href="/author/">Author</Link>
+                                    <Link href="/author">Author</Link>
                                 </li>
                                 <li>
-                                    <Link href="/contact-us/">Contact Us</Link>
+                                    <Link href="/contact-us">Contact Us</Link>
                                 </li>
                             </ul>
                         </div>
@@ -91,19 +96,19 @@ async function subscribe(event) {
                             <h5 class="foot-title">Legal</h5>
                             <ul class="foot-list">
                                 <li>
-                                    <Link href="/sitemap/">Sitemap</Link>
+                                    <Link href="/sitemap">Sitemap</Link>
                                 </li>
                                 <li>
-                                    <Link href="/articulos/">articulos</Link>
+                                    <Link href="/articulos">articulos</Link>
                                 </li>
                                 <li>
-                                    <Link href="/disclaimer/">Disclaimer</Link>
+                                    <Link href="/disclaimer">Disclaimer</Link>
                                 </li>
                                 <li>
-                                    <Link href="/privacy-policy/">Privacy Policy</Link>
+                                    <Link href="/privacy-policy">Privacy Policy</Link>
                                 </li>
                                 <li>
-                                    <Link href="/terms-and-conditions/">
+                                    <Link href="/terms-and-conditions">
                                         Terms & Conditions</Link>
                                 </li>
                             </ul>
@@ -263,11 +268,11 @@ async function subscribe(event) {
             <ul class="navbar-nav mx-auto mb-2 mb-lg-0 travel-header">
                 <!-- Normal links -->
                 <li class="nav-item"><Link class="nav-link" :class="{ active: isActive('/') }" href="/">Home</Link></li>
-                <li class="nav-item"><Link class="nav-link" :class="{ active: isActive('/about-us/') }" href="/about-us/">About Us</Link></li>
-                <li class="nav-item"><Link class="nav-link" :class="{ active: isActive('/sitemap/') }" href="/sitemap/">Sitemap</Link></li>
-                <li class="nav-item"><Link class="nav-link" :class="{ active: isActive('/author/') }" href="/author/">Author</Link></li>
-                <li class="nav-item"><Link class="nav-link" :class="{ active: isActive('/blog/') }" href="/blog/">Blog</Link></li>
-                <li class="nav-item"><Link class="nav-link" :class="{ active: isActive('/contact-us/') }" href="/contact-us/">Contact Us</Link></li>
+                <li class="nav-item"><Link class="nav-link" :class="{ active: isActive('/about-us') }" href="/about-us">About Us</Link></li>
+                <li class="nav-item"><Link class="nav-link" :class="{ active: isActive('/sitemap') }" href="/sitemap">Sitemap</Link></li>
+                <li class="nav-item"><Link class="nav-link" :class="{ active: isActive('/author') }" href="/author">Author</Link></li>
+                <li class="nav-item"><Link class="nav-link" :class="{ active: isActive('/blog') }" href="/blog">Blog</Link></li>
+                <li class="nav-item"><Link class="nav-link" :class="{ active: isActive('/contact-us') }" href="/contact-us">Contact Us</Link></li>
             </ul>
             <!-- Call info -->
             <a href="tel:+1-877-238-0219" class="travel-call d-flex align-items-center me-4">
