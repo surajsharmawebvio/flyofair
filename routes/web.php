@@ -31,9 +31,6 @@ Route::group(['prefix' => 'es'], function () {
     Route::get('/descargo-de-responsabilidad', function () {
         return Inertia::render('DescargoDeResponsabilidad');
     })->name('disclaimer.es');
-    Route::get('/servicios', function () {
-        return Inertia::render('Servicios');
-    })->name('services.es');
 });
 
 Route::get('/blog', [BlogController::class, 'index'])->name('blog');
@@ -62,6 +59,3 @@ Route::get('/privacy-policy', function () {
 Route::get('/disclaimer', function () {
     return Inertia::render('Disclaimer');
 })->name('disclaimer');
-Route::get('/services', function () {
-    return Inertia::render('Services');
-})->name('services');

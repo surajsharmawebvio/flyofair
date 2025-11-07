@@ -47,10 +47,6 @@
                                             <i class="bi bi-record-circle footer-link-arrow"></i>
                                             <span class="footer-link-text">Author</span>
                                         </Link>
-                                        <Link href="/services" class="footer-link-item">
-                                            <i class="bi bi-record-circle footer-link-arrow"></i>
-                                            <span class="footer-link-text">Services</span>
-                                        </Link>
                                     </div>
                                     <div class="footer-link-column">
                                         <Link href="/terms-and-conditions" class="footer-link-item">
@@ -88,6 +84,10 @@
                                         </Link>
                                     </div>
                                     <div class="footer-link-column">
+                                        <Link href="/es/servicios" class="footer-link-item">
+                                            <i class="bi bi-record-circle footer-link-arrow"></i>
+                                            <span class="footer-link-text">Servicios</span>
+                                        </Link>
                                         <Link href="/es/contactanos" class="footer-link-item">
                                             <i class="bi bi-record-circle footer-link-arrow"></i>
                                             <span class="footer-link-text">Contáctanos</span>
@@ -98,13 +98,24 @@
                                         </Link>
                                     </div>
                                     <div class="footer-link-column">
-                                        <!-- Empty column for layout balance -->
+                                        <Link href="/es/terminos-y-condiciones" class="footer-link-item">
+                                            <i class="bi bi-record-circle footer-link-arrow"></i>
+                                            <span class="footer-link-text">Términos y Condiciones</span>
+                                        </Link>
+                                        <Link href="/es/politica-de-privacidad" class="footer-link-item">
+                                            <i class="bi bi-record-circle footer-link-arrow"></i>
+                                            <span class="footer-link-text">Política de Privacidad</span>
+                                        </Link>
+                                        <Link href="/es/descargo-de-responsabilidad" class="footer-link-item">
+                                            <i class="bi bi-record-circle footer-link-arrow"></i>
+                                            <span class="footer-link-text">Descargo de Responsabilidad</span>
+                                        </Link>
                                     </div>
                                 </div>
                             </div>
 
                             <!-- Blog Section -->
-                            <div class="footer-section-block" v-if="blogs.length">
+                            <div class="footer-section-block" v-if="blogs && blogs.length > 0">
                                 <h3 class="footer-section-heading">Our Blog</h3>
                                 <div class="footer-links-grid">
                                     <template v-for="(blogGroup, index) in blogGroups" :key="index">
@@ -124,7 +135,7 @@
                             </div>
 
                             <!-- Articulos Section -->
-                            <div class="footer-section-block" v-if="articulos.length">
+                            <div class="footer-section-block" v-if="articulos && articulos.length > 0">
                                 <h3 class="footer-section-heading">Artículos</h3>
                                 <div class="footer-links-grid">
                                     <template v-for="(articuloGroup, index) in articuloGroups" :key="index">

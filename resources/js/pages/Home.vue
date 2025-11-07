@@ -1560,7 +1560,7 @@
                     <div class="col-sm-6 col-lg-3 col-6">
                         <div class="info-card">
                             <div class="info-icon icon-vip">
-                                <i class="fa-solid fa-briefcase"></i>
+                                <i class="fa-solid fa-search"></i>
                             </div>
                             <h3>Smooth Flight Search</h3>
                             <p>Search flights without hassle and find the best fare for your destination.</p>
@@ -1569,7 +1569,7 @@
                     <div class="col-sm-6 col-lg-3 col-6">
                         <div class="info-card">
                             <div class="info-icon icon-ticket">
-                                <i class="fa-solid fa-microphone-lines"></i>
+                                <i class="fa-solid fa-calendar-check"></i>
                             </div>
                             <h3>Easy Flight Booking</h3>
                             <p>Get the seamless booking process with us for your dream destination.</p>
@@ -1578,7 +1578,7 @@
                     <div class="col-sm-6 col-lg-3 col-6">
                         <div class="info-card">
                             <div class="info-icon icon-travel">
-                                <i class="fa-solid fa-plane-departure"></i>
+                                <i class="fa-solid fa-tags"></i>
                             </div>
                             <h3>Get Flight Deals</h3>
                             <p>Find the best flight deals and discounts from us and save your money.</p>
@@ -1587,7 +1587,7 @@
                     <div class="col-sm-6 col-lg-3 col-6">
                         <div class="info-card">
                             <div class="info-icon icon-price">
-                                <i class="fa-solid fa-crown"></i>
+                                <i class="fa-solid fa-eye"></i>
                             </div>
                             <h3>Transparent Process</h3>
                             <p>We don't charge any hidden fees or use any hidden procedures.</p>
@@ -1596,7 +1596,7 @@
                     <div class="col-sm-6 col-6 col-lg-3">
                         <div class="info-card">
                             <div class="info-icon icon-vip">
-                                <i class="fa-solid fa-briefcase"></i>
+                                <i class="fa-solid fa-headset"></i>
                             </div>
                             <h3>24/7 Travel Assistance</h3>
                             <p>Get 24/7, 365-day assistance from us for your travel needs.</p>
@@ -1605,7 +1605,7 @@
                     <div class="col-sm-6 col-lg-3 col-6">
                         <div class="info-card">
                             <div class="info-icon icon-ticket">
-                                <i class="fa-solid fa-microphone-lines"></i>
+                                <i class="fa-solid fa-users"></i>
                             </div>
                             <h3>Passenger-friendly platform</h3>
                             <p>Get a passenger-friendly platform to make your dream travel come true.</p>
@@ -1614,7 +1614,7 @@
                     <div class="col-sm-6 col-lg-3 col-6">
                         <div class="info-card">
                             <div class="info-icon icon-travel">
-                                <i class="fa-solid fa-plane-departure"></i>
+                                <i class="fa-solid fa-info-circle"></i>
                             </div>
                             <h3>Information Travel Resources</h3>
                             <p>Find all updates and information related to airlines' deals and discounts</p>
@@ -1623,7 +1623,7 @@
                     <div class="col-sm-6 col-lg-3 col-6">
                         <div class="info-card">
                             <div class="info-icon icon-price">
-                                <i class="fa-solid fa-crown"></i>
+                                <i class="fa-solid fa-shield"></i>
                             </div>
                             <h3>Trusted </h3>
                             <p>As an IATA-approved OTA, we drive complete trust with our end consumers.</p>
@@ -1707,27 +1707,28 @@
                         <div class="section-header text-center">
                             <h2 class="mb-2">
                                 All About
-                                <span class="text-primary text-primarysec text-decoration-underline">FlyOFair</span> You
-                                Should Know
+                                <span class="text-primary text-primarysec text-decoration-underline">FlyOFair</span>
+                                You Should Know
                             </h2>
                         </div>
                         <div class="accordion custom-accordion" id="accordionExample">
-                            <!-- Accordion Item 1 -->
-                            <!-- Accordion Item 1 -->
+
+                            <!-- Accordion Item 3 -->
                             <div class="accordion-item">
-                                <h2 class="accordion-header" id="headingOne">
+                                <h2 class="accordion-header" id="headingThree">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                                        <span>Why makes FlyOFair better than other online travel agencies?</span>
+                                        data-bs-target="#collapseThree" aria-expanded="false"
+                                        aria-controls="collapseThree">
+                                        <span>Can I modify my reservation on FlyOFair?</span>
                                         <i class="icon fas fa-eye-slash ms-auto"></i>
                                     </button>
                                 </h2>
-                                <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
-                                    data-bs-parent="#accordionExample">
+                                <div id="collapseThree" class="accordion-collapse collapse"
+                                    aria-labelledby="headingThree" data-bs-parent="#accordionExample">
                                     <div class="accordion-body">
                                         <p class="sub-title">
-                                            FlyOFair is completely focused on passenger satisfaction and convenience. As
-                                            a trusted OTA, we offer an easy flight search and reservation experience.
+                                            Yes, you can modify your reservation in accordance with the airline's terms
+                                            and conditions. We are available 24/7 to guide you with the modifications.
                                         </p>
                                     </div>
                                 </div>
@@ -1748,27 +1749,6 @@
                                         <p class="sub-title">
                                             We are offering the best passenger-centric platform that delivers amazing
                                             deals and discounts through fare comparison for global travellers.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Accordion Item 3 -->
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="headingThree">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#collapseThree" aria-expanded="false"
-                                        aria-controls="collapseThree">
-                                        <span>Can I modify my reservation on FlyOFair?</span>
-                                        <i class="icon fas fa-eye-slash ms-auto"></i>
-                                    </button>
-                                </h2>
-                                <div id="collapseThree" class="accordion-collapse collapse"
-                                    aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                                    <div class="accordion-body">
-                                        <p class="sub-title">
-                                            Yes, you can modify your reservation in accordance with the airline's terms
-                                            and conditions. We are available 24/7 to guide you with the modifications.
                                         </p>
                                     </div>
                                 </div>
@@ -1812,6 +1792,26 @@
                                             With FlyOFair, you can access our newsletter, and from there you will
                                             receive emails with current deals and discounts to your desired
                                             destinations.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Accordion Item 1 -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingOne">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                        <span>Why makes FlyOFair better than other online travel agencies?</span>
+                                        <i class="icon fas fa-eye-slash ms-auto"></i>
+                                    </button>
+                                </h2>
+                                <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                                    data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        <p class="sub-title">
+                                            FlyOFair is completely focused on passenger satisfaction and convenience. As
+                                            a trusted OTA, we offer an easy flight search and reservation experience.
                                         </p>
                                     </div>
                                 </div>

@@ -117,7 +117,7 @@
                     <!-- Reservation button -->
                     <a href="tel:+1-877-238-0219" class="travel-call d-flex align-items-center me-0 newtravel-call">
                         <span class="travel-call-icon me-2"><i class="bi bi-telephone"></i></span>
-                        <div class="small"><strong>+1-877-238-0219 </strong></div>
+                        <div class="small"><strong>+1-877-238-0219</strong></div>
                     </a>
                 </div>
                 <!-- Desktop Menu -->

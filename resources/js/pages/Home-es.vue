@@ -1529,7 +1529,7 @@
                     <div class="col-sm-6 col-lg-3 col-6">
                         <div class="info-card">
                             <div class="info-icon icon-vip">
-                                <i class="fa-solid fa-briefcase"></i>
+                                <i class="fa-solid fa-search"></i>
                             </div>
                             <h3>Búsqueda sencilla de vuelos </h3>
                             <p>Busca vuelos sin complicaciones y encuentra la mejor tarifa para tu destino.</p>
@@ -1538,7 +1538,7 @@
                     <div class="col-sm-6 col-lg-3 col-6">
                         <div class="info-card">
                             <div class="info-icon icon-ticket">
-                                <i class="fa-solid fa-microphone-lines"></i>
+                                <i class="fa-solid fa-calendar-check"></i>
                             </div>
                             <h3>Reserva fácil de vuelos</h3>
                             <p>Disfruta de un proceso de reserva sin complicaciones con nosotros para tu destino soñado.</p>
@@ -1547,7 +1547,7 @@
                     <div class="col-sm-6 col-lg-3 col-6">
                         <div class="info-card">
                             <div class="info-icon icon-travel">
-                                <i class="fa-solid fa-plane-departure"></i>
+                                <i class="fa-solid fa-tags"></i>
                             </div>
                             <h3>Ofertas de vuelos</h3>
                             <p>Encuentre las mejores ofertas y descuentos en vuelos con nosotros y ahorre dinero.</p>
@@ -1556,7 +1556,7 @@
                     <div class="col-sm-6 col-lg-3 col-6">
                         <div class="info-card">
                             <div class="info-icon icon-price">
-                                <i class="fa-solid fa-crown"></i>
+                                <i class="fa-solid fa-eye"></i>
                             </div>
                             <h3>Proceso transparente</h3>
                             <p>No cobramos tarifas ocultas ni utilizamos procedimientos ocultos. </p>
@@ -1565,7 +1565,7 @@
                     <div class="col-sm-6 col-6 col-lg-3">
                         <div class="info-card">
                             <div class="info-icon icon-vip">
-                                <i class="fa-solid fa-briefcase"></i>
+                                <i class="fa-solid fa-headset"></i>
                             </div>
                             <h3>Asistencia en viaje 24/7</h3>
                             <p>Obtenga asistencia 24 horas al día, 7 días a la semana, 365 días al año para sus necesidades de viaje.</p>
@@ -1574,7 +1574,7 @@
                     <div class="col-sm-6 col-lg-3 col-6">
                         <div class="info-card">
                             <div class="info-icon icon-ticket">
-                                <i class="fa-solid fa-microphone-lines"></i>
+                                <i class="fa-solid fa-users"></i>
                             </div>
                             <h3>Plataforma fácil de usar para los pasajeros</h3>
                             <p>Disfrute de una plataforma fácil de usar para hacer realidad el viaje de sus sueños.</p>
@@ -1583,7 +1583,7 @@
                     <div class="col-sm-6 col-lg-3 col-6">
                         <div class="info-card">
                             <div class="info-icon icon-travel">
-                                <i class="fa-solid fa-plane-departure"></i>
+                                <i class="fa-solid fa-info-circle"></i>
                             </div>
                             <h3>Información Recursos de viaje</h3>
                             <p>Encuentre todas las actualizaciones e información relacionadas con las ofertas y descuentos de las aerolíneas.</p>
@@ -1592,7 +1592,7 @@
                     <div class="col-sm-6 col-lg-3 col-6">
                         <div class="info-card">
                             <div class="info-icon icon-price">
-                                <i class="fa-solid fa-crown"></i>
+                                <i class="fa-solid fa-shield"></i>
                             </div>
                             <h3>De confianza </h3>
                             <p>Como OTA aprobada por la IATA, generamos plena confianza entre nuestros consumidores finales. </p>
@@ -1678,6 +1678,47 @@
                             </h2>
                         </div>
                         <div class="accordion custom-accordion" id="accordionExample">
+
+                            <!-- Accordion Item 1 -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingFour">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseFour" aria-expanded="false"
+                                        aria-controls="collapseFour">
+                                        <span>FlyOFair ofrece asistencia al cliente?</span>
+                                        <i class="icon fas fa-eye-slash ms-auto"></i>
+                                    </button>
+                                </h2>
+                                <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
+                                    data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        <p class="sub-title">
+                                           Sí, FlyOFair ofrece asistencia al cliente a sus valiosos pasajeros. Los viajeros pueden ponerse en contacto con nosotros las 24 horas del día, los 7 días de la semana, los 365 días del año para recibir ayuda de expertos.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Accordion Item 2 -->
+                            <div class="accordion-item">
+                                <h4 class="accordion-header" id="headingThree">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseThree" aria-expanded="false"
+                                        aria-controls="collapseThree">
+                                        <span>Puedo modificar mi reserva en FlyOFair?</span>
+                                        <i class="icon fas fa-eye-slash ms-auto"></i>
+                                    </button>
+                                </h4>
+                                <div id="collapseThree" class="accordion-collapse collapse"
+                                    aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        <p class="sub-title">
+                                            Sí, puede modificar su reserva de acuerdo con los términos y condiciones de la aerolínea. Estamos disponibles las 24 horas del día, los 7 días de la semana, para guiarle con las modificaciones. 
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
                             <!-- Accordion Item 1 -->
                             <div class="accordion-item">
                                 <h4 class="accordion-header" id="headingOne">
@@ -1715,44 +1756,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- Accordion Item 2 -->
-                            <div class="accordion-item">
-                                <h4 class="accordion-header" id="headingThree">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#collapseThree" aria-expanded="false"
-                                        aria-controls="collapseThree">
-                                        <span>Puedo modificar mi reserva en FlyOFair?</span>
-                                        <i class="icon fas fa-eye-slash ms-auto"></i>
-                                    </button>
-                                </h4>
-                                <div id="collapseThree" class="accordion-collapse collapse"
-                                    aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                                    <div class="accordion-body">
-                                        <p class="sub-title">
-                                            Sí, puede modificar su reserva de acuerdo con los términos y condiciones de la aerolínea. Estamos disponibles las 24 horas del día, los 7 días de la semana, para guiarle con las modificaciones. 
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Accordion Item 2 -->
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="headingFour">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#collapseFour" aria-expanded="false"
-                                        aria-controls="collapseFour">
-                                        <span>FlyOFair ofrece asistencia al cliente?</span>
-                                        <i class="icon fas fa-eye-slash ms-auto"></i>
-                                    </button>
-                                </h2>
-                                <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
-                                    data-bs-parent="#accordionExample">
-                                    <div class="accordion-body">
-                                        <p class="sub-title">
-                                           Sí, FlyOFair ofrece asistencia al cliente a sus valiosos pasajeros. Los viajeros pueden ponerse en contacto con nosotros las 24 horas del día, los 7 días de la semana, los 365 días del año para recibir ayuda de expertos.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
+                            
                             <!-- Accordion Item 2 -->
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="headingFive">

@@ -70,11 +70,9 @@ class HomeController extends Controller
             ->orderBy('created_at', 'desc')
             ->get();
 
-        // Split blogs by language
-        $englishBlogs = $blogs->where('lang', 'en');
-        $spanishBlogs = $blogs->where('lang', 'es');
-
-        // dd($englishBlogs, $spanishBlogs);
+        // Split blogs by language and convert to arrays
+        $englishBlogs = $blogs->where('lang', 'en')->values()->toArray();
+        $spanishBlogs = $blogs->where('lang', 'es')->values()->toArray();
 
         return Inertia::render('SiteMap', [
             'blogs' => $englishBlogs,
@@ -96,7 +94,6 @@ class HomeController extends Controller
             '/' => '1.0',
             '/about' => '0.8',
             '/contact' => '0.8',
-            '/services' => '0.9',
             '/blog' => '0.9',
             '/articulos' => '0.9',
             '/terms-and-conditions' => '0.7',

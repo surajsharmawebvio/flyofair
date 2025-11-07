@@ -83,6 +83,9 @@ async function subscribe(event) {
                                     <Link href="/about-us" aria-current="page">About Us</Link>
                                 </li>
                                 <li>
+                                    <Link href="/es/articulos">Artículos</Link>
+                                </li>
+                                <li>
                                     <Link href="/author">Author</Link>
                                 </li>
                                 <li>
@@ -97,9 +100,6 @@ async function subscribe(event) {
                             <ul class="foot-list">
                                 <li>
                                     <Link href="/sitemap">Sitemap</Link>
-                                </li>
-                                <li>
-                                    <Link href="/articulos">articulos</Link>
                                 </li>
                                 <li>
                                     <Link href="/disclaimer">Disclaimer</Link>
@@ -124,7 +124,7 @@ async function subscribe(event) {
                                             <i class="bi bi-telephone"></i>
                                         </span>
                                     </div>
-                                    <a target="_blank" href="javascript:void(0)">+(844) 933-1926</a>
+                                    <a href="tel:+1-877-238-0219">+1-877-238-0219</a>
                                 </li>
                                 <li>
                                     <div class="">
@@ -132,7 +132,7 @@ async function subscribe(event) {
                                             <i class="bi bi-envelope-at"></i>
                                         </span>
                                     </div>
-                                    <a href="javascript:void(0)">connect@infinitytravelmate.com</a>
+                                    <a href="mailto:contact@flyofair.com">contact@flyofair.com</a>
                                 </li>
                                 <li>
                                     <div class="">
