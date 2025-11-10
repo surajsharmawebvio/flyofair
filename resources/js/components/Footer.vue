@@ -108,10 +108,13 @@ async function subscribe(event) {
                                         <Link href="/blog/">Blog</Link>
                                     </li>
                                     <li>
+                                        <Link href="/author/">Author</Link>
+                                    </li>
+                                    <li>
                                         <Link href="/about-us/">About Us</Link>
                                     </li>
                                     <li>
-                                        <Link href="/author/">Author</Link>
+                                        <Link href="/es/articulos/">Artículos</Link>
                                     </li>
                                     <li>
                                         <Link href="/contact-us/">Contact Us</Link>
@@ -187,7 +190,7 @@ async function subscribe(event) {
                                             <i class="bi bi-geo-alt"></i>
                                         </span>
                                     </div>
-                                    <a>17875 Von Karman Ave, Suite 150 & 250, Irvine, California, 92614, United States of America</a>
+                                    <a href="javascript:void(0)">17875 Von Karman Ave, Suite 150 & 250, Irvine, California, 92614, United States of America</a>
                                 </li>
                             </ul>
                         </div>
@@ -281,10 +284,9 @@ async function subscribe(event) {
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-lg-7 col-md-6 col-sm-12 col-12">
-                        <div class="copy-box">© Copyright 2025 Infinity Web Solutions LLC | DBA -
-                            InfinityTravels.
-                            All
-                            Rights Reserved.</div>
+                        <div class="copy-box">
+                            © Copyright 2025 FlyOFair | All Rights Reserved.
+                        </div>
                     </div>
                 </div>
             </div>
@@ -295,9 +297,9 @@ async function subscribe(event) {
     <div class="offcanvas offcanvas-start mobmenucanvas" tabindex="-1" id="offcanvasExample"
         aria-labelledby="offcanvasExampleLabel">
         <div class="offcanvas-header">
-            <a href="index.html" class="navbar-brand travel-logo d-flex align-items-center">
-                                    <img src="/images/logo.webp" alt="logo" class="me-2 d-block">
-            </a>
+            <Link href="/" class="navbar-brand travel-logo d-flex align-items-center">
+                <img src="/images/logo.webp" alt="logo" class="me-2 d-block">
+            </Link>
             <button type="button" class="btn-closebt" data-bs-dismiss="offcanvas">
                 <i class="fa-solid fa-xmark"></i>
             </button>

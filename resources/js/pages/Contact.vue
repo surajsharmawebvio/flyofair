@@ -88,13 +88,11 @@
                         <!-- Contact Form -->
                         <div class="col-lg-7">
                             <form @submit.prevent="submitForm" class="custom-contact-form">
-                                <h2 class="contactus-heading mb-2">
+                                <h3 class="contactus-heading mb-2">
                                     Write Your <span>Thoughts Here!</span>
-                                </h2>
+                                </h3>
                                 <p class="contactus-subtext text-start mb-3" style="max-width: 100%;">
-                                    To contact the professionals from Airlines Travel Help, choose any options mentioned
-                                    below based on
-                                    your comfort.
+                                    Do you have any queries or suggestions? Here you can write to us. Our FlyOFair team will connect with you.
                                 </p>
                                 <div class="row g-3">
                                     <div class="col-6">

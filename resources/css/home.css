@@ -554,6 +554,18 @@
 .icon-price {
     background: #0e9384;
 }
+.icon-support {
+    background: #ff6b35;
+}
+.icon-passenger {
+    background: #006380;
+}
+.icon-info {
+    background: #f0bb1f;
+}
+.icon-trust {
+    background: #d93025;
+}
 
 .info-card h3 {
     font-size: 18px;

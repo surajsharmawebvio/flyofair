@@ -3,12 +3,8 @@
   <div class="social-bar">
     <a href="https://x.com/FlyoFair" target="_blank" class="twitter"><i class="fab fa-x-twitter"></i></a>
     <a href="https://www.facebook.com/people/Flyofair/61583235514966/" target="_blank" class="facebook"><i class="fab fa-facebook-f"></i></a>
-    <a href="#" target="_blank" class="linkedin"><i class="fab fa-linkedin-in"></i></a>
     <a href="https://www.instagram.com/flyofair/" target="_blank" class="instagram"><i class="fab fa-instagram"></i></a>
-    <a href="https://www.threads.com/@flyofair" target="_blank" class="threads"><i class="fab fa-threads"></i></a>
-    <a href="#" target="_blank" class="youtube"><i class="fab fa-youtube"></i></a>
     <a href="https://www.pinterest.com/flyofair/" target="_blank" class="pinterest"><i class="fab fa-pinterest"></i></a>
-    <a href="https://www.quora.com/profile/FlyOFair" target="_blank" class="quora"><i class="fab fa-quora"></i></a>
   </div>
 </template>
 

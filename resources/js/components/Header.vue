@@ -154,9 +154,9 @@
                             <li class="nav-item">
                                 <Link :class="['nav-link', isActive('/es/articulos') ? 'active' : '']" href="/es/articulos">Artículos</Link>
                             </li>
-                            <li class="nav-item">
+                            <!-- <li class="nav-item">
                                 <Link :class="['nav-link', isActive('/es/contactanos') ? 'active' : '']" href="/es/contactanos">Contáctanos</Link>
-                            </li>
+                            </li> -->
                         </template>
                     </ul>
 
@@ -188,6 +188,10 @@
 <style scoped>
     .travel-call {
         text-decoration: none;
+    }
+    .small {
+        font-size: 14px !important;
+        color: white !important;
     }
 
 </style>

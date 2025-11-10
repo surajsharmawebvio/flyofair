@@ -1564,7 +1564,7 @@
                     </div>
                     <div class="col-sm-6 col-6 col-lg-3">
                         <div class="info-card">
-                            <div class="info-icon icon-vip">
+                            <div class="info-icon icon-support">
                                 <i class="fa-solid fa-headset"></i>
                             </div>
                             <h3>Asistencia en viaje 24/7</h3>
@@ -1573,7 +1573,7 @@
                     </div>
                     <div class="col-sm-6 col-lg-3 col-6">
                         <div class="info-card">
-                            <div class="info-icon icon-ticket">
+                            <div class="info-icon icon-passenger">
                                 <i class="fa-solid fa-users"></i>
                             </div>
                             <h3>Plataforma fácil de usar para los pasajeros</h3>
@@ -1582,7 +1582,7 @@
                     </div>
                     <div class="col-sm-6 col-lg-3 col-6">
                         <div class="info-card">
-                            <div class="info-icon icon-travel">
+                            <div class="info-icon icon-info">
                                 <i class="fa-solid fa-info-circle"></i>
                             </div>
                             <h3>Información Recursos de viaje</h3>
@@ -1591,7 +1591,7 @@
                     </div>
                     <div class="col-sm-6 col-lg-3 col-6">
                         <div class="info-card">
-                            <div class="info-icon icon-price">
+                            <div class="info-icon icon-trust">
                                 <i class="fa-solid fa-shield"></i>
                             </div>
                             <h3>De confianza </h3>
@@ -1833,7 +1833,7 @@
                             Desde el momento en que hice la reserva hasta que aterricé en Bali, todo fue muy fácil. El equipo de facturación fue muy amable e incluso recordaba mi preferencia de asiento. Ver el amanecer sobre el océano mientras aterrizábamos fue perfecto. No parecía un simple viaje, sino el comienzo de algo mágico.
                         </p>
                         <div class="testimonial-footer">
-                            <!-- <img src="https://i.pravatar.cc/50?img=10" alt="User 1" /> -->
+                            <img src="https://i.pravatar.cc/50?img=10" alt="User 1" />
                             <div>
                                 <strong>Bryan Bradfield</strong><br />
                             </div>
@@ -1846,7 +1846,7 @@
                             Estaba nerviosa por viajar sola, pero la tripulación me hizo sentir como en casa. Me ayudaron a encontrar consejos locales sobre París e incluso me imprimieron una mini guía de la ciudad. Un servicio increíble con un toque personal: llegué lista para enamorarme de la ciudad de las luces.
                         </p>
                         <div class="testimonial-footer">
-                            <!-- <img src="https://i.pravatar.cc/50?img=11" alt="User 2" /> -->
+                            <img src="https://i.pravatar.cc/50?img=11" alt="User 2" />
                             <div>
                                 <strong>Prajakta Sasane</strong><br />
                             </div>
@@ -1859,7 +1859,7 @@
                             Normalmente, los vuelos largos son agotadores, pero este se me pasó volando. Todo, desde la comodidad del asiento hasta la cena a bordo, me hizo sentir cuidada. Cuando descendimos sobre el horizonte neón de Tokio, me sentía renovada y emocionada, no cansada. Esa es la diferencia que marca la hospitalidad genuina.
                         </p>
                         <div class="testimonial-footer">
-                            <!-- <img src="https://i.pravatar.cc/50?img=12" alt="User 3" /> -->
+                            <img src="https://i.pravatar.cc/50?img=12" alt="User 3" />
                             <div>
                                 <strong>James Andrew</strong><br />
                             </div>
@@ -1872,7 +1872,7 @@
                             A veces, viajar parece una transacción. Pero esta vez no fue así. El equipo se anticipó a mis necesidades antes incluso de que las expresara, desde mantener mi café caliente hasta ayudarme con un traslado retrasado. Cuando llegué a Zúrich, me di cuenta de que no solo me había impresionado el destino, sino también el viaje.
                         </p>
                         <div class="testimonial-footer">
-                            <!-- <img src="https://i.pravatar.cc/50?img=12" alt="User 4" /> -->
+                            <img src="https://i.pravatar.cc/50?img=12" alt="User 4" />
                             <div>
                                 <strong>James Anderson</strong><br />
                             </div>

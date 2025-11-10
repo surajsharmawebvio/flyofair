@@ -2,7 +2,7 @@
     <DefaultLayout>
         <section class="innerbanner-section">
             <div class="innerbannerbg">
-                <img src="images/banner/about-banner.jpg" alt="">
+                <img src="/images/banner/about-banner.jpg" alt="">
             </div>
             <div class="container">
                 <div class="row align-items-center justify-content-center">
@@ -29,35 +29,35 @@
                                             <i class="bi bi-record-circle footer-link-arrow"></i>
                                             <span class="footer-link-text">Home</span>
                                         </Link>
-                                        <Link href="/blog" class="footer-link-item">
+                                        <Link href="/blog/" class="footer-link-item">
                                             <i class="bi bi-record-circle footer-link-arrow"></i>
                                             <span class="footer-link-text">Blog</span>
                                         </Link>
-                                        <Link href="/about-us" class="footer-link-item">
+                                        <Link href="/about-us/" class="footer-link-item">
                                             <i class="bi bi-record-circle footer-link-arrow"></i>
                                             <span class="footer-link-text">About Us</span>
                                         </Link>
                                     </div>
                                     <div class="footer-link-column">
-                                        <Link href="/contact-us" class="footer-link-item">
+                                        <Link href="/contact-us/" class="footer-link-item">
                                             <i class="bi bi-record-circle footer-link-arrow"></i>
                                             <span class="footer-link-text">Contact Us</span>
                                         </Link>
-                                        <Link href="/author" class="footer-link-item">
+                                        <Link href="/author/" class="footer-link-item">
                                             <i class="bi bi-record-circle footer-link-arrow"></i>
                                             <span class="footer-link-text">Author</span>
                                         </Link>
-                                    </div>
-                                    <div class="footer-link-column">
-                                        <Link href="/terms-and-conditions" class="footer-link-item">
+                                        <Link href="/terms-and-conditions/" class="footer-link-item">
                                             <i class="bi bi-record-circle footer-link-arrow"></i>
                                             <span class="footer-link-text">Terms and Conditions</span>
                                         </Link>
-                                        <Link href="/privacy-policy" class="footer-link-item">
+                                    </div>
+                                    <div class="footer-link-column">
+                                        <Link href="/privacy-policy/" class="footer-link-item">
                                             <i class="bi bi-record-circle footer-link-arrow"></i>
                                             <span class="footer-link-text">Privacy Policy</span>
                                         </Link>
-                                        <Link href="/disclaimer" class="footer-link-item">
+                                        <Link href="/disclaimer/" class="footer-link-item">
                                             <i class="bi bi-record-circle footer-link-arrow"></i>
                                             <span class="footer-link-text">Disclaimer</span>
                                         </Link>
@@ -74,39 +74,35 @@
                                             <i class="bi bi-record-circle footer-link-arrow"></i>
                                             <span class="footer-link-text">Inicio</span>
                                         </Link>
-                                        <Link href="/es/articulos" class="footer-link-item">
+                                        <Link href="/es/articulos/" class="footer-link-item">
                                             <i class="bi bi-record-circle footer-link-arrow"></i>
                                             <span class="footer-link-text">Artículos</span>
                                         </Link>
-                                        <Link href="/es/sobre-nosotros" class="footer-link-item">
+                                        <Link href="/es/sobre-nosotros/" class="footer-link-item">
                                             <i class="bi bi-record-circle footer-link-arrow"></i>
                                             <span class="footer-link-text">Sobre Nosotros</span>
                                         </Link>
                                     </div>
                                     <div class="footer-link-column">
-                                        <Link href="/es/servicios" class="footer-link-item">
-                                            <i class="bi bi-record-circle footer-link-arrow"></i>
-                                            <span class="footer-link-text">Servicios</span>
-                                        </Link>
-                                        <Link href="/es/contactanos" class="footer-link-item">
+                                        <Link href="/es/contactanos/" class="footer-link-item">
                                             <i class="bi bi-record-circle footer-link-arrow"></i>
                                             <span class="footer-link-text">Contáctanos</span>
                                         </Link>
-                                        <Link href="/es/autor" class="footer-link-item">
+                                        <Link href="/es/autor/" class="footer-link-item">
                                             <i class="bi bi-record-circle footer-link-arrow"></i>
                                             <span class="footer-link-text">Autor</span>
                                         </Link>
-                                    </div>
-                                    <div class="footer-link-column">
-                                        <Link href="/es/terminos-y-condiciones" class="footer-link-item">
+                                        <Link href="/es/terminos-y-condiciones/" class="footer-link-item">
                                             <i class="bi bi-record-circle footer-link-arrow"></i>
                                             <span class="footer-link-text">Términos y Condiciones</span>
                                         </Link>
-                                        <Link href="/es/politica-de-privacidad" class="footer-link-item">
+                                    </div>
+                                    <div class="footer-link-column">
+                                        <Link href="/es/politica-de-privacidad/" class="footer-link-item">
                                             <i class="bi bi-record-circle footer-link-arrow"></i>
                                             <span class="footer-link-text">Política de Privacidad</span>
                                         </Link>
-                                        <Link href="/es/descargo-de-responsabilidad" class="footer-link-item">
+                                        <Link href="/es/descargo-de-responsabilidad/" class="footer-link-item">
                                             <i class="bi bi-record-circle footer-link-arrow"></i>
                                             <span class="footer-link-text">Descargo de Responsabilidad</span>
                                         </Link>
@@ -123,7 +119,7 @@
                                             <Link 
                                                 v-for="blog in blogGroup" 
                                                 :key="blog.slug"
-                                                :href="`/blog/${blog.slug}`"
+                                                :href="`/blog/${blog.slug}/`"
                                                 class="footer-link-item"
                                             >
                                                 <i class="bi bi-record-circle footer-link-arrow"></i>
@@ -143,7 +139,7 @@
                                             <Link 
                                                 v-for="articulo in articuloGroup" 
                                                 :key="articulo.slug"
-                                                :href="`/es/articulos/${articulo.slug}`"
+                                                :href="`/es/articulos/${articulo.slug}/`"
                                                 class="footer-link-item"
                                             >
                                                 <i class="bi bi-record-circle footer-link-arrow"></i>

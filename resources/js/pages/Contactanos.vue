@@ -28,11 +28,10 @@
             <section class="contactus-section py-5">
                 <div class="container text-center">
                     <h2 class="contactus-heading mb-2">
-                        Cómo <span>Contactarnos</span>
+                        Cómo puede ponerse en <span>contacto con nosotros?</span> 
                     </h2>
                     <p class="contactus-subtext mb-5">
-                        Para contactar a los profesionales de Airlines Travel Help, elige cualquiera de las opciones mencionadas a continuación según
-                        tu comodidad.
+                        Puede comunicarse con nosotros por teléfono, sitio web, correo postal u otros medios.
                     </p>
 
                     <div class="row justify-content-center g-4">
@@ -90,11 +89,10 @@
                         <div class="col-lg-7">
                             <form class="custom-contact-form">
                                 <h2 class="contactus-heading mb-2">
-                                    Cómo <span>Contactarnos</span>
+                                    Escriba aquí <span>sus comentarios!</span> 
                                 </h2>
                                 <p class="contactus-subtext text-start mb-3" style="max-width: 100%;">
-                                    Para contactar a los profesionales de Airlines Travel Help, elige cualquiera de las opciones mencionadas
-                                    a continuación según tu comodidad.
+                                    Tiene alguna pregunta o sugerencia? Aquí puede escribirnos. Nuestro equipo de FlyOFair se pondrá en contacto con usted.
                                 </p>
                                 <div class="row g-3">
                                     <div class="col-12">

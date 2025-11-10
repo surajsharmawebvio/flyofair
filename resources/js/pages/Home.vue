@@ -1539,7 +1539,7 @@
                     <div class="col-xl-6 col-lg-8 text-center">
                         <div class="section-header text-center">
                             <h3 class="mb-2">
-                                Why are we the best?
+                                <strong>Why are we the best?</strong>
                             </h3>
                             <p class="sub-title">
                                 Check out our key benefits and advantages that can guide you to the right ways for your
@@ -1587,7 +1587,7 @@
                     </div>
                     <div class="col-sm-6 col-6 col-lg-3">
                         <div class="info-card">
-                            <div class="info-icon icon-vip">
+                            <div class="info-icon icon-support">
                                 <i class="fa-solid fa-headset"></i>
                             </div>
                             <h3>24/7 Travel Assistance</h3>
@@ -1596,7 +1596,7 @@
                     </div>
                     <div class="col-sm-6 col-lg-3 col-6">
                         <div class="info-card">
-                            <div class="info-icon icon-ticket">
+                            <div class="info-icon icon-passenger">
                                 <i class="fa-solid fa-users"></i>
                             </div>
                             <h3>Passenger-friendly platform</h3>
@@ -1605,7 +1605,7 @@
                     </div>
                     <div class="col-sm-6 col-lg-3 col-6">
                         <div class="info-card">
-                            <div class="info-icon icon-travel">
+                            <div class="info-icon icon-info">
                                 <i class="fa-solid fa-info-circle"></i>
                             </div>
                             <h3>Information Travel Resources</h3>
@@ -1614,7 +1614,7 @@
                     </div>
                     <div class="col-sm-6 col-lg-3 col-6">
                         <div class="info-card">
-                            <div class="info-icon icon-price">
+                            <div class="info-icon icon-trust">
                                 <i class="fa-solid fa-shield"></i>
                             </div>
                             <h3>Trusted </h3>
@@ -1867,7 +1867,7 @@
                             From the moment I booked until landing in Bali, everything felt effortless. The check‑in team was so kind and even remembered my seat preference. Watching the sunrise over the ocean as we landed — perfection. It didn't feel like just a trip; it felt like the beginning of something magical.
                         </p>
                         <div class="testimonial-footer">
-                            <!-- <img src="https://i.pravatar.cc/50?img=10" alt="User 1" /> -->
+                            <img src="https://i.pravatar.cc/50?img=10" alt="User 1" />
                             <div>
                                 <strong>Bryan Bradfield</strong><br />
                             </div>
@@ -1880,7 +1880,7 @@
                             I was nervous about traveling solo, but the crew made me feel right at home. They helped me find local tips for Paris and even printed a mini city guide. Amazing service with a personal touch — I arrived ready to fall in love with the city of lights.
                         </p>
                         <div class="testimonial-footer">
-                            <!-- <img src="https://i.pravatar.cc/50?img=11" alt="User 2" /> -->
+                            <img src="https://i.pravatar.cc/50?img=11" alt="User 2" />
                             <div>
                                 <strong>Prajakta Sasane</strong><br />
                             </div>
@@ -1893,7 +1893,7 @@
                             Usually, long flights feel exhausting, but this one honestly flew by. Everything from the seat comfort to the onboard dinner made me feel cared for. By the time we descended over Tokyo's neon skyline, I felt refreshed and excited, not tired. That's the difference genuine hospitality makes
                         </p>
                         <div class="testimonial-footer">
-                            <!-- <img src="https://i.pravatar.cc/50?img=12" alt="User 3" /> -->
+                            <img src="https://i.pravatar.cc/50?img=12" alt="User 3" />
                             <div>
                                 <strong>James Andrew</strong><br />
                             </div>
@@ -1906,7 +1906,7 @@
                             Sometimes, travel feels transactional. But not this time. The team anticipated what I needed before I even asked — from keeping my coffee hot to helping with a delayed transfer. When I reached Zurich, I realized it wasn't just the destination that impressed me — it was the journey.
                         </p>
                         <div class="testimonial-footer">
-                            <!-- <img src="https://i.pravatar.cc/50?img=12" alt="User 4" /> -->
+                            <img src="https://i.pravatar.cc/50?img=12" alt="User 4" />
                             <div>
                                 <strong>James Andrson</strong><br />
                             </div>

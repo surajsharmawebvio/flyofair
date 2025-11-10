@@ -12,7 +12,7 @@
     <DefaultLayout>
         <section class="innerbanner-section">
             <div class="innerbannerbg">
-                <img src="images/banner/author-banner.jpg" alt="">
+                <img src="/images/banner/author-banner.jpg" alt="">
             </div>
             <div class="container">
                 <div class="row align-items-center justify-content-center">
@@ -67,12 +67,8 @@
                         <h6 class="mb-3 fw-bold">CONNECT WITH ALICE</h6>
                         <a href="https://x.com/FlyoFair" target="_blank" class="authorbio-social-link"><i class="fab fa-x-twitter"></i></a>
                         <a href="https://www.facebook.com/people/Flyofair/61583235514966/" target="_blank" class="authorbio-social-link"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" target="_blank" class="authorbio-social-link"><i class="fab fa-linkedin-in"></i></a>
                         <a href="https://www.instagram.com/flyofair/" target="_blank" class="authorbio-social-link"><i class="fab fa-instagram"></i></a>
-                        <a href="https://www.threads.com/@flyofair" target="_blank" class="authorbio-social-link"><i class="fab fa-threads"></i></a>
-                        <a href="#" target="_blank" class="authorbio-social-link"><i class="fab fa-youtube"></i></a>
                         <a href="https://www.pinterest.com/flyofair/" target="_blank" class="authorbio-social-link"><i class="fab fa-pinterest"></i></a>
-                        <a href="https://www.quora.com/profile/FlyOFair" target="_blank" class="authorbio-social-link"><i class="fab fa-quora"></i></a>
                     </div>
                 </div>
             </div>
