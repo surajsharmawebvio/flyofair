@@ -9,21 +9,22 @@
                     <h2>Hey! We’re here to guide you through your booking journey</h2>
                     <p class="sub">Don’t Let These Deals Fly Away!</p>
 
-                    <div class="phone-box">
+                    <a href="tel:+1-877-238-0219" class="phone-box">
                         <img src="https://flagcdn.com/w40/us.png" alt="US Flag">
-                        +88(09) 53 33 09
-                    </div>
+                        +1-877-238-0219
+                    </a>
 
                     <div class="or">or</div>
 
-                    <button class="call-btn" @click="$emit('request-call')">
+                    <Link href="/contact-us" class="call-btn" >
                         <i class="fa fa-phone" aria-hidden="true"></i>
                         Request a Call Back
-                    </button>
+                    </Link>
 
                     <br>
 
-                    <div class="row">
+                    <!-- pop-up footer image -->
+                    <div class="pop-up-footer">
                         <div class="footer col-12 col-md-6">
                             <img src="/images/popup/4.png" alt="IATA">
                             <img src="/images/popup/3.png" alt="CLIA">
@@ -32,11 +33,10 @@
                         </div>
 
                         <div class="socials col-12 col-md-6">
-                            <a href="#" aria-label="facebook"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#" aria-label="instagram"><i class="fab fa-instagram"></i></a>
-                            <a href="#" aria-label="twitter"><i class="fab fa-x-twitter"></i></a>
-                            <a href="#" aria-label="youtube"><i class="fab fa-youtube"></i></a>
-                            <a href="#" aria-label="linkedin"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="https://x.com/FlyoFair" target="_blank" aria-label="twitter"><i class="fab fa-x-twitter"></i></a>
+                            <a href="https://www.facebook.com/people/Flyofair/61583235514966/" target="_blank" aria-label="facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://www.instagram.com/flyofair/" target="_blank" aria-label="instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="https://www.pinterest.com/flyofair/" target="_blank" aria-label="pinterest"><i class="fab fa-pinterest"></i></a>
                         </div>
                     </div>
                 </div>
@@ -90,8 +90,8 @@
 
     .pop-up-content {
         position: relative;
-        max-width: 900px;
-        width: 70%;
+        max-width: 800px;
+        width: 50%;
     }
 
     .close-button {
@@ -126,7 +126,7 @@
         border: 3px solid #e69c24;
         border-radius: 14px;
         padding: 4px;
-        min-height: 400px;
+        min-height: 450px;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -214,7 +214,7 @@
 
     .footer {
         display: flex;
-        justify-content: start;
+        justify-content: flex-start;
         gap: 14px;
         align-items: center;
         margin-top: 18px;
@@ -222,21 +222,21 @@
     }
 
     .footer img {
-        height: 40px;
+        height: 35px;
     }
 
     .socials {
         display: flex;
         gap: 12px;
         margin-top: 12px;
-        justify-content: end;
+        justify-content: flex-end;
     }
 
     .socials a {
         color: #fff;
         background: #1877f2;
-        width: 40px;
-        height: 40px;
+        width: 35px;
+        height: 35px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -245,20 +245,20 @@
         font-size: 20px;
     }
 
-    .socials a:nth-child(2) {
-        background: #e1306c
-    }
-
-    .socials a:nth-child(3) {
+    .socials a:nth-child(1) {
         background: #000
     }
 
-    .socials a:nth-child(4) {
-        background: #ff0000
+    .socials a:nth-child(2) {
+        background: #1877f2
     }
 
-    .socials a:nth-child(5) {
-        background: #0077b5
+    .socials a:nth-child(3) {
+        background: #e1306c
+    }
+
+    .socials a:nth-child(4) {
+        background: #bd081c
     }
 
     /* small responsive tweaks */
@@ -273,4 +273,10 @@
         }
     }
 
+.pop-up-footer {
+    display: flex;
+    position: absolute;
+    bottom: 20px;
+    width: 90%;
+}
 </style>

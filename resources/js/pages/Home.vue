@@ -1,7 +1,6 @@
 <!-- Make home component as main content using defaultlayout -->
 <script setup>
     import DefaultLayout from '@/layouts/DefaultLayout.vue'
-    import PopUp from '@/components/pop-up.vue'
     import {
         onMounted,
         onUnmounted,
@@ -15,9 +14,6 @@
     import Swal from 'sweetalert2';
 
     const API_BASE_URL = 'https://development.theinfinitytravel.com/api/v1/all/airport-list?input='
-
-    // Pop-up state
-    const showPopup = ref(false)
 
     // Common function for airport search
     async function searchAirports(query, resultsSetter) {
@@ -480,22 +476,6 @@
 
         // console.log('Submitting flight search:', formData);
     };
-
-    // Pop-up functions
-    function openPopup() {
-        showPopup.value = true;
-    }
-
-    function handleRequestCall() {
-        showPopup.value = false;
-        // Add your call request logic here
-        Swal.fire({
-            icon: 'success',
-            title: 'Call Request Sent!',
-            text: 'We will contact you shortly.',
-            confirmButtonText: 'OK'
-        });
-    }
 
     onMounted(() => {
         // Add click handler for popup button
@@ -1003,7 +983,6 @@
                                 <p>With FlyOFair, take your dreams to the sky and bring back moments that will stay in
                                     your heart forever!</p>
                             </div> 
-                            <button class="btn btn-primary" id="popup">pop up</button>
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-12 col-12">
@@ -1915,11 +1894,5 @@
                 </div>
             </div>
         </section>
-
-        <!-- Pop-up Component -->
-        <PopUp 
-            v-model="showPopup" 
-            @request-call="handleRequestCall"
-        />
     </DefaultLayout>
 </template>
