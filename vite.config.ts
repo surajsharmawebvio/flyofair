@@ -33,9 +33,17 @@ export default defineConfig(({mode}) => {
         manifest: true,
         outDir: 'public/build/',
         emptyOutDir: true,
+        minify: 'esbuild',
+        sourcemap: false,
         rollupOptions: {
             input: {
                 app: path.resolve(__dirname, 'resources/js/app.ts'),
+            },
+            output: {
+                manualChunks: {
+                    vendor: ['vue', 'axios', 'lodash'],
+                    ui: ['bootstrap', 'jquery', 'sweetalert2'],
+                },
             },
         },
     },
