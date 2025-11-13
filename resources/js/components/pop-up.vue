@@ -10,7 +10,7 @@
                         <p>Expert Support for Effortless Travel Planning</p>
                     </div>
                     <div>
-                        <a href="tel:+1234567890" class="pop-up-btn">call now</a>
+                        <a href="tel:+1234567890" class="pop-up-btn">Call Now</a>
                     </div>
                 </div>
                 <div class="popup-content">
@@ -21,27 +21,30 @@
                         </div>
                         <div>
                             <img src="/images/popup/35.png" alt="popup image">
-                            <p>Quick Support from <strong>Our Experts</strong></p>
+                            <p>Instant <strong>Booking Confirmation</strong></p>
                         </div>
                         <div>
                             <img src="/images/popup/34.png" alt="popup image">
-                            <p>Quick Support from <strong>Our Experts</strong></p>
+                            <p>Up to 24-hours <strong>Cancellation</strong></p>
                         </div>
                         <div>
                             <img src="/images/popup/37.png" alt="popup image">
-                            <p>Quick Support from <strong>Our Experts</strong></p>
+                            <p>Payment <strong>Flaxibility</strong></p>
                         </div>
                     </div>
                     <div class="btn-contact" style="margin-top: 20px; text-align: center;">
-                        <a href="#" class="pop-up-btn">Contact a Travel Expert</a>
+                        <Link href="/contact-us" class="pop-up-btn">Contact a Travel Expert</Link>
                     </div>
-                    <div class="subscribe">
+                    <form @submit.prevent="subscribe" class="subscribe">
                       <label for="subscribe">Stay Updated:</label>
                       <div>
-                        <input type="email" id="subscribe" placeholder="Enter your email">
-                        <a href="#" class="pop-up-btn-2">Subscribe</a>
+                        <input v-model="email" type="email" id="subscribe" placeholder="Enter your email" required>
+                        <a :disabled="loading" type="submit" class="pop-up-btn-2">
+                          <span v-if="!loading">Subscribe</span>
+                          <span v-else>please wait...</span>
+                        </a>
                       </div>
-                    </div>
+                    </form>
                 </div>
             </div>
             <!-- popup footer -->
@@ -54,20 +57,17 @@
                 </div>
 
                 <div class="social-icons">
-                    <a href="https://www.facebook.com" target="_blank" class="facebook">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <a href="https://www.instagram.com" target="_blank" class="instagram">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="https://x.com" target="_blank" class="twitter">
+                    <a href="https://x.com/FlyoFair" target="_blank" class="twitter">
                         <i class="fab fa-x-twitter"></i>
                     </a>
-                    <a href="https://www.youtube.com" target="_blank" class="youtube">
-                        <i class="fab fa-youtube"></i>
+                    <a href="https://www.facebook.com/people/Flyofair/61583235514966/" target="_blank" class="facebook">
+                        <i class="fab fa-facebook-f"></i>
                     </a>
-                    <a href="https://www.linkedin.com" target="_blank" class="linkedin">
-                        <i class="fab fa-linkedin-in"></i>
+                    <a href="https://www.instagram.com/flyofair/" target="_blank" class="instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://www.pinterest.com/flyofair/" target="_blank" class="pinterest">
+                        <i class="fab fa-pinterest"></i>
                     </a>
                 </div>
             </div>
@@ -79,6 +79,18 @@
     import {
         Link
     } from '@inertiajs/vue3';
+    import axios from 'axios';
+    import Swal from 'sweetalert2';
+
+    // Configure axios defaults
+    axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+    axios.defaults.withCredentials = true;
+
+    // Get CSRF token from meta tag
+    const token = document.head.querySelector('meta[name="csrf-token"]');
+    if (token) {
+        axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+    }
 
     export default {
         name: 'PopUp',
@@ -93,6 +105,12 @@
             }
         },
         emits: ['update:modelValue', 'request-call'],
+        data() {
+            return {
+                email: '',
+                loading: false
+            };
+        },
         computed: {
             isVisible: {
                 get() {
@@ -106,6 +124,42 @@
         methods: {
             closePopUp() {
                 this.isVisible = false;
+            },
+            async subscribe(event) {
+                // form submit prevented by @submit.prevent
+                if (!this.email) {
+                    await Swal.fire({ icon: 'warning', title: 'Please enter your email.' });
+                    return;
+                }
+
+                this.loading = true;
+                try {
+                    const res = await axios.post('/api/newsletter/subscribe', { email: this.email }, {
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json',
+                            'X-Requested-With': 'XMLHttpRequest',
+                        },
+                        withCredentials: false,
+                    });
+
+                    await Swal.fire({ icon: 'success', title: res.data.message || 'Subscribed successfully' });
+                    this.email = '';
+                    this.isVisible = false; // Hide popup on success
+                } catch (err) {
+                    if (err.response && err.response.status === 422 && err.response.data.errors) {
+                        // validation errors
+                        const firstKey = Object.keys(err.response.data.errors)[0];
+                        const firstMsg = err.response.data.errors[firstKey][0];
+                        await Swal.fire({ icon: 'error', title: firstMsg });
+                    } else if (err.response && err.response.data && err.response.data.message) {
+                        await Swal.fire({ icon: 'error', title: err.response.data.message });
+                    } else {
+                        await Swal.fire({ icon: 'error', title: 'Something went wrong. Please try again.' });
+                    }
+                } finally {
+                    this.loading = false;
+                }
             }
         }
     };
@@ -197,6 +251,7 @@
         width: 80%;
         height: 70%;
         border-radius: 10px 10px 0 0;
+        box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.2);
     }
 
     .child-content-service {
@@ -360,27 +415,133 @@
         background-color: #000000;
     }
 
-    .social-icons a.youtube {
-        background-color: #ff0000;
-    }
-
-    .social-icons a.linkedin {
-        background-color: #0077b5;
+    .social-icons a.pinterest {
+        background-color: #e60023;
     }
 
     /* Responsive */
     @media (max-width: 768px) {
+        .popup-overlay {
+            padding: 15px;
+        }
+
+        .popup-container {
+            max-width: 95vw;
+            position: relative;
+        }
+
+        .popup-body {
+            min-height: 350px;
+        }
+
+        .popup-title {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 15px;
+            height: auto;
+            margin-top: 20px;
+        }
+
+        .p-title h3 {
+            font-size: 20px;
+        }
+
+        .p-title p {
+            font-size: 16px;
+        }
+
+        .popup-content {
+            width: 90%;
+            height: 75%;
+        }
+
+        .child-content-service {
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .child-content-service > div {
+            flex: 0 0 calc(50% - 15px);
+            min-width: 120px;
+        }
+
+        .child-content-service img {
+            width: 60px;
+            height: 60px;
+        }
+
+        .child-content-service p {
+            font-size: 12px;
+            text-align: center;
+        }
+
+        .btn-contact {
+            margin-top: 15px;
+        }
+
+        .subscribe {
+            width: 90%;
+            gap: 8px;
+        }
+
+        .subscribe label {
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        .subscribe div {
+            max-width: none;
+            flex-direction: column;
+            gap: 8px;
+            align-items: stretch;
+        }
+
+        .subscribe input {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+
+        .pop-up-btn-2 {
+            align-self: flex-start;
+            padding: 10px 16px;
+            font-size: 14px;
+            border-radius: 6px;
+        }
+
         .popup-footer {
             flex-direction: column;
             gap: 15px;
+            padding: 15px;
+            position: absolute;
+            bottom: 0;
         }
 
         .brand-icons {
             justify-content: center;
+            flex-wrap: wrap;
+            gap: 8px;
         }
 
         .brand-icons img {
             max-width: 60px;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .social-icons {
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .social-icons a {
+            width: 34px;
+            height: 34px;
+            font-size: 14px;
         }
     }
 
@@ -389,13 +550,111 @@
             padding: 10px;
         }
 
+        .popup-container {
+            max-width: 100vw;
+            border-radius: 8px;
+            height: 80vh;
+        }
+
+        .popup-body {
+            min-height: 300px;
+        }
+
+        .popup-title {
+            width: 90%;
+            margin-top: 15px;
+        }
+
+        .p-title h3 {
+            font-size: 18px;
+        }
+
+        .p-title p {
+            font-size: 14px;
+        }
+
+        .popup-content {
+            width: 95%;
+            height: 80%;
+        }
+
+        .child-content-service {
+            gap: 10px;
+        }
+
+        .child-content-service > div {
+            flex: 0 0 calc(50% - 10px);
+            min-width: 100px;
+        }
+
+        .child-content-service img {
+            width: 50px;
+            height: 50px;
+        }
+
+        .child-content-service p {
+            font-size: 11px;
+        }
+
+        .child-content-service p strong {
+            font-size: 12px;
+        }
+
+        .btn-contact {
+            margin-top: 10px;
+        }
+
+        .subscribe {
+            width: 95%;
+            gap: 5px;
+        }
+
+        .subscribe label {
+            font-size: 14px;
+            margin-bottom: 3px;
+        }
+
+        .subscribe div {
+            gap: 6px;
+        }
+
+        .subscribe input {
+            padding: 8px 10px;
+            font-size: 13px;
+            border-radius: 4px;
+        }
+
+        .pop-up-btn-2 {
+            padding: 8px 12px;
+            font-size: 13px;
+            border-radius: 4px;
+        }
+
+        .popup-footer {
+            padding: 12px;
+            gap: 12px;
+        }
+
+        .brand-icons {
+            gap: 6px;
+        }
+
         .brand-icons img {
-            max-width: 50px;
+            max-width: 60px;
+        }
+
+        .social-icons {
+            gap: 6px;
         }
 
         .social-icons a {
-            width: 32px;
-            height: 32px;
+            width: 45px;
+            height: 45px;
+            font-size: 13px;
+        }
+
+        .pop-up-btn {
+            padding: 8px 16px;
             font-size: 14px;
         }
     }
