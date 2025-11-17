@@ -452,7 +452,14 @@
         }
 
         // Make API call with formData
-        axios.post('/api/get-quote', formData)
+        const token = document.head.querySelector('meta[name="csrf-token"]')
+        const headers = {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        }
+        if (token) headers['X-CSRF-TOKEN'] = token.content
+
+        axios.post('/api/get-quote', formData, { headers })
             .then(response => {
                 console.log('Quote request successful:', response.data);
                 const message = response.data.message || 'Quote request sent successfully.';
@@ -1524,9 +1531,9 @@
                 <div class="row justify-content-center">
                     <div class="col-xl-6 col-lg-8 text-center">
                         <div class="section-header text-center">
-                            <h3 class="mb-2">
+                            <h2 class="mb-2">
                                 <strong>Why are we the best?</strong>
-                            </h3>
+                            </h2>
                             <p class="sub-title">
                                 Check out our key benefits and advantages that can guide you to the right ways for your
                                 next travel planning.
@@ -1661,7 +1668,7 @@
                                         </svg>
                                     </span>
                                     <div class="tg-chose-list-content">
-                                        <h4 class="tg-chose-list-title mb-5">Easy modifications </h4>
+                                        <h3 class="tg-chose-list-title mb-5">Easy modifications </h3>
                                         <p>Get the benefits of modifying your booking, including cancellations and
                                             changes.
                                         </p>
@@ -1693,14 +1700,14 @@
 
                             <!-- Accordion Item 3 -->
                             <div class="accordion-item">
-                                <h2 class="accordion-header" id="headingThree">
+                                <h4 class="accordion-header" id="headingThree">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#collapseThree" aria-expanded="false"
                                         aria-controls="collapseThree">
                                         <span>Can I modify my reservation on FlyOFair?</span>
                                         <i class="icon fas fa-eye-slash ms-auto"></i>
                                     </button>
-                                </h2>
+                                </h4>
                                 <div id="collapseThree" class="accordion-collapse collapse"
                                     aria-labelledby="headingThree" data-bs-parent="#accordionExample">
                                     <div class="accordion-body">
@@ -1714,13 +1721,13 @@
 
                             <!-- Accordion Item 2 -->
                             <div class="accordion-item">
-                                <h2 class="accordion-header" id="headingTwo">
+                                <h4 class="accordion-header" id="headingTwo">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                                         <span>How can FlyOFair help you find the best deals?</span>
                                         <i class="icon fas fa-eye-slash ms-auto"></i>
                                     </button>
-                                </h2>
+                                </h4>
                                 <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
                                     data-bs-parent="#accordionExample">
                                     <div class="accordion-body">
@@ -1734,14 +1741,14 @@
 
                             <!-- Accordion Item 4 -->
                             <div class="accordion-item">
-                                <h2 class="accordion-header" id="headingFour">
+                                <h4 class="accordion-header" id="headingFour">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#collapseFour" aria-expanded="false"
                                         aria-controls="collapseFour">
                                         <span>Does FlyOFair offer customer service assistance?</span>
                                         <i class="icon fas fa-eye-slash ms-auto"></i>
                                     </button>
-                                </h2>
+                                </h4>
                                 <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
                                     data-bs-parent="#accordionExample">
                                     <div class="accordion-body">
@@ -1755,14 +1762,14 @@
 
                             <!-- Accordion Item 5 -->
                             <div class="accordion-item">
-                                <h2 class="accordion-header" id="headingFive">
+                                <h4 class="accordion-header" id="headingFive">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#collapseFive" aria-expanded="false"
                                         aria-controls="collapseFive">
                                         <span>How can I stay updated on new offers and deals?</span>
                                         <i class="icon fas fa-eye-slash ms-auto"></i>
                                     </button>
-                                </h2>
+                                </h4>
                                 <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive"
                                     data-bs-parent="#accordionExample">
                                     <div class="accordion-body">
@@ -1834,11 +1841,11 @@
                 <div class="row justify-content-center">
                     <div class="col-lg-8 col-12">
                         <div class="section-header text-center">
-                            <h2 class="mb-2">
+                            <h3 class="mb-2">
                                 What do our
                                 <span class="text-primary text-primarysec text-decoration-underline">valuable
                                     passengers</span> say about us?
-                            </h2>
+                            </h3>
                             <p class="sub-title">
                                 We truly value our passengers' travel experience, and here are some that explain everything.
                             </p>

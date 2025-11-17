@@ -1651,7 +1651,7 @@
                                         </svg>
                                     </span>
                                     <div class="tg-chose-list-content">
-                                        <h4 class="tg-chose-list-title mb-5">Modificaciones sencillas </h4>
+                                        <h3 class="tg-chose-list-title mb-5">Modificaciones sencillas </h3>
                                         <p>Aproveche las ventajas de modificar su reserva, incluyendo cancelaciones y cambios
                                         </p>
                                     </div>
@@ -1681,14 +1681,14 @@
 
                             <!-- Accordion Item 1 -->
                             <div class="accordion-item">
-                                <h2 class="accordion-header" id="headingFour">
+                                <h4 class="accordion-header" id="headingFour">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#collapseFour" aria-expanded="false"
                                         aria-controls="collapseFour">
                                         <span>FlyOFair ofrece asistencia al cliente?</span>
                                         <i class="icon fas fa-eye-slash ms-auto"></i>
                                     </button>
-                                </h2>
+                                </h4>
                                 <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
                                     data-bs-parent="#accordionExample">
                                     <div class="accordion-body">
@@ -1759,14 +1759,14 @@
                             
                             <!-- Accordion Item 2 -->
                             <div class="accordion-item">
-                                <h2 class="accordion-header" id="headingFive">
+                                <h4 class="accordion-header" id="headingFive">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#collapseFive" aria-expanded="false"
                                         aria-controls="collapseFive">
                                         <span>Cómo puedo mantenerme al día de las nuevas ofertas y promociones?</span>
                                         <i class="icon fas fa-eye-slash ms-auto"></i>
                                     </button>
-                                </h2>
+                                </h4>
                                 <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive"
                                     data-bs-parent="#accordionExample">
                                     <div class="accordion-body">
@@ -1816,9 +1816,9 @@
                 <div class="row justify-content-center">
                     <div class="col-lg-8 col-12">
                         <div class="section-header text-center">
-                            <h2 class="mb-2">
+                            <h3 class="mb-2">
                                 Qué opinan nuestros <span class="text-primary text-primarysec text-decoration-underline">valiosos pasajeros</span> sobre nosotros?
-                            </h2>
+                            </h3>
                             <p class="sub-title">
                                 Valoramos mucho la experiencia de viaje de nuestros pasajeros, y aquí hay algunos comentarios que lo explican todo.
                             </p>

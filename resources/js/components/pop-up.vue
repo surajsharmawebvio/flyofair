@@ -29,7 +29,7 @@
                         </div>
                         <div>
                             <img src="/images/popup/37.png" alt="popup image">
-                            <p>Payment <strong>Flaxibility</strong></p>
+                            <p>Payment <strong>Flexibility</strong></p>
                         </div>
                     </div>
                     <div class="btn-contact" style="margin-top: 20px; text-align: center;">

@@ -32,16 +32,16 @@
                 </div>
             </div>
         </section>
-
+<!--  -->
         <section class="authorbio-section common-section">
             <div class="container">
                 <div class="authorbio-card p-4">
                     <div class="row align-items-center difcolor">
                         <!-- Author Image -->
-                        <!-- <div class="col-md-3 text-center">
-                            <img src="https://avatars.mds.yandex.net/i?id=348ec891cb9b141194a6f6c5252ddaf6468600fb-10805306-images-thumbs&n=13"
-                                alt="Autor" class="authorbio-image rounded-circle">
-                        </div> -->
+                        <div class="col-md-3 text-center">
+                            <img src="/images/author-profile.jpg"
+                                alt="Author" class="authorbio-image rounded-circle">
+                        </div>
 
                         <!-- Author Name -->
                         <div class="col-md-9 text-md-start text-center">
@@ -65,10 +65,10 @@
                     <!-- Social Links -->
                     <div class="authorbio-social mt-4 text-md-start text-center">
                         <h6 class="mb-3 fw-bold">CONÉCTATE CON ALICE</h6>
-                        <a href="https://x.com/FlyoFair" target="_blank" class="authorbio-social-link"><i class="fab fa-x-twitter"></i></a>
+                        <!-- <a href="https://x.com/FlyoFair" target="_blank" class="authorbio-social-link"><i class="fab fa-x-twitter"></i></a> -->
                         <a href="https://www.facebook.com/people/Flyofair/61583235514966/" target="_blank" class="authorbio-social-link"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://www.instagram.com/flyofair/" target="_blank" class="authorbio-social-link"><i class="fab fa-instagram"></i></a>
-                        <a href="https://www.pinterest.com/flyofair/" target="_blank" class="authorbio-social-link"><i class="fab fa-pinterest"></i></a>
+                        <!-- <a href="https://www.instagram.com/flyofair/" target="_blank" class="authorbio-social-link"><i class="fab fa-instagram"></i></a> -->
+                        <!-- <a href="https://www.pinterest.com/flyofair/" target="_blank" class="authorbio-social-link"><i class="fab fa-pinterest"></i></a> -->
                     </div>
                 </div>
             </div>

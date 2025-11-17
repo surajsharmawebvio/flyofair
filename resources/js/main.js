@@ -113,7 +113,7 @@ function togglePassword(inputId, toggleIcon) {
         <style>
             .topscroll-button-container {
                 position: fixed;
-                bottom: 86px;
+                bottom: 40px;
                 right: 25px;
                 z-index: 1000;
             }
@@ -228,6 +228,7 @@ function togglePassword(inputId, toggleIcon) {
             animation: pulse 2s infinite;
             text-decoration: none;
             color:#000;
+            display: none; /* Hide the button */
         }
 
         .floating-call-btn:hover {
