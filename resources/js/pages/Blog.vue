@@ -1,4 +1,8 @@
 <template>
+    <Head>
+        <title>FlyOFair | Blog</title>
+        <meta name="description" content="Get the complete info about airlines, car rentals, and cruises from the blog section of FlyOFair. You can also call us at +1-877-238-0219 for more details." />
+    </Head>
     <DefaultLayout>
         <section class="innerbanner-section">
             <div class="innerbannerbg">
@@ -69,7 +73,7 @@
 import './../../css/common.css';
 import './../../css/blog.css';
 import DefaultLayout from '@/layouts/DefaultLayout.vue'
-import { Link } from '@inertiajs/vue3'
+import { Link, Head } from '@inertiajs/vue3'
 
 const props = defineProps({
   blogs: {

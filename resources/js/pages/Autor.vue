@@ -3,12 +3,16 @@
     import "./../../css/author.css";
     import DefaultLayout from '@/layouts/DefaultLayout.vue'
     import {
-        Link
+        Link,
+        Head
     } from '@inertiajs/vue3';
 
 </script>
 
 <template>
+    <Head>
+        <meta name="robots" content="noindex, nofollow" />
+    </Head>
     <DefaultLayout>
         <section class="innerbanner-section">
             <div class="innerbannerbg">

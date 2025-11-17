@@ -1,4 +1,8 @@
 <template>
+    <Head>
+        <title>FlyOFair | Privacy Policy</title>
+        <meta name="description" content="The Privacy Policy of FlyOFair explains the policies that apply to users and visitors of this website. For a better understanding, you can email us." />
+    </Head>
     <DefaultLayout>
         <section class="innerbanner-section">
             <div class="innerbannerbg">
@@ -102,6 +106,7 @@
 <script setup>
 import DefaultLayout from '@/layouts/DefaultLayout.vue'
 import './../../css/default.css';
+import { Head } from '@inertiajs/vue3';
 </script>
 
 <style scoped>

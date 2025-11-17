@@ -3,6 +3,7 @@
         <title>{{ seo.title }}</title>
         <meta name="description" :content="seo.description">
         <meta name="keywords" :content="seo.keywords">
+        <meta name="robots" content="noindex, nofollow" />
         <link rel="canonical" :href="seo.canonical">
         
         <!-- Open Graph / Social Media -->

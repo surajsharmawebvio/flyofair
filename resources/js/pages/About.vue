@@ -2,10 +2,15 @@
 <script setup>
     import "./../../css/about.css";
     import DefaultLayout from '@/layouts/DefaultLayout.vue'
+    import { Head } from '@inertiajs/vue3';
 
 </script>
 
 <template>
+    <Head>
+        <title>FlyOFair | About Us</title>
+        <meta name="description" content="FlyOFair is an Online Travel Agency that provides the best assistance to its valued passengers and ensures an amazing travel. Call +1-877-238-0219 now." />
+    </Head>
     <DefaultLayout>
 
         <section class="innerbanner-section">

@@ -2,10 +2,13 @@
 <script setup>
     import "./../../css/about.css";
     import DefaultLayout from '@/layouts/DefaultLayout.vue'
-    import { Link } from '@inertiajs/vue3'
+    import { Link, Head } from '@inertiajs/vue3'
 </script>
 
 <template>
+    <Head>
+        <meta name="robots" content="noindex, nofollow" />
+    </Head>
     <DefaultLayout>
 
         <section class="innerbanner-section">

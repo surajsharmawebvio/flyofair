@@ -1,4 +1,8 @@
 <template>
+    <Head>
+        <title>FlyOFair | Sitemap</title>
+        <meta name="description" content="The Sitemap of FlyOFair contains all the information about the pages available on the website. Visitors or users can directly check any page via the sitemap." />
+    </Head>
     <DefaultLayout>
         <section class="innerbanner-section">
             <div class="innerbannerbg">
@@ -160,7 +164,7 @@
 <script setup>
 import DefaultLayout from '@/layouts/DefaultLayout.vue'
 import './../../css/sitemap.css';
-import { Link } from '@inertiajs/vue3';
+import { Link, Head } from '@inertiajs/vue3';
 import { computed } from 'vue';
 
 const props = defineProps({

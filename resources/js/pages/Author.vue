@@ -3,12 +3,17 @@
     import "./../../css/author.css";
     import DefaultLayout from '@/layouts/DefaultLayout.vue'
     import {
-        Link
+        Link,
+        Head
     } from '@inertiajs/vue3';
 
 </script>
 
 <template>
+    <Head>
+        <title>Author | Alice Walker</title>
+        <meta name="description" content="FlyOFair, as an Online Travel Agency, has a professional author whose travel experience helps us gather and present the information in the best possible way." />
+    </Head>
     <DefaultLayout>
         <section class="innerbanner-section">
             <div class="innerbannerbg">

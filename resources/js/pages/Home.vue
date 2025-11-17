@@ -12,6 +12,7 @@
     import axios from 'axios';
     import debounce from 'lodash/debounce';
     import Swal from 'sweetalert2';
+    import { Head } from '@inertiajs/vue3';
 
     const API_BASE_URL = 'https://development.theinfinitytravel.com/api/v1/all/airport-list?input='
 
@@ -978,6 +979,10 @@
 </script>
 
 <template>
+    <Head>
+        <title>FlyOFair | Airlines Flight Booking | Cruises | Car Rental</title>
+        <meta name="description" content="FlyOFair is a one-stop portal for travellers seeking assistance with flight bookings, cancellations, refunds, name changes, and more. Call +1-877-238-0219 now." />
+    </Head>
     <DefaultLayout>
         <section class="bannersection">
             <div class="bannerbgsec">

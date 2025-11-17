@@ -12,6 +12,7 @@
     import axios from 'axios';
     import debounce from 'lodash/debounce';
     import Swal from 'sweetalert2';
+    import { Head } from '@inertiajs/vue3';
 
     const API_BASE_URL = 'https://development.theinfinitytravel.com/api/v1/all/airport-list?input='
 
@@ -958,6 +959,9 @@
 </script>
 
 <template>
+    <Head>
+        <meta name="robots" content="noindex, nofollow" />
+    </Head>
     <DefaultLayout>
         <section class="bannersection">
             <div class="bannerbgsec">

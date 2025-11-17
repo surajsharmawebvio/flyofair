@@ -1,5 +1,9 @@
 <!-- create contact component -->
 <template>
+    <Head>
+        <title>FlyOFair | Contact Us</title>
+        <meta name="description" content="Passengers worldwide can connect with FlyOFair at +1-877-238-0219 and receive full-proff assistance from expert travel agents 24/7." />
+    </Head>
     <DefaultLayout>
         <section class="innerbanner-section">
             <div class="innerbannerbg">
@@ -139,7 +143,8 @@
         ref
     } from 'vue';
     import {
-        Link
+        Link,
+        Head
     } from '@inertiajs/vue3';
     import axios from 'axios';
     import Swal from 'sweetalert2';

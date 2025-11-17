@@ -1,4 +1,7 @@
 <template>
+    <Head>
+        <meta name="robots" content="noindex, nofollow" />
+    </Head>
     <DefaultLayout>
         <section class="innerbanner-section">
             <div class="innerbannerbg">
@@ -67,6 +70,7 @@
 <script setup>
 import DefaultLayout from '@/layouts/DefaultLayout.vue'
 import './../../css/default.css';
+import { Head } from '@inertiajs/vue3';
 </script>
 
 <style scoped>

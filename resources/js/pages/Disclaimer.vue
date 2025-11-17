@@ -1,4 +1,8 @@
 <template>
+    <Head>
+        <title>FlyOFair | Disclaimer</title>
+        <meta name="description" content="The Disclaimer of FlyOFair explains that you can buy flight tickets, rent cars, and book cruises from the trusted partners with complete assistance." />
+    </Head>
     <DefaultLayout>
         <section class="innerbanner-section">
             <div class="innerbannerbg">
@@ -47,6 +51,7 @@
 <script setup>
 import DefaultLayout from '@/layouts/DefaultLayout.vue'
 import './../../css/default.css';
+import { Head } from '@inertiajs/vue3';
 </script>
 
 <style scoped>

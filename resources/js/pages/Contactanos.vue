@@ -1,5 +1,8 @@
 <!-- create contact component -->
 <template>
+    <Head>
+        <meta name="robots" content="noindex, nofollow" />
+    </Head>
     <DefaultLayout>
         <section class="innerbanner-section">
             <div class="innerbannerbg">
@@ -130,7 +133,7 @@
     import './../../css/common.css';
     import './../../css/contact.css';
     import { ref } from 'vue';
-    import { Link } from '@inertiajs/vue3';
+    import { Link, Head } from '@inertiajs/vue3';
 
     const form = ref({
         name: '',
