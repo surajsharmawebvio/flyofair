@@ -191,7 +191,10 @@
     }
 
     .popup-container {
-        background: #fff;
+        background-image: url('/images/popup-background.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
         border-radius: 10px;
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         max-width: 700px;
@@ -201,10 +204,6 @@
     }
 
     .popup-body {
-        background-image: url('/images/popup-background.png');
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
         min-height: 400px;
         display: flex;
         align-items: center;
@@ -553,11 +552,16 @@
         .popup-container {
             max-width: 100vw;
             border-radius: 8px;
-            height: 80vh;
+            height: 80vh; /* Increased height for better mobile display */
+            display: flex;
+            flex-direction: column;
         }
 
+        /* .popup-body styles removed for dynamic height */
+
         .popup-body {
-            min-height: 300px;
+            flex: 1;
+            min-height: 0; /* Allow flex item to shrink below min-height */
         }
 
         .popup-title {
@@ -631,8 +635,12 @@
         }
 
         .popup-footer {
+            position: relative; /* Override absolute positioning for dynamic layout */
             padding: 12px;
             gap: 12px;
+            flex-shrink: 0; /* Don't shrink footer */
+            width: 95%; /* Match popup-content width */
+            margin: 0 auto; /* Center the footer */
         }
 
         .brand-icons {

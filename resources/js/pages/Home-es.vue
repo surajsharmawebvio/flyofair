@@ -1754,7 +1754,7 @@
                 <div class="row justify-content-center">
                     <div class="col-lg-8 col-12">
                         <div class="section-header text-center">
-                            <h3 class="mb-2">
+                            <h3 class="mb-2" style="font-weight: 600;">
                                 Qué opinan nuestros <span class="text-primary text-primarysec text-decoration-underline">valiosos pasajeros</span> sobre nosotros?
                             </h3>
                             <p class="sub-title">
