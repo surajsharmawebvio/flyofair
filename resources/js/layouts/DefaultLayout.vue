@@ -23,8 +23,6 @@ import Header from '@/components/Header.vue'
 import Footer from '@/components/Footer.vue'
 import SocialBar from '@/components/SocialBar.vue'
 import PopUp from '@/components/pop-up.vue'
-import $ from 'jquery';
-import './../../js/main';
 import { ref, onMounted } from 'vue';
 
 export default {
