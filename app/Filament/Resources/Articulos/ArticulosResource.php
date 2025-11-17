@@ -59,7 +59,14 @@ class ArticulosResource extends Resource
                         Textarea::make('meta_description')->rows(3),
                         Textarea::make('meta_keywords')->rows(2)->placeholder('keyword1, keyword2, keyword3'),
                         TextInput::make('canonical_url')->placeholder('https://example.com/blog/...'),
-                        // FAQs can be managed as a JSON array in a custom way
+                        Toggle::make('robots_index')
+                            ->label('Permitir que los motores de búsqueda indexen esta página')
+                            ->default(true)
+                            ->helperText('Desmarcar para agregar la etiqueta "noindex"'),
+                        Toggle::make('robots_follow')
+                            ->label('Permitir que los motores de búsqueda sigan enlaces en esta página')
+                            ->default(true)
+                            ->helperText('Desmarcar para agregar la etiqueta "nofollow"'),
                     ])->collapsed(),
                 Section::make('FAQs')
                     ->schema([

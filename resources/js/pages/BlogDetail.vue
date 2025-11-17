@@ -17,6 +17,9 @@
         <meta name="twitter:title" :content="seo.title">
         <meta name="twitter:description" :content="seo.description">
         <meta name="twitter:image" :content="seo.ogImage">
+        
+        <!-- Robots Meta Tag -->
+        <meta name="robots" :content="robotsContent">
     </Head>
     
     <DefaultLayout>
@@ -255,7 +258,7 @@
 
 <script setup>
 import "./../../css/blog.css";
-import { onMounted, defineProps } from 'vue';
+import { onMounted, defineProps, computed } from 'vue';
 import DefaultLayout from '@/layouts/DefaultLayout.vue'
 import { Head } from "@inertiajs/vue3";
 
@@ -272,6 +275,13 @@ const props = defineProps({
         type: Object,
         required: true
     }
+});
+
+// Computed property for robots meta tag content
+const robotsContent = computed(() => {
+    const index = props.blog.robots_index ? 'index' : 'noindex';
+    const follow = props.blog.robots_follow ? 'follow' : 'nofollow';
+    return `${index},${follow}`;
 });
 
 onMounted(() => {

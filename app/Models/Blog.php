@@ -20,11 +20,15 @@ class Blog extends Model
         'canonical_url',
         'faqs',
         'lang',
+        'robots_index',
+        'robots_follow',
     ];
 
     protected $casts = [
         'lang',
         'published' => 'boolean',
         'faqs' => 'array',
+        'robots_index' => 'boolean',
+        'robots_follow' => 'boolean',
     ];
 }
