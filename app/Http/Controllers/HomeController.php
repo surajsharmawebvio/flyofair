@@ -87,54 +87,54 @@ class HomeController extends Controller
             ->where('published', 1)
             ->get();
 
-        $xml = new \SimpleXMLElement('<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="sitemap.xsl"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml"/>');
+        $xml = new \SimpleXMLElement('<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"/>');
+
+        // Production domain for sitemap
+        $baseUrl = 'https://www.flyofair.com';
 
         // Add static pages
         $staticPages = [
-            '/' => '1.0',
-            '/about' => '0.8',
-            '/contact' => '0.8',
-            '/blog' => '0.9',
-            '/articulos' => '0.9',
-            '/terms-and-conditions' => '0.7',
-            '/privacy-policy' => '0.7',
-            '/disclaimer' => '0.7'
+            '/' => '1.00',
+            '/about' => '0.80',
+            '/contact' => '0.80',
+            '/blog' => '0.90',
+            '/articulos' => '0.90',
+            '/terms-and-conditions' => '0.70',
+            '/privacy-policy' => '0.70',
+            '/disclaimer' => '0.70'
         ];
 
         foreach ($staticPages as $url => $priority) {
             $urlElement = $xml->addChild('url');
-            $urlElement->addChild('loc', url($url));
-            $urlElement->addChild('changefreq', 'weekly');
-            $urlElement->addChild('priority', $priority);
+            $urlElement->addChild('loc', $baseUrl . $url);
             $urlElement->addChild('lastmod', now()->toW3cString());
+            $urlElement->addChild('priority', $priority);
         }
 
         // Add blog posts and articles
         foreach ($blogs as $blog) {
             $urlElement = $xml->addChild('url');
             $path = $blog->lang === 'en' ? 'blog' : 'articulos';
-            $urlElement->addChild('loc', url("/{$path}/{$blog->slug}"));
-            $urlElement->addChild('changefreq', 'monthly');
-            $urlElement->addChild('priority', '0.8');
+            $urlElement->addChild('loc', $baseUrl . "/{$path}/{$blog->slug}");
             $urlElement->addChild('lastmod', $blog->updated_at->toW3cString());
-
-            // Add language alternates
-            $alternateUrl = $xml->addChild('xhtml:link');
-            $alternateUrl->addAttribute('rel', 'alternate');
-            $alternateUrl->addAttribute('hreflang', $blog->lang);
-            $alternateUrl->addAttribute('href', url("/{$path}/{$blog->slug}"));
+            $urlElement->addChild('priority', '0.80');
         }
 
         $response = response($xml->asXML(), 200);
         $response->header('Content-Type', 'text/xml');
-        
-        // Generate file
-        $xml->asXML(public_path('sitemap.xml'));
+
+        // Generate file with proper formatting
+        $dom = new \DOMDocument('1.0');
+        $dom->preserveWhiteSpace = false;
+        $dom->formatOutput = true;
+        $dom->loadXML($xml->asXML());
+        $formattedXml = $dom->saveXML();
+
+        // Save formatted XML to file
+        file_put_contents(public_path('sitemap.xml'), $formattedXml);
 
         return $response;
-    }
-
-    public function getQuote(Request $request)
+    }    public function getQuote(Request $request)
     {
         // Basic validation
         $validator = Validator::make($request->all(), [
