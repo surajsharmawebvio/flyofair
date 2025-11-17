@@ -1,7 +1,9 @@
 <!-- create contact component -->
 <template>
     <Head>
-        <meta name="robots" content="noindex, nofollow" />
+        <title>FlyOFair | Contáctanos</title>
+        <meta name="description" content="Los pasajeros de todo el mundo pueden ponerse en contacto con FlyOFair llamando al +1-877-238-0219 y recibir asistencia completa de agentes de viajes expertos las 24 horas del día, los 7 días de la semana." />
+        <link rel="canonical" href="https://www.flyofair.com/es/contactanos/" />
     </Head>
     <DefaultLayout>
         <section class="innerbanner-section">

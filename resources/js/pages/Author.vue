@@ -13,6 +13,7 @@
     <Head>
         <title>Author | Alice Walker</title>
         <meta name="description" content="FlyOFair, as an Online Travel Agency, has a professional author whose travel experience helps us gather and present the information in the best possible way." />
+        <link rel="canonical" href="https://www.flyofair.com/author/" />
     </Head>
     <DefaultLayout>
         <section class="innerbanner-section">

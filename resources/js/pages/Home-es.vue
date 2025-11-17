@@ -481,74 +481,6 @@
     };
 
     onMounted(() => {
-        // Initialize all owl carousels
-        $('.tour-slider').owlCarousel({
-            loop: true,
-            margin: 20,
-            nav: true,
-            dots: false,
-            autoplay: true,
-            navText: ['<i class="fa-solid fa-angle-left"></i>',
-                '<i class="fa-solid fa-angle-right"></i>'
-            ],
-            autoplayTimeout: 5000,
-            responsive: {
-                0: {
-                    items: 1,
-                },
-                576: {
-                    items: 2,
-                },
-                992: {
-                    items: 3,
-                },
-                1500: {
-                    items: 4,
-                },
-            },
-        });
-
-        $('.blog-slider').owlCarousel({
-            loop: true,
-            margin: 20,
-            nav: true,
-            dots: false,
-            autoplay: true,
-            autoplayTimeout: 5000,
-            responsive: {
-                0: {
-                    items: 1,
-                },
-                768: {
-                    items: 2,
-                },
-                992: {
-                    items: 3,
-                },
-            },
-        });
-
-        $('.custom-testimonial-carousel').owlCarousel({
-            loop: true,
-            margin: 20,
-            navText: ['<i class="fa-solid fa-angle-left"></i>',
-                '<i class="fa-solid fa-angle-right"></i>'
-            ],
-            dots: true,
-            autoplay: true,
-            autoplayTimeout: 5000,
-            responsive: {
-                0: {
-                    items: 1,
-                },
-                768: {
-                    items: 2,
-                },
-                992: {
-                    items: 3,
-                },
-            },
-        });
 
         // Initialize date picker and traveler functionality with a small delay
         setTimeout(() => {
@@ -794,7 +726,7 @@
                 dots: true,
                 autoplay: true,
                 autoplayTimeout: 5000,
-                items: 1
+                items: 3
             });
 
             // Initialize date picker and traveler functionality with a small delay
@@ -960,7 +892,9 @@
 
 <template>
     <Head>
-        <meta name="robots" content="noindex, nofollow" />
+        <title>FlyOFair | Reserva de vuelos con asistencia 24/7</title>
+        <meta name="description" content="FlyOFair es un portal integral para viajeros que necesitan ayuda con reservas de vuelos, cancelaciones, reembolsos, cambios de nombre y mucho más. Llame ahora al +1-877-238-0219." />
+        <link rel="canonical" href="https://www.flyofair.com/es" />
     </Head>
     <DefaultLayout>
         <section class="bannersection">

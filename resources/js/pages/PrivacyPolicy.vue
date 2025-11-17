@@ -2,6 +2,7 @@
     <Head>
         <title>FlyOFair | Privacy Policy</title>
         <meta name="description" content="The Privacy Policy of FlyOFair explains the policies that apply to users and visitors of this website. For a better understanding, you can email us." />
+        <link rel="canonical" href="https://www.flyofair.com/privacy-policy/" />
     </Head>
     <DefaultLayout>
         <section class="innerbanner-section">

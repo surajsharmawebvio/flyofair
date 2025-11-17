@@ -11,7 +11,9 @@
 
 <template>
     <Head>
-        <meta name="robots" content="noindex, nofollow" />
+        <title>Autor | Alice Walker</title>
+        <meta name="description" content="FlyOFair, como agencia de viajes online, cuenta con un autor profesional cuya experiencia en viajes nos ayuda a recopilar y presentar la información de la mejor manera posible." />
+        <link rel="canonical" href="https://www.flyofair.com/es/autor/" />
     </Head>
     <DefaultLayout>
         <section class="innerbanner-section">

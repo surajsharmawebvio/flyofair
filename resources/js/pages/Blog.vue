@@ -1,7 +1,8 @@
 <template>
     <Head>
         <title>FlyOFair | Blog</title>
-        <meta name="description" content="Get the complete info about airlines, car rentals, and cruises from the blog section of FlyOFair. You can also call us at +1-877-238-0219 for more details." />
+        <meta name="description" content="Get the complete info about airlines, flight booking, and name change, etc from the blog section of FlyOFair. You can also call us at +1-877-238-0219 for more details. " />
+        <link rel="canonical" href="https://www.flyofair.com/blog/" />
     </Head>
     <DefaultLayout>
         <section class="innerbanner-section">

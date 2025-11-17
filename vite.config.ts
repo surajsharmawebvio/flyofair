@@ -35,48 +35,17 @@ export default defineConfig(({mode}) => {
         emptyOutDir: true,
         minify: 'esbuild',
         sourcemap: false,
-        cssCodeSplit: true, // Enable CSS code splitting
         rollupOptions: {
             input: {
                 app: path.resolve(__dirname, 'resources/js/app.ts'),
             },
             output: {
-                manualChunks: (id) => {
-                    // Vendor chunk for large libraries
-                    if (id.includes('node_modules')) {
-                        if (id.includes('vue') || id.includes('inertia') || id.includes('@inertiajs')) {
-                            return 'vue-vendor';
-                        }
-                        if (id.includes('axios') || id.includes('lodash')) {
-                            return 'http-vendor';
-                        }
-                        if (id.includes('jquery') || id.includes('bootstrap') || id.includes('owl.carousel')) {
-                            return 'ui-vendor';
-                        }
-                        if (id.includes('sweetalert2') || id.includes('flatpickr')) {
-                            return 'plugins-vendor';
-                        }
-                        return 'vendor';
-                    }
-
-                    // Separate chunk for large CSS files
-                    if (id.includes('.css')) {
-                        return 'styles';
-                    }
-                },
-                // Optimize chunk file names
-                chunkFileNames: 'assets/[name]-[hash].js',
-                entryFileNames: 'assets/[name]-[hash].js',
-                assetFileNames: (assetInfo) => {
-                    if (assetInfo.name?.endsWith('.css')) {
-                        return 'assets/[name]-[hash][extname]';
-                    }
-                    return 'assets/[name]-[hash][extname]';
+                manualChunks: {
+                    vendor: ['vue', 'axios', 'lodash'],
+                    ui: ['bootstrap', 'jquery', 'sweetalert2'],
                 },
             },
         },
-        // Increase chunk size warning limit
-        chunkSizeWarningLimit: 1000,
     },
     }
 });

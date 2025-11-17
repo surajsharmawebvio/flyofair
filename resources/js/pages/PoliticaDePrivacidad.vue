@@ -1,6 +1,8 @@
 <template>
     <Head>
-        <meta name="robots" content="noindex, nofollow" />
+        <title>FlyOFair | Política de Privacidad</title>
+        <meta name="description" content="La Política de Privacidad FlyOFair explica las políticas que se aplican a los usuarios y visitantes de este sitio web. Para una mejor comprensión, puede enviarnos un correo electrónico." />
+        <link rel="canonical" href="https://www.flyofair.com/es/politica-de-privacidad/" />
     </Head>
     <DefaultLayout>
         <section class="innerbanner-section">

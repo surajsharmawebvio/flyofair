@@ -1,6 +1,8 @@
 <template>
     <Head>
-        <meta name="robots" content="noindex, nofollow" />
+        <title>FlyOFair | Términos y Condiciones</title>
+        <meta name="description" content="Los Términos y condiciones de FlyOFair cubren las responsabilidades del usuario, el uso del sitio web, la privacidad y los precios. Envíenos un correo electrónico para obtener más información." />
+        <link rel="canonical" href="https://www.flyofair.com/es/terminos-y-condiciones/" />
     </Head>
     <DefaultLayout>
         <section class="innerbanner-section">

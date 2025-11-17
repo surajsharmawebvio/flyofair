@@ -8,6 +8,7 @@
         watch,
         ref
     } from 'vue'
+    import $ from 'jquery'
     import { router } from '@inertiajs/vue3';
 
     const page = usePage()
@@ -34,9 +35,9 @@
 
     const toggleNavbarClass = () => {
         if (window.location.pathname === '/' || window.location.pathname === '/es' || window.location.pathname === '/es/') {
-            window.$('.navbar').removeClass('header-fixed')
+            $('.navbar').removeClass('header-fixed')
         } else {
-            window.$('.navbar').addClass('header-fixed')
+            $('.navbar').addClass('header-fixed')
         }
         currentPath.value = window.location.pathname
     }
@@ -54,11 +55,11 @@
 
     const closeOffcanvas = () => {
         // Remove backdrop
-        window.$('.offcanvas-backdrop').remove();
+        $('.offcanvas-backdrop').remove();
         // Hide offcanvas
-        window.$('#offcanvasExample').removeClass('show');
+        $('#offcanvasExample').removeClass('show');
         // Enable scrolling
-        window.$('body').removeClass('modal-open').css('overflow', '').css('padding-right', '');
+        $('body').removeClass('modal-open').css('overflow', '').css('padding-right', '');
     }
 
     onMounted(() => {
@@ -66,10 +67,10 @@
         detectLanguageFromUrl()
 
         // Initialize jQuery event handlers
-        window.$('.travel-call').on('mouseenter', function () {
-            window.$(this).find('.small').css('color', '#ffffff')
+        $('.travel-call').on('mouseenter', function () {
+            $(this).find('.small').css('color', '#ffffff')
         }).on('mouseleave', function () {
-            window.$(this).find('.small').css('color', '#000000')
+            $(this).find('.small').css('color', '#000000')
         })
 
         // Close offcanvas when any Link component is clicked

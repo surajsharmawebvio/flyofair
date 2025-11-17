@@ -1,6 +1,8 @@
 <template>
     <Head>
-        <meta name="robots" content="noindex, nofollow" />
+        <title>FlyOFair | Descargo de Responsabilidad</title>
+        <meta name="description" content="El Descargo de Responsabilidad de FlyOFair explica que puedes comprar billetes de avión de socios de confianza con asistencia completa." />
+        <link rel="canonical" href="https://www.flyofair.com/es/descargo-de-responsabilidad/" />
     </Head>
     <DefaultLayout>
         <section class="innerbanner-section">

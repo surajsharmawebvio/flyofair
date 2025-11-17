@@ -87,54 +87,125 @@ class HomeController extends Controller
             ->where('published', 1)
             ->get();
 
-        $xml = new \SimpleXMLElement('<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"/>');
+        // Create XML document with proper formatting
+        $xml = new \DOMDocument('1.0', 'UTF-8');
+        $xml->formatOutput = true;
 
-        // Production domain for sitemap
-        $baseUrl = 'https://www.flyofair.com';
+        // Create root element with namespaces
+        $urlset = $xml->createElement('urlset');
+        $urlset->setAttribute('xmlns', 'http://www.sitemaps.org/schemas/sitemap/0.9');
+        $urlset->setAttribute('xmlns:xsi', 'http://www.w3.org/2001/XMLSchema-instance');
+        $urlset->setAttribute('xmlns:xhtml', 'http://www.w3.org/1999/xhtml');
+        $urlset->setAttribute('xsi:schemaLocation', 'http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd');
+        $xml->appendChild($urlset);
 
-        // Add static pages
-        $staticPages = [
-            '/' => '1.00',
-            '/about' => '0.80',
-            '/contact' => '0.80',
-            '/blog' => '0.90',
-            '/articulos' => '0.90',
-            '/terms-and-conditions' => '0.70',
-            '/privacy-policy' => '0.70',
-            '/disclaimer' => '0.70'
+        // Add homepage
+        $this->addUrlToSitemap($xml, $urlset, '/', '1.0', 'daily', now());
+
+        // Add main English pages
+        $englishPages = [
+            '/about-us' => ['priority' => '0.8', 'changefreq' => 'monthly'],
+            '/contact-us' => ['priority' => '0.8', 'changefreq' => 'monthly'],
+            '/blog' => ['priority' => '0.9', 'changefreq' => 'daily'],
+            '/author' => ['priority' => '0.7', 'changefreq' => 'monthly'],
+            '/terms-and-conditions' => ['priority' => '0.6', 'changefreq' => 'yearly'],
+            '/privacy-policy' => ['priority' => '0.6', 'changefreq' => 'yearly'],
+            '/disclaimer' => ['priority' => '0.6', 'changefreq' => 'yearly'],
+            '/sitemap' => ['priority' => '0.5', 'changefreq' => 'monthly'],
         ];
 
-        foreach ($staticPages as $url => $priority) {
-            $urlElement = $xml->addChild('url');
-            $urlElement->addChild('loc', $baseUrl . $url);
-            $urlElement->addChild('lastmod', now()->toW3cString());
-            $urlElement->addChild('priority', $priority);
+        foreach ($englishPages as $url => $settings) {
+            $this->addUrlToSitemap($xml, $urlset, $url, $settings['priority'], $settings['changefreq'], now());
         }
 
-        // Add blog posts and articles
+        // Add Spanish homepage and main pages
+        $spanishPages = [
+            '/es/' => ['priority' => '0.8', 'changefreq' => 'daily'],
+            '/es/sobre-nosotros' => ['priority' => '0.7', 'changefreq' => 'monthly'],
+            '/es/contactanos' => ['priority' => '0.7', 'changefreq' => 'monthly'],
+            '/es/articulos' => ['priority' => '0.8', 'changefreq' => 'daily'],
+            '/es/autor' => ['priority' => '0.6', 'changefreq' => 'monthly'],
+            '/es/terminos-y-condiciones' => ['priority' => '0.5', 'changefreq' => 'yearly'],
+            '/es/politica-de-privacidad' => ['priority' => '0.5', 'changefreq' => 'yearly'],
+            '/es/descargo-de-responsabilidad' => ['priority' => '0.5', 'changefreq' => 'yearly'],
+        ];
+
+        foreach ($spanishPages as $url => $settings) {
+            $this->addUrlToSitemap($xml, $urlset, $url, $settings['priority'], $settings['changefreq'], now());
+        }
+
+        // Add blog posts and articles with language alternates
         foreach ($blogs as $blog) {
-            $urlElement = $xml->addChild('url');
+            $urlElement = $xml->createElement('url');
+            $urlset->appendChild($urlElement);
+
+            // Determine URL based on language
             $path = $blog->lang === 'en' ? 'blog' : 'articulos';
-            $urlElement->addChild('loc', $baseUrl . "/{$path}/{$blog->slug}");
-            $urlElement->addChild('lastmod', $blog->updated_at->toW3cString());
-            $urlElement->addChild('priority', '0.80');
+            $url = "/{$path}/{$blog->slug}";
+
+            // Add main URL
+            $loc = $xml->createElement('loc', url($url));
+            $urlElement->appendChild($loc);
+
+            // Add lastmod
+            $lastmod = $xml->createElement('lastmod', $blog->updated_at->toW3cString());
+            $urlElement->appendChild($lastmod);
+
+            // Add changefreq
+            $changefreq = $xml->createElement('changefreq', 'weekly');
+            $urlElement->appendChild($changefreq);
+
+            // Add priority
+            $priority = $xml->createElement('priority', '0.8');
+            $urlElement->appendChild($priority);
+
+            // Add language alternates if there are blogs in both languages
+            $alternateBlogs = $blogs->where('slug', $blog->slug)->where('lang', '!=', $blog->lang);
+            if ($alternateBlogs->count() > 0) {
+                foreach ($alternateBlogs as $altBlog) {
+                    $altPath = $altBlog->lang === 'en' ? 'blog' : 'articulos';
+                    $altUrl = "/{$altPath}/{$altBlog->slug}";
+
+                    $link = $xml->createElement('xhtml:link');
+                    $link->setAttribute('rel', 'alternate');
+                    $link->setAttribute('hreflang', $altBlog->lang);
+                    $link->setAttribute('href', url($altUrl));
+                    $urlElement->appendChild($link);
+                }
+            }
         }
 
-        $response = response($xml->asXML(), 200);
-        $response->header('Content-Type', 'text/xml');
+        // Create response
+        $response = response($xml->saveXML(), 200);
+        $response->header('Content-Type', 'text/xml; charset=UTF-8');
 
-        // Generate file with proper formatting
-        $dom = new \DOMDocument('1.0');
-        $dom->preserveWhiteSpace = false;
-        $dom->formatOutput = true;
-        $dom->loadXML($xml->asXML());
-        $formattedXml = $dom->saveXML();
-
-        // Save formatted XML to file
-        file_put_contents(public_path('sitemap.xml'), $formattedXml);
+        // Save to root directory
+        $xml->save(base_path('sitemap.xml'));
 
         return $response;
-    }    public function getQuote(Request $request)
+    }
+
+    private function addUrlToSitemap($xml, $urlset, $url, $priority, $changefreq, $lastmod)
+    {
+        $urlElement = $xml->createElement('url');
+        $urlset->appendChild($urlElement);
+
+        $loc = $xml->createElement('loc', url($url));
+        $urlElement->appendChild($loc);
+
+        $lastmodElement = $xml->createElement('lastmod', $lastmod->toW3cString());
+        $urlElement->appendChild($lastmodElement);
+
+        $changefreqElement = $xml->createElement('changefreq', $changefreq);
+        $urlElement->appendChild($changefreqElement);
+
+        $priorityElement = $xml->createElement('priority', $priority);
+        $urlElement->appendChild($priorityElement);
+
+        return $urlElement;
+    }
+
+    public function getQuote(Request $request)
     {
         // Basic validation
         $validator = Validator::make($request->all(), [

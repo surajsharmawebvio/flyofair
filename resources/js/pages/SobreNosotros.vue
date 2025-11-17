@@ -7,7 +7,9 @@
 
 <template>
     <Head>
-        <meta name="robots" content="noindex, nofollow" />
+        <title>FlyOFair | Sobre Nosotros</title>
+        <meta name="description" content="FlyOFair es una agencia de viajes online que ofrece la mejor asistencia a sus valiosos pasajeros y garantiza un viaje increíble. Llame ahora al +1-877-238-0219." />
+        <link rel="canonical" href="https://www.flyofair.com/es/sobre-nosotros/" />
     </Head>
     <DefaultLayout>
 

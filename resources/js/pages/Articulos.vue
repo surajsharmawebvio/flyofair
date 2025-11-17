@@ -1,6 +1,8 @@
 <template>
     <Head>
-        <meta name="robots" content="noindex, nofollow" />
+        <title>FlyOFair | Artículos</title>
+        <meta name="description" content="Lee los últimos artículos sobre viajes, consejos de vuelo y destinos turísticos en FlyOFair." />
+        <link rel="canonical" href="https://www.flyofair.com/es/articulos/" />
     </Head>
     <DefaultLayout>
         <section class="innerbanner-section">

@@ -2,6 +2,7 @@
     <Head>
         <title>FlyOFair | Sitemap</title>
         <meta name="description" content="The Sitemap of FlyOFair contains all the information about the pages available on the website. Visitors or users can directly check any page via the sitemap." />
+        <link rel="canonical" href="https://www.flyofair.com/sitemap/" />
     </Head>
     <DefaultLayout>
         <section class="innerbanner-section">

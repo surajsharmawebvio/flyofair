@@ -499,74 +499,6 @@
                 openPopup();
             }
         });
-        // Initialize all owl carousels
-        $('.tour-slider').owlCarousel({
-            loop: true,
-            margin: 20,
-            nav: true,
-            dots: false,
-            autoplay: true,
-            navText: ['<i class="fa-solid fa-angle-left"></i>',
-                '<i class="fa-solid fa-angle-right"></i>'
-            ],
-            autoplayTimeout: 5000,
-            responsive: {
-                0: {
-                    items: 1,
-                },
-                576: {
-                    items: 2,
-                },
-                992: {
-                    items: 3,
-                },
-                1500: {
-                    items: 4,
-                },
-            },
-        });
-
-        $('.blog-slider').owlCarousel({
-            loop: true,
-            margin: 20,
-            nav: true,
-            dots: false,
-            autoplay: true,
-            autoplayTimeout: 5000,
-            responsive: {
-                0: {
-                    items: 1,
-                },
-                768: {
-                    items: 2,
-                },
-                992: {
-                    items: 3,
-                },
-            },
-        });
-
-        $('.custom-testimonial-carousel').owlCarousel({
-            loop: true,
-            margin: 20,
-            navText: ['<i class="fa-solid fa-angle-left"></i>',
-                '<i class="fa-solid fa-angle-right"></i>'
-            ],
-            dots: true,
-            autoplay: true,
-            autoplayTimeout: 5000,
-            responsive: {
-                0: {
-                    items: 1,
-                },
-                768: {
-                    items: 2,
-                },
-                992: {
-                    items: 3,
-                },
-            },
-        });
 
         // Initialize date picker and traveler functionality with a small delay
         setTimeout(() => {
@@ -814,7 +746,7 @@
                 dots: true,
                 autoplay: true,
                 autoplayTimeout: 5000,
-                items: 1
+                items: 3
             });
 
             // Initialize date picker and traveler functionality with a small delay
@@ -980,8 +912,9 @@
 
 <template>
     <Head>
-        <title>FlyOFair | Airlines Flight Booking | Cruises | Car Rental</title>
+        <title>FlyOFair | Airlines Flight Booking With 24/7 Assistance</title>
         <meta name="description" content="FlyOFair is a one-stop portal for travellers seeking assistance with flight bookings, cancellations, refunds, name changes, and more. Call +1-877-238-0219 now." />
+        <link rel="canonical" href="https://www.flyofair.com/" />
     </Head>
     <DefaultLayout>
         <section class="bannersection">

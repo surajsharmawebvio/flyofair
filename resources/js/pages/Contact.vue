@@ -3,6 +3,7 @@
     <Head>
         <title>FlyOFair | Contact Us</title>
         <meta name="description" content="Passengers worldwide can connect with FlyOFair at +1-877-238-0219 and receive full-proff assistance from expert travel agents 24/7." />
+        <link rel="canonical" href="https://www.flyofair.com/contact-us/" />
     </Head>
     <DefaultLayout>
         <section class="innerbanner-section">
