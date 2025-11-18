@@ -3,8 +3,8 @@
 @section('title', 'FlyOFair | Privacy Policy')
 
 @section('meta')
-    <meta name="description" content="The Privacy Policy of FlyOFair explains the policies that apply to users and visitors of this website. For a better understanding, you can email us." />
-    <link rel="canonical" href="{{ url('/privacy-policy') }}" />
+    <meta name="description" content="Read FlyOFair's privacy policy to understand how we collect, use, and protect your personal information when using our flight booking services." />
+    <link rel="canonical" href="{{ url('/privacy-policy') }}/" />
 @endsection
 
 @section('content')

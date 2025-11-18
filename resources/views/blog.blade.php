@@ -3,8 +3,8 @@
 @section('title', 'FlyOFair | Blog')
 
 @section('meta')
-    <meta name="description" content="Get the complete info about airlines, flight booking, and name change, etc from the blog section of FlyOFair. You can also call us at +1-877-238-0219 for more details." />
-    <link rel="canonical" href="{{ url('/blog') }}" />
+    <meta name="description" content="Explore FlyOFair's comprehensive travel blog for flight booking tips, airline reviews, travel guides, and expert advice on making your journey seamless." />
+    <link rel="canonical" href="{{ url('/blog') }}/" />
 @endsection
 
 @section('content')

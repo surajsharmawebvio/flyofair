@@ -3,8 +3,8 @@
 @section('title', 'FlyOFair | About Us')
 
 @section('meta')
-    <meta name="description" content="FlyOFair is an Online Travel Agency that provides the best assistance to its valued passengers and ensures an amazing travel. Call +1-877-238-0219 now." />
-    <link rel="canonical" href="{{ url('/about-us') }}" />
+    <meta name="description" content="FlyOFair is a leading online travel agency offering 24/7 flight booking assistance, competitive fares, and expert support for all your travel needs." />
+    <link rel="canonical" href="{{ url('/about-us') }}/" />
 @endsection
 
 @section('content')

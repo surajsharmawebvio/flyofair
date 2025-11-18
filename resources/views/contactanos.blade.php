@@ -103,13 +103,13 @@
                             Tiene alguna pregunta o sugerencia? Aquí puede escribirnos. Nuestro equipo de FlyOFair se pondrá en contacto con usted.
                         </p>
                         <div class="row g-3">
-                            <div class="col-6">
+                            <div class="col-md-6">
                                 <input type="text" name="name" class="form-control custom-input" placeholder="Tu Nombre" required>
                             </div>
                             <div class="col-md-6">
                                 <input type="email" name="email" class="form-control custom-input" placeholder="Tu Email" required>
                             </div>
-                            <div class="col-6">
+                            <div class="col-md-6">
                                 <input type="text" name="phone" class="form-control custom-input" placeholder="Tu Teléfono">
                             </div>
                             <div class="col-md-6">

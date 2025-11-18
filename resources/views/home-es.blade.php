@@ -340,7 +340,7 @@
         </div>
         <div class="row align-items-center justify-content-between">
             <div class="col-sm-6 col-lg-3 col-6">
-                <div class="info-card">
+                <div class="info-card h-100" style="min-height: 150px;">
                     <div class="info-icon icon-vip">
                         <i class="fa-solid fa-search"></i>
                     </div>
@@ -349,7 +349,7 @@
                 </div>
             </div>
             <div class="col-sm-6 col-lg-3 col-6">
-                <div class="info-card">
+                <div class="info-card h-100" style="min-height: 150px;">
                     <div class="info-icon icon-ticket">
                         <i class="fa-solid fa-calendar-check"></i>
                     </div>
@@ -358,7 +358,7 @@
                 </div>
             </div>
             <div class="col-sm-6 col-lg-3 col-6">
-                <div class="info-card">
+                <div class="info-card h-100" style="min-height: 150px;">
                     <div class="info-icon icon-travel">
                         <i class="fa-solid fa-tags"></i>
                     </div>
@@ -367,7 +367,7 @@
                 </div>
             </div>
             <div class="col-sm-6 col-lg-3 col-6">
-                <div class="info-card">
+                <div class="info-card h-100" style="min-height: 150px;">
                     <div class="info-icon icon-price">
                         <i class="fa-solid fa-eye"></i>
                     </div>
@@ -376,7 +376,7 @@
                 </div>
             </div>
             <div class="col-sm-6 col-6 col-lg-3">
-                <div class="info-card">
+                <div class="info-card h-100" style="min-height: 150px;">
                     <div class="info-icon icon-support">
                         <i class="fa-solid fa-headset"></i>
                     </div>
@@ -385,7 +385,7 @@
                 </div>
             </div>
             <div class="col-sm-6 col-lg-3 col-6">
-                <div class="info-card">
+                <div class="info-card h-100" style="min-height: 150px;">
                     <div class="info-icon icon-passenger">
                         <i class="fa-solid fa-users"></i>
                     </div>
@@ -394,7 +394,7 @@
                 </div>
             </div>
             <div class="col-sm-6 col-lg-3 col-6">
-                <div class="info-card">
+                <div class="info-card h-100" style="min-height: 150px;">
                     <div class="info-icon icon-info">
                         <i class="fa-solid fa-info-circle"></i>
                     </div>
@@ -403,7 +403,7 @@
                 </div>
             </div>
             <div class="col-sm-6 col-lg-3 col-6">
-                <div class="info-card">
+                <div class="info-card h-100" style="min-height: 150px;">
                     <div class="info-icon icon-trust">
                         <i class="fa-solid fa-shield"></i>
                     </div>

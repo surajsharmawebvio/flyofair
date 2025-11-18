@@ -28,7 +28,7 @@ class BlogController extends Controller
 
     public function show($slug): View
     {
-        $blog = Blog::where('slug', $slug)->where('published', true)->firstOrFail();
+        $blog = Blog::where('slug', $slug)->firstOrFail();
         $blog->image = asset('storage/' . $blog->image);
 
         // Prepare SEO data
@@ -55,7 +55,7 @@ class BlogController extends Controller
 
     public function showEs($slug): View
     {
-        $blog = Blog::where('slug', $slug)->where('published', true)->where('lang', 'es')->firstOrFail();
+        $blog = Blog::where('slug', $slug)->where('lang', 'es')->firstOrFail();
         $blog->image = asset('storage/' . $blog->image);
 
         // Prepare SEO data

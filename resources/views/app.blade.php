@@ -43,7 +43,7 @@
                 font-family: 'Cambria';
                 src: local('Cambria');
             }
-            body {
+            * {
                 font-family: 'Cambria', serif !important;
             }
             a, h1, h2, h3, h4, h5, h6, p {

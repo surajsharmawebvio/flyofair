@@ -3,8 +3,8 @@
 @section('title', 'FlyOFair | Contact Us')
 
 @section('meta')
-    <meta name="description" content="Passengers worldwide can connect with FlyOFair at +1-877-238-0219 and receive full-proff assistance from expert travel agents 24/7." />
-    <link rel="canonical" href="{{ url('/contact-us') }}" />
+    <meta name="description" content="Get in touch with FlyOFair for all your flight booking needs. Contact us 24/7 for assistance with bookings, cancellations, refunds, and more. Call +1-877-238-0219." />
+    <link rel="canonical" href="{{ url('/contact-us') }}/" />
 @endsection
 
 @section('content')
@@ -103,13 +103,13 @@
                             Do you have any queries or suggestions? Here you can write to us. Our FlyOFair team will connect with you.
                         </p>
                         <div class="row g-3">
-                            <div class="col-6">
+                            <div class="col-md-6">
                                 <input type="text" name="name" class="form-control custom-input" placeholder="Your Name" required>
                             </div>
                             <div class="col-md-6">
                                 <input type="email" name="email" class="form-control custom-input" placeholder="Your Email" required>
                             </div>
-                            <div class="col-6">
+                            <div class="col-md-6">
                                 <input type="text" name="phone" class="form-control custom-input" placeholder="Your Phone">
                             </div>
                             <div class="col-md-6">

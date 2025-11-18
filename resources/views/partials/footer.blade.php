@@ -174,11 +174,6 @@
                 <li class="nav-item"><a class="nav-link {{ request()->is('es/contactanos*') ? 'active' : '' }}" href="/es/contactanos/">Contáctanos</a></li>
             @endif
         </ul>
-        <!-- Call info -->
-        <a href="tel:+1-877-238-0219" class="travel-call d-flex align-items-center me-4">
-            <span class="travel-call-icon me-2"><i class="bi bi-telephone"></i></span>
-            <div class="small">Call Us<br><strong>+1-877-238-0219 </strong></div>
-        </a>
     </div>
 </div>
 

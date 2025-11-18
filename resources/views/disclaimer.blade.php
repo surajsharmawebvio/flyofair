@@ -3,8 +3,8 @@
 @section('title', 'FlyOFair | Disclaimer')
 
 @section('meta')
-    <meta name="description" content="The Disclaimer of FlyOFair explains that you can buy flight tickets from the trusted partners with complete assistance." />
-    <link rel="canonical" href="{{ url('/disclaimer') }}" />
+    <meta name="description" content="Read FlyOFair's disclaimer to understand the terms and conditions of using our flight booking services and website." />
+    <link rel="canonical" href="{{ url('/disclaimer') }}/" />
 @endsection
 
 @section('content')

@@ -499,9 +499,6 @@ button.btn-closebt:active {
 .mobmenucanvas .offcanvas-body .nav-item {
     margin-bottom: 10px;
 }
-.mobmenucanvas .offcanvas-header {
-    background-color: rgba(var(--dark-blue-color), 1);
-}
 
 .travel-call-icon i {
     animation: ring-shake 1s ease-in-out infinite;

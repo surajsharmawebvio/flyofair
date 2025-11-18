@@ -3,8 +3,8 @@
 @section('title', 'Author | Alice Walker')
 
 @section('meta')
-    <meta name="description" content="FlyOFair, as an Online Travel Agency, has a professional author whose travel experience helps us gather and present the information in the best possible way." />
-    <link rel="canonical" href="{{ url('/author') }}" />
+    <meta name="description" content="Learn about FlyOFair's expert travel agents and our commitment to providing exceptional flight booking services worldwide." />
+    <link rel="canonical" href="{{ url('/author') }}/" />
 @endsection
 
 @section('content')
