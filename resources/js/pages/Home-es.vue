@@ -726,7 +726,14 @@
                 dots: true,
                 autoplay: true,
                 autoplayTimeout: 5000,
-                items: 3
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    768: {
+                        items: 3
+                    }
+                }
             });
 
             // Initialize date picker and traveler functionality with a small delay

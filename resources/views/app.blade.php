@@ -13,6 +13,8 @@
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" />
 
+        <meta name="google-site-verification" content="kGBJcTOfNqbRVAtyjl8X5uJp5NIl4f2bzw_-FAXMtgs" />
+
         <meta name="csrf-token" content="{{ csrf_token() }}">
         @inertiaHead
         @vite(['resources/js/app.ts', "resources/js/pages/{$page['component']}.vue"])

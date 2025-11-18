@@ -1,2 +1,5 @@
 User-agent: *
-Disallow:
+Allow: /
+Allow: /*.css
+Allow: /*.js
+Disallow: /admin/login

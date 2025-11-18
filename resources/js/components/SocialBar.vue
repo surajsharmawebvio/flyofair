@@ -5,6 +5,7 @@
     <a href="https://www.facebook.com/people/Flyofair/61583235514966/" target="_blank" class="facebook"><i class="fab fa-facebook-f"></i></a>
     <a href="https://www.instagram.com/flyofair/" target="_blank" class="instagram"><i class="fab fa-instagram"></i></a>
     <a href="https://www.pinterest.com/flyofair/" target="_blank" class="pinterest"><i class="fab fa-pinterest"></i></a>
+    <a href="https://www.youtube.com/@FlyOFair" target="_blank" class="youtube"><i class="fab fa-youtube"></i></a>
   </div>
 </template>
 

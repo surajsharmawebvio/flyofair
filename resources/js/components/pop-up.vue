@@ -191,7 +191,7 @@
     }
 
     .popup-container {
-        background-image: url('/images/popup-background.png');
+        background-image: url('/images/popup/popup-bg.webp');
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
@@ -284,6 +284,7 @@
       flex-direction: column;
       /* align-items: center; */
       gap: 10px;
+      margin-top: 20px;
     }
 
     .subscribe div {
@@ -306,6 +307,7 @@
       color: #1255FF;
       font-weight: 400;
       font-size: 18px;
+      display: none;
     }
 
     .btn-contact button {
@@ -579,7 +581,7 @@
 
         .popup-content {
             width: 95%;
-            height: 80%;
+            height: 73%;
         }
 
         .child-content-service {
@@ -656,14 +658,71 @@
         }
 
         .social-icons a {
-            width: 45px;
-            height: 45px;
-            font-size: 13px;
+            width: 50px;
+            height: 50px;
+            font-size: 16px;
         }
 
         .pop-up-btn {
             padding: 8px 16px;
             font-size: 14px;
+        }
+    }
+
+    @media (max-width: 400px) {
+        .subscribe div {
+            flex-direction: row;
+        }
+    }
+
+    @media (max-width: 380px) {
+        .popup-container {
+            height: 90vh;
+        }
+        .popup-content {
+            height: 70%;
+        }
+
+        .p-title h3 {
+            font-size: 16px;
+        }
+
+        .p-title p {
+            font-size: 12px;
+        }
+
+        .child-content-service p {
+            font-size: 10px;
+        }
+
+        .child-content-service p strong {
+            font-size: 11px;
+        }
+
+        .subscribe label {
+            font-size: 12px;
+        }
+
+        .subscribe input {
+            font-size: 12px;
+        }
+
+        .pop-up-btn-2 {
+            font-size: 12px;
+        }
+
+        .social-icons a {
+            font-size: 14px;
+            width: 45px;
+            height: 45px;
+        }
+
+        .pop-up-btn {
+            font-size: 12px;
+        }
+
+        .brand-icons img {
+            max-width: 50px;
         }
     }
 

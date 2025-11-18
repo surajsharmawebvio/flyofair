@@ -104,14 +104,14 @@ class HomeController extends Controller
 
         // Add main English pages
         $englishPages = [
-            '/about-us' => ['priority' => '0.8', 'changefreq' => 'monthly'],
-            '/contact-us' => ['priority' => '0.8', 'changefreq' => 'monthly'],
-            '/blog' => ['priority' => '0.9', 'changefreq' => 'daily'],
-            '/author' => ['priority' => '0.7', 'changefreq' => 'monthly'],
-            '/terms-and-conditions' => ['priority' => '0.6', 'changefreq' => 'yearly'],
-            '/privacy-policy' => ['priority' => '0.6', 'changefreq' => 'yearly'],
-            '/disclaimer' => ['priority' => '0.6', 'changefreq' => 'yearly'],
-            '/sitemap' => ['priority' => '0.5', 'changefreq' => 'monthly'],
+            '/about-us/' => ['priority' => '0.8', 'changefreq' => 'monthly'],
+            '/contact-us/' => ['priority' => '0.8', 'changefreq' => 'monthly'],
+            '/blog/' => ['priority' => '0.9', 'changefreq' => 'daily'],
+            '/author/' => ['priority' => '0.7', 'changefreq' => 'monthly'],
+            '/terms-and-conditions/' => ['priority' => '0.6', 'changefreq' => 'yearly'],
+            '/privacy-policy/' => ['priority' => '0.6', 'changefreq' => 'yearly'],
+            '/disclaimer/' => ['priority' => '0.6', 'changefreq' => 'yearly'],
+            '/sitemap/' => ['priority' => '0.5', 'changefreq' => 'monthly'],
         ];
 
         foreach ($englishPages as $url => $settings) {
@@ -121,13 +121,13 @@ class HomeController extends Controller
         // Add Spanish homepage and main pages
         $spanishPages = [
             '/es/' => ['priority' => '0.8', 'changefreq' => 'daily'],
-            '/es/sobre-nosotros' => ['priority' => '0.7', 'changefreq' => 'monthly'],
-            '/es/contactanos' => ['priority' => '0.7', 'changefreq' => 'monthly'],
-            '/es/articulos' => ['priority' => '0.8', 'changefreq' => 'daily'],
-            '/es/autor' => ['priority' => '0.6', 'changefreq' => 'monthly'],
-            '/es/terminos-y-condiciones' => ['priority' => '0.5', 'changefreq' => 'yearly'],
-            '/es/politica-de-privacidad' => ['priority' => '0.5', 'changefreq' => 'yearly'],
-            '/es/descargo-de-responsabilidad' => ['priority' => '0.5', 'changefreq' => 'yearly'],
+            '/es/sobre-nosotros/' => ['priority' => '0.7', 'changefreq' => 'monthly'],
+            '/es/contactanos/' => ['priority' => '0.7', 'changefreq' => 'monthly'],
+            '/es/articulos/' => ['priority' => '0.8', 'changefreq' => 'daily'],
+            '/es/autor/' => ['priority' => '0.6', 'changefreq' => 'monthly'],
+            '/es/terminos-y-condiciones/' => ['priority' => '0.5', 'changefreq' => 'yearly'],
+            '/es/politica-de-privacidad/' => ['priority' => '0.5', 'changefreq' => 'yearly'],
+            '/es/descargo-de-responsabilidad/' => ['priority' => '0.5', 'changefreq' => 'yearly'],
         ];
 
         foreach ($spanishPages as $url => $settings) {
@@ -141,10 +141,14 @@ class HomeController extends Controller
 
             // Determine URL based on language
             $path = $blog->lang === 'en' ? 'blog' : 'articulos';
-            $url = "/{$path}/{$blog->slug}";
+            $url = "/{$path}/{$blog->slug}/";
 
             // Add main URL
-            $loc = $xml->createElement('loc', url($url));
+            $fullUrl = url($url);
+            if (!str_ends_with($fullUrl, '/')) {
+                $fullUrl .= '/';
+            }
+            $loc = $xml->createElement('loc', $fullUrl);
             $urlElement->appendChild($loc);
 
             // Add lastmod
@@ -164,12 +168,16 @@ class HomeController extends Controller
             if ($alternateBlogs->count() > 0) {
                 foreach ($alternateBlogs as $altBlog) {
                     $altPath = $altBlog->lang === 'en' ? 'blog' : 'articulos';
-                    $altUrl = "/{$altPath}/{$altBlog->slug}";
+                    $altUrl = "/{$altPath}/{$altBlog->slug}/";
 
                     $link = $xml->createElement('xhtml:link');
                     $link->setAttribute('rel', 'alternate');
                     $link->setAttribute('hreflang', $altBlog->lang);
-                    $link->setAttribute('href', url($altUrl));
+                    $altFullUrl = url($altUrl);
+                    if (!str_ends_with($altFullUrl, '/')) {
+                        $altFullUrl .= '/';
+                    }
+                    $link->setAttribute('href', $altFullUrl);
                     $urlElement->appendChild($link);
                 }
             }
@@ -178,6 +186,8 @@ class HomeController extends Controller
         // Create response
         $response = response($xml->saveXML(), 200);
         $response->header('Content-Type', 'text/xml; charset=UTF-8');
+
+        // dd($response);
 
         // Save to root directory
         $xml->save(base_path('sitemap.xml'));
@@ -190,7 +200,13 @@ class HomeController extends Controller
         $urlElement = $xml->createElement('url');
         $urlset->appendChild($urlElement);
 
-        $loc = $xml->createElement('loc', url($url));
+        // Generate URL and add trailing slash if not root
+        $fullUrl = url($url);
+        if ($url !== '/' && !str_ends_with($fullUrl, '/')) {
+            $fullUrl .= '/';
+        }
+
+        $loc = $xml->createElement('loc', $fullUrl);
         $urlElement->appendChild($loc);
 
         $lastmodElement = $xml->createElement('lastmod', $lastmod->toW3cString());
