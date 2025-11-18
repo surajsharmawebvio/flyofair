@@ -51,7 +51,7 @@ class ArticulosResource extends Resource
                         FileUpload::make('image')->disk('public')->directory('blogs')->image()->nullable(),
                         Toggle::make('published')
                             ->label('Published')
-                            ->default(true),
+                            ->default(false),
                             ])->collapsed(),
                 Section::make('SEO')
                     ->schema([

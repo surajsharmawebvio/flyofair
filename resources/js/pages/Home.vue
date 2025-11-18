@@ -1051,7 +1051,7 @@
                                             <div class="input-group">
                                                 <select v-model="selectedCountryCode" class="form-select" style="max-width: 100px;">
                                                     <option v-for="country in countryCodes" :key="country.country + country.code" :value="country.code">
-                                                        {{ country.flag }} {{ country.code }} {{ country.name }}
+                                                        {{ country.flag }} {{ country.code }}
                                                     </option>
                                                 </select>
                                                 <input type="tel" class="form-control" placeholder="Phone Number"
