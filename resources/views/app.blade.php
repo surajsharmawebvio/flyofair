@@ -28,7 +28,7 @@
         <link rel="stylesheet" href="{{ asset('css/common.css') }}">
         <link rel="stylesheet" href="{{ asset('css/bootstrap.5.3.8.min.css') }}">
         <link rel="stylesheet" href="{{ asset('css/owl.carousel.2.3.4.css') }}">
-        <link rel="stylesheet" href="{{ asset('css/all.min.css') }}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" href="{{ asset('css/bootstrap-icons.css') }}">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/airbnb.css">
@@ -49,6 +49,13 @@
             a, h1, h2, h3, h4, h5, h6, p {
                 text-decoration: none;
                 font-family: 'Cambria', serif !important;
+            }
+            /* FontAwesome icon fix */
+            .fa, .fas, .far, .fal, .fab {
+                font-family: 'Font Awesome 6 Free', 'Font Awesome 6 Brands' !important;
+            }
+            i[class*="fa-"] {
+                font-family: 'Font Awesome 6 Free', 'Font Awesome 6 Brands' !important;
             }
         </style>
     </head>
