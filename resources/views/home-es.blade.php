@@ -83,30 +83,30 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-3 col-md-6 col-12" style="position: relative;">
-                                    <label class="form-label search-label">Desde</label>
+                                    <label class="form-label search-label">From</label>
                                     <input type="text" name="from" class="form-control flight-input airport-from-input" 
-                                        placeholder="Agregar salida" id="oneway-from" autocomplete="off" required>
+                                        placeholder="Add departure" id="oneway-from" autocomplete="off" required>
                                     <ul class="list-group position-absolute shadow airport-suggestions" 
                                         style="width:100%; max-height:220px; z-index:1050; display:none; overflow-y:auto;">
                                     </ul>
                                 </div>
                                 <div class="col-lg-3 col-md-6 col-12" style="position: relative;">
-                                    <label class="form-label search-label">Hasta</label>
+                                    <label class="form-label search-label">To</label>
                                     <input type="text" name="to" class="form-control flight-input airport-to-input" 
-                                        placeholder="Agregar destino" id="oneway-to" autocomplete="off" required>
+                                        placeholder="Add destination" id="oneway-to" autocomplete="off" required>
                                     <ul class="list-group position-absolute shadow airport-suggestions" 
                                         style="width:100%; max-height:220px; z-index:1050; display:none; overflow-y:auto;">
                                     </ul>
                                 </div>
                                 <div class="col-lg-3 col-md-6 col-12">
-                                    <label class="form-label search-label">Fecha de salida</label>
-                                    <input id="oneway-departure" type="text" name="departureDate" class="date-input flight-input"
+                                    <label class="form-label search-label">Departure date</label>
+                                    <input id="oneway-departure" type="text" name="departureDate" class="form-control date-input flight-input"
                                         placeholder="Departure date" readonly required />
                                 </div>
                                 <div class="col-lg-3 col-md-6 col-12">
-                                    <label class="form-label search-label">Pasajeros</label>
+                                    <label class="form-label search-label">Guests</label>
                                     <input readonly class="form-control flight-guest-input flight-input"
-                                        placeholder="1 pasajero ECONÓMICO" />
+                                        placeholder="1 passenger ECONOMY" />
                                     @include('partials.traveler-card')
                                 </div>
                                 <div class="col-lg-2 d-grid col-12">
@@ -135,39 +135,39 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-3 col-md-6 col-12" style="position: relative;">
-                                    <label class="form-label search-label">Desde</label>
+                                    <label class="form-label search-label">From</label>
                                     <input type="text" name="from" class="form-control flight-input airport-from-input" 
-                                        placeholder="Agregar salida" id="round-from" autocomplete="off" required />
+                                        placeholder="Add departure" id="round-from" autocomplete="off" required />
                                     <ul class="list-group position-absolute shadow airport-suggestions" 
                                         style="width:100%; max-height:220px; z-index:1050; display:none; overflow-y:auto;">
                                     </ul>
                                 </div>
                                 <div class="col-lg-3 col-md-6 col-12" style="position: relative;">
-                                    <label class="form-label search-label">Hasta</label>
+                                    <label class="form-label search-label">To</label>
                                     <input type="text" name="to" class="form-control flight-input airport-to-input" 
-                                        placeholder="Agregar llegada" id="round-to" autocomplete="off" required />
+                                        placeholder="Add arrival" id="round-to" autocomplete="off" required />
                                     <ul class="list-group position-absolute shadow airport-suggestions" 
                                         style="width:100%; max-height:220px; z-index:1050; display:none; overflow-y:auto;">
                                     </ul>
                                 </div>
                                 <div class="col-lg-3 col-md-6 col-12">
-                                    <label class="form-label search-label">Fecha de salida</label>
-                                    <input id="round-departure" type="text" name="departureDate" class="date-input flight-input"
-                                        placeholder="Fecha de salida" readonly required />
+                                    <label class="form-label search-label">Departure date</label>
+                                    <input id="round-departure" type="text" name="departureDate" class="form-control date-input flight-input"
+                                        placeholder="Departure date" readonly required />
                                 </div>
                                 <div class="col-lg-3 col-md-6 col-12">
-                                    <label class="form-label search-label">Fecha de regreso</label>
-                                    <input id="round-return" type="text" name="returnDate" class="date-input flight-input"
-                                        placeholder="Fecha de regreso" readonly required />
+                                    <label class="form-label search-label">Return date</label>
+                                    <input id="round-return" type="text" name="returnDate" class="form-control date-input flight-input"
+                                        placeholder="Return date" readonly required />
                                 </div>
                                 <div class="col-xl-3 col-lg-3 col-md-6 col-12">
-                                    <label class="form-label search-label">Pasajeros</label>
-                                    <input readonly class="form-control flight-guest-input flight-input"
-                                        placeholder="1 pasajero ECONÓMICO" />
+                                    <label class="form-label search-label">Guests</label>
+                                    <input type="text" readonly class="form-control flight-guest-input flight-input"
+                                        placeholder="1 passenger ECONOMY" />
                                     @include('partials.traveler-card')
                                 </div>
                                 <div class="col-lg-2 d-grid col-12">
-                                    <button type="submit" class="btn flight-search-btn">OBTENER COTIZACIÓN</button>
+                                    <button type="submit" class="btn flight-search-btn">GET A QUOTE</button>
                                 </div>
                             </form>
                         </div>
@@ -210,13 +210,13 @@
                                     </div>
                                     <div class="col-lg-3 col-md-6 col-12">
                                         <label class="form-label search-label">Departure date</label>
-                                        <input id="multi-departure" type="text" name="departureDate" class="date-input flight-input"
+                                        <input id="multi-departure" type="text" name="departureDate" class="form-control date-input flight-input"
                                             placeholder="Departure date" readonly required />
                                     </div>
-                                    <div class="col-lg-6 col-md-12 col-12">
-                                        <label class="form-label search-label">Pasajeros</label>
-                                        <input readonly class="form-control flight-guest-input flight-input"
-                                            placeholder="1 pasajero ECONÓMICO" />
+                                    <div class="col-lg-3 col-md-6 col-12">
+                                        <label class="form-label search-label">Guests</label>
+                                        <input type="text" readonly class="form-control flight-guest-input flight-input"
+                                            placeholder="1 passenger ECONOMY" />
                                     </div>
                                     <div class="col-lg-2 d-grid mobsearchbtn col-12">
                                         <button type="submit" class="btn flight-search-btn">GET A QUOTE</button>
