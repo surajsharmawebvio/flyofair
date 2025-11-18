@@ -56,7 +56,14 @@ class BlogResource extends Resource
                         Textarea::make('meta_description')->rows(3),
                         Textarea::make('meta_keywords')->rows(2)->placeholder('keyword1, keyword2, keyword3'),
                         TextInput::make('canonical_url')->placeholder('https://example.com/blog/...'),
-                        // FAQs can be managed as a JSON array in a custom way
+                        Toggle::make('robots_index')
+                            ->label('Allow search engines to index this page')
+                            ->default(true)
+                            ->helperText('Uncheck to add "noindex" meta tag'),
+                        Toggle::make('robots_follow')
+                            ->label('Allow search engines to follow links on this page')
+                            ->default(true)
+                            ->helperText('Uncheck to add "nofollow" meta tag'),
                     ])->collapsed(),
                 Section::make('FAQs')
                     ->schema([

@@ -16,6 +16,60 @@
 
     const API_BASE_URL = 'https://development.theinfinitytravel.com/api/v1/all/airport-list?input='
 
+    // Country codes data
+    const countryCodes = ref([
+        { code: '+1', country: 'US', name: 'United States', flag: '🇺🇸' },
+        { code: '+1', country: 'CA', name: 'Canada', flag: '🇨🇦' },
+        { code: '+44', country: 'GB', name: 'United Kingdom', flag: '🇬🇧' },
+        { code: '+91', country: 'IN', name: 'India', flag: '🇮🇳' },
+        { code: '+86', country: 'CN', name: 'China', flag: '🇨🇳' },
+        { code: '+81', country: 'JP', name: 'Japan', flag: '🇯🇵' },
+        { code: '+49', country: 'DE', name: 'Germany', flag: '🇩🇪' },
+        { code: '+33', country: 'FR', name: 'France', flag: '🇫🇷' },
+        { code: '+39', country: 'IT', name: 'Italy', flag: '🇮🇹' },
+        { code: '+34', country: 'ES', name: 'Spain', flag: '🇪🇸' },
+        { code: '+61', country: 'AU', name: 'Australia', flag: '🇦🇺' },
+        { code: '+55', country: 'BR', name: 'Brazil', flag: '🇧🇷' },
+        { code: '+52', country: 'MX', name: 'Mexico', flag: '🇲🇽' },
+        { code: '+7', country: 'RU', name: 'Russia', flag: '🇷🇺' },
+        { code: '+82', country: 'KR', name: 'South Korea', flag: '🇰🇷' },
+        { code: '+971', country: 'AE', name: 'UAE', flag: '🇦🇪' },
+        { code: '+966', country: 'SA', name: 'Saudi Arabia', flag: '🇸🇦' },
+        { code: '+65', country: 'SG', name: 'Singapore', flag: '🇸🇬' },
+        { code: '+27', country: 'ZA', name: 'South Africa', flag: '🇿🇦' },
+        { code: '+234', country: 'NG', name: 'Nigeria', flag: '🇳🇬' },
+    ]);
+    const selectedCountryCode = ref('+1');
+
+    // Detect country by IP
+    async function detectCountryByIP() {
+        try {
+            const response = await axios.get('https://ipapi.co/json/', {
+                withCredentials: false,
+                headers: {
+                    'Accept': 'application/json'
+                },
+                transformRequest: [(data, headers) => {
+                    // Remove CSRF token and other Laravel headers
+                    delete headers['X-CSRF-TOKEN'];
+                    delete headers['X-Requested-With'];
+                    return data;
+                }]
+            });
+            const countryCode = response.data.country_code;
+            
+            // Find matching country code
+            const country = countryCodes.value.find(c => c.country === countryCode);
+            if (country) {
+                selectedCountryCode.value = country.code;
+            }
+        } catch (error) {
+            console.error('Error detecting country:', error);
+            // Default to +1 if detection fails
+            selectedCountryCode.value = '+1';
+        }
+    }
+
     // Common function for airport search
     async function searchAirports(query, resultsSetter) {
         if (!query) {
@@ -424,7 +478,7 @@
         const formData = {
             tripType,
             email: form.querySelector('input[placeholder="Enter email"]').value,
-            phone: form.querySelector('input[placeholder="Phone Number"]').value,
+            phone: selectedCountryCode.value + ' ' + form.querySelector('input[placeholder="Phone Number"]').value,
             travelerInfo: form.querySelector('.flight-guest-input').value
         };
 
@@ -481,6 +535,8 @@
     };
 
     onMounted(() => {
+        // Detect country by IP on mount
+        detectCountryByIP();
 
         // Initialize date picker and traveler functionality with a small delay
         setTimeout(() => {
@@ -970,8 +1026,15 @@
                                         </div>
                                         <div class="col-lg-3 col-md-6 col-12">
                                             <label class="form-label search-label">Phone</label>
-                                            <input type="text" class="form-control" placeholder="Phone Number"
-                                                name="name" />
+                                            <div class="input-group">
+                                                <select v-model="selectedCountryCode" class="form-select" style="max-width: 100px;">
+                                                    <option v-for="country in countryCodes" :key="country.country + country.code" :value="country.code">
+                                                        {{ country.flag }} {{ country.code }} {{ country.name }}
+                                                    </option>
+                                                </select>
+                                                <input type="tel" class="form-control" placeholder="Phone Number"
+                                                    name="phone" />
+                                            </div>
                                         </div>
                                         <div ref="fromWrapper" class="col-lg-3 col-md-6 col-12"
                                             style="position: relative;">
@@ -1128,8 +1191,15 @@
                                         </div>
                                         <div class="col-lg-3 col-md-6 col-12">
                                             <label class="form-label search-label">Phone</label>
-                                            <input type="text" class="form-control" placeholder="Phone Number"
-                                                name="name" />
+                                            <div class="input-group">
+                                                <select v-model="selectedCountryCode" class="form-select" style="max-width: 100px;">
+                                                    <option v-for="country in countryCodes" :key="country.country + country.code" :value="country.code">
+                                                        {{ country.flag }} {{ country.code }} {{ country.name }}
+                                                    </option>
+                                                </select>
+                                                <input type="tel" class="form-control" placeholder="Phone Number"
+                                                    name="phone" />
+                                            </div>
                                         </div>
                                         <div ref="roundFromWrapper" class="col-lg-3 col-md-6 col-12"
                                             style="position: relative;">
@@ -1290,8 +1360,15 @@
                                             </div>
                                             <div class="col-lg-3 col-md-6 col-12">
                                                 <label class="form-label search-label">Phone</label>
-                                                <input type="text" class="form-control" placeholder="Phone Number"
-                                                    name="name" />
+                                                <div class="input-group">
+                                                    <select v-model="selectedCountryCode" class="form-select" style="max-width: 100px;">
+                                                        <option v-for="country in countryCodes" :key="country.country + country.code" :value="country.code">
+                                                            {{ country.flag }} {{ country.code }} {{ country.name }}
+                                                        </option>
+                                                    </select>
+                                                    <input type="tel" class="form-control" placeholder="Phone Number"
+                                                        name="phone" />
+                                                </div>
                                             </div>
                                             <div ref="multiFromWrapper" class="col-lg-3 col-md-6 col-12" style="position: relative;">
                                                 <label class="form-label search-label">From</label>
