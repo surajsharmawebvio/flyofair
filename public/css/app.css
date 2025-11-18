@@ -1,0 +1,20 @@
+/* --- Core Frameworks --- */
+@import './common.css';
+@import './bootstrap.5.3.8.min.css';
+@import './owl.carousel.2.3.4.css';
+@import './all.min.css';
+@import './bootstrap-icons.css';
+
+@import url('https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css');
+@import url('https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/airbnb.css');
+
+@import './header.css';
+@import './footer.css';
+@import './home.css';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+
+@theme inline {
+    --font-sans: Instrument Sans, ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+}

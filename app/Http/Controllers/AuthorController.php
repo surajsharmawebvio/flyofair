@@ -3,17 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Inertia\Inertia;
+use Illuminate\View\View;
 
 class AuthorController extends Controller
 {
-    public function index()
+    public function index(): View
     {
-        return Inertia::render('Author');
+        return view('author');
     }
 
-    public function indexEs()
+    public function indexEs(): View
     {
-        return Inertia::render('Autor');
+        return view('autor');
     }
 }

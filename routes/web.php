@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
+use Illuminate\View\View;
 use App\Http\Controllers\{
     HomeController, 
     BlogController, 
@@ -23,13 +23,13 @@ Route::group(['prefix' => 'es'], function () {
     
     // Spanish Static Pages
     Route::get('/terminos-y-condiciones', function () {
-        return Inertia::render('TerminosYCondiciones');
+        return view('terminos-y-condiciones');
     })->name('terms.es');
     Route::get('/politica-de-privacidad', function () {
-        return Inertia::render('PoliticaDePrivacidad');
+        return view('politica-de-privacidad');
     })->name('privacy.policy.es');
     Route::get('/descargo-de-responsabilidad', function () {
-        return Inertia::render('DescargoDeResponsabilidad');
+        return view('descargo-de-responsabilidad');
     })->name('disclaimer.es');
 });
 
@@ -51,11 +51,11 @@ Route::get('/sitemap.xml', [HomeController::class, 'generateSitemapXml'])->name(
 
 // Static Pages
 Route::get('/terms-and-conditions', function () {
-    return Inertia::render('TermsAndConditions');
+    return view('terms-and-conditions');
 })->name('terms');
 Route::get('/privacy-policy', function () {
-    return Inertia::render('PrivacyPolicy');
+    return view('privacy-policy');
 })->name('privacy.policy');
 Route::get('/disclaimer', function () {
-    return Inertia::render('Disclaimer');
+    return view('disclaimer');
 })->name('disclaimer');

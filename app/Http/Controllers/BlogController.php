@@ -3,30 +3,30 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Inertia\Inertia;
+use Illuminate\View\View;
 use App\Models\Blog;
 
 class BlogController extends Controller
 {
-    public function index()
+    public function index(): View
     {
         $blogs = Blog::where(['published' => true, 'lang' => 'en'])->latest()->get()->map(function ($blog) {
             $blog->image = asset('storage/' . $blog->image);
             return $blog;
         });
-        return Inertia::render('Blog', ['blogs' => $blogs]);
+        return view('blog', ['blogs' => $blogs]);
     }
 
-    public function articulos()
+    public function articulos(): View
     {
         $blogs = Blog::where(['published' => true, 'lang' => 'es'])->latest()->get()->map(function ($blog) {
             $blog->image = asset('storage/' . $blog->image);
             return $blog;
         });
-        return Inertia::render('Blog', ['blogs' => $blogs]);
+        return view('blog', ['blogs' => $blogs]);
     }
 
-    public function show($slug)
+    public function show($slug): View
     {
         $blog = Blog::where('slug', $slug)->where('published', true)->firstOrFail();
         $blog->image = asset('storage/' . $blog->image);
@@ -40,20 +40,20 @@ class BlogController extends Controller
             'ogImage' => $blog->image,
         ];
 
-        return Inertia::render('BlogDetail', ['blog' => $blog, 'seo' => $seo]);
+        return view('blog-detail', ['blog' => $blog, 'seo' => $seo]);
     }
 
     // Spanish specific functions
-    public function articulosEs()
+    public function articulosEs(): View
     {
         $blogs = Blog::where(['published' => true, 'lang' => 'es'])->latest()->get()->map(function ($blog) {
             $blog->image = asset('storage/' . $blog->image);
             return $blog;
         });
-        return Inertia::render('Articulos', ['blogs' => $blogs]);
+        return view('articulos', ['blogs' => $blogs]);
     }
 
-    public function showEs($slug)
+    public function showEs($slug): View
     {
         $blog = Blog::where('slug', $slug)->where('published', true)->where('lang', 'es')->firstOrFail();
         $blog->image = asset('storage/' . $blog->image);
@@ -67,7 +67,7 @@ class BlogController extends Controller
             'ogImage' => $blog->image,
         ];
 
-        return Inertia::render('ArticulosDetail', ['blog' => $blog, 'seo' => $seo]);
+        return view('articulos-detail', ['blog' => $blog, 'seo' => $seo]);
     }
 }
     

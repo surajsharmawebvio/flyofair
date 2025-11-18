@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Inertia\Inertia;
+use Illuminate\View\View;
 use App\Repositories\AirportRepository;
 use App\Models\NewsLatter;
 use Illuminate\Support\Facades\Validator;
@@ -21,14 +21,14 @@ class HomeController extends Controller
         $this->airportRepository = $airportRepository;
     }
 
-    public function index()
+    public function index(): View
     {
-        return Inertia::render('Home');
+        return view('home');
     }
 
-    public function indexEs()
+    public function indexEs(): View
     {
-        return Inertia::render('Home-es');
+        return view('home-es');
     }
 
     public function searchAirports(Request $request)
@@ -62,7 +62,7 @@ class HomeController extends Controller
         return response()->json(['message' => 'Successfully subscribed to the newsletter.']);
     }
 
-    public function siteMap()
+    public function siteMap(): View
     {   
         // Fetch all published blog posts
         $blogs = \App\Models\Blog::select('title', 'slug', 'lang')
@@ -74,7 +74,7 @@ class HomeController extends Controller
         $englishBlogs = $blogs->where('lang', 'en')->values()->toArray();
         $spanishBlogs = $blogs->where('lang', 'es')->values()->toArray();
 
-        return Inertia::render('SiteMap', [
+        return view('sitemap', [
             'blogs' => $englishBlogs,
             'articulos' => $spanishBlogs
         ]);

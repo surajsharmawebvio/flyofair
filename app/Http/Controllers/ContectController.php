@@ -3,20 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Inertia\Inertia;
+use Illuminate\View\View;
 use App\Jobs\SendContactEmails;
 use Illuminate\Support\Facades\Validator;
 
 class ContectController extends Controller
 {
-    public function index()
+    public function index(): View
     {
-        return Inertia::render('Contact');
+        return view('contact');
     }
 
-    public function indexEs()
+    public function indexEs(): View
     {
-        return Inertia::render('Contactanos');
+        return view('contactanos');
     }
 
     public function submit(Request $request)
